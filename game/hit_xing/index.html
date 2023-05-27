@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>点击猫猫头</title>
+    <style>
+      #container {
+        width: 400px;
+        height: 400px;
+        position: relative;
+        background-color: #eee;
+        z-index: 999;
+      }
+      .square {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #f00;
+        cursor: pointer;
+        display: auto;
+        z-index: 2000;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="time">30</div>
+    <div id="score">0</div>
+    <div id="container"></div>
+    <script>
+      var container = document.getElementById('container');
+      var score = 0;
+      var time = 30;
+      var squares = [];
+
+      // 生成方块
+      function createSquare() {
+        var square = document.createElement('div');
+        square.className = 'square';
+        square.style.top = Math.floor(Math.random() * (container.offsetHeight - square.offsetHeight)) + 'px';
+        square.style.left = Math.floor(Math.random() * (container.offsetWidth - square.offsetWidth)) + 'px';
+        container.appendChild(square);
+        squares.push(square);
+
+        // 点击方块得分
+        square.addEventListener('touchstart', function(event) {
+          event.preventDefault();
+          this.style.display = 'none';
+          score++;
+          document.getElementById('score').innerHTML = score;
+        });
+        
+        square.addEventListener('click', function(event) {
+          event.preventDefault();
+          this.style.display = 'none';
+          score++;
+          document.getElementById('score').innerHTML = score;
+        });
+        
+        
+
+      }
+      
+      
+
+      // 开始游戏
+      function startGame() {
+        var timer = setInterval(function() {
+          if (time === 0) {
+            clearInterval(timer);
+            endGame();
+          } else {
+            time--;
+            document.getElementById('time').innerHTML = time;
+          }
+        }, 1000);
+      }
+        
+      document.addEventListener("touchstart", function() {if(document.querySelectorAll('.square').length < 1 + score)createSquare();});
+      document.addEventListener("click", function() {if(document.querySelectorAll('.square').length < 1 + score)createSquare();});
+
+      // 结束游戏
+      function endGame() {
+        alert('游戏结束！您的得分是：' + score);
+        squares.forEach(function(square) {
+          square.parentNode.removeChild(square);
+        });
+        score = 0;
+        time = 30;
+        document.getElementById('time').innerHTML = time;
+        startGame();
+      }
+
+      startGame();
+      createSquare()
+    </script>
+  </body>
+</html>

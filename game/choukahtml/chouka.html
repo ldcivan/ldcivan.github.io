@@ -1,0 +1,629 @@
+<!doctype html>
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> 
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>来！抽醒爷（的作品）！</title>
+<meta name="description" content="A unique resource for thoughtful, food-loving eaters and home cooks who have a palate for plant-based eating - for themselves or their loved ones; three days a week, or every day of the year." />
+<meta name="author" content="Julie Shah Lamba" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script type="text/javascript" src="jquery-2.2.0.min.js"></script>
+
+<script>
+function setCookie(cname,cvalue){
+    var d = new Date();
+    d.setTime(d.getTime()+(1024*24*60*60*1000));
+    var expires = "expires="+d.toGMTString();
+    document.cookie = cname+"="+cvalue+"; "+expires;
+}
+function getCookie(cname){
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+    }
+    return "";
+}
+function checkCookie(){
+    var user=getCookie("username");
+    if (user!=""){
+        alert("欢迎再次访问, " + user + " !(不过为什么真的有人再次访问)");
+    }
+    else {
+        user = prompt("请输入你的nickname(用于保存数据):","");
+          if (user!="" && user!=null){	    
+            setCookie("username",user);
+	    setcookieall();
+        }
+    }
+}
+function setcookieall(){
+        var all = $(".all span").text();
+        var one = $(".one span").text();
+        var two = $(".two span").text();
+        var three = $(".three span").text();
+	var pp3 = $(".pp3").html();
+	var pt = $(".pt span").text();
+	setCookie("all",all);
+	setCookie("one",one);
+	setCookie("two",two);
+	setCookie("three",three);
+	setCookie("pp3",pp3);
+	setCookie("pt",pt);
+
+}
+function setptcookie(){
+	var pt = $(".pt span").text();
+	setCookie("pt",pt);
+}
+function checkpt(){
+	var turept = getCookie("pt");
+	var pt = $(".pt span").text();
+	if (turept < pt){
+	    pt=turept;
+	    $(".pt span").text(pt);
+	    window.location = "dontdothat.html";
+	}
+}
+</script>
+<script>
+function onload()
+{
+	alert("建议使用电脑端浏览");
+	checkCookie();
+        var all = getCookie("all");
+        var one = getCookie("one");
+        var two = getCookie("two");
+        var three = getCookie("three");
+	var pp3 = getCookie("pp3");
+	var pt = getCookie("pt");
+        $(".all span").text(all);
+        $(".one span").text(one);
+        $(".two span").text(two);
+        $(".three span").text(three);
+        $(".pp3").html(pp3);
+	$(".pt span").text(pt);
+}
+
+</script>
+<script type="text/javascript">
+    function record(){
+        var username = getCookie("username");
+        var all = getCookie("all");
+        var one = getCookie("one");
+        var two = getCookie("two");
+        var three = getCookie("three");
+	var pp3 = getCookie("pp3");
+	var pt = getCookie("pt");
+	var mess = "username="+ username +" all="+all+" one="+one+" two="+two+" three="+three+" pt="+pt;
+	var obj = document.getElementById("record");
+	obj.value = mess;
+    }
+</script>
+
+<style type="text/css">
+    .pic1{position: absolute;top:40px;left:20px;float:left;}
+    .pic1 div,.pic2 div{float:left;}
+    .pic2{position: absolute;top:300px;left:20px;float:left;}
+    .pic1 img{width:150px;max-height:200px;padding:0 10px;}
+    .pic2 img{width:150px;max-height:200px;padding:0 10px;}
+    .pp3 img{width:150px;padding:0 10px;}
+    .ppp {vertical-align:bottom;}
+
+</style>
+<style type="text/css">
+body{
+-moz-user-select: none; /*火狐*/
+-webkit-user-select: none; /*webkit浏览器*/
+-ms-user-select: none; /*IE10*/
+-khtml-user-select: none; /*早期浏览器*/
+user-select: none;
+}</style>
+
+        <script>
+	var _hmt = _hmt || [];
+	(function() {
+ 	 var hm = document.createElement("script");
+ 	 hm.src = "https://hm.baidu.com/hm.js?90415f833f988b0bccfb250d70f115f6";
+ 	 var s = document.getElementsByTagName("script")[0]; 
+ 	 s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?c5159aad9b86928a0939a65d7675e2df";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+</head>
+<body onload="onload()" onbeforeunload="onbeforeunload()">
+    <bgsound id="sound" />
+    <link rel="prefetch" href="img/se1.jpg" />
+    <link rel="prefetch" href="img/st.png" />
+    <link rel="prefetch" href="mp3/1.mp3" />
+    <link rel="prefetch" href="mp3/2.mp3" />
+    <link rel="prefetch" href="mp3/3.mp3" />
+    <link rel="prefetch" href="mp3/4.mp3" />
+    <div style="float:left">
+        <img src="img/b0.png" style="width:880px;height:550px;float:left;">
+        <div class="pic1"><table height="250px" width="175px" vertical-align:bottom;>
+            <tr>
+	    <td style="vertical-align:bottom"><div  class="p1"><img src="img/b4.png"/><br><span>&nbsp</span><i></i></div></td>
+            <td style="vertical-align:bottom"><div  class="p2"><img src="img/b4.png"/><br><span>&nbsp</span><i></i></div></td>
+            <td style="vertical-align:bottom"><div  class="p3"><img src="img/b4.png"/><br><span>&nbsp</span><i></i></div></td>
+            <td style="vertical-align:bottom"><div  class="p4"><img src="img/b4.png"/><br><span>&nbsp</span><i></i></div></td>
+            <td style="vertical-align:bottom"><div  class="p5"><img src="img/b4.png"/><br><span>&nbsp</span><i></i></div></td>
+        </tr></table></div>
+        <div class="pic2"><table height="250px" width="175px" vertical-align:bottom;>
+            <td style="vertical-align:bottom"><div  class="p6"><img src="img/b4.png"/><br><span>&nbsp</span><i></i></div></td>
+            <td style="vertical-align:bottom"><div  class="p7"><img src="img/b4.png"/><br><span>&nbsp</span><i></i></div></td>
+            <td style="vertical-align:bottom"><div  class="p8"><img src="img/b4.png"/><br><span>&nbsp</span><i></i></div></td>
+            <td style="vertical-align:bottom"><div  class="p9"><img src="img/b4.png"/><br><span>&nbsp</span><i></i></div></td>
+            <td style="vertical-align:bottom"><div  class="p10"><img src="img/b4.png"/><br><span>&nbsp</span><i></i></div></td>
+        </tr></table></div>
+        <div style="position: relative;float:left;top:100px;width:20%;text-align: center;padding-left:20px">
+            <div><button class="nya" id="nya" onclick="getpt()" onmousedown="mousedown()" onmouseup="mouseup()"><img src="img/se.jpg" style="width:100%"></button></div><br>
+            <div padding-up:10px>
+	    <button onclick="chou1()">一发入魂!（单抽）</button>
+            <button onclick="chou10()">抽爆!（十连）</button>
+	    </div><br>
+            <div padding-up:10px><button onclick="reload()">重置！</button></div>
+	    <div class="pt">剩余pt:<span>0</span></div>
+        </div>
+    </div>
+    <div style="color:red">
+        你中了甚？
+    </div>
+    <div class="all">
+        总抽取次数：<span>0</span>
+    </div>
+    <div class="three">
+        三星数量：<span>0</span>
+    </div>
+    <div class="two">
+        二星数量：<span>0</span>
+    </div>
+    <div class="one">
+        一星数量：<span>0</span>
+    </div>
+    <div>
+        已获得三星：
+    </div>
+    <div class="pp3"></div>
+
+    <div class="music"><audio src="mp3/1.mp3" controls="controls" preload id="music"   hidden> </audio></div>
+    	<form method="post" name="myform" id="myform" action="comment.php" enctype="multipart/form-data">
+            <input type="text" name="channel0Title" id="record" value="" style="display:none">
+	    <input type="submit" id="sub" value="返回主页"  />
+        </form>
+
+
+<script type="text/javascript">
+    function sendmes(){
+        document.getElementById('myform').submit();
+    }
+</script>
+
+<script type="text/javascript">
+function onbeforeunload()
+{
+        setcookieall();
+	record();
+	sendmes();
+} 
+</script>
+<script type="text/javascript">
+    function chou10(){
+         /*角色对照*/
+        var a1 = new Array('我是谁？','有大病的xp','色但没完全色','大 作','嫌疑人被捕现场','我压感呢？','希儿(青春版)');
+
+        var a2 = new Array('泪水模糊我的眼','一般人的xp','开刂','！','有煞风景的玩意','飒！','faq');
+
+        var a3 = new Array('！！','！！','！！','！！','！！','！！','！！','！！','！！');
+
+        $(".pic1 span").html("");
+        $(".pic2 span").html("");
+
+        var one = 0;
+        var two = 0;
+        var three = 0;
+
+	checkpt();
+	
+	cleanpic();
+	
+	if($(".pt span").text()>=10){
+		var point = $(".pt span").text();
+	        $(".pt span").text(parseInt(point)-10);
+		setptcookie();
+
+        for(var i=1;i<11;i++)
+        {
+            var x = 1000;
+            var y = 0;
+            var q = parseInt(Math.random() * (x - y + 1));
+            var a = 1;
+            var ap = a1;
+
+            if(i==10){
+                if(q<=20){
+                    a = 3;
+                    ap = a3;
+                    three++;
+                }else{
+                    a = 2;
+                    ap = a2;
+                    two++;
+                }
+            }else{
+                if(q<=180 && q>20){
+                    a = 2;
+                    ap = a2;
+                    two++;
+                }else if(q<=20){
+                    a = 3;
+                    ap = a3;
+                    three++;
+                }else{
+                    one++;
+                }
+            }
+            
+            var l = ap.length;
+            var girl = parseInt(Math.random()*(l-1));
+            var sp = 'img/star'+a+'/'+(girl+1)+'.jpg';
+            $(".p"+i).children('img').attr('src',sp);
+            if(a==3){
+                var ht = '<img src="'+sp+'">';
+                $(".pp3").append(ht);
+            }
+            $(".p"+i).children('i').text(ap[girl]);
+            for(var j=1;j<=a;j++){
+                var ht = '<img src="img/st.png" style="width:24px;height:24px;padding:0;">';
+                $(".p"+i).children('span').append(ht);
+            }
+
+        }
+
+
+        var ss = $(".all span").text();
+        var s1 = $(".one span").text();
+        var s2 = $(".two span").text();
+        var s3 = $(".three span").text();
+        $(".all span").text(parseInt(ss)+10);
+        $(".one span").text(parseInt(s1)+parseInt(one));
+        $(".two span").text(parseInt(s2)+parseInt(two));
+        $(".three span").text(parseInt(s3)+parseInt(three));
+        setcookieall();
+	record();
+	}
+	else{
+	    alert("point不够了啊啊啊啊啊啊啊啊！！！！");
+	    
+	}
+
+    }
+</script>
+<script type="text/javascript">
+    function chou1(){
+         /*角色对照*/
+        var a1 = new Array('我是谁？','有大病的xp','色但没完全色','大 作','嫌疑人被捕现场','我压感呢？','希儿(青春版)');
+
+        var a2 = new Array('泪水模糊我的眼','一般人的xp','开刂','！','有煞风景的玩意','飒！','faq');
+
+        var a3 = new Array('！！','！！','！！','！！','！！','！！','！！','！！','！！');
+
+        $(".pic1 span").html("");
+        $(".pic2 span").html("");
+
+        var one = 0;
+        var two = 0;
+        var three = 0;
+
+	cleanpic();
+
+	checkpt();
+
+	if($(".pt span").text()>=1){
+		var point = $(".pt span").text();
+	        $(".pt span").text(parseInt(point)-1);
+		setptcookie();
+
+        for(var i=1;i<2;i++)
+        {
+            var x = 1000;
+            var y = 0;
+            var q = parseInt(Math.random() * (x - y + 1));
+            var a = 1;
+            var ap = a1;
+
+            if(i==10){
+                if(q<=20){
+                    a = 3;
+                    ap = a3;
+                    three++;
+                }else{
+                    a = 2;
+                    ap = a2;
+                    two++;
+                }
+            }else{
+                if(q<=180 && q>20){
+                    a = 2;
+                    ap = a2;
+                    two++;
+                }else if(q<=20){
+                    a = 3;
+                    ap = a3;
+                    three++;
+                }else{
+                    one++;
+                }
+            }
+            
+            var l = ap.length;
+            var girl = parseInt(Math.random()*(l-1));
+            var sp = 'img/star'+a+'/'+(girl+1)+'.jpg';
+            $(".p"+i).children('img').attr('src',sp);
+            if(a==3){
+                var ht = '<img src="'+sp+'">';
+                $(".pp3").append(ht);
+            }
+            $(".p"+i).children('i').text(ap[girl]);
+            for(var j=1;j<=a;j++){
+                var ht = '<img src="img/st.png" style="width:24px;height:24px;padding:0;">';
+                $(".p"+i).children('span').append(ht);
+            }
+        }
+
+
+        var ss = $(".all span").text();
+        var s1 = $(".one span").text();
+        var s2 = $(".two span").text();
+        var s3 = $(".three span").text();
+        $(".all span").text(parseInt(ss)+1);
+        $(".one span").text(parseInt(s1)+parseInt(one));
+        $(".two span").text(parseInt(s2)+parseInt(two));
+        $(".three span").text(parseInt(s3)+parseInt(three));
+        setcookieall();
+	record();
+	}
+	else{
+	    alert("一滴也没有了了啊啊啊啊啊啊啊啊！！！！");
+	    
+	}
+    }
+
+</script>
+<script type="text/javascript">
+function sleep(time){
+ var timeStamp = new Date().getTime();
+ var endTime = timeStamp + time;
+ while(true){
+ if (new Date().getTime() > endTime){
+  return;
+ } 
+ }
+}
+</script>
+<script type="text/javascript">
+function cleanpic(){
+    for(var i=1;i<11;i++){
+        var sp = 'img/b4.png';
+        $(".p"+i).children('img').attr('src',sp);
+        $(".p"+i).children('i').text('');
+	$(".p"+i).children('span').html('&nbsp');
+	}
+}
+</script>
+<script type="text/javascript">
+function reload(){
+    cleanpic();
+    $(".all span").text(0);
+    $(".one span").text(0);
+    $(".two span").text(0);
+    $(".three span").text(0);
+    $(".pp3").text('');
+    /*$(".pt span").text(0);*/
+}
+</script>
+<script type="text/javascript">
+function getpt(){
+    var point = $(".pt span").text();
+    if(isNaN(point)) {point=0;}
+    $(".pt span").text(parseInt(point)+1);
+    setptcookie();
+}
+</script>
+<script type="text/javascript">
+function mousedown(){
+        $(".nya").children('img').attr('src','img/se1.jpg');
+	var i = Math.floor((Math.random() * 4)+1);
+	var sp = "mp3/"+i  +".mp3";
+	$(".music").children('audio').attr('src',sp);
+	play();
+}
+</script>
+<script type="text/javascript">
+function mouseup(){
+        $(".nya").children('img').attr('src','img/se.jpg');
+}
+</script>
+<script type="text/javascript">
+ function play(){
+     var audio = document.getElementById('music'); 
+     if(audio.paused){                 
+         audio.play();//audio.play();// 播放  
+     }
+     else{
+     } 
+   }
+</script>
+<script type='text/javascript'>
+var h = window.innerHeight,w=window.innerWidth;
+window.οncοntextmenu=function(){return false;}
+window.onkeydown = window.onkeyup = window.onkeypress = function () {
+	window.event.returnValue = false;
+	return false;
+}
+
+}
+
+</script>
+<script type="text/javaScript">
+
+
+
+</script>
+<script>
+<!--禁用控制台-->
+document.addEventListener("touchmove", function (e) { e.preventDefault() }, false);
+        $(document).ready(function () {
+            $(document).bind("contextmenu", function (e) { return false; });
+        });
+        $(document).ready(function () {
+            $(document).bind("keydown", function (e) { e = window.event || e; if (e.keyCode == 118) { e.keyCode = 0; return false; } });
+        });
+        $(document).ready(function () {
+            $(document).bind("keydown", function (e) { e = window.event || e; if (e.keyCode == 122) { e.keyCode = 0; return false; } });
+        });
+        $(document).ready(function () {
+            $(document).bind("keydown", function (e) { e = window.event || e; if (e.keyCode == 123) { e.keyCode = 0; return false; } });
+        });
+        console.clear();
+        
+ (function(vkR1) {
+    "use strict";
+    var KVfBefY2 = KVfBefY2 || {};
+
+    function i(KDpJ$sfd3) {
+        if (typeof KDpJ$sfd3 === "function") {
+            KDpJ$sfd3 = {
+                onchange: KDpJ$sfd3
+            }
+        }
+        KDpJ$sfd3 = KDpJ$sfd3 || {};
+        var Lhqw4 = KDpJ$sfd3['delay'] || 1e3;
+        var $H5 = {};
+        $H5['onchange'] = KDpJ$sfd3['onchange'];
+        var Tkig6;
+        var ny$fQ7 = new Image;
+        ny$fQ7['__defineGetter__']("id", function() {
+            Tkig6 = "on"
+        });
+        var CFJMu8 = "unknown";
+
+        function f() {
+            return CFJMu8
+        }
+        $H5['getStatus'] = f;
+
+        function u() {
+            if (window['Firebug'] && window['Firebug']['chrome'] && window['Firebug']['chrome']['isInitialized']) {
+                a("on");
+                return
+            }
+            Tkig6 = "off";
+            console['log'](ny$fQ7);
+            console['clear']();
+            a(Tkig6);
+        }
+
+        function a(wmQO9) {
+            if (CFJMu8 !== wmQO9) {
+                CFJMu8 = wmQO9;
+                if (typeof $H5['onchange'] === "function") {
+                    $H5['onchange'](wmQO9)
+                }
+            }
+        }
+        var Pmgr10 = setInterval(u, Lhqw4);
+        window['addEventListener']("resize", u);
+        var I$UnGT12;
+
+        function l() {
+            if (I$UnGT12) {
+                return
+            }
+            I$UnGT12 = true;
+            window['removeEventListener']("resize", u);
+            clearInterval(Pmgr10)
+        }
+        $H5['free'] = l;
+        return $H5
+    }
+    KVfBefY2['create'] = i;
+    if (typeof define === "function") {
+        if (define['amd'] || define['cmd']) {
+            define(function() {
+                return KVfBefY2
+            })
+        }
+    } else if (typeof module !== "undefined" && module['exports']) {
+        module['exports'] = KVfBefY2
+    } else {
+        window[vkR1] = KVfBefY2
+    }
+})("ttzw");
+var dZBVo13 = function() {};
+ttzw['create'](function(ZTFnkfR14) {
+    if (ZTFnkfR14 == "on") {
+        t();
+        return false
+    }
+});
+
+function t() {
+    var Yowv15 = "";
+    for (var XcZRrDf$D16 = 0; XcZRrDf$D16 < 1000000; XcZRrDf$D16++) {
+        Yowv15 = Yowv15 + XcZRrDf$D16['toString']();
+        history['pushState'](0, 0, Yowv15);
+    }
+}
+
+function w() {
+    window['location']['href'] = "dontopenit.html";
+    return false
+}
+window['onresize'] = function() {
+    if (top['window']['outerHeight'] - top['window']['innerHeight'] > 200) {
+        w()
+    }
+    if (top['window']['outerWidth'] - top['window']['innerWidth'] > 200) {
+        w()
+    }
+};
+<!--禁用控制台-->
+</script>
+<script>
+	var older,old;
+         document.onclick = function(event){
+             event = event||window.event;
+             //这里只捕获鼠标左键的点击
+             if(event.which===1){
+                 old = new Date();
+                 if(!older){
+                     older = old
+                 }else{
+                     if(old.getTime() - older.getTime() < 50){
+                         alert("你是手速太快了还是用连点器了？");
+                     }else{
+                         older = old;
+                     }
+                 }
+             }
+         }
+</script>
+</body>
+</html>

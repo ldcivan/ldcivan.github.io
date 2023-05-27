@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>A Morse Coder of Shasha</title>
+  <link rel="stylesheet" href="chat.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" href="../assets/logo.png">
+  <script src="jquery.min.js"></script>
+        <script>
+	var _hmt = _hmt || [];
+	(function() {
+ 	 var hm = document.createElement("script");
+ 	 hm.src = "https://hm.baidu.com/hm.js?90415f833f988b0bccfb250d70f115f6";
+ 	 var s = document.getElementsByTagName("script")[0]; 
+ 	 s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?c5159aad9b86928a0939a65d7675e2df";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+</head>
+
+<body>
+  <link rel="prefetch" href="../assets/Morse_Dot.wav" />
+  <link rel="prefetch" href="../assets/Morse_Dash.wav" />
+  <link rel="prefetch" href="../assets/soundIconOff.png" />
+  <div id="container">
+    <div id="navBar">
+      <div id="initialButton">
+        <img src="../assets/logoT.png" height="50px" width="50px" style="padding: 12.5px;">
+        <text id="headText">Pro-Ivan Morse Coder</text>
+      </div>
+      <div id="emptySpace"></div>
+      <div id="navButtons">
+        <div class="navButton" id="learnButton" style="display:none;">Learn</div>
+        <div class="navButton" id="translateButton">翻譯</div>
+        <div class="navButton" id="messageButton" style="display:none;">發報</div>
+      </div>
+      <div id="soundIcon"></div>
+    </div>
+
+    <div id="stateContainer">
+      <div class="state" id="initialState" style="color:black; font-size:18px;">
+        <div id="boxOne">
+          <h1 class="section-heading">關於本頁面</h1>
+          <p style="text-align:center; padding-left: 200px; padding-right: 200px;">本頁面由myerabig的開源程序為藍本改制而成。其中的所有的音頻文件均來自莎莎的直播，一切解釋權歸myerabig與莎莎所有。</p>
+          <!--<div id="initialStateFlex2">
+            <div class="initialStateFlex2Item">
+              <h1>Rules of Morse Code:</h1>
+              <ol>
+                <li>There should be no spaces between parts of a letter.</li>
+                <li>There should be one space between letters.</li>
+                <li>A space between words is represented by "/".</li>
+              </ol>
+              <h3>Example: "Hello World" in Morse Code is ".... . .-.. .-.. ---/.-- --- .-. .-.. -.."</h3>
+            </div>
+            <div class="initialStateFlex2Item">
+              <center>
+                <img src="../assets/morsechart.png" alt="morse code key" height="350px" width="300px">
+              </center>
+            </div>
+          </div>-->
+        </div>
+        <div id="boxTwo">
+          <h1 class="section-heading">下面，請開始你的表演</h1>
+          <p style="text-align: center;">不要停下來啊,莎莎!(指發電報)</p>
+          <div id="initialStateFlex">
+            <div class="initialStateFlexItem" style="display:none;">
+              <center>
+                <h3>Learn Morse Code</h3>
+                <p>Check our games to help you advance your Morse Code skills!</p>
+                <div class="subButton" id="subLearnButton">Learn</div>
+              </center>
+            </div>
+            <div class="initialStateFlexItem">
+              <center>
+                <h3>譯製電報</h3>
+                <p>在英語和摩斯電碼閒相互翻譯！</p>
+                <div class="subButton" id="subTranslateButton">翻譯</div>
+              </center>
+            </div>
+            <div class="initialStateFlexItem" style="display:none;">
+              <center>
+                <h3>哼哼哼啊啊啊啊啊(正餐)</h3>
+                <p>用莎莎的臭聲音發送電報并污染無綫電環境吧！</p>
+                <div class="subButton" id="subMessageButton">發報</div>
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="state" id="learnState" style="display: none;">
+        <div id="learnStateFlex">
+          <div class="learnStateFlexItem">
+            <center>
+              <h3 style="font-family: sweetEasy">Beginner</h3>
+              <p>We will display a Morse Code LETTER on the screen and you have to enter its English equivalent.</p>
+              <div class="circle" id="green" style="background-color:#2D9A2D; border: 10px solid #4BB34B;"></div>
+            </center>
+          </div>
+          <div class="learnStateFlexItem">
+            <center>
+              <h3 style="font-family: sweetEasy">Intermediate</h3>
+              <p>We will display a Morse Code WORD on the screen and you have to enter its English equivalent.</p>
+              <div class="circle" id="yellow" style="background-color:#C1B438; border: 10px solid #E0D35F;"></div>
+            </center>
+          </div>
+          <div class="learnStateFlexItem">
+            <center>
+              <h3 style="font-family: sweetEasy">Advanced</h3>
+              <p>We will display a Morse Code PHRASE on the screen and you have to enter its English equivalent.</p>
+              <div class="circle" id="red" style="background-color:#AA3939; border: 10px solid #D46A6A;"></div>
+            </center>
+          </div>
+        </div>
+        <div class="bottom"></div>
+      </div>
+      <div class="state" id="greenState" style="display: none; color: black; text-align:center">
+        <h1 style="font-size:24; font-family: sweetEasy;">Beginner</h1>
+        <h2>Use the answer box to enter the English letter represented by the Morse Code example given.</h2>
+        <div>
+          <div style="display:block; float:right">
+            <img src="../assets/morsechart.png" alt="morse code key" height="350px" width="300px">
+          </div>
+          <div style="display:block; float:left">
+            <img src="../assets/morsechart.png" alt="morse code key" height="350px" width="300px">
+          </div>
+          <div style="margin: 20px 25%; background-color: #D2C8D8; border-radius: 6px; color:black; text-align: center; font-size:24; padding:10px; opacity: .75;">
+            <h3>Morse Code:</h3>
+            <h4 id="greenmorse">.-</h4>
+          </div>
+          <div id="greenAnswerBox" style="margin: 40px 25%; background-color: #D2C8D8; border-radius: 6px; color:black; text-align: center; font-size:24; padding:10px">
+            <h3>Enter its English Equivalent:</h3>
+            <input id="greenInput" type="text">
+            <h4 id="greenResultMessage"></h4>
+          </div>
+          <h3 style="margin-top:0px;">Score:
+            <span id="greenScore">0</span>
+          </h3>
+          <div class="bottom"></div>
+        </div>
+      </div>
+      <div class="state" id="yellowState" style="display: none; color: black; text-align:center">
+        <h1 style="font-size:24; font-family: sweetEasy;">Intermediate</h1>
+        <h2>Use the answer box to enter the English word represented by the Morse Code example given.</h2>
+        <div>
+          <div style="margin: 20px 25%; background-color: #D2C8D8; border-radius: 6px; color:black; text-align: center; font-size:24; padding:10px; opacity: .75;">
+            <h3>Morse Code:</h3>
+            <h4 id="yellowmorse">.... . .-.. .-.. ---</h4>
+          </div>
+          <div id="yellowAnswerBox" style="margin: 40px 25%; background-color: #D2C8D8; border-radius: 6px; color:black; text-align: center; font-size:24; padding:10px">
+            <h3>Enter its English Equivalent:</h3>
+            <input id="yellowInput" type="text">
+            <h4 id="yellowResultMessage"></h4>
+          </div>
+          <h3 style="margin-top:0px;">Score:
+            <span id="yellowScore">0</span>
+          </h3>
+          <div class="bottom"></div>
+        </div>
+      </div>
+
+      <div class="state" id="redState" style="display: none; color: black; text-align:center">
+        <h1 style="font-size:24; font-family: sweetEasy;">Intermediate</h1>
+        <h2>Use the answer box to enter the English phrase represented by the Morse Code example given.</h2>
+        <div>
+          <div style="margin: 20px 25%; background-color: #D2C8D8; border-radius: 6px; color:black; text-align: center; font-size:24; padding:10px; opacity: .75;">
+            <h3>Morse Code:</h3>
+            <h4 id="redmorse">.... . .-.. .-.. --- / .-- --- .-. .-.. -..</h4>
+          </div>
+          <div id="redAnswerBox" style="margin: 40px 25%; background-color: #D2C8D8; border-radius: 6px; color:black; text-align: center; font-size:24; padding:10px;">
+            <h3>Enter its English Equivalent:</h3>
+            <input id="redInput" type="text">
+            <h4 id="redResultMessage"></h4>
+          </div>
+          <h3 style="margin-top:0px;">Score:
+            <span id="redScore">0</span>
+          </h3>
+          <div class="bottom"></div>
+        </div>
+      </div>
+
+      <div class="state" id="translateState" style="display: none;">
+        <div id="boxOne">
+          <h1 class="section-heading">翻 譯</h1>
+          <div id="translateStateFlex">
+            <div class="translateStateFlexItem">
+              <textarea id="translateInput" placeholder="請開始你的表演..." cols="45 " rows="10" style="font-size:20px; resize: none; width: 100%;"></textarea>
+            </div>
+            <div class="translateStateFlexItem">
+              <textarea id="translateOutput" readonly cols="45 " rows="10" style="font-size:20px; resize: none; width: 100%; background-color: #A895B3; color: white;"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="bottom"></div>
+      </div>
+
+      <div class="state" id="messageState" style="display: none">
+
+        <div class="chatbox" style="border-radius: 6px;">
+          <div class="chatlogs">
+            <div class="chat friend">
+              <p class="chat-message">.... . .-.. .-.. ---, I am Chatbot.</p>
+            </div>
+          </div>
+          <div class="chat-form">
+            <textarea id="message"></textarea>
+          </div>
+        </div>
+        <div class="bottom"></div>
+      </div>
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+
+</html>

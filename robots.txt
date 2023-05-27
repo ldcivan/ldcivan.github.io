@@ -1,0 +1,90 @@
+User-agent: Baiduspider
+Disallow: /new-comic.html
+Disallow: /new-page1.html
+Disallow: /upload_pic/
+Disallow: /mangahtml/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: MSNBot
+Allow: /
+
+User-agent: Baiduspider-image
+Disallow: /new-comic.html
+Disallow: /new-page1.html
+Disallow: /upload_pic/
+Disallow: /mangahtml/
+
+User-agent: YoudaoBot
+Disallow: /new-comic.html
+Disallow: /new-page1.html
+Disallow: /upload_pic/
+Disallow: /mangahtml/
+
+User-agent: Sogou web spider
+Disallow: /new-comic.html
+Disallow: /new-page1.html
+Disallow: /upload_pic/
+Disallow: /mangahtml/
+
+User-agent: Sogou inst spider
+Disallow: /new-comic.html
+Disallow: /new-page1.html
+Disallow: /upload_pic/
+Disallow: /mangahtml/
+
+User-agent: Sogou spider2
+Disallow: /new-comic.html
+Disallow: /new-page1.html
+Disallow: /upload_pic/
+Disallow: /mangahtml/
+
+User-agent: Sogou blog
+Disallow: /new-comic.html
+Disallow: /new-page1.html
+Disallow: /upload_pic/
+Disallow: /mangahtml/
+
+User-agent: Sogou News Spider
+Disallow: /new-comic.html
+Disallow: /new-page1.html
+Disallow: /upload_pic/
+Disallow: /mangahtml/
+
+User-agent: Sogou Orion spider
+Disallow: /new-comic.html
+Disallow: /new-page1.html
+Disallow: /upload_pic/
+Disallow: /mangahtml/
+
+User-agent: ChinasoSpider
+Disallow: /new-comic.html
+Disallow: /new-page1.html
+Disallow: /upload_pic/
+Disallow: /mangahtml/
+
+User-agent: Sosospider
+Disallow: /new-comic.html
+Disallow: /new-page1.html
+Disallow: /upload_pic/
+Disallow: /mangahtml/
+
+
+User-agent: yisouspider
+Disallow: /new-comic.html
+Disallow: /new-page1.html
+Disallow: /upload_pic/
+Disallow: /mangahtml/
+
+User-agent: EasouSpider
+Disallow: /new-comic.html
+Disallow: /new-page1.html
+Disallow: /upload_pic/
+Disallow: /mangahtml/
+
+User-agent: *
+Disallow: /new-comic.html
+Disallow: /new-page1.html
+Disallow: /upload_pic/
+Disallow: /mangahtml/

@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="shortcut icon" href="favicon.ico">
+        <title>Pro_Ivan的库-图床上传</title>
+
+	<script type="text/javascript">
+	function display_alert()
+       {
+            alert("评论成功!!请注意，您的评论可能不会立刻出现在下方栏框!")
+       }
+       </script>
+	<script type="text/javascript">
+	function display_alert2()
+       {
+            alert("确认后会开始上传，期间请不要刷新或关闭页面。成功后会自动跳转。")
+       }
+       </script>
+	
+        <style>
+        .layui-side{
+            position:fixed;
+            width:20%;
+            top:0;
+            bottom:0;
+            background-color: #393D49;
+        }
+        </style>
+
+        <script>
+	var _hmt = _hmt || [];
+	(function() {
+ 	 var hm = document.createElement("script");
+ 	 hm.src = "https://hm.baidu.com/hm.js?90415f833f988b0bccfb250d70f115f6";
+ 	 var s = document.getElementsByTagName("script")[0]; 
+ 	 s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+    </head>
+    <body bgcolor=#FAFAFA>
+        <center>
+	<embed src="./gonggao.html" width="100%" height="60" type="text/html"/>
+        <img src="./Ivan.png" alt="Ivan社徽" width="25%"><br>
+        <font size="5" color="#000000">----Pro-Ivan数字库-图床上传----</font><br>
+        <font size="2" color="#C0C0C0">如出现异常，请 电邮至ldcivan@pro-ivan.cn 或 前往<a href="https://space.bilibili.com/11022578"><font size="2" color="#808080">Bilibili</font></a>与我们联系</font><br>
+        <a href="indexx.html"><font color=#FF7C00>主 页</font></a> · <a href="page1.html"><font color=#95CAEE>图 库</font></a> · <a href="page2.html"><font color=#FF7C00>关于我们</font></a> · <a href="manga.html"><font color=#95CAEE>漫 画</font></a> · <a href="/acmsg"><font color=#FF7C00>在线反馈</font></a> · <a href="download.html"><font color=#95caee>下载站</font></a> · <a href="game"><font color=#FF7C00>小游戏</font></a><br><br><br>
+
+        <form action="./upload_pic/res/upload_pic.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file" />
+            <input type="submit" value="上传" onclick="display_alert2()"/>
+        </form>
+	<font size="2" color="#C0C0C0">注意!目前只支持上传jpg，jpeg，png与部分gif！<br>请不要滥用图床，本图床只供分享b站无法通过审核的图片!</font><br>旧UI的上传服务已经终止，请前往<a href="/new-upload.html">新UI</a><br><br>
+	<a href="/upload_pic/?C=M;O=D" target="_blank"><input type="button" value="查看已上传图片"></a>
+	
+
+
+	<HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="80%" color=#C0C0C0 SIZE=3>
+
+	<div id="ct1"><h3>留言板</h3></div>
+	<form action="./comment/comment.php" method="post">
+            昵称:<input type="text" name="channel0Title" placeholder="请输入昵称(小于25字)" required="required" maxlength="25"><br>
+    	    评论:<input type="text" name="channel0Gain" placeholder="要讲文明哟~(小于200字)" required="required" maxlength="200"><br>
+            <input type="submit" id ="submitButton" value="发送" onclick="">
+        </form>
+
+	<embed src="./comment/comment.txt" width="45%"/>
+
+        </center>
+    </body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://auth.bupt.edu.cn/authserver/cas/login-normal.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title i18n="systemname">统一身份认证</title>
+	<link rel="stylesheet" href="./index-normal.css">
+	<link rel="stylesheet" href="./login.css">
+	<style>
+		li {
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	</style>
+</head>
+
+<body style="background-color: grey;"> 
+	<div class="banner auto" id="banner">
+		<ul><li style="background-image:url(//auth.bupt.edu.cn/banner/504ee0fd-87f6-4d33-98a3-ea09cf298035)"></li></ul>
+		<ol><li class="active"></li></ol>
+	</div>
+
+	<div class="header auto">
+		<div class="logo fl">
+			<img src="//auth.bupt.edu.cn/authserver/cas/img/logo-full.png" alt=""><span i18n="systemname">统一身份认证</span>
+		</div>
+		<!-- <div class="lan fr" i18n="language">
+			<a href="javascript:changeLan('en');" id="lanBtnEn">EN</a>
+			<a href="javascript:changeLan('zh_cn');" id="lanBtnCn">中文</a>
+		</div> -->
+	</div>
+	<div class="sidebar auto">
+		<div class="sidebar-con auto">
+
+			<div class="content auto">
+				<div class="content-title auto" id="content-title">
+					<a href="javascript:;" class="" i18n="login.type.qrcode">扫码登录</a>
+					<a href="javascript:;" i18n="login.type.password" class="active">密码登录</a>
+					<a href="javascript:;" i18n="login.type.sms">短信登录</a>
+				</div>
+				<div class="title auto">
+					<!-- <span id="systemdesc">个人中心</span> -->
+					<!-- <p id="systemdesc"></p> -->
+				</div>
+				<div class="content-con auto" id="content-con">
+					<div class="content-con-box auto" style="display: none;">
+						<div class="qrcode auto" id="codeQR_PIC" title="https://app.bupt.edu.cn/site/smlogin/index?ticket=e72beea7e7377c519fcb8c7ab704c29e"><canvas width="200" height="200" style="display: none;"></canvas><img alt="Scan me!" src="data:image/png;base64,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" style="display: block;"></div>
+						<div class="qrcode auto" id="qrRefresh" style="display: none;">
+							<img src="./bg.png" alt="">
+							<div class="refresh auto">
+								<p i18n="login.form.qrcode.tips">二维码已失效</p>
+								<input type="button" class="refresh-btn default-bgcolor" onclick="initQR()" value="请点击刷新" i18n="login.form.btn.refresh">
+							</div>
+						</div>
+						<div class="qrcode-tips auto">
+							<span i18n="login.form.qrcode.text1">请使用微信扫描二维码登录</span>
+							<span i18n="login.form.qrcode.text2">“统一认证”</span>
+						</div>
+						<!--div class="tips auto">
+							<b i18n="tips.title">温馨提示：</b><br>
+							<span i18n="tips.text">扫码登录前请先完成注册</span>
+							<br/>
+						</div-->
+					</div>
+					<div class="content-con-box auto" style="">
+						<div class="item auto">
+							<div class="item-box auto">
+								<input type="text" placeholder="请输入学工号" i18n="login.form.schoolid.placeholder" id="username">
+							</div>
+						</div>
+						<div class="item-validate auto"></div>
+						<div class="item auto">
+							<div class="item-box auto">
+								<input type="password" placeholder="请输入密码" i18n="login.form.password.placeholder" id="password">
+							</div>
+						</div>
+						<div class="item-validate auto" style="display: none;"></div>
+						<div class="item item-code auto" style="display: none;" id="captcha">
+							<div class="item-box auto">
+								<input type="text" placeholder="请输入图形验证码" i18n="login.form.captcha.placeholder" id="cptValue">
+							</div>
+							<img src="" class="code" alt="" onclick="refreshCaptcha()">
+						</div>
+						<div class="item-validate auto" id="errorMessage"></div>
+						<div class="item auto">
+							<input type="button" class="submit-btn default-bgcolor" value="账号登录" i18n="login.form.btn.login" onclick="loginPassword()">
+						</div>
+						<div class="links auto">
+                                                        <a href="http://uc.bupt.edu.cn/#/register" target="_blank" class="fl default-color" i18n="link.signin2">立即激活</a>
+							<a href="http://uc.bupt.edu.cn/#/reset" target="_blank" class="fl m-l-10"><span i18n="link.signin1">　</span><span class="default-color" i18n="link.forgetpass">重置密码</span></a>
+							<a href="javascript:;" class="fr default-color helplink" i18n="link.signin3">帮助中心</a>
+						</div>
+						<!--div class="tips auto">
+							<br/><br/>
+						</div-->
+					</div>
+					<div class="content-con-box auto" style="display: none;">
+						<div class="item auto">
+							<div class="item-box auto">
+								<input type="text" placeholder="学工号" i18n="login.form.code.mobile" id="unSmsToken">
+							</div>
+						</div>
+						<div class="item-validate auto"></div>
+						<div class="item auto">
+							<div class="item-box auto">
+								<input type="text" placeholder="请输入短信验证码" i18n="login.form.code.placeholder" id="pwSmsToken">
+								<input type="button" value="获取验证码" i18n="login.form.code.get" class="default-border-1px default-color" id="code-btn" onclick="sendToken()">
+							</div>
+						</div>
+						<div class="item-validate auto" style="display: none;"></div>
+						<div class="item item-code auto" style="display: none;" id="captchaST">
+							<div class="item-box auto">
+								<input type="text" placeholder="请输入图形验证码" i18n="login.form.captcha.placeholder" id="cptSmsToken">
+							</div>
+							<img src="https://auth.bupt.edu.cn/authserver/cas/login-normal.html" class="code" alt="" onclick="refreshCaptcha()">
+						</div>
+						<div class="item-validate auto" id="errSmsToken"></div>
+						<div class="item auto">
+							<input type="button" class="submit-btn default-bgcolor" value="登录" i18n="login.form.btn.shortlogin" onclick="loginSmsToken()">
+						</div>
+						<div class="links auto">
+							<a href="http://uc.bupt.edu.cn/#/reset" target="_blank" class="fl default-color" i18n="link.forgetpass">重置密码</a>
+							<a href="http://uc.bupt.edu.cn/#/register" target="_blank" class="fl m-l-10"><span i18n="link.signin1">　</span><span class="default-color" i18n="link.signin2">立即激活</span></a>
+							<a href="javascript:;" class="fr default-color helplink" i18n="link.signin3">帮助中心</a>
+						</div>
+						<!--div class="tips auto">
+							<b i18n="tips.title">温馨提示：</b><br>
+							<span i18n="tips.text">扫码登录前请先完成注册</span>
+							<br/><br/>
+						</div-->
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="footer auto">
+		<ul>
+			<li i18n="copyright.tip" class="fl"></li>
+			<li i18n="copyright.icp" class="fm">版权所有 © 北京邮电大学　地址：北京市西土城路10号　邮编：100876　京ICP备05064445号　京公网安备110402430070</li>
+			<!-- <li i18n="copyright.support"></li> -->
+			<li i18n="copyright.browser" class="fr"></li>
+		</ul>
+	</div>
+
+	<div class="helpbox auto">
+		<div class="helpboxcon auto">
+			<div class="helpbox-title auto">
+				<span i18n="help.title">帮助中心</span>
+				<a href="javascript:;" class="default-color help-close">X</a>
+			</div>
+			<div class="helpbox-con auto">
+				<ul>
+					<li i18n="tips.text1">1. 用户名为“职工号／学号”。若忘记密码或提示密码错误，请点击“<a href="https://uc.bupt.edu.cn/#/reset/index" target="_blank" class="default-color">重置密码</a>”</li>
+					<li i18n="tips.text2">2. “职工号／学号”见北邮通校园卡卡面</li>
+					<li i18n="tips.text3">3. 建议浏览器：谷歌，IE(8.0+)</li>
+					<li i18n="tips.text4">4. 扫码登录前请先注册 “北京邮电大学”</li>
+					<li i18n="tips.text5">5. 账号密码双因子登录方法请查看：<a href="https://auth.bupt.edu.cn/authserver/cas/omg/%E5%8F%8C%E5%9B%A0%E5%AD%90%E8%AE%A4%E8%AF%81%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C.pdf" target="_blank" class="default-color">双因子认证操作手册</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="./jquery.min.js(1)"></script>
+	<script type="text/javascript" src="./jquery.i18n.js"></script>
+	<script type="text/javascript" src="./zh_cn.js"></script>
+	<script type="text/javascript" src="./en.js"></script>
+	<script type="text/javascript" src="./wwLogin.js"></script>
+	<script src="./qrcode.js"></script>
+	<script src="./mxsocket.js"></script>
+	<script type="text/javascript">
+		var config = parent.getPageConfig ? parent.getPageConfig() : {
+			locale: 'zh_cn',
+			error: '用户名或密码错误。',
+			error1: '用户名或验证码错误。',
+			captcha: 123,
+			service: {
+				name: 'test'
+			}
+		};
+		if (parent) {
+			parent.document.title = window.messages[config.locale]['systemname']
+		}
+
+		// 帮助中心
+		$('.helplink').click(function () {
+			$('.helpbox').show()
+		})
+		$('.help-close').click(function () {
+			$('.helpbox').hide()
+		})
+
+		// 更新页面文本
+		var curMessages = window.messages[config.locale];
+		$.i18n(curMessages);
+		if (config.service) {
+			$('#systemdesc').text(config.service.name);
+		} else {
+			$('#systemdesc').text("个人中心");
+		}
+		if (config.error) {
+			if (localStorage.loginType == 2) $('#errSmsToken').text(curMessages['login.form.code.error']);
+			else $('#errorMessage').text(config.error);
+		}
+
+		//切换语言
+		function changeLan(type) {
+			if (type === 'en') {
+				parent.setLanguage('en')
+				document.getElementById('lanBtnEn').style.display = "none";
+				document.getElementById('lanBtnCn').style.display = "block";
+			} else {
+				parent.setLanguage('zh_cn')
+				document.getElementById('lanBtnEn').style.display = "block";
+				document.getElementById('lanBtnCn').style.display = "none";
+			}
+		}
+
+		// 验证码相关
+		function refreshCaptcha() {
+			$("#captcha > img").attr('src', '/authserver/captcha?captchaId=' + config.captcha.id);
+			$("#captchaST > img").attr('src', '/authserver/captcha?captchaId=' + config.captcha.id);
+		}
+		if (config.captcha) {
+			$("#captcha").prev().show();
+			$("#captcha").show();
+			$("#captchaST").prev().show();
+			$("#captchaST").show();
+			refreshCaptcha();
+		}
+
+		var tokenTTL, tokenTTLCounter;
+		function updateTTL() {
+			if (tokenTTL >= 0) {
+				tokenTTL--;
+				$("#code-btn").val('(' + tokenTTL + ')')
+				$("#code-btn").attr("disabled", true)
+			} else {
+				clearInterval(tokenTTLCounter);
+				localStorage.smsTime = null
+				$("#code-btn").attr("disabled", false)
+				$("#code-btn").val(window.messages[config.locale]['login.form.code.get']);
+			}
+		}
+		if (localStorage.username && localStorage.smsTime && localStorage.smsTime > 0) {
+			$("#unSmsToken").val(localStorage.username)
+			localStorage.username = null
+
+			var time = localStorage.smsTime - new Date().getTime()
+			if (time > 0) {
+				tokenTTL = Math.ceil(time / 1000)
+				$("#code-btn").val('(' + tokenTTL + ')')
+				$("#code-btn").attr("disabled", true)
+				tokenTTLCounter = setInterval(updateTTL, 1000)
+			}
+			localStorage.smsTime = null
+		}
+
+		function sendToken() {
+			$("#code-btn").attr("disabled", true);
+			$("#errSmsToken").text('');
+			var username = $("#unSmsToken").val();
+			if (username && username.trim()) {
+				$("#code-btn").prop('href', 'javascript:')
+				$.ajax({
+					url: '/authserver/token',
+					type: 'post',
+					data: JSON.stringify({ username: username.trim() }),
+					contentType: 'application/json; charset=utf-8',
+					success: function (res) {
+						var response = JSON.parse(res);
+						if (response.status === 'success') {
+							tokenTTL = response.expire_in
+							localStorage.smsTime = new Date().getTime() + tokenTTL * 1000
+							tokenTTLCounter = setInterval(updateTTL, 1000);
+						} else if (response.message === 'send error') {
+							$("#errSmsToken").text(window.messages[config.locale]['login.form.code.errorsend']);
+							$("#code-btn").attr("disabled", true)
+						} else if (response.message === 'not found') {
+							$("#errSmsToken").text(window.messages[config.locale]['login.form.code.notfound']);
+							$("#code-btn").attr("disabled", false)
+						} else if (response.message === 'reach threshold') {
+							$("#errSmsToken").text(window.messages[config.locale]['login.form.code.threshold']);
+							$("#code-btn").attr("disabled", false)
+						}
+					},
+					error: function () {
+						$("#errSmsToken").text(window.messages[config.locale]['login.form.code.errorsend']);
+						$("#code-btn").attr("disabled", false)
+					}
+				});
+			} else {
+				$("#code-btn").attr("disabled", false)
+			}
+		}
+
+		// 登录
+		function loginPassword() {
+			var username = $("#username").val();
+			var password = $("#password").val();
+			localStorage.loginTypeUsername = 'password'
+			if (config.captcha) {
+				var captcha = $("#cptValue").val();
+				// console.log(username, password, captcha)
+				if (username && password && captcha && username.trim() && password.trim() && captcha.trim()) {
+					parent.doLogin(username.trim(), password.trim(), 'username_password', captcha.trim().toLocaleLowerCase());
+				}
+			} else {
+				// console.log(username, password)
+				if (username && password && username.trim() && password.trim()) {
+					parent.doLogin(username.trim(), password.trim(), 'username_password');
+				}
+			}
+		}
+		function loginSmsToken() {
+			var username = $("#unSmsToken").val();
+			var password = $("#pwSmsToken").val();
+			localStorage.loginTypeUsername = 'smsToken'
+			localStorage.username = username
+			if (config.captcha) {
+				var captcha = $("#cptSmsToken").val();
+				if (username && password && captcha && username.trim() && password.trim() && captcha.trim()) {
+					parent.doLogin(username.trim(), password.trim(), 'username_smstoken', captcha.trim().toLocaleLowerCase());
+				}
+			} else {
+				if (username && password && username.trim() && password.trim()) {
+					parent.doLogin(username.trim(), password.trim(), 'username_smstoken');
+				}
+			}
+		}
+
+		// 回车登录
+		$('#username,#password,#cptValue').on('keyup', function (e) {
+			if (e.keyCode === 13) {
+				loginPassword();
+			}
+		});
+		$('#unSmsToken,#pwSmsToken,#cptSmsToken').on('keyup', function (e) {
+			if (e.keyCode === 13) {
+				loginSmsToken();
+			}
+		});
+
+		// 企业微信扫码登录
+		function initWW() {
+			window.WwLogin({
+				"id": 'qrCode',
+				"appid": config.wechatWork.appid,
+				"agentid": config.wechatWork.agentid,
+				"redirect_uri": encodeURIComponent(window.location.protocol + '//' + window.location.host + '/authserver/cas/login-ww.html?client_name=ww'),
+				// "state" : getStateWW(config.wechatWork.redirectUrl),
+				"href": '//' + window.location.host + '/authserver/cas/lib/wwLogin.css'
+			});
+		}
+
+		function getState() {
+			var uri = '/authserver/clientredirect?client_name=mc-qr&javax.faces.partial.ajax=true';
+			if (config.service) {
+				uri = uri + '&service=' + encodeURIComponent(config.service.href);
+			}
+			var state;
+			$.ajax({
+				type: 'get',
+				url: uri,
+				success: function (res) {
+					var parser = new DOMParser();
+					var xmlDoc = parser.parseFromString(res, 'text/xml');
+					var url = xmlDoc.getElementsByTagName('redirect')[0].getAttribute('url');
+					state = parent.getParameterByName('state', url);
+				},
+				async: false
+			});
+			return state;
+		}
+		function initQR() {
+			$("#qrRefresh").hide();
+			$("#codeQR_PIC").show();
+			new mxsocket({
+				debug: false,
+				domain: config.mobileCampus.baseHost,
+				security: config.mobileCampus.security,
+				appid: config.mobileCampus.appid,
+				title: config.mobileCampus.title + '扫码登录',
+				qrcode_id: 'codeQR_PIC',
+				qrcode_width: 200,
+				qrcode_height: 200,
+
+				open: function () { },
+				close: function () { },
+				confirm: function (rs) {
+					var url = '/authserver/login?client_name=mc-qr&code=' + rs.code + '&state=' + getState();
+					window.open(url, '_parent');
+				},
+				reject: function () { },
+				ticket: function (rs) { },
+				error: function (e) { console.log(e) }
+			});
+		}
+		initQR()
+
+		//登录方式切换
+		$('#content-title a').on('click', function () {
+			var index = $(this).index();
+			var length = $('#content-title a').length;
+			localStorage.loginType = index
+			for (var x = 0; x < length; x++) {
+				if (x === index) {
+					$('#content-con div.content-con-box').eq(index).show()
+					$('#content-title a').eq(index).addClass('active')
+				} else {
+					$('#content-con div.content-con-box').eq(x).hide()
+					$('#content-title a').eq(x).removeClass('active')
+				}
+				if (index === 0) initQR();
+			}
+		})
+
+		if (localStorage.loginType !== undefined) {
+			$('#content-title a').eq(localStorage.loginType).click()
+		}
+
+		// 加载背景图
+		$.ajax({
+			url: './banner.json',
+			success: function (result) {
+				var size = result.length
+				if (size > 0) {
+
+					for (var key in result) {
+						$('#banner>ul').append('<li style="background-image:url(/' + result[key]["filePath"] + ')"></li>')
+						if (Number(key) === 0) {
+							$('#banner>ol').append('<li class="active"></li>')
+						} else {
+							$('#banner>ol').append('<li></li>')
+						}
+					}
+					// var index = Math.floor(Math.random() * size)
+					// $('#banner>ul>li').css('background-image', 'url(/' + result[index]['filePath'] + ')')
+				} else {
+					$('#banner>ul').append('<li style="background-image:url(//auth.bupt.edu.cn/authserver/cas/img/bg.png)"></li>')
+					// $('#banner>ul>li').css('background-image', 'url(img/bg.png)')
+				}
+			},
+			error: function (result) {
+				$('#banner>ul').append('<li style="background-image:url(//auth.bupt.edu.cn/authserver/cas/img/bg.png)"></li>')
+				// $('#banner>ul>li').css('background-image', 'url(img/bg.png)')
+			}
+		})
+		// var result = [
+		//   {
+		//     filePath: 'img/bg.png'
+		//   },
+		//   {
+		//     filePath: 'img/bg2.png'
+		//   }
+		// ]
+		// for (var key in result) {
+		//   $('#banner>ul').append('<li style="background-image:url(' + result[key]["filePath"] + ')"></li>')
+		//   if (Number(key) === 0) {
+		//     $('#banner>ol').append('<li class="active"></li>')
+		//   } else {
+		//     $('#banner>ol').append('<li></li>')
+		//   }
+		// }
+
+		// banner切换
+		var n = 0;
+		var bannerInterval = null;
+		var clickInterval = null;
+		var loop = 5000;
+		$('#timeline').addClass('timeline-interval')
+		$('#banner-nums').html($('#banner ul li').length)
+
+		function changeBanner(x) {
+			$('#banner-active-num').html(n + 1)
+			$('#timeline').removeClass('timeline-interval')
+			setTimeout(function () {
+				$('#timeline').addClass('timeline-interval')
+			}, 10)
+			for (var i = 0; i < $('#banner ul li').length; i++) {
+				if (x === i) {
+					$('#banner ul li').eq(x).fadeIn();
+					$('#banner ol li').eq(x).addClass('active');
+				} else {
+					$('#banner ul li').eq(i).fadeOut();
+					$('#banner ol li').eq(i).removeClass('active');
+				}
+			}
+		}
+
+		function createInterval() {
+			return setInterval(function () {
+				n++;
+				if (n === $('#banner ul li').length) {
+					n = 0;
+				}
+				changeBanner(n);
+			}, loop);
+		}
+
+		bannerInterval = createInterval()
+
+		$('#prev-btn').on('click', function () {
+			$('#play-btn').hide()
+			$('#pause-btn').show()
+			n = n - 1;
+			if (n < 1) {
+				n = $('#banner ul li').length - 1
+			}
+			changeBanner(n)
+			clearInterval(bannerInterval);
+			bannerInterval = createInterval()
+		})
+
+		$('#next-btn').on('click', function () {
+			$('#play-btn').hide()
+			$('#pause-btn').show()
+			n = n + 1;
+			if (n > $('#banner ul li').length - 1) {
+				n = 0
+			}
+			changeBanner(n)
+			clearInterval(bannerInterval);
+			bannerInterval = createInterval()
+		})
+
+		$('#pause-btn').on('click', function () {
+			$('#play-btn').show()
+			$('#pause-btn').hide()
+			$('#timeline').removeClass('timeline-interval')
+			clearInterval(bannerInterval);
+		})
+
+		$('#play-btn').on('click', function () {
+			$('#play-btn').hide()
+			$('#pause-btn').show()
+			changeBanner(n)
+			bannerInterval = createInterval()
+		})
+
+	</script>
+
+
+
+</body></html>

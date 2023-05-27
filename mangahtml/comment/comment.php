@@ -2,9 +2,9 @@
     session_start();
     error_reporting(0);
     require 'email.class.php';
-    require 'ip2region/Ip2Region.php';
+    require '../../comment/ip2region/Ip2Region.php';
     
-    if(strpos($_POST["channel0Gain"], "密码") != false || strpos($_POST["channel0Gain"], "密码") == 0) exit("管理密码为：yujionako<br>点击<a href=".$_SERVER["HTTP_REFERER"]."#留言板>此处</a>以返回");
+    if(strpos($_POST["channel0Gain"], "密码") != false) exit("管理密码为：yujionako<br>点击<a href=".$_SERVER["HTTP_REFERER"]."#留言板>此处</a>以返回");
     
     // 设置 session 过期时间为5mins
     ini_set('session.gc_maxlifetime', 300);

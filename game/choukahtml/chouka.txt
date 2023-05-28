@@ -960,3 +960,9 @@ username= all=0 one=0 two=0 three=0 pt=
 
   Time.   2023-05-24 00:50:04(UTC+8)
 ---------
+username= all=NaN one=NaN two=NaN three=NaN pt=0
+  Time.   2023-05-28 17:06:24(UTC+8)
+---------
+
+  Time.   2023-05-28 17:23:05(UTC+8)
+---------

@@ -453,5 +453,12 @@
         "density": 5,
         "ifpc": true,
         "token": "6471a780cbdaf"
+    },
+    {
+        "name": "fufu",
+        "score": "2.589",
+        "density": 25,
+        "ifpc": false,
+        "token": "64744e885e7a9"
     }
 ]

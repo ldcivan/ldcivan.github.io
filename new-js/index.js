@@ -243,7 +243,7 @@ var holidayWishes = [
   { date: "05-01", message: "祝劳动节快乐！", cookieName: "labor-day-wish-received" }, // 劳动节
   { date: "05-04", message: "祝青年节快乐！", cookieName: "youth-day-wish-received" }, // 青年节
   { date: "06-01", message: "祝儿童节快乐！就算成年了也要保持童心哦~", cookieName: "childrens-day-wish-received" }, // 儿童节
-  { date: "06-01", message: "祝各位学子高考顺利！", cookieName: "gaokao-wish-received" }, // 高考
+  { date: "06-07", message: "祝各位学子高考顺利！", cookieName: "gaokao-wish-received" }, // 高考
   { date: "06-22", message: "祝端午节安康！", cookieName: "dragonboat-festival-wish-received" }, // 端午节
   { date: "09-28", message: "祝中秋节快乐！", cookieName: "mid-autumn-wish-received" }, // 中秋节
   { date: "10-01", message: "祝国庆节快乐！", cookieName: "national-day-wish-received" }, // 国庆节
@@ -260,7 +260,7 @@ function checkForHolidayWishes() {
     var alreadyReceived = localStorage.getItem(holiday.cookieName) || false;
 
     if (monthDayStr === holiday.date && !alreadyReceived) {
-      popout(holiday.message, 5000);
+      alert(holiday.message, 8000);
       console.log("假期祝福已送出~")
       localStorage.setItem(holiday.cookieName, true);
     }

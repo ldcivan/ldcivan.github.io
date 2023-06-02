@@ -2517,6 +2517,12 @@ if (!isset($_SESSION['visited'])) {
 							<a href="//us.pro-ivan.com/imgbed/agm/agm59.jpg" target="_blank">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm59.jpg!w200" alt="agm" width="18%">
 							</a>
+							<a href="//us.pro-ivan.com/imgbed/agm/agm60-1.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm60-1.jpg!w200" alt="agm" width="18%">
+							</a>
+							<a href="//us.pro-ivan.com/imgbed/agm/agm60-2.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm60-2.jpg!w200" alt="agm" width="18%">
+							</a>
 						</div>
 						<div id="btn5" class="mdui-panel-item-actions">
 							<button class="mdui-btn mdui-ripple" onclick="setTimeout(function(){document.getElementById('btn5').scrollIntoView({ block: 'end', behavior: 'smooth' });},400)" mdui-panel-item-close>收起</button>

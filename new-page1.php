@@ -1984,6 +1984,16 @@ if (!isset($_SESSION['visited'])) {
 							<a href="//us.pro-ivan.com/imgbed/binggong/binggong26-5.jpg" target="_blank">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/binggong/binggong26-5.jpg!w200" alt="binggong" width="18%">
 							</a>
+							<br>
+							<a href="//us.pro-ivan.com/imgbed/binggong/binggong27-1.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/binggong/binggong27-1.jpg!w200" alt="binggong" width="18%">
+							</a>
+							<a href="//us.pro-ivan.com/imgbed/binggong/binggong27-2.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/binggong/binggong27-2.jpg!w200" alt="binggong" width="18%">
+							</a>
+							<a href="//us.pro-ivan.com/imgbed/binggong/binggong27-3.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/binggong/binggong27-3.jpg!w200" alt="binggong" width="18%">
+							</a>
 						</div>
 						<div id="btn4" class="mdui-panel-item-actions">
 							<button class="mdui-btn mdui-ripple" onclick="setTimeout(function(){document.getElementById('btn4').scrollIntoView({ block: 'end', behavior: 'smooth' });},400)" mdui-panel-item-close>收起</button>
@@ -2522,6 +2532,9 @@ if (!isset($_SESSION['visited'])) {
 							</a>
 							<a href="//us.pro-ivan.com/imgbed/agm/agm60-2.jpg" target="_blank">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm60-2.jpg!w200" alt="agm" width="18%">
+							</a>
+							<a href="//us.pro-ivan.com/imgbed/agm/agm61.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm61.jpg!w200" alt="agm" width="18%">
 							</a>
 						</div>
 						<div id="btn5" class="mdui-panel-item-actions">

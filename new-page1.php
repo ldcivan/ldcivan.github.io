@@ -338,6 +338,9 @@ if (!isset($_SESSION['visited'])) {
 							<a href="//us.pro-ivan.com/imgbed/xing/xing41.jpg" target="_blank">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/xing/xing41.jpg!w200" alt="xing" width="18%">
 							</a>
+							<a href="//us.pro-ivan.com/imgbed/xing/xing42.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/xing/xing42.jpg!w200" alt="xing" width="18%">
+							</a>
 						</div>
 						<div class="mdui-panel-item-actions">
 							<button id="btn2" class="mdui-btn mdui-ripple" onclick="setTimeout(function(){document.getElementById('btn2').scrollIntoView({ block: 'end', behavior: 'smooth' });},400)" mdui-panel-item-close>收起</button>
@@ -1606,6 +1609,15 @@ if (!isset($_SESSION['visited'])) {
 							</a>
 							<a href="//us.pro-ivan.com/imgbed/creep/creep146-2.jpg" target="_blank">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep146-2.jpg!w200" alt="creep" width="18%">
+							</a>
+							<a href="//us.pro-ivan.com/imgbed/creep/creep147.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep147.jpg!w200" alt="creep" width="18%">
+							</a>
+							<a href="//us.pro-ivan.com/imgbed/creep/creep148-1.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep148-1.jpg!w200" alt="creep" width="18%">
+							</a>
+							<a href="//us.pro-ivan.com/imgbed/creep/creep148-2.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep148-2.jpg!w200" alt="creep" width="18%">
 							</a>
 						</div>
 						<div id="btn3" class="mdui-panel-item-actions">

@@ -2,6 +2,7 @@
 <html lang="zh-cmn-Hans">
 	<head>
 		<meta charset="utf-8">
+		<meta http-equiv="refresh" content="0; url='../bilibili'">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
 		<meta name="renderer" content="webkit" />
 		<meta name="force-rendering" content="webkit" />

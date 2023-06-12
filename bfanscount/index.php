@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="stylesheet" href="/mdui/css/mdui.css" />
 		<link rel="stylesheet" href="/new-js/index.css">
-		<title>Pro-Ivan数字库-哔哩哔哩粉丝量监视</title>
+		<title>Pro-Ivan数字库-哔哩哔哩粉丝量观测</title>
 		<meta name="keywords" content="动漫图片 动漫资讯">
 		<meta name="description" content="技术宅社团，什么活都整！">
 		<script type="text/javascript">
@@ -83,7 +83,7 @@
 				</li>
 				<li class="mdui-list-item mdui-ripple" onclick="bfanscount()">
 					<i class="mdui-list-item-icon mdui-icon material-icons">people</i>
-					<div class="mdui-list-item-content">Bilibili粉丝量监视</div>
+					<div class="mdui-list-item-content">Bilibili粉丝量观测</div>
 				</li>
 				<li class="mdui-list-item mdui-ripple" onclick="api()">
 					<i class="mdui-list-item-icon mdui-icon material-icons">leak_add</i>

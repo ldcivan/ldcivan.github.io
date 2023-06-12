@@ -118,7 +118,7 @@ if (!isset($_SESSION['visited'])) {
 				</li>
 				<li class="mdui-list-item mdui-ripple" onclick="bfanscount()">
 					<i class="mdui-list-item-icon mdui-icon material-icons">people</i>
-					<div class="mdui-list-item-content">Bilibili粉丝量监视</div>
+					<div class="mdui-list-item-content">Bilibili粉丝量观测</div>
 				</li>
 				<li class="mdui-list-item mdui-ripple" onclick="api()">
 					<i class="mdui-list-item-icon mdui-icon material-icons">leak_add</i>
@@ -356,7 +356,7 @@ if (!isset($_SESSION['visited'])) {
 					<div class="mdui-panel-item-body">
 						<div id="child3" style="">
 							<center>
-								<font color="grey">如有条件请务必在<a href="https://afdian.net/@Creep1117" target="_blank" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">爱发电</a>支持苦怕佬！</font>
+								<font color="grey">如有条件请务必在<a href="https://afdian.net/@Creep1117" target="_blank" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">爱发电</a>支持苦怕佬！(那边有无码原图)</font>
 							</center>
 							<br>
 							<a href="//us.pro-ivan.com/imgbed/creep/creep1.jpg" target="_blank">
@@ -1634,7 +1634,7 @@ if (!isset($_SESSION['visited'])) {
 					<div class="mdui-panel-item-body">
 						<div id="child4" style="">
 							<center>
-								<font color="grey">如有条件请务必在<a href="https://binitles.fanbox.cc/" target="_blank" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">Fanbox</a>或<a href="https://www.patreon.com/BIInitels" target="_blank" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">Patreon</a>支持冰宫大大大！</font>
+								<font color="grey">如有条件请务必在<a href="https://binitles.fanbox.cc/" target="_blank" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">Fanbox</a>或<a href="https://www.patreon.com/BIInitels" target="_blank" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">Patreon</a>支持冰宫大大大！(那边有无码原图)</font>
 							</center>
 							<br>
 							<a href="//us.pro-ivan.com/imgbed/binggong/binggong1-1.jpg" target="_blank">
@@ -2006,6 +2006,16 @@ if (!isset($_SESSION['visited'])) {
 							<a href="//us.pro-ivan.com/imgbed/binggong/binggong27-3.jpg" target="_blank">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/binggong/binggong27-3.jpg!w200" alt="binggong" width="18%">
 							</a>
+							<br>
+							<a href="//us.pro-ivan.com/imgbed/binggong/binggong28-1.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/binggong/binggong28-1.jpg!w200" alt="binggong" width="18%">
+							</a>
+							<a href="//us.pro-ivan.com/imgbed/binggong/binggong28-2.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/binggong/binggong28-2.jpg!w200" alt="binggong" width="18%">
+							</a>
+							<a href="//us.pro-ivan.com/imgbed/binggong/binggong28-3.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/binggong/binggong28-3.jpg!w200" alt="binggong" width="18%">
+							</a>
 						</div>
 						<div id="btn4" class="mdui-panel-item-actions">
 							<button class="mdui-btn mdui-ripple" onclick="setTimeout(function(){document.getElementById('btn4').scrollIntoView({ block: 'end', behavior: 'smooth' });},400)" mdui-panel-item-close>收起</button>
@@ -2021,7 +2031,7 @@ if (!isset($_SESSION['visited'])) {
 					<div class="mdui-panel-item-body">
 						<div id="child5" style="">
 							<center>
-								<font color="grey">如有条件请务必在<a href="https://agm94786.fanbox.cc" target="_blank" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">Fanbox</a>支持阿戈魔老师！</font>
+								<font color="grey">如有条件请务必在<a href="https://agm94786.fanbox.cc" target="_blank" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">Fanbox</a>支持阿戈魔老师！(那边有无码原图)</font>
 							</center>
 							<br>
 							<a href="//us.pro-ivan.com/imgbed/agm/agm1-1.jpg" target="_blank">
@@ -2547,6 +2557,13 @@ if (!isset($_SESSION['visited'])) {
 							</a>
 							<a href="//us.pro-ivan.com/imgbed/agm/agm61.jpg" target="_blank">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm61.jpg!w200" alt="agm" width="18%">
+							</a>
+							<br>
+							<a href="//us.pro-ivan.com/imgbed/agm/agm62-1.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm62-1.jpg!w200" alt="agm" width="18%">
+							</a>
+							<a href="//us.pro-ivan.com/imgbed/agm/agm62-2.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm62-2.jpg!w200" alt="agm" width="18%">
 							</a>
 						</div>
 						<div id="btn5" class="mdui-panel-item-actions">

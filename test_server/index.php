@@ -1,3 +1,4 @@
+<head><title>ServerTest</title></head>
 <?php
     echo "PHP and Apache OK!<br><br>";
     include('test_mongodb.php');

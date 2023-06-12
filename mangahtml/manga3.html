@@ -62,14 +62,14 @@
 		action="null";
                 if (window.event.offsetX < width / 2 && index != 0) {
                     action = 'left'
-                    bigimg.style.cursor = 'url(/cur/left.cur),auto';//将鼠标指针更换成向左指向箭头
+                    bigimg.style.cursor = 'url(/mangahtml/cur/left.cur),auto';//将鼠标指针更换成向左指向箭头
                 } 
                 else if (window.event.offsetX >= width / 2 && index != 42){//数字！！！！！！
-                    bigimg.style.cursor = 'url(/cur/right.cur),auto';
+                    bigimg.style.cursor = 'url(/mangahtml/cur/right.cur),auto';
                     action = 'right';
                 }
 		else {
-		    bigimg.style.cursor = 'url(/cur/wrong.cur),auto';
+		    bigimg.style.cursor = 'url(/mangahtml/cur/wrong.cur),auto';
 		}
             }
             bigimg.onmouseup = function () {

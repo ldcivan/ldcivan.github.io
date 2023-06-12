@@ -103,7 +103,7 @@ if (!isset($_SESSION['visited'])) {
 				</li>
 				<li class="mdui-list-item mdui-ripple" onclick="bfanscount()">
 					<i class="mdui-list-item-icon mdui-icon material-icons">people</i>
-					<div class="mdui-list-item-content">Bilibili粉丝量监视</div>
+					<div class="mdui-list-item-content">Bilibili粉丝量观测</div>
 				</li>
 				<li class="mdui-list-item mdui-ripple" onclick="api()">
 					<i class="mdui-list-item-icon mdui-icon material-icons">leak_add</i>

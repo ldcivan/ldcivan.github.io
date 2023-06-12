@@ -5,7 +5,7 @@
     require 'ip2region/Ip2Region.php';
     
     
-    if(strpos($_POST["channel0Gain"], "密码") !== false) exit("管理密码为：yujionako<br>点击<a href=".$_SERVER["HTTP_REFERER"]."#留言板>此处</a>以返回");
+    if(strpos($_POST["comment"], "密码") !== false) exit("管理密码为：yujionako<br>点击<a href=".$_SERVER["HTTP_REFERER"]."#留言板>此处</a>以返回");
     
     // 设置 session 过期时间为5mins
     ini_set('session.gc_maxlifetime', 300);
@@ -51,8 +51,8 @@
     
     
     date_default_timezone_set("Asia/Shanghai");
-    $title = $_POST["channel0Title"]; //You have to get the form data
-    $gain = $_POST["channel0Gain"];
+    $title = $_POST["name"]; //You have to get the form data
+    $gain = $_POST["comment"];
     $contact = $_POST["contact"];
     $subtime=date("Y-m-d H:i:s");
     $fileName = './comment.txt'; //Open your .txt file
@@ -101,6 +101,31 @@
             $file = fopen($fileName, 'w');
             fwrite($file, $contents);
             fclose($file);
+            
+            // 连接数据库
+            $servername = "127.0.0.1";
+            $username = "root";
+            $password = "Ldc123456";
+            $dbname = "messages";
+            
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            
+            // 检查连接是否成功
+            if ($conn->connect_error) {
+                die("连接失败: " . $conn->connect_error);
+            }
+            
+            // 将评论插入到数据库中
+            $sql = "INSERT INTO comments (name, comment, location) VALUES ('$title', '$gain', '$location')";
+            
+            if ($conn->query($sql) === TRUE) {
+                echo "评论已提交到sql<br>";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+            
+            // 关闭数据库连接
+            $conn->close();
           
             function sendmailto($mailto, $mailsub, $mailbd)
             {

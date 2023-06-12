@@ -87,7 +87,7 @@
             $subtime=date("Y-m-d H:i:s");
             $mailto='2531667489@qq.com'; //收件人
             $subject="新增观测对象"; //邮件主题
-            $body="<b><font size=2.5>New_UID ". $new_uid ."</font></b>"; //邮件内容
+            $body="<b><font size=2.5>New_UID <a href='https://space.bilibili.com/" .$new_uid ."'>". $new_uid ."</a></font></b>"; //邮件内容
             sendmailto($mailto,$subject,$body);
             
             echo('<script>alert("验证成功，已经写入uid，将在下一次观测中使用");window.open("/bilibili", "_self");</script>');

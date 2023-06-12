@@ -9,7 +9,7 @@
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="stylesheet" href="/mdui/css/mdui.css" />
 		<link rel="stylesheet" href="/new-js/index.css">
-		<title>Pro-Ivan数字库-哔哩哔哩粉丝量监视</title>
+		<title>Pro-Ivan数字库-哔哩哔哩粉丝量观测</title>
 		<meta name="keywords" content="动漫图片,动漫资讯,动漫,二次元,漫画,动画,游戏,Cosplay,ACG,番剧,视频分享,壁纸,神曲,热门动漫,热门番剧">
 		<meta name="description" content="技术宅社团，什么活都整！">
 		<style>
@@ -97,7 +97,7 @@
 				</li>
 				<li class="mdui-list-item mdui-ripple" onclick="alert('you are here')">
 					<i class="mdui-list-item-icon mdui-icon material-icons">people</i>
-					<div class="mdui-list-item-content">Bilibili粉丝量监视</div>
+					<div class="mdui-list-item-content">Bilibili粉丝量观测</div>
 				</li>
 				<li class="mdui-list-item mdui-ripple" onclick="api()">
 					<i class="mdui-list-item-icon mdui-icon material-icons">leak_add</i>
@@ -146,7 +146,7 @@
 				<a href="javascript:;" mdui-drawer="{target: '#left-drawer'}" class="mdui-btn mdui-btn-icon" onclick="setTimeout(function() {if(typeof(myChart)!='undefined')myChart.resize();}, 301)">
 					<i class="mdui-icon material-icons">menu</i>
 				</a>
-				<a href="/new.html" class="mdui-typo-headline">Pro-Ivan数字库-哔哩哔哩粉丝量监视</a>
+				<a href="/new.html" class="mdui-typo-headline">Pro-Ivan数字库-哔哩哔哩粉丝量观测</a>
 				<div class="mdui-toolbar-spacer"></div>
 				<a href="javascript:;" class="mdui-btn mdui-btn-icon" onclick="AddFavorite('http://pro-ivan.cn','Pro-Ivan')">
 					<i class="mdui-icon material-icons" mdui-tooltip="{content: '收藏本页'}">star</i>
@@ -386,6 +386,7 @@
                 var sign = ((JSON.stringify(baseinfo.data.card.sign).replaceAll('\"','')).replaceAll(/\\r|\\n/ig,"<br>")).replaceAll(/`/g, '\\`');
                 document.getElementById('avatar').src = avatar+"@120w_120h_1c";
                 document.getElementById('name').innerHTML = name;
+                document.title = 'Pro-Ivan数字库-哔哩哔哩粉丝量观测-' + name;
                 document.getElementById('sign').innerHTML = sign;
                 document.getElementById('go_home').href = "https://space.bilibili.com/"+uid;
                 document.getElementById('chart_box').style = "width: 100%;height: 450px;margin: 0 auto;";

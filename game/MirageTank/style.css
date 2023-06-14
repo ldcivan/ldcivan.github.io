@@ -1,7 +1,10 @@
 body {
+  background: rgb(240,240,240);
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
 }
+
+ul{list-style: none;margin: 0;padding: 0}
 
 .content {
   margin: 20px auto;
@@ -25,9 +28,9 @@ body {
   background-color: #f2f2f2;
   padding: 10px;
   margin: 0px auto;
-  border-radius: 5px;
+  border-radius: 1vh;
   cursor: pointer;
-  font-size: 1.2em;
+  font-size: 1.5vw;
 }
 
 .file-upload p:last-of-type {
@@ -35,9 +38,9 @@ body {
   background-color: #d9d9d9;
   padding: 10px;
   margin: 20px auto;
-  border-radius: 5px;
+  border-radius: 1vh;
   cursor: pointer;
-  font-size: 1.2em;
+  font-size: 1.5vw;
 }
 
 .file-upload p:hover {
@@ -57,24 +60,39 @@ body {
 }
 
 .button li {
-  margin: 10px;
+  margin: 0.8vh 1vw;
+  display: block;
 }
 
-.button button {
-  padding: 10px;
+.square-button {
+  padding: 1.5vh;
   border: none;
-  border-radius: 5px;
+  border-radius: 1vh;
   background-color: #4CAF50;
   color: #fff;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 1.2em;
+  font-size: 1.5vw;
   font-weight:bold;
+  margin-right: 0.5vw;
+  float: left
 }
 
-.button button:hover {
+.square-button:hover {
   background-color: #3e8e41;
 }
+
+.delete{
+    background-color: #f00;
+}
+
+.delete:hover{
+    background-color: #d00;
+}
+
+.button{margin-top: 20px}
+
+.button li:first-child{margin-bottom: 10px}
 
 .result {
   margin-top: 50px;
@@ -84,7 +102,28 @@ body {
 .result img {
   margin: 10px;
   max-width: 45%;
+  max-height: 700px;
   height: auto;
+  position: relative;
+}
+
+.result img:hover::before {
+  content: "点击图片可下载";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 14px;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.result img:hover {
+  opacity: 0.8;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .show1 {
@@ -112,39 +151,64 @@ body {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	max-width: 80%;
+	width: 60vw;
 	background-color: #fff;
 	border: 2px solid #ccc;
-	padding: 20px;
+	padding: 2vh 2vw;
 	display: none;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    font-size: 1.5vw;
+    z-index: 1000;
+}
+
+#window-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: none;
+    z-index: 999;
 }
 
 #floating-window.show {
 	display: block;
 }
 
+#window-background.show {
+	display: block;
+}
+
 #circle-button{
-	width: 100px;
-	height: 200px;
+	width: 7vw;
+	height: 21vw;
     position: fixed;
-	bottom: 30px;
-	right: 40px;
+	bottom: 3vh;
+	right: 1.5vw;
+    z-index: 999;
 }
 
 .circle-button {
-    margin: 10px 10px;
-	width: 80px;
-	height: 80px;
+    margin: 0.7vw 0.7vw;
+	width: 5.6vw;
+	height: 5.6vw;
 	background-color: #007bff;
 	color: #fff;
 	border: none;
 	cursor: pointer;
 	border-radius: 50%;
-	font-size: 1.2em;
+	font-size: 1.35vw;
 	font-weight:bold;
     transition: all 0.3s ease;
 }
 .circle-button:hover {
     background-color: #006bdd;
+}
+
+#init-button {
+    background-color: #f00;
+}
+#init-button:hover {
+    background-color: #d00;
 }

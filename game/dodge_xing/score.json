@@ -36,10 +36,10 @@
     },
     {
         "name": "gxr",
-        "score": "0",
+        "score": "6.973",
         "density": 25,
-        "ifpc": false,
-        "token": "643a58509a5a1"
+        "ifpc": true,
+        "token": "64887d6c9f8be"
     },
     {
         "name": "1919810",
@@ -523,5 +523,12 @@
         "density": 25,
         "ifpc": true,
         "token": "64804fbba4c06"
+    },
+    {
+        "name": "\u7206\u70b8\u7684\u7334\u5b50",
+        "score": "6.258",
+        "density": 20,
+        "ifpc": true,
+        "token": "6486e9dc01255"
     }
 ]

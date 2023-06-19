@@ -30,3 +30,56 @@
 已完成任务：将 test--test 发送到 2531667489@qq.com
 已完成任务：将 test--test 发送到 2531667489@qq.com
 已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--出现错误：Traceback (most recent call last):
+  File "elec_monitor.py", line 67, in <module>
+    read_sql()
+  File "elec_monitor.py", line 49, in read_sql
+    cursor.execute(query)
+  File "/usr/local/python3/lib/python3.8/site-packages/mysql/connector/cursor.py", line 551, in execute
+    self._handle_result(self._connection.cmd_query(stmt))
+  File "/usr/local/python3/lib/python3.8/site-packages/mysql/connector/connection.py", line 490, in cmd_query
+    result = self._handle_result(self._send_cmd(ServerCmd.QUERY, query))
+  File "/usr/local/python3/lib/python3.8/site-packages/mysql/connector/connection.py", line 395, in _handle_result
+    raise errors.get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'mailto' in 'field list'
+ 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--出现错误：```Traceback (most recent call last):
+  File "elec_monitor.py", line 67, in <module>
+    read_sql()
+  File "elec_monitor.py", line 53, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = int(data["d"]["data"]["surplus"])
+ValueError: invalid literal for int() with base 10: '95.83'
+``` 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--您宿舍的电费仅剩12.3元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 anzexv@bupt.edu.cn
+已完成任务：将 电费监视系统异常--出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 70, in <module>
+    read_sql()
+  File "elec_monitor.py", line 56, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 30, in monitor
+    time.sleep(1.2)
+AttributeError: 'str' object has no attribute 'sleep'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 70, in <module>
+    read_sql()
+  File "elec_monitor.py", line 56, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 30, in monitor
+    time.sleep(1.2)
+AttributeError: 'str' object has no attribute 'sleep'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 70, in <module>
+    read_sql()
+  File "elec_monitor.py", line 56, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 28, in monitor
+    mail(mailto, surplus, surplus_time)
+  File "elec_monitor.py", line 17, in mail
+    print(mail_response.text)
+NameError: name 'mail_response' is not defined
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-06-19 03:01:39.0您宿舍的电费仅剩8.44元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 anzexv@bupt.edu.cn

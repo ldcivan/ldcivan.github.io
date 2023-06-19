@@ -530,5 +530,19 @@
         "density": 20,
         "ifpc": true,
         "token": "6486e9dc01255"
+    },
+    {
+        "name": "nbklhv",
+        "score": "9.580",
+        "density": 25,
+        "ifpc": true,
+        "token": "648c54ce419c9"
+    },
+    {
+        "name": "HF",
+        "score": "2.538",
+        "density": 25,
+        "ifpc": true,
+        "token": "648cad67085ee"
     }
 ]

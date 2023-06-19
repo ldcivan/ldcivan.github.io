@@ -2565,6 +2565,19 @@ if (!isset($_SESSION['visited'])) {
 							<a href="//us.pro-ivan.com/imgbed/agm/agm62-2.jpg" target="_blank">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm62-2.jpg!w200" alt="agm" width="18%">
 							</a>
+							<br>
+							<a href="//us.pro-ivan.com/imgbed/agm/agm63-1.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm63-1.jpg!w200" alt="agm" width="18%">
+							</a>
+							<a href="//us.pro-ivan.com/imgbed/agm/agm63-2.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm63-2.jpg!w200" alt="agm" width="18%">
+							</a>
+							<a href="//us.pro-ivan.com/imgbed/agm/agm63-3.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm63-3.jpg!w200" alt="agm" width="18%">
+							</a>
+							<a href="//us.pro-ivan.com/imgbed/agm/agm63-4.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm63-4.jpg!w200" alt="agm" width="18%">
+							</a>
 						</div>
 						<div id="btn5" class="mdui-panel-item-actions">
 							<button class="mdui-btn mdui-ripple" onclick="setTimeout(function(){document.getElementById('btn5').scrollIntoView({ block: 'end', behavior: 'smooth' });},400)" mdui-panel-item-close>收起</button>

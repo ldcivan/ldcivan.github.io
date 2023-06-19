@@ -8,7 +8,6 @@ var _hmt = _hmt || [];
 })();
 </script>
 
-<h1>维护中，停止使用</h1>
 这是电邮公共api，请以POST或者GET的方式将mailto（收件人），subject（主题），body（正文）传递到此处<br>
 <?php
 require 'email.class.php';
@@ -31,11 +30,11 @@ function sendmailto($mailto, $mailsub, $mailbd)
 {
   //require_once ('email.class.php');
   //##########################################
-  $smtpserver   = "ssl://mail.pro-ivan.com"; //SMTP服务器
+  $smtpserver   = "ssl://smtp.ym.163.com"; //SMTP服务器
   $smtpserverport = 465; //SMTP服务器端口
-  $smtpusermail  = "yujionako@pro-ivan.com"; //SMTP服务器的用户邮箱
+  $smtpusermail  = "ldcivan@pro-ivan.cn"; //SMTP服务器的用户邮箱
   $smtpemailto  = $mailto;
-  $smtpuser    = "yujionako@pro-ivan.com"; //SMTP服务器的用户帐号
+  $smtpuser    = "ldcivan@pro-ivan.cn"; //SMTP服务器的用户帐号
   $smtppass    = "Ldc123456"; //SMTP服务器的用户密码
   $mailsubject  = $mailsub; //邮件主题
   $mailsubject  = "=?UTF-8?B?" . base64_encode($mailsubject) . "?="; //防止乱码

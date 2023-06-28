@@ -276,7 +276,7 @@
 	
 		<script type="text/javascript">
 
-            <?php 
+            //php 
             //error_reporting(0);
             //$uid = basename($_GET["uid"]);
             //if($uid!="")
@@ -325,7 +325,7 @@
             //$json_string = preg_replace('/(?<!\\\\)\\\\(?!u)/', '\\\\\\\\', $json_string);
         
             //echo "var baseinfo_str = `".$json_string."`;";
-            ?>
+            //?>
             var uid = parseInt(new URLSearchParams(window.location.search).get('uid'));
             if (isNaN(uid)) {
               uid = -1;

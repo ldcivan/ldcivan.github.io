@@ -2006,6 +2006,9 @@ if (!isset($_SESSION['visited'])) {
 							<a href="//us.pro-ivan.com/imgbed/binggong/binggong27-3.jpg" target="_blank">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/binggong/binggong27-3.jpg!w200" alt="binggong" width="18%">
 							</a>
+							<a href="//us.pro-ivan.com/imgbed/binggong/binggong29.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/binggong/binggong29.jpg!w200" alt="binggong" width="18%">
+							</a>
 							<br>
 							<a href="//us.pro-ivan.com/imgbed/binggong/binggong28-1.jpg" target="_blank">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/binggong/binggong28-1.jpg!w200" alt="binggong" width="18%">
@@ -2564,6 +2567,15 @@ if (!isset($_SESSION['visited'])) {
 							</a>
 							<a href="//us.pro-ivan.com/imgbed/agm/agm62-2.jpg" target="_blank">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm62-2.jpg!w200" alt="agm" width="18%">
+							</a>
+							<a href="//us.pro-ivan.com/imgbed/agm/agm64-1.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm64-1.jpg!w200" alt="agm" width="18%">
+							</a>
+							<a href="//us.pro-ivan.com/imgbed/agm/agm64-2.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm64-2.jpg!w200" alt="agm" width="18%">
+							</a>
+							<a href="//us.pro-ivan.com/imgbed/agm/agm64-3.jpg" target="_blank">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm64-3.jpg!w200" alt="agm" width="18%">
 							</a>
 							<br>
 							<a href="//us.pro-ivan.com/imgbed/agm/agm63-1.jpg" target="_blank">

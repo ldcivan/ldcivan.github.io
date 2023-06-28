@@ -10,9 +10,9 @@ cookies = {'eai-sess': '80gp61j42746jk0cv9oulhrm04'}
 mail_url = "https://pro-ivan.com/api/e-mail/"
 
 
-def mail(mailto, surplus, surplus_time):
+def mail(mailto, drom_Number, surplus, surplus_time):
     mail_data = {'mailto': mailto, 'subject': 'BUPT电费低警告',
-                 'body': f'截至{surplus_time}您宿舍的电费仅剩{surplus}元，已小于15元。为了防止断电给您造成损失，请及时充值！'}
+                 'body': f'截至{surplus_time}您宿舍(编号: {drom_Number})的电费仅剩{surplus}元，已小于15元。为了防止断电给您造成损失，请及时充值！'}
     mail_response = requests.post(mail_url, data=mail_data)
     print(mail_response.text)
 
@@ -25,7 +25,7 @@ def monitor(drom_Number, mailto):
     surplus = float(data["d"]["data"]["surplus"])
     surplus_time = str(data["d"]["data"]["time"])
     if surplus <= 15:
-        mail(mailto, surplus, surplus_time)
+        mail(mailto, drom_Number, surplus, surplus_time)
     print(f"{drom_Number}: OK!")
     time.sleep(1.2)
 
@@ -64,7 +64,7 @@ while True:
     now = datetime.datetime.now()
     hour = now.hour
 
-    if hour == 9 or hour == 15 or hour == 21:
+    if hour == 15:
         # 开始一个新循环
         try:
             read_sql()
@@ -75,4 +75,4 @@ while True:
             print(err_response.text)
 
     # 暂停一段时间，避免过于频繁地检测时间
-    time.sleep(1900)
+    time.sleep(3599)

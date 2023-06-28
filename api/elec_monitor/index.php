@@ -51,9 +51,10 @@ mysqli_close($conn);
         <label for="dromNumber">宿舍编号：</label>
         <input type="text" name="dromNumber" id="dromNumber" oninput="value=value.replace(/[^\d]/g,'')" required><br><br>
         <label for="email">邮箱：</label>
-        <input type="email" name="email" id="email" required><br><br>
+        <input name="email" id="email"><br><br>
         <input id="submit" type="submit" value="提交" style="display:none">
         <button onclick="check(document.getElementById('email').value)" type="button">提交</button>
+        <button onclick="document.getElementById('email').value = '000@pro-ivan.cn';document.getElementById('submit').click()" type="button">清空宿舍对应的邮箱</button>
     </form>
     <script>
         function check(email){
@@ -68,6 +69,8 @@ mysqli_close($conn);
             alert('非法的邮箱');
         }
     </script>
+    <br>
+    <h3>重要更新：</h3>现已支持在线获取宿舍编号！请使用<a href="getID">本页面</a>！
     <br>
     <h3>注意：</h3>宿舍编号不是宿舍号。获取宿舍编号请使用<a href="https://raw.githubusercontent.com/ldcivan/bupt_electronic_monitor/main/elec_id_get.py" download="drom_num_get.py" target="_blank">本python程序</a>（需要填写登录https://app.bupt.edu.cn/后的cookie）。
     <br>

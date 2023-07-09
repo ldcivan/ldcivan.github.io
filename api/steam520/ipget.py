@@ -88,7 +88,7 @@ def get_best_ip(ip_list: list) -> str:
 
 @retry(tries=3)
 def get_json(session: Any) -> Optional[list]:
-    url = 'https://raw.helloSteam.com/hosts.json'
+    url = 'https://pro-ivan.com/api/steam520/hosts.json'
     try:
         rs = session.get(url)
         data = json.loads(rs.text)
@@ -100,14 +100,14 @@ def get_json(session: Any) -> Optional[list]:
 
 @retry(tries=3)
 def get_ip(session: Any, steam_url: str) -> Optional[str]:
-    url = f'https://www.ipaddress.com/site/{steam_url}'
+    url = f'https://sites.ipaddress.com/{steam_url}'
     headers = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'
                       ' AppleWebKit/537.36 (KHTML, like Gecko) Chrome/1'
                       '06.0.0.0 Safari/537.36'}
     try:
         rs = session.get(url, headers=headers, timeout=5)
-        table = rs.html.find('ul.separated2', first=True)
+        table = rs.html.find('#dns', first=True)
         pattern = r"\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b"
         ip_list = re.findall(pattern, table.text)
         best_ip = get_best_ip(ip_list)
@@ -125,9 +125,9 @@ def main(verbose=False) -> None:
         print('Start script.')
     session = HTMLSession()
     content = ""
-    # content_list = get_json(session)
-    # for item in content_list:
-    #     content += item[0].ljust(30) + item[1] + "\n"
+    content_list = get_json(session)
+    for item in content_list:
+        content += item[0].ljust(30) + item[1] + "\n"
     content_list = []
     for index, steam_url in enumerate(STEAM_URLS):
         try:

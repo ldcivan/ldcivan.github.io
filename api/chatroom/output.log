@@ -1,0 +1,255 @@
+INFO:root:2023-07-09 15:56:35 New connection from ('103.27.25.239', 45324), assigned client ID: 5535
+INFO:root:
+
+INFO:root:2023-07-09 15:56:46 Change name: 5535 -> yujionako
+INFO:root:
+
+INFO:root:2023-07-09 15:56:46 Name changed: yujionako
+INFO:root:
+
+INFO:root:User yujionako: hello! (2023-07-09 15:56:51)
+INFO:root:
+
+INFO:root:User yujionako: bye!! (2023-07-09 15:56:57)
+INFO:root:
+
+INFO:root:2023-07-09 15:58:23 New connection from ('103.27.25.239', 3167), assigned client ID: 7357
+INFO:root:
+
+INFO:root:2023-07-09 15:58:29 New connection from ('103.27.25.239', 2518), assigned client ID: 3879
+INFO:root:
+
+INFO:root:2023-07-09 16:05:41 Server started on 0.0.0.0:14514
+INFO:root:
+
+INFO:root:2023-07-09 16:06:12 New connection from ('103.27.25.239', 39656), assigned client ID: 4045
+INFO:root:
+
+INFO:root:User 4045: hello (2023-07-09 16:06:15)
+INFO:root:
+
+INFO:root:2023-07-09 16:06:28 New connection from ('103.27.25.239', 39128), assigned client ID: 9623
+INFO:root:
+
+INFO:root:User 9623: hello, any body here? (2023-07-09 16:06:47)
+INFO:root:
+
+INFO:root:2023-07-09 16:07:03 Change name: 4045 -> YujioNako
+INFO:root:
+
+INFO:root:2023-07-09 16:07:03 Name changed: YujioNako
+INFO:root:
+
+INFO:root:User YujioNako: Hi, Here!! (2023-07-09 16:07:17)
+INFO:root:
+
+INFO:root:User 9623: Wow, a man in flesh here! (2023-07-09 16:07:38)
+INFO:root:
+
+INFO:root:User 9623: nice to meet you! (2023-07-09 16:07:49)
+INFO:root:
+
+INFO:root:2023-07-09 16:29:22 New connection from ('103.27.25.239', 21421), assigned client ID: 8891
+INFO:root:
+
+INFO:root:User 8891: YujioNako (2023-07-09 16:29:26)
+INFO:root:
+
+INFO:root:2023-07-09 16:29:36 Change name: 8891 -> YujioNako
+INFO:root:
+
+INFO:root:2023-07-09 16:29:36 Name change failed: repeat name
+INFO:root:
+
+INFO:root:User 8891: danm! (2023-07-09 16:29:51)
+INFO:root:
+
+INFO:root:User 8891: 😀 (2023-07-09 16:29:58)
+INFO:root:
+
+INFO:root:2023-07-09 16:30:34 New connection from ('103.27.25.239', 36623), assigned client ID: 8606
+INFO:root:
+
+INFO:root:User 8606: Hi (2023-07-09 16:30:37)
+INFO:root:
+
+INFO:root:2023-07-09 16:30:48 Change name: 8606 -> YujioNako
+INFO:root:
+
+INFO:root:2023-07-09 16:30:48 Name change failed: repeat name
+INFO:root:
+
+INFO:root:2023-07-09 16:31:04 Change name: 8606 -> Yujio
+INFO:root:
+
+INFO:root:2023-07-09 16:31:04 Name changed: Yujio
+INFO:root:
+
+INFO:root:User Yujio: hi (2023-07-09 16:31:15)
+INFO:root:
+
+INFO:root:2023-07-09 16:31:41 New connection from ('103.27.25.239', 51089), assigned client ID: 2588
+INFO:root:
+
+INFO:root:2023-07-09 16:32:25 Change name: 8891 -> haha
+INFO:root:
+
+INFO:root:2023-07-09 16:32:25 Name changed: haha
+INFO:root:
+
+INFO:root:2023-07-09 16:32:35 Change name: 2588 -> Yujio
+INFO:root:
+
+INFO:root:2023-07-09 16:32:35 Name changed: Yujio
+INFO:root:
+
+INFO:root:2023-07-09 16:32:56 New connection from ('103.27.25.239', 65231), assigned client ID: 4565
+INFO:root:
+
+INFO:root:2023-07-09 16:33:04 Change name: 4565 -> Yujio
+INFO:root:
+
+INFO:root:2023-07-09 16:33:04 Name changed: Yujio
+INFO:root:
+
+INFO:root:2023-07-09 16:34:26 New connection from ('103.27.25.239', 21613), assigned client ID: 1686
+INFO:root:
+
+INFO:root:User haha: aaaa (2023-07-09 16:34:32)
+INFO:root:
+
+INFO:root:User haha: aaa  (2023-07-09 16:36:31)
+INFO:root:
+
+INFO:root:2023-07-09 16:36:37 New connection from ('103.27.25.239', 46762), assigned client ID: 8437
+INFO:root:
+
+INFO:root:2023-07-09 16:37:10 New connection from ('103.27.25.239', 54632), assigned client ID: 7183
+INFO:root:
+
+INFO:root:2023-07-09 16:37:23 Change name: 7183 -> 8437
+INFO:root:
+
+INFO:root:2023-07-09 16:37:23 Name changed: 8437
+INFO:root:
+
+INFO:root:User haha: Hi (2023-07-09 16:40:41)
+INFO:root:
+
+INFO:root:2023-07-09 16:47:00 Server started on 0.0.0.0:14514
+INFO:root:
+
+INFO:root:2023-07-09 16:47:28 ('103.27.25.239', 53544) is trying connect to server
+INFO:root:
+
+INFO:root:2023-07-09 16:47:30 ('103.27.25.239', 53911) is trying connect to server
+INFO:root:
+
+INFO:root:2023-07-09 16:47:35 New connection from ('103.27.25.239', 53911), assigned client ID: 6033
+INFO:root:
+
+INFO:root:2023-07-09 16:48:03 ('103.27.25.239', 61110) is trying connect to server
+INFO:root:
+
+INFO:root:2023-07-09 16:48:08 New connection from ('103.27.25.239', 61110), assigned client ID: 3925
+INFO:root:
+
+INFO:root:User 3925: Hi (2023-07-09 16:48:12)
+INFO:root:
+
+INFO:root:User 6033: ??? (2023-07-09 16:48:17)
+INFO:root:
+
+INFO:root:2023-07-09 16:48:27 Change name: 6033 -> Yujio
+INFO:root:
+
+INFO:root:2023-07-09 16:48:27 Name changed: Yujio
+INFO:root:
+
+INFO:root:User Yujio: hi (2023-07-09 16:48:30)
+INFO:root:
+
+INFO:root:User Yujio: bye (2023-07-09 16:48:45)
+INFO:root:
+
+INFO:root:2023-07-09 17:14:28 Server started on 0.0.0.0:14514
+INFO:root:
+
+INFO:root:2023-07-09 17:14:42 ('103.27.25.239', 7743) is trying connect to server
+INFO:root:
+
+INFO:root:2023-07-09 17:14:49 New connection from ('103.27.25.239', 7743), assigned client ID: 3495
+INFO:root:
+
+INFO:root:2023-07-09 17:14:54 ('103.27.25.239', 10184) is trying connect to server
+INFO:root:
+
+INFO:root:2023-07-09 17:15:07 New connection from ('103.27.25.239', 10184), assigned client ID: 8169
+INFO:root:
+
+INFO:root:2023-07-09 17:15:26 Change name: 8169 -> Yujio
+INFO:root:
+
+INFO:root:2023-07-09 17:15:26 Name changed: Yujio
+INFO:root:
+
+INFO:root:2023-07-09 17:15:35 Change name: 3495 -> Yujio
+INFO:root:
+
+INFO:root:2023-07-09 17:15:35 Name change failed: repeat name
+INFO:root:
+
+INFO:root:2023-07-09 17:15:52 ('103.27.25.239', 21659) is trying connect to server
+INFO:root:
+
+INFO:root:2023-07-09 17:15:56 New connection from ('103.27.25.239', 21659), assigned client ID: 4768
+INFO:root:
+
+INFO:root:2023-07-09 17:18:42 Server started on 0.0.0.0:14514
+INFO:root:
+
+INFO:root:2023-07-09 17:18:58 ('103.27.25.239', 59686) is trying connect to server
+INFO:root:
+
+INFO:root:2023-07-09 17:19:00 ('103.27.25.239', 60197) is trying connect to server
+INFO:root:
+
+INFO:root:2023-07-09 17:19:05 New connection from ('103.27.25.239', 59686), assigned client ID: 4227
+INFO:root:
+
+INFO:root:2023-07-09 17:19:10 New connection from ('103.27.25.239', 60197), assigned client ID: 7229
+INFO:root:
+
+INFO:root:2023-07-09 17:19:19 Change name: 4227 -> Yujionako
+INFO:root:
+
+INFO:root:2023-07-09 17:19:19 Name changed: Yujionako
+INFO:root:
+
+INFO:root:2023-07-09 17:19:23 Change name: 7229 -> Yujionako
+INFO:root:
+
+INFO:root:2023-07-09 17:19:23 Name change failed: repeat name
+INFO:root:
+
+INFO:root:2023-07-09 17:19:28 Change name: 7229 -> Yujio
+INFO:root:
+
+INFO:root:2023-07-09 17:19:28 Name changed: Yujio
+INFO:root:
+
+INFO:root:User Yujionako: hi (2023-07-09 17:19:30)
+INFO:root:
+
+INFO:root:User Yujio: ji (2023-07-09 17:19:33)
+INFO:root:
+
+INFO:root:User Yujionako: hihihi (2023-07-09 17:19:52)
+INFO:root:
+
+INFO:root:User Yujio: fuck you bitch (2023-07-09 17:19:59)
+INFO:root:
+
+INFO:root:User Yujio: hihi (2023-07-09 17:20:45)
+INFO:root:
+

@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            @keyframes myAnimation {
+              0% {
+                transform: scale(1);
+              }
+              50% {
+                transform: scale(0.9);
+              }
+              100% {
+                transform: scale(1);
+              }
+            }
+            
+            .button-animation {
+              animation: myAnimation 0.5s;
+            }
+        </style>
+        <style>
+            .center-container {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+            }
+            
+            button {
+              padding: 10px 20px;
+              font-size: 16px;
+              border-radius: 5px;
+              background-color: #4CAF50;
+              color: #ffffff;
+              border: none;
+              cursor: pointer;
+              box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+              transition: background-color 0.3s;
+            }
+            
+            button:hover {
+              background-color: #3e8e41;
+            }
+        </style>
+        <style>
+            .click-animation {
+              position: absolute;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              background-color: #dd0000;
+              pointer-events: none; /* 防止点击效果影响其他元素的交互 */
+              animation: clickAnimation 0.5s;
+            }
+            
+            @keyframes clickAnimation {
+              0% {
+                transform: scale(0);
+                opacity: 0.6;
+              }
+              100% {
+                transform: scale(3);
+                opacity: 0;
+              }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="center-container">
+            <button id="myButton">点击我</button>
+        </div>
+        <div id="clickEffect"></div>
+        <script>
+            var button = document.getElementById("myButton");
+
+            button.addEventListener("click", function() {
+              button.classList.add("button-animation");
+            
+              // 移除动画类名以便下次再次添加动画
+              setTimeout(function() {
+                button.classList.remove("button-animation");
+              }, 490);
+            });
+        </script>
+        <script>
+            document.addEventListener("click", function(event) {
+              var clickEffect = document.createElement("div");
+              clickEffect.classList.add("click-animation");
+              var X = event.clientX - 10;
+              var Y = event.clientY - 10;
+              clickEffect.style.left = X + "px";
+              clickEffect.style.top = Y + "px";
+              document.body.appendChild(clickEffect);
+            
+              setTimeout(function() {
+                clickEffect.remove();
+              }, 490);
+            });
+        </script>
+    </body>
+</html>

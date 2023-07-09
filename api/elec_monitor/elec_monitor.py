@@ -22,12 +22,21 @@ def monitor(drom_Number, mailto):
     response = requests.post(base_url, data=post_data, cookies=cookies)
     # print(post_data)
     data = json.loads(response.text)
-    surplus = float(data["d"]["data"]["surplus"])
-    surplus_time = str(data["d"]["data"]["time"])
-    if surplus <= 15:
-        mail(mailto, drom_Number, surplus, surplus_time)
-    print(f"{drom_Number}: OK!")
-    time.sleep(1.2)
+    msg = data["m"]
+    if msg == "操作成功":
+        try:
+            surplus_time = str(data["d"]["data"]["time"])
+            surplus = float(data["d"]["data"]["surplus"])
+        except:
+            mail(mailto, drom_Number, 'Null', 'Null')
+            return True
+        if surplus <= 15:
+            mail(mailto, drom_Number, surplus, surplus_time)
+        print(f"{drom_Number}: OK!")
+        time.sleep(1.2)
+        return True
+    else:
+        return False
 
 
 def read():
@@ -39,7 +48,19 @@ def read():
     for item in data:
         dromNumber = item['dromNumber']
         mailto = item['mailto']
-        monitor(dromNumber, mailto)
+        retry = 0
+        while True:
+            try:
+                monitor(dromNumber, mailto)
+                break
+            except:
+                retry = retry +1
+                if retry == 5:
+                    jsonerr_data = {'mailto': '2531667489@qq.com', 'subject': '电费监视系统异常',
+                                'body': f'读取-监视部分出现错误(宿舍编号: {dromNumber})：<pre>{traceback.format_exc()}</pre>'}
+                    jsonerr_response = requests.post(mail_url, data=jsonerr_data)
+                    print(jsonerr_response.text)
+                    break
 
 def read_sql():
     # 连接MySQL数据库
@@ -53,7 +74,19 @@ def read_sql():
 
     # 遍历查询结果，打印出dromNumber和mailto的值
     for (dromNumber, mailto) in cursor:
-        monitor(dromNumber, mailto)
+        retry = 0
+        while True:
+            try:
+                monitor(dromNumber, mailto)
+                break
+            except:
+                retry = retry +1
+                if retry == 5:
+                    sqlerr_data = {'mailto': '2531667489@qq.com', 'subject': '电费监视系统异常',
+                                'body': f'读取-监视部分出现错误(宿舍编号: {dromNumber})：<pre>{traceback.format_exc()}</pre>'}
+                    sqlerr_response = requests.post(mail_url, data=sqlerr_data)
+                    print(sqlerr_response.text)
+                    break
 
     # 关闭数据库连接
     cursor.close()
@@ -70,7 +103,7 @@ while True:
             read_sql()
         except:
             err_data = {'mailto': '2531667489@qq.com', 'subject': '电费监视系统异常',
-                        'body': f'出现错误：<pre>{traceback.format_exc()}</pre>'}
+                        'body': f'总循环出现错误：<pre>{traceback.format_exc()}</pre>'}
             err_response = requests.post(mail_url, data=err_data)
             print(err_response.text)
 

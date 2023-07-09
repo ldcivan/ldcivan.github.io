@@ -176,10 +176,10 @@
     },
     {
         "name": "S",
-        "score": "3.567",
+        "score": "3.949",
         "density": 25,
-        "ifpc": false,
-        "token": "6444117c83216"
+        "ifpc": true,
+        "token": "64a8c21bd1c5c"
     },
     {
         "name": "\u5b87\u5b99\u8d85\u7ea7\u65e0\u654c\u673a\u9738\u5df4",
@@ -621,5 +621,89 @@
         "density": 25,
         "ifpc": false,
         "token": "649a7c08c9bca"
+    },
+    {
+        "name": "gfc",
+        "score": "1.681",
+        "density": 25,
+        "ifpc": false,
+        "token": "649d8df1f191e"
+    },
+    {
+        "name": "3",
+        "score": "4.750",
+        "density": 100,
+        "ifpc": true,
+        "token": "649e6525d5049"
+    },
+    {
+        "name": "\u53bb",
+        "score": "2.550",
+        "density": 25,
+        "ifpc": true,
+        "token": "649fd515cf7ba"
+    },
+    {
+        "name": "\u7a7a",
+        "score": "4.846",
+        "density": 100,
+        "ifpc": false,
+        "token": "64a04feed0347"
+    },
+    {
+        "name": "\u9ad8\u8e87\u8fdc\u671b",
+        "score": "3.098",
+        "density": 25,
+        "ifpc": true,
+        "token": "64a17f7daaf64"
+    },
+    {
+        "name": "\u89c2\u70b9",
+        "score": "4.334",
+        "density": 25,
+        "ifpc": true,
+        "token": "64a18c56c85a3"
+    },
+    {
+        "name": "uos131",
+        "score": "4.935",
+        "density": 32,
+        "ifpc": true,
+        "token": "64a2d4a327bde"
+    },
+    {
+        "name": "mana",
+        "score": "1.217",
+        "density": 25,
+        "ifpc": true,
+        "token": "64a3c67638060"
+    },
+    {
+        "name": "\u5728\u5bb6\u5e72\u5417",
+        "score": "6.785",
+        "density": 25,
+        "ifpc": false,
+        "token": "64a6373c28068"
+    },
+    {
+        "name": "\u4f60\u5e08\u5c0a",
+        "score": "7.031",
+        "density": 5,
+        "ifpc": true,
+        "token": "64a66e9951a16"
+    },
+    {
+        "name": "\u5f17\u5170\u529b",
+        "score": "4.790",
+        "density": 25,
+        "ifpc": true,
+        "token": "64a7af7532d14"
+    },
+    {
+        "name": "he",
+        "score": "4.518",
+        "density": 29,
+        "ifpc": true,
+        "token": "64aa663e06b1f"
     }
 ]

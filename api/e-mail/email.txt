@@ -104,3 +104,392 @@ NameError: name 'mail_response' is not defined
 已完成任务：将 BUPT电费低警告--截至2023-06-26 03:02:30.0您宿舍(编号: 190815001330)的电费仅剩5.43元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
 已完成任务：将 BUPT电费低警告--截至2023-06-27 10:29:47.0您宿舍(编号: 190815001330)的电费仅剩12.0元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
 已完成任务：将 BUPT电费低警告--截至2023-06-28 03:02:01.0您宿舍(编号: 190815001330)的电费仅剩9.58元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-29 03:02:39.0您宿舍(编号: 190815001330)的电费仅剩6.58元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-30 03:02:39.0您宿舍(编号: 190815001330)的电费仅剩3.24元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 电费监视系统异常--出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 70, in <module>
+    read_sql()
+  File "elec_monitor.py", line 56, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-06-30 18:24:59.0您宿舍(编号: 190815001330)的电费仅剩12.0元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-06-30 18:24:59.0您宿舍(编号: 190815001330)的电费仅剩12.0元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 电费监视系统异常--总循环出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 60, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "elec_monitor.py", line 82, in <module>
+    read_sql()
+  File "elec_monitor.py", line 66, in read_sql
+    'body': f'读取-监视部分出现错误：<pre>{traceback.format_exc()}{monitor(dromNumber, mailto)}</pre>'}
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-06-30 18:24:59.0您宿舍(编号: 190815001330)的电费仅剩12.0元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-06-30 18:24:59.0您宿舍(编号: 190815001330)的电费仅剩12.0元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 204)：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 60, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-06-30 18:24:59.0您宿舍(编号: 190815001330)的电费仅剩12.0元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 电费监视系统异常--总循环出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 60, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "elec_monitor.py", line 83, in <module>
+    read_sql()
+  File "elec_monitor.py", line 64, in read_sql
+    if retry == 5 or monitor(dromNumber, mailto) is None:
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-06-30 18:24:59.0您宿舍(编号: 190815001330)的电费仅剩12.0元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至Null您宿舍(编号: 204)的电费仅剩Null元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至Null您宿舍(编号: 302)的电费仅剩Null元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-07-01 03:06:00.0您宿舍(编号: 190815001330)的电费仅剩9.21元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-07-02 03:01:42.0您宿舍(编号: 190815001330)的电费仅剩5.22元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-07-06 03:02:50.0您宿舍(编号: 190815001330)的电费仅剩14.12元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-07-09 03:07:51.0您宿舍(编号: 190815001319)的电费仅剩6.61元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-07-09 03:03:06.0您宿舍(编号: 190815001330)的电费仅剩9.8元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn

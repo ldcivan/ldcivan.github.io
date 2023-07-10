@@ -7,19 +7,21 @@
           border-collapse: collapse;
           border-spacing: 0;
           text-align: center;
+          font-size: 1.5vw;
+          max-width: 1200px;
         }
         
         /* 设置表头样式 */
         th {
           font-weight: bold;
-          background-color: #eee;
-          padding: 0.5em;
+          background-color: #ccc;
+          padding: 0.5vw;
         }
         
         /* 设置表格单元格样式 */
         td {
           border: 1px solid #ccc;
-          padding: 0.5em;
+          padding: 0.5vw;
           word-wrap: break-word;
           white-space: pre-wrap;
         }
@@ -34,6 +36,55 @@
         
         tr:hover {
           background-color: #ccc;
+        }
+        
+        #id {
+            width: 4vw;
+        }
+        
+        #name {
+            width: 15vw;
+        }
+        
+        #reply {
+            width: 53vw;
+        }
+        
+        #time {
+            width: 20vw;
+        }
+        
+        #ip {
+            width: 8vw;
+        }
+        @media (orientation: portrait){
+            table {
+                font-size: 1.5vh;
+            }
+            th {
+                padding: 0.5vh;
+            }
+            td {
+                padding: 0.5vh;
+            }
+            td:nth-child(5),
+            th:nth-child(5) {
+              display: none;
+            }
+        
+            #name {
+                width: 19vw;
+            }
+            
+            #reply {
+                width: 57vw;
+            }
+        }
+        
+        @media (min-width: 801px) {
+            table {
+                font-size: 1.5vh;
+            }
         }
 
     </style>
@@ -61,7 +112,7 @@ $result = mysqli_query($conn, $sql);
 // 在表格中显示评论数据
 if (mysqli_num_rows($result) > 0) {
     echo "<table><tbody width=95%>";
-    echo "<tr><th width=30px>ID</th><th width=15%>昵称</th><th width=50%>评论</th><th width=180px>时间</th><th width=100px>IP属地</th></tr>";
+    echo "<tr><th id='id'>ID</th><th id='name'>昵称</th><th id='reply'>评论</th><th id='time'>时间</th><th id='ip'>IP属地</th></tr>";
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr class='comment'>";
         echo "<td>" . $row["id"] . "</td>";

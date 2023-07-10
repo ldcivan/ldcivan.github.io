@@ -1,4 +1,22 @@
 <?php
+    session_start();  // 启动会话
+
+    $limit = 60;  // 间隔阈值
+    $currentTime = time();  // 当前时间戳
+    
+    if (isset($_SESSION['lastAccessTime'])) {
+        $lastAccessTime = $_SESSION['lastAccessTime'];
+    
+        if ($currentTime - $lastAccessTime < $limit) {
+            // 访问频率超过限制，执行相应的操作，比如拒绝访问或提示用户稍后再试
+            exit('<script>alert("访问频率过高，请等待2分钟后再试！");window.open("'.$_SERVER['HTTP_REFERER'].'", "_self");</script>');
+        }
+    }
+    
+    // 更新最后访问时间
+    $_SESSION['lastAccessTime'] = $currentTime;
+    
+
 	header('Content-Type:text/html;charset=utf-8');
 	require "imageZip.php";
 	require_once './php-sdk/vendor/autoload.php';

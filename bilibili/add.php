@@ -13,6 +13,24 @@
 <button class="mdui-btn mdui-color-theme mdui-text-color-white-text" onclick="document.getElementById('add').click()" style="margin-right:24px;float:right;"> 添 加 </button><br>
 -->
 <?php
+    session_start();  // 启动会话
+
+    $limit = 60;  // 间隔阈值
+    $currentTime = time();  // 当前时间戳
+    
+    if (isset($_SESSION['lastAccessTime'])) {
+        $lastAccessTime = $_SESSION['lastAccessTime'];
+    
+        if ($currentTime - $lastAccessTime < $limit) {
+            // 访问频率超过限制，执行相应的操作，比如拒绝访问或提示用户稍后再试
+            exit('<script>alert("访问频率过高，请等待2分钟后再试！");window.open("'.$_SERVER['HTTP_REFERER'].'", "_self");</script>');
+        }
+    }
+    
+    // 更新最后访问时间
+    $_SESSION['lastAccessTime'] = $currentTime;
+    
+    
     require '/www/wwwroot/pro-ivan.cn/comment/email.class.php';
     if(empty($_POST['new_uid'])) exit('<script>alert("空值，请输入合法uid");window.open("/bilibili", "_self");</script>');
     if(!empty($_POST['new_uid'])){

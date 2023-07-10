@@ -253,3 +253,45 @@ INFO:root:
 INFO:root:User Yujio: hihi (2023-07-09 17:20:45)
 INFO:root:
 
+INFO:root:2023-07-09 17:39:19 Server started on 0.0.0.0:14514
+INFO:root:
+
+INFO:root:2023-07-10 09:05:11 ('117.173.39.230', 2732) is trying connect to server
+INFO:root:
+
+INFO:root:2023-07-10 09:05:31 New connection from ('117.173.39.230', 2732), assigned client ID: 6787
+INFO:root:
+
+INFO:root:2023-07-10 11:11:39 ('117.173.39.230', 4663) is trying connect to server
+INFO:root:
+
+INFO:root:2023-07-10 11:12:09 New connection from ('117.173.39.230', 4663), assigned client ID: 6250
+INFO:root:
+
+INFO:root:2023-07-10 14:25:13 ('222.214.201.128', 7423) is trying connect to server
+INFO:root:
+
+INFO:root:2023-07-10 14:25:35 New connection from ('222.214.201.128', 7423), assigned client ID: 9080
+INFO:root:
+
+INFO:root:2023-07-10 14:26:40 Change name: 9080 -> komin
+INFO:root:
+
+INFO:root:2023-07-10 14:26:40 Name changed: komin
+INFO:root:
+
+INFO:root:User komin: 这个程序要是能做成P2P的就更好了   都不需要服务端了 (2023-07-10 14:30:08)
+INFO:root:
+
+INFO:root:User komin: 把协议开放，懂编码的自己可以开发对应的客户端加入聊天网络 (2023-07-10 14:31:03)
+INFO:root:
+
+INFO:root:User komin: 功能可以更完善点，改为中文界面 (2023-07-10 14:32:13)
+INFO:root:
+
+INFO:root:2023-07-10 16:50:55 ('222.214.201.128', 12160) is trying connect to server
+INFO:root:
+
+INFO:root:2023-07-10 16:51:13 New connection from ('222.214.201.128', 12160), assigned client ID: 8280
+INFO:root:
+

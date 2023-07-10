@@ -5,23 +5,24 @@
     require '../../comment/ip2region/Ip2Region.php';
     
     if(strpos($_POST["channel0Gain"], "密码") !== false) exit("管理密码为：yujionako<br>点击<a href=".$_SERVER["HTTP_REFERER"]."#留言板>此处</a>以返回");
+
+
+    $limit = 60;  // 间隔阈值
+    $currentTime = time();  // 当前时间戳
     
-    // 设置 session 过期时间为5mins
-    ini_set('session.gc_maxlifetime', 300);
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      // 生成唯一令牌
-      $token = md5(uniqid(mt_rand(), true));
-      // 检查 session 中是否存在令牌
-      if (isset($_SESSION['comment_token'])) {
-        // 保存令牌到 session
-        exit("在短时间内重复提交了评论，请勿重复提交评论！<br>点击<a href=".$_SERVER["HTTP_REFERER"]."#留言板>此处</a>以返回");
-        // 处理表单提交
-        // ...
-      }
-      else{
-        $_SESSION['comment_token'] = $token;
-      }
+    if (isset($_SESSION['lastAccessTime'])) {
+        $lastAccessTime = $_SESSION['lastAccessTime'];
+    
+        if ($currentTime - $lastAccessTime < $limit) {
+            // 访问频率超过限制，执行相应的操作，比如拒绝访问或提示用户稍后再试
+            exit('<script>alert("访问频率过高，请等待2分钟后再试！");window.open("'.$_SERVER['HTTP_REFERER'].'#留言板", "_self");</script>');
+        }
     }
+    
+    // 更新最后访问时间
+    $_SESSION['lastAccessTime'] = $currentTime;
+    
+
     
     function getIp()
      {

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compable" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1 shrink-to-fit=no"
+    />
+    <title>图书管理系统</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="q1-username.css" />
+    <link rel="stylesheet" href="q2-password.css" />
+    <link rel="stylesheet" href="q4-age.css" />
+    <link rel="stylesheet" href="q5-earth.css" />
+    <link rel="stylesheet" href="q6-email.css" />
+    <link rel="stylesheet" href="q7-choice.css" />
+  </head>
+  <body>
+    <span id="announce"></span>
+    <div class="main">
+      <h1 id="big-title">新用户注册</h1>
+      <p id="error-message" style="color: red"></p>
+      <div class="new-main"></div>
+      <!--分页容器-->
+      <div id="choose-container" class="no-show">
+        <label id="final-username-label"><b>用户名</b></label>
+        <label id="final-username-result"></label>
+        <label id="final-password-label"><b>密码</b></label>
+        <label id="final-password-result"></label>
+        <label id="final-age-label"><b>年龄</b></label>
+        <label id="final-age-result"></label>
+        <label id="final-birthday-label"><b>生日</b></label>
+        <label id="final-birthday-result"></label>
+        <label id="final-email-label"><b>邮箱</b></label>
+        <label id="final-email-result"></label>
+        <h2>请确认是否清空之前填写的内容，并返回第一页？</h2>
+        <h1 id="question"></h1>
+        <div id="checks">
+          <div>
+            <div id="renderer"></div>
+            <svg width="500" height="96" id="buttons">
+              <a class="option" href="index.html#" onclick="choose(100)">
+                <rect
+                  x="100"
+                  y="0"
+                  width="100"
+                  height="96"
+                  fill="transparent"
+                ></rect>
+              </a>
+              <a class="option" href="index.html#" onclick="choose(300)">
+                <rect
+                  x="300"
+                  y="0"
+                  width="100"
+                  height="96"
+                  fill="transparent"
+                ></rect>
+              </a>
+            </svg>
+            <div id="option-titles"><span>是</span><span>否</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="pagination-container">
+        <!-- <span class="page-change prev">上一页</span> -->
+        <!-- <div class="pagination"></div> -->
+        <span
+          >请<u>点击</u><span class="page-change next">此处</span
+          ><strong>进入</strong><span style="color: #0000ff">下一页</span></span
+        >
+      </div>
+    </div>
+    <script>
+      let username = "";
+      let password = "";
+      let age = 50;
+      let birthday = null;
+      let email = "";
+      let confirm = null;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="q1-username.js"></script>
+    <script src="q2-password.js"></script>
+    <script src="q4-age.js"></script>
+    <script src="q5-earth.js"></script>
+    <script src="q6-email.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/poly-decomp@0.2.1/build/decomp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/matter-js@0.18.0/build/matter.min.js"></script>
+    <script src="q7-choice.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

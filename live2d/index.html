@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <title>live2d</title>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+        <script src="pixi/pixi.min.js"></script>
+        <script src="core/live2dcubismcore.min.js"></script>
+        <script src="framework/live2dcubismframework.js"></script>
+        <script src="framework/live2dcubismpixi.js"></script>
+        <script src="loadModel.js"></script>      
+    <style>
+        .bottom { position: fixed; bottom: -750px; left: -800px; align:center;}
+    </style>
+    </head>
+	<body onload="">
+		<div id="live2d" class="bottom">
+            <canvas></canvas>
+        </div>
+        <script>
+            loadModel();
+        </script>
+    </body>
+</html>

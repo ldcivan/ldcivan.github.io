@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>开摆！</title>
+    <style media="screen">
+      body{
+        margin:0;
+        overflow:hidden;
+        background-color: black;
+        
+      }
+      button {
+           font-size: 0.7rem;
+      }
+      #alpha {
+        max-width: 300px;
+        opacity: 0.4;
+        transition: opacity 0.3s ease; /* 过渡动画效果，可根据需要调整过渡时间和缓动函数 */
+      }
+    
+      #alpha:hover {
+        opacity: 1;
+      }
+    </style>
+  </head>
+<html lang="en" dir="ltr">
+  <body>
+    <canvas id="canvas" width="1200" height="800" style="position: relative;"></canvas>
+    <div id="panel" style="z-index: 1000; position: absolute; top: 10px; transition: top 0.3s ease; font-size: 0.7rem; width:100%;"><center>
+        <div id="alpha">
+        <textarea type="text" id="setting" placeholder="输入JSON数据" style="width:300px;height:175px;resize:none;box-sizing:border-box;">{"g": 9.8, "unit_step": 500, "count": 3, "max_orbit_len": 500, "show_orbit": true, "orbit_width":2, "rob_width": 2, "mass": [1, 1, 1], "length": [0.7, 0.9, 1.2], "theta": [0, 0.5, 1], "v": [2, 4, -2], "ball_color": ["255,0,0", "0,255,0", "0,0,255"], "rod_color": ["255,255,255","255,255,255","255,255,255"]}</textarea>
+        <div id="notice" style="width:300px;background-color:white;color:red;padding:4px 4px 0px 4px;box-sizing:border-box;"></div><div style="width:300px;background-color:white;color:black;padding:0px 4px 4px 4px;box-sizing:border-box;">count为节点数，mass为各节点质量，length为各节点上方的杆的长度，theta及v
+        为各节点的初始角度及初速度，orbit为轨迹相关参数，unit_step设置计算精度</div>
+        <div id="energy" style="color: white; max-width: 300px; margin-top: 24px;"></div>
+        <button onclick="document.getElementById('notice').innerHTML = '';start();">载入自定义数据</button><button id="switch" onclick="switchAnimate()">开始动画</button><button id="panel_switch" onclick="openClose()">隐藏设置面板</button>
+        </div>
+    </center></div>
+    
+    <!-- <script src="math.js"></script> -->
+    <script src="debugout.js" charset="utf-8"></script>
+    <script src="matrix.js" charset="utf-8"></script>
+    <script src="queue.js" charset="utf-8"></script>
+    <script src="pendulum.js" charset="utf-8"></script>
+    <script src="listener.js" charset="utf-8"></script>
+    <script>
+    function openClose() {
+        const panel = document.getElementById('panel');
+        const panel_switch = document.getElementById('panel_switch')
+        if(panel.style.top=='10px') {panel.style.top='-250px'; panel_switch.innerHTML='打开设置面板';}
+        else {panel.style.top='10px';  panel_switch.innerHTML='隐藏设置面板';}
+    }
+    document.getElementById('setting').addEventListener('input', function() {
+      if(document.getElementById('setting').value.replaceAll(' ','')!=JSON.stringify(json)) {
+          document.getElementById('notice').innerHTML = "自定义json尚未载入";
+          document.getElementById('setting').style.height = "160px";
+      }
+      else {
+          document.getElementById('notice').innerHTML = "";
+          document.getElementById('setting').style.height = "175px";
+      }
+    });
+    // 捕获全局错误
+    window.onerror = function(message, url, line, column, error) {
+      alert("出现错误：" + message + " 在" + line + "行 " + column + "列");
+    };
+    </script>
+    
+  </body>
+</html>

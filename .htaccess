@@ -1,0 +1,11 @@
+<IfModule mod_ratelimit.c>
+<Location />
+SetOutputFilter RATE_LIMIT
+SetEnv rate-limit 1
+SetEnv rate-initial-burst 10
+</Location>
+</IfModule>
+
+ErrorDocument 404 /404.html
+ErrorDocument 403 /403.html
+ErrorDocument 502 /502.html

@@ -1,0 +1,92 @@
+.earth-container {
+  display: flex;
+  justify-content: center;
+}
+
+.earth-input {
+  outline: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  opacity: 1;
+  height: 200px;
+  margin: auto;
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+
+#signupArea {
+  display: flex;
+  flex-direction: column;
+}
+
+#signupArea > *{
+  margin-top: 15px;
+}
+
+#signupArea > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+#datePicker {
+  display: flex;
+  gap: 1rem;
+  width: 75vw;
+  max-width: 400px;
+  position: absolute;
+  z-index: 99;
+  border-radius: 60px 0px 60px 60px;
+  background-color: black;
+  clip-path: circle(0% at 100% 0%);
+  transition: clip-path 0.7s;
+  cursor: grab;
+}
+
+svg {
+  width: 100%;
+}
+
+button {
+  display: flex;
+	justify-content: space-between;
+  height: 50px;
+  color: black;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  position: relative;
+}
+
+#date {
+  width: 25%;
+  max-width: 25%;
+}
+
+#date input{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin:0;
+  border: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+#date div {
+  font-size: 1.2rem;
+}
+
+.future{
+  color: red;
+}
+
+#date input:checked ~ #datePicker{
+  clip-path: circle(150% at 100% 100%);
+}
+

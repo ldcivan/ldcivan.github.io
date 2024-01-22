@@ -1,0 +1,16 @@
+#q1-username-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+#q1-uploader{
+  margin: 2rem;
+}
+
+#q1-username-label{
+  margin: 2rem;
+}
+
+#q1-username-result {
+  margin: 2rem;
+}

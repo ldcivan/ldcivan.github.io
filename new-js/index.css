@@ -1,0 +1,90 @@
+html {
+  scroll-behavior: smooth;
+  /*filter: grayscale(100%);  /*灰度*/
+}
+
+body {
+    background-color: #eeeeee;
+}
+
+#body {
+    max-width: 1500px;
+    margin: 10px auto;
+}
+
+.mdui-card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.support-img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#body1 {
+    margin: 10px;
+    width: 100%;
+}
+
+#footer {
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    max-width: 1500px;
+    margin: 10px auto;
+}
+
+img {
+   -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+::selection {
+    background-color: #125F9F;
+    color: #ffffff;
+}
+
+input[type="text"]:hover {
+    cursor: text!important;
+}
+
+#floating-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #0000FF;
+  color: #00FF00;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 15px;
+  text-align: center;
+  z-index: 2000;
+  animation: floatWindow 16s infinite;
+}
+
+@keyframes floatWindow {
+  0% { transform: translate(-50%, -50%); background-color: #FF0000; color: #0000FF; }
+  20% { transform: translate(-50%, -50%) translateX(35vw) translateY(-25vh); background-color: #0000FF; color: #00FF00; }
+  40% { transform: translate(-50%, -50%) translateX(-40vw) translateY(40vh); background-color: #00FF00; color: #FF0000; }
+  60% { transform: translate(-50%, -50%) translateX(30vw) translateY(20vh); background-color: #FF0000; color: #0000FF; }
+  80% { transform: translate(-50%, -50%) translateX(-25vw) translateY(-30vh); background-color: #FF0000; color: #0000FF; }
+  100% { transform: translate(-50%, -50%); background-color: #FF0000; color: #0000FF; }
+}
+
+#floating-close-button {
+  padding: 10px;
+  border: none;
+  border-radius: 1vh;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 15px;
+  font-weight:bold;
+}
+

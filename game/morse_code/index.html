@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Morse/Caesar Code Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    
+    h1 {
+      margin-top: 50px;
+    }
+    
+    #text {
+      width: 400px;
+      height: 100px;
+      margin: 20px auto;
+      padding: 10px;
+      font-size: 16px;
+    }
+    
+    #morse {
+      width: 400px;
+      height: 100px;
+      margin: 20px auto;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #f5f5f5;
+      border: 1px solid #ccc;
+    }
+    
+    #play-button,#convert-button,#morse-button {
+      margin: 10px;
+    }
+    
+    #morse-button {
+        width: 6em;
+        height: 6em;
+        font-size: 1em;
+    }
+    
+
+  </style>
+</head>
+<body>
+  <h1>Morse/Caesar Code Converter</h1>
+  
+  <textarea id="text" placeholder="Enter text"></textarea>
+  <br>
+  <div style="display: flex; align-items: center;justify-content: center;">
+      <button id="convert-button" onclick="convertText()">To Morse</button>
+      <button id="convert-button" onclick="convertMorseCode()">To Text</button>
+      <button id="convert-button" onclick="caesarDecode()">Caesar Code</button>
+      <textarea id="shift" placeholder="Enter shift num (+)decode|(-)encode" style="margin-left:10px;margin-right:10px;" onkeyup="this.value = this.value.replace(/[^\d-]/g, '');"></textarea>
+  </div>
+  <br>
+  <textarea id="morse" placeholder="Enter morse code"></textarea>
+  <br>
+  <button id="morse-button" onclick="addMorseCode('dash')">DASH</button>
+  <button id="morse-button" onclick="addMorseCode('dot')">DOT</button>
+  <button id="morse-button" onclick="addMorseCode('space')">SPACE</button>
+  <button id="morse-button" onclick="addMorseCode('slash')">SLASH</button>
+  <br>
+  <button id="play-button" onclick="playMorseCode()">Play Morse Code</button>
+  <button id="play-button" onclick="document.getElementById('morse').value=''">Clear Morse Code</button>
+  <script>
+    const morseCodeMap = {
+      'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---',
+      'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-',
+      'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..',
+      '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.',
+      '.': '.-.-.-', ',': '--..--', '?': '..--..', "'": '.----.', '!': '-.-.--', '/': '-..-.', '(': '-.--.', ')': '-.--.-', '&': '.-...',
+      ':': '---...', ';': '-.-.-.', '=': '-...-', '+': '.-.-.', '-': '-....-', '_': '..--.-', '"': '.-..-.', '$': '...-..-', '@': '.--.-.',
+      ' ': '/'
+    };
+    
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    
+    function convertText() {
+      const inputText = document.getElementById('text').value.toUpperCase();
+      let outputMorse = '';
+      
+      for (let i = 0; i < inputText.length; i++) {
+        const char = inputText[i];
+        
+        if (morseCodeMap[char]) {
+          outputMorse += morseCodeMap[char] + ' ';
+        }
+      }
+      
+      document.getElementById('morse').value = outputMorse.trim();
+    }
+    
+    function convertMorseCode() {
+      const inputMorse = document.getElementById('morse').value.replaceAll('。','.').replaceAll('_','-');
+      const morseCodeValues = Object.values(morseCodeMap);
+      let outputText = '';
+      
+      const morseCodeArray = inputMorse.split(' ');
+      for (let i = 0; i < morseCodeArray.length; i++) {
+        const morseCode = morseCodeArray[i];
+        const index = morseCodeValues.indexOf(morseCode);
+        
+        if (index !== -1) {
+          outputText += Object.keys(morseCodeMap)[index];
+        }
+      }
+      document.getElementById('text').value = outputText;
+    }
+    
+    function caesarDecode() {
+      var decodedText = "";
+      const uppercaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const lowercaseAlphabet = "abcdefghijklmnopqrstuvwxyz";
+      const inputText = document.getElementById('text').value;
+      const shift = document.getElementById('shift').value;
+    
+      for (var i = 0; i < inputText.length; i++) {
+        var char = inputText[i];
+    
+        if (uppercaseAlphabet.indexOf(char) !== -1) {
+          var index = (uppercaseAlphabet.indexOf(char) - shift + 26) % 26;
+          decodedText += uppercaseAlphabet[index];
+        } else if (lowercaseAlphabet.indexOf(char) !== -1) {
+          var index = (lowercaseAlphabet.indexOf(char) - shift + 26) % 26;
+          decodedText += lowercaseAlphabet[index];
+        } else {
+          decodedText += char;
+        }
+      }
+    
+      document.getElementById('text').value = decodedText;
+    }
+    
+    function addMorseCode(type) {
+        const morse = document.getElementById('morse');
+        if (type=='dash') {
+            morse.value += '-';
+            playSignal(250, 500);
+        } else if (type=='dot') {
+            morse.value += '.';
+            playSignal(100, 500);
+        } else if (type=='space') {
+            morse.value += ' ';
+        } else if (type=='slash') {
+            morse.value += '/';
+        }
+        convertMorseCode();
+    }
+    
+    function playMorseCode() {
+      //document.getElementById('play-button').value = " Playing...";
+      const morseCode = document.getElementById('morse').value;
+      
+      for (let i = 0; i < morseCode.length; i++) {
+        const symbol = morseCode[i];
+        
+        if (symbol === '.') {
+          playSignal(100, 500);
+        } else if (symbol === '-') {
+          playSignal(250, 500);
+        } else if (symbol === ' ') {
+          // Pause for a short duration between characters
+          sleep(250);
+        }
+        
+        // Pause for a short duration between symbols
+        sleep(100);
+      }
+      //document.getElementById('play-button').value = "Play Morse Code";
+    }
+    
+    function playSignal(duration, frequency) {
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      oscillator.frequency.value = frequency;
+      gainNode.gain.setValueAtTime(1, audioContext.currentTime);
+      
+      oscillator.start();
+      sleep(duration);
+      oscillator.stop();
+    }
+    
+    function sleep(time) {
+      const beginTime = new Date().getTime()
+      const endTime = beginTime + time
+      while(true) {
+        if (new Date().getTime() > endTime) {
+          return
+        }
+      }
+    }
+  </script>
+</body>
+</html>

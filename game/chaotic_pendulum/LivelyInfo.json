@@ -1,0 +1,16 @@
+{
+  "AppVersion": "1.0.0.0",
+  "Title": "Chaotic pendulum",
+  "Thumbnail": "screenshot.png",
+  "Desc": "Lively chaotic pendulum project",
+  "Author": "Life is physics",
+  "License": "MIT",
+  "Contact": "https://github.com/gkone-pku-phy",
+  "Type": 1,
+  "FileName": "index.html",
+  "Arguments": "",
+  "IsAbsolutePath": false,
+  "Id": null,
+  "Tags": null,
+  "Version": 0
+}

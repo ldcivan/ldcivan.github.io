@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tuner</title>
+    <meta charset="utf-8">
+    <style>
+        #content {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            text-align: center;
+        }
+        
+        #frequencyChart {
+          z-index: -1;
+          box-sizing: border-box;
+        }
+        
+        #meter {
+          width: 400px;
+          height: 66%;
+          border-radius: 50%;
+          /*background-color: rgba(230,230,230,0.6);*/
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: auto;
+          margin-top: 20px;
+        }
+    
+        #needle {
+          width: 2.5px;
+          height: 285px;
+          background-color: red;
+          position: absolute;
+          bottom: 50%;
+          left: 50%;
+          transform-origin: bottom;
+          transform: translate(-50%, 0) rotate(0deg);
+          transition: transform 0.5s ease-in-out;
+        }
+    
+        #value {
+          transform: translate(0, 120%);
+          font-size: 18px;
+          font-weight: bold;
+          text-align: center;
+        }
+        
+        #dot {
+            width: 8px;
+            height: 8px;
+            background: #2c3e50;
+            border-radius: 50%;
+            position: absolute;
+            right: 50%;
+            margin-right: -4px;
+        }
+        
+        .tick {
+          position: absolute;
+          width: 1.2px;
+          height: 290px;
+          bottom: 50%;
+          left: 50%;
+          transform-origin: bottom;
+          border-top: 20px solid;
+          box-sizing: border-box;
+        }
+        
+        .heavy-tick {
+            width: 2.5px;
+            border-top-width: 30px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var standardA4;
+        var frequencyStep;
+        var standardFrequencies, standardFrequenciesList;
+        // 标准音高频率表
+        function frequencyInit(A4) {
+            standardA4 = A4||440.00;
+            frequencyStep = Math.pow(2, 1/12);
+            standardFrequencies = {
+                /*
+                'C1': standardA4*Math.pow(frequencyStep,-45),
+                'C#1': standardA4*Math.pow(frequencyStep,-44),
+                'D1': standardA4*Math.pow(frequencyStep,-43),
+                'D#1': standardA4*Math.pow(frequencyStep,-42),
+                'E1': standardA4*Math.pow(frequencyStep,-41),
+                'F1': standardA4*Math.pow(frequencyStep,-40),
+                'F#1': standardA4*Math.pow(frequencyStep,-39),
+                'G1': standardA4*Math.pow(frequencyStep,-38),
+                'G#1': standardA4*Math.pow(frequencyStep,-37),
+                'A1': standardA4*Math.pow(frequencyStep,-36),
+                'A#1': standardA4*Math.pow(frequencyStep,-35),
+                'B1':standardA4*Math.pow(frequencyStep,-34),
+                */
+                'C2': standardA4*Math.pow(frequencyStep,-33),
+                'C#2': standardA4*Math.pow(frequencyStep,-32),
+                'D2': standardA4*Math.pow(frequencyStep,-31),
+                'D#2': standardA4*Math.pow(frequencyStep,-30),
+                'E2': standardA4*Math.pow(frequencyStep,-29),
+                'F2': standardA4*Math.pow(frequencyStep,-28),
+                'F#2': standardA4*Math.pow(frequencyStep,-27),
+                'G2': standardA4*Math.pow(frequencyStep,-26),
+                'G#2': standardA4*Math.pow(frequencyStep,-25),
+                'A2': standardA4*Math.pow(frequencyStep,-24),
+                'A#2': standardA4*Math.pow(frequencyStep,-23),
+                'B2': standardA4*Math.pow(frequencyStep,-22),
+                'C3': standardA4*Math.pow(frequencyStep,-21),
+                'C#3': standardA4*Math.pow(frequencyStep,-20),
+                'D3': standardA4*Math.pow(frequencyStep,-19),
+                'D#3': standardA4*Math.pow(frequencyStep,-18),
+                'E3': standardA4*Math.pow(frequencyStep,-17),
+                'F3': standardA4*Math.pow(frequencyStep,-16),
+                'F#3': standardA4*Math.pow(frequencyStep,-15),
+                'G3': standardA4*Math.pow(frequencyStep,-14),
+                'G#3': standardA4*Math.pow(frequencyStep,-13),
+                'A3': standardA4*Math.pow(frequencyStep,-12),
+                'A#3': standardA4*Math.pow(frequencyStep,-11),
+                'B3': standardA4*Math.pow(frequencyStep,-10),
+                'C4': standardA4*Math.pow(frequencyStep,-9),
+                'C#4': standardA4*Math.pow(frequencyStep,-8),
+                'D4': standardA4*Math.pow(frequencyStep,-7),
+                'D#4': standardA4*Math.pow(frequencyStep,-6),
+                'E4': standardA4*Math.pow(frequencyStep,-5),
+                'F4': standardA4*Math.pow(frequencyStep,-4),
+                'F#4': standardA4*Math.pow(frequencyStep,-3),
+                'G4': standardA4*Math.pow(frequencyStep,-2),
+                'G#4': standardA4*Math.pow(frequencyStep,-1),
+                'A4': standardA4*Math.pow(frequencyStep,0),
+                'A#4': standardA4*Math.pow(frequencyStep,1),
+                'B4': standardA4*Math.pow(frequencyStep,2),
+                'C5': standardA4*Math.pow(frequencyStep,3),
+                'C#5': standardA4*Math.pow(frequencyStep,4),
+                'D5': standardA4*Math.pow(frequencyStep,5),
+                'D#5': standardA4*Math.pow(frequencyStep,6),
+                'E5': standardA4*Math.pow(frequencyStep,7),
+                'F5': standardA4*Math.pow(frequencyStep,8),
+                'F#5': standardA4*Math.pow(frequencyStep,9),
+                'G5': standardA4*Math.pow(frequencyStep,10),
+                'G#5': standardA4*Math.pow(frequencyStep,11),
+                'A5': standardA4*Math.pow(frequencyStep,12),
+                'A#5': standardA4*Math.pow(frequencyStep,13),
+                'B5': standardA4*Math.pow(frequencyStep,14),
+                'C6': standardA4*Math.pow(frequencyStep,15),
+                'C#6': standardA4*Math.pow(frequencyStep,16),
+                'D6': standardA4*Math.pow(frequencyStep,17),
+                'D#6': standardA4*Math.pow(frequencyStep,18),
+                'E6': standardA4*Math.pow(frequencyStep,19),
+                'F6': standardA4*Math.pow(frequencyStep,20),
+                'F#6': standardA4*Math.pow(frequencyStep,21),
+                'G6': standardA4*Math.pow(frequencyStep,22),
+                'G#6': standardA4*Math.pow(frequencyStep,23),
+                'A6': standardA4*Math.pow(frequencyStep,24),
+                'A#6': standardA4*Math.pow(frequencyStep,25),
+                'B6': standardA4*Math.pow(frequencyStep,26),
+                'C7': standardA4*Math.pow(frequencyStep,27),
+                'C#7': standardA4*Math.pow(frequencyStep,28),
+                'D7': standardA4*Math.pow(frequencyStep,29),
+                'D#7': standardA4*Math.pow(frequencyStep,30),
+                'E7': standardA4*Math.pow(frequencyStep,31),
+                'F7': standardA4*Math.pow(frequencyStep,32),
+                'F#7': standardA4*Math.pow(frequencyStep,33),
+                'G7': standardA4*Math.pow(frequencyStep,34),
+                'G#7': standardA4*Math.pow(frequencyStep,35),
+                'A7': standardA4*Math.pow(frequencyStep,36),
+                'A#7': standardA4*Math.pow(frequencyStep,37),
+                'B7': standardA4*Math.pow(frequencyStep,38),
+                'C8': standardA4*Math.pow(frequencyStep,39),
+                'C#8': standardA4*Math.pow(frequencyStep,40),
+                'D8': standardA4*Math.pow(frequencyStep,41),
+                'D#8': standardA4*Math.pow(frequencyStep,42),
+                'E8': standardA4*Math.pow(frequencyStep,43),
+                'F8': standardA4*Math.pow(frequencyStep,44),
+                'F#8': standardA4*Math.pow(frequencyStep,45),
+                'G8': standardA4*Math.pow(frequencyStep,46),
+                'G#8': standardA4*Math.pow(frequencyStep,47),
+                'A8': standardA4*Math.pow(frequencyStep,48),
+                'A#8': standardA4*Math.pow(frequencyStep,49),
+                'B8': standardA4*Math.pow(frequencyStep,50),
+                'C9': standardA4*Math.pow(frequencyStep,51),
+                'C#9': standardA4*Math.pow(frequencyStep,52),
+                'D9': standardA4*Math.pow(frequencyStep,53),
+                'D#9': standardA4*Math.pow(frequencyStep,54),
+                'E9': standardA4*Math.pow(frequencyStep,55),
+                'F9': standardA4*Math.pow(frequencyStep,56),
+                'F#9': standardA4*Math.pow(frequencyStep,57),
+                'G9': standardA4*Math.pow(frequencyStep,58),
+                'G#9': standardA4*Math.pow(frequencyStep,59),
+                'A9': standardA4*Math.pow(frequencyStep,60),
+                'A#9': standardA4*Math.pow(frequencyStep,61),
+                'B9': standardA4*Math.pow(frequencyStep,62),
+                'C10': standardA4*Math.pow(frequencyStep,63),
+                'C#10': standardA4*Math.pow(frequencyStep,64),
+                'D10': standardA4*Math.pow(frequencyStep,65),
+                'D#10': standardA4*Math.pow(frequencyStep,66),
+                'E10': standardA4*Math.pow(frequencyStep,67),
+                'F10': standardA4*Math.pow(frequencyStep,68),
+                'F#10': standardA4*Math.pow(frequencyStep,69),
+                /*
+                'G10': standardA4*Math.pow(frequencyStep,70),
+                'G#10': standardA4*Math.pow(frequencyStep,71),
+                'A10': standardA4*Math.pow(frequencyStep,72),
+                'A#10': standardA4*Math.pow(frequencyStep,73),
+                'B10': standardA4*Math.pow(frequencyStep,74),
+                */
+            };
+            standardFrequenciesList = [];
+            for (var note in standardFrequencies) {
+                standardFrequenciesList.push(standardFrequencies[note]);
+            }
+            document.getElementById('a4-frequency').innerHTML = standardA4;
+            document.getElementById('a4-input').value = standardA4;
+        }
+        
+
+        window.onload = function() {
+            frequencyInit();
+            // 获取音频流
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(function(stream) {
+                    var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    var analyser = audioContext.createAnalyser();
+                    analyser.fftSize = 8192; // 决定低频识别准度
+                    var microphone = audioContext.createMediaStreamSource(stream);
+                    var frequencies = new Float32Array(analyser.frequencyBinCount);
+
+                    microphone.connect(analyser);
+                    
+                    
+                    // 计算频率
+                    function calculateFrequency() {
+                        // 获取频谱数据
+                        var spectrum = new Uint8Array(analyser.frequencyBinCount);
+                        analyser.getByteFrequencyData(spectrum);
+                        
+                        var frequencyDistribution = new Array(analyser.frequencyBinCount).fill(0);
+                        var frequencyDistributionCount = new Array(analyser.frequencyBinCount).fill(0);
+                        // 将频谱数据转换为频率分布数据
+                        for (var i = 0; i < spectrum.length; i++) {
+                            var frequency = i * audioContext.sampleRate / analyser.fftSize;
+                            var index = 0;
+                            var closestDeviation = Infinity;
+                            for (var j = 0; j < standardFrequenciesList.length; j++) {
+                                var deviation = Math.abs(frequency - standardFrequenciesList[j]);
+                                if (deviation < closestDeviation) {
+                                    index = j;
+                                    closestDeviation = deviation;
+                                }
+                            }
+                            frequencyDistribution[index] += spectrum[i];
+                            frequencyDistributionCount[index]++;
+                        }
+                        for(var i=0; i<frequencyDistribution.length; i++) {
+                            if(frequencyDistributionCount[i]!==0)
+                                frequencyDistribution[i]=frequencyDistribution[i]/frequencyDistributionCount[i];
+                            else 
+                                frequencyDistribution[i] = 0;
+                        }
+                        //console.log(frequencyDistribution)
+                        // 获取canvas元素
+                        var canvas = document.getElementById('frequencyChart');
+                        if (Chart.getChart(canvas)) {
+                            // 销毁之前的图表
+                            Chart.getChart(canvas).destroy();
+                        }
+                        
+                        // 创建条形图
+                        var labelList = [];
+                        for(var note in standardFrequencies) labelList.push(note);
+                        var chart = new Chart(canvas, {
+                            type: 'bar',
+                            data: {
+                                labels: labelList, // 标签为频率值
+                                datasets: [{
+                                    label: '频率分布',
+                                    data: frequencyDistribution, // 使用频率分布数据
+                                    backgroundColor: 'rgba(64, 64, 64, 0.2)', // 条形的背景颜色
+                                    borderColor: 'rgba(64, 64, 64, 0.2)', // 条形的边框颜色
+                                    borderWidth: 1, // 条形的边框宽度
+                                    barPercentage: 1.2
+                                }]
+                            },
+                            options: {
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    }
+                                },
+                                animation: false,
+                                scales: {
+                                    x: {
+                                        display: false
+                                    },
+                                    y: {
+                                        beginAtZero: true, // y轴从0开始
+                                        max: 300,
+                                        display: false
+                                    }
+                                }
+                            }
+                        });
+        
+                        // 获取咪表元素和指针元素
+                        var meter = document.getElementById('meter');
+                        var needle = document.getElementById('needle');
+                        var valueElement = document.getElementById('value');
+                        
+                        // 更新咪表的值和指针位置
+                        function updateMeter(value, text, text2, text3) {
+                          // 限制值在-1到1之间
+                          value = Math.max(-1, Math.min(1, value));
+                        
+                          // 计算指针旋转角度
+                          var angle = value * 60;
+                        
+                          // 更新指针的旋转角度
+                          needle.style.transform = 'translate(-50%, 0) rotate(' + angle + 'deg)';
+                        
+                          // 更新值显示
+                          valueElement.innerHTML = '<font size="7" color="red">'+text+'</font><br>' + text2 + '<br><font size="5">'+text3+'</font>';
+                        }
+                    
+                        analyser.getFloatFrequencyData(frequencies);
+                        var maxIndex = 0;
+                        var maxValue = frequencies[0];
+                        for (var i = 1; i < frequencies.length; i++) {
+                            if (frequencies[i] > maxValue) {
+                                maxIndex = i;
+                                maxValue = frequencies[i];
+                            }
+                        }
+                        
+                        var volume = maxValue; // 获取音量值
+
+                        // 设置音量阈值
+                        var volumeThreshold = -70; // 调整此值以适应你的需求
+                        
+                        
+                        var frequency = maxIndex * audioContext.sampleRate / analyser.fftSize;
+
+
+                        // 判定最接近的标准音高频率
+                        var closestFrequency = null;
+                        var closestDeviation = Infinity;
+                        var closestDeviationPercent = 1;
+                        var index = 0;
+                        for (var note in standardFrequencies) {
+                            var deviation = Math.abs(frequency - standardFrequencies[note]);
+                            var deviationPercent = (deviation / standardFrequencies[note])/(2^index)*1000;
+                            if (deviation < closestDeviation) {
+                                closestFrequency = note;
+                                closestDeviation = deviation;
+                                closestDeviationPercent = deviationPercent;
+                            }
+                            index++;
+                        }
+
+                        // 判断偏高还是偏低
+                        var deviationDirection = frequency > standardFrequencies[closestFrequency] ? '偏高' : '偏低';
+
+                        // 显示结果
+                        if (volume > volumeThreshold) {
+                            //document.getElementById('frequency').innerHTML = '当前频率：' + frequency.toFixed(2) + ' Hz';
+                            //document.getElementById('closestFrequency').innerHTML = '目标音高：' + closestFrequency + '(' + standardFrequencies[closestFrequency].toFixed(2) + ' Hz)';
+                            //document.getElementById('deviation').innerHTML = '偏差程度：' + closestDeviation.toFixed(2) + ' Hz ' + deviationDirection;
+                            updateMeter(frequency > standardFrequencies[closestFrequency] ? closestDeviationPercent:-closestDeviationPercent, closestFrequency, standardFrequencies[closestFrequency].toFixed(2) + (frequency > standardFrequencies[closestFrequency] ? ' + ' : ' - ') + closestDeviation.toFixed(2) + ' Hz', frequency.toFixed(2) + ' Hz');
+                        }
+                        //document.getElementById('volume').innerHTML = '音量：' + volume.toFixed(2) + ' 单位 ';
+                    }
+
+                    setInterval(calculateFrequency, 50); // 每100毫秒计算一次频率
+                })
+                .catch(function(error) {
+                    console.log('获取音频流失败：', error);
+                });
+        };
+    </script>
+</head>
+<body>
+    <div class="a4-adjust" style="position:absolute;z-index:999;">A4 = <span id="a4-frequency" style="color:red;" onclick="document.getElementById('pop').style.display='flex';"></span> Hz</div>
+    <div id="pop" style="position:absolute;border:1px solid gray;padding:5px;display:none;width:250px;z-index:9999;margin-top:40px;">
+        <input id="a4-input" type="number" placeholder style="margin:auto;">
+        <button style="margin:auto;" onclick="frequencyInit(parseInt(document.getElementById('a4-input').value));document.getElementById('pop').style.display='none';">OK</button>
+    </div>
+    <div id="content">
+    <h1>Tuner</h1>
+    <!--<div id="frequency">当前频率：- Hz</div>
+    <div id="closestFrequency">目标音高：-</div>
+    <div id="deviation">偏差程度：- Hz -</div>
+    <div id="volume">音量：- db</div>-->
+    <div id="meter">
+        <div id="needle"></div>
+        <div id="dot"></div>
+        <div class="tick heavy-tick" style="transform: translate(-50%, 0) rotate(-60deg);"></div>
+        <div class="tick" style="transform: translate(-50%, 0) rotate(-45deg);"></div>
+        <div class="tick heavy-tick" style="transform: translate(-50%, 0) rotate(-30deg);"></div>
+        <div class="tick" style="transform: translate(-50%, 0) rotate(-15deg);"></div>
+        <div class="tick heavy-tick" style="transform: translate(-50%, 0) rotate(0deg);"></div>
+        <div class="tick" style="transform: translate(-50%, 0) rotate(15deg);"></div>
+        <div class="tick heavy-tick" style="transform: translate(-50%, 0) rotate(30deg);"></div>
+        <div class="tick" style="transform: translate(-50%, 0) rotate(45deg);"></div>
+        <div class="tick heavy-tick" style="transform: translate(-50%, 0) rotate(60deg);"></div>
+        <div class="value" id="value"><font size="7" color="red">N/A</font><br>0.00 + 0.00 Hz<br><font size="5">0.00 Hz</font></div>
+    </div>
+    </div>
+    <div style="position:fixed;bottom:0;left:0;width:100%;z-index:-1;"><canvas id="frequencyChart" height="" width="100%"></canvas></div>
+</body>
+</html>

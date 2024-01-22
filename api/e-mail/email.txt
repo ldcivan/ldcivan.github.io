@@ -1,0 +1,1355 @@
+已将内容 test--这是一条测试邮件 发送到 2531667489@qq.com
+已将内容 test--这是一条测试邮件 发送到 2531667489@qq.com
+已将内容 -- 发送到 
+已将内容 test--这是一条测试邮件 发送到 2531667489@qq.com
+已将内容 1--hello 发送到 3067733270@qq.com
+已将内容 test--test 发送到 2531667489@qq.com
+已将内容 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 test--test 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--出现错误：Traceback (most recent call last):
+  File "elec_monitor.py", line 67, in <module>
+    read_sql()
+  File "elec_monitor.py", line 49, in read_sql
+    cursor.execute(query)
+  File "/usr/local/python3/lib/python3.8/site-packages/mysql/connector/cursor.py", line 551, in execute
+    self._handle_result(self._connection.cmd_query(stmt))
+  File "/usr/local/python3/lib/python3.8/site-packages/mysql/connector/connection.py", line 490, in cmd_query
+    result = self._handle_result(self._send_cmd(ServerCmd.QUERY, query))
+  File "/usr/local/python3/lib/python3.8/site-packages/mysql/connector/connection.py", line 395, in _handle_result
+    raise errors.get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'mailto' in 'field list'
+ 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--出现错误：```Traceback (most recent call last):
+  File "elec_monitor.py", line 67, in <module>
+    read_sql()
+  File "elec_monitor.py", line 53, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = int(data["d"]["data"]["surplus"])
+ValueError: invalid literal for int() with base 10: '95.83'
+``` 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--您宿舍的电费仅剩12.3元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 anzexv@bupt.edu.cn
+已完成任务：将 电费监视系统异常--出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 70, in <module>
+    read_sql()
+  File "elec_monitor.py", line 56, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 30, in monitor
+    time.sleep(1.2)
+AttributeError: 'str' object has no attribute 'sleep'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 70, in <module>
+    read_sql()
+  File "elec_monitor.py", line 56, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 30, in monitor
+    time.sleep(1.2)
+AttributeError: 'str' object has no attribute 'sleep'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 70, in <module>
+    read_sql()
+  File "elec_monitor.py", line 56, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 28, in monitor
+    mail(mailto, surplus, surplus_time)
+  File "elec_monitor.py", line 17, in mail
+    print(mail_response.text)
+NameError: name 'mail_response' is not defined
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-06-19 03:01:39.0您宿舍的电费仅剩8.44元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 anzexv@bupt.edu.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-19 03:01:39.0您宿舍的电费仅剩8.44元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 anzexv@bupt.edu.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-19 03:01:39.0您宿舍的电费仅剩8.44元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 anzexv@bupt.edu.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-19 03:01:39.0您宿舍的电费仅剩8.44元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 anzexv@bupt.edu.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-19 03:01:39.0您宿舍的电费仅剩8.44元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 anzexv@bupt.edu.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-20 03:02:23.0您宿舍的电费仅剩5.73元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 anzexv@bupt.edu.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-20 03:02:23.0您宿舍的电费仅剩5.73元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 anzexv@bupt.edu.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-20 03:02:23.0您宿舍的电费仅剩5.73元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 anzexv@bupt.edu.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-20 03:02:23.0您宿舍的电费仅剩5.73元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 anzexv@bupt.edu.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-20 03:02:23.0您宿舍的电费仅剩5.73元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 anzexv@bupt.edu.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-20 03:02:23.0您宿舍的电费仅剩5.73元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 anzexv@bupt.edu.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-21 03:02:55.0您宿舍的电费仅剩2.48元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 anzexv@bupt.edu.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-21 03:02:55.0您宿舍的电费仅剩2.48元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 anzexv@bupt.edu.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-21 03:02:55.0您宿舍的电费仅剩2.48元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 anzexv@bupt.edu.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-21 03:02:55.0您宿舍的电费仅剩2.48元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 anzexv@bupt.edu.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-22 03:02:17.0您宿舍的电费仅剩11.32元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-06-23 03:02:24.0您宿舍的电费仅剩4.24元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-06-24 03:01:56.0您宿舍的电费仅剩14.24元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 ldcivan@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-25 03:01:45.0您宿舍的电费仅剩9.48元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 ldcivan@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-26 03:02:30.0您宿舍(编号: 190815001330)的电费仅剩5.43元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-27 10:29:47.0您宿舍(编号: 190815001330)的电费仅剩12.0元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-28 03:02:01.0您宿舍(编号: 190815001330)的电费仅剩9.58元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-29 03:02:39.0您宿舍(编号: 190815001330)的电费仅剩6.58元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-06-30 03:02:39.0您宿舍(编号: 190815001330)的电费仅剩3.24元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 电费监视系统异常--出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 70, in <module>
+    read_sql()
+  File "elec_monitor.py", line 56, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-06-30 18:24:59.0您宿舍(编号: 190815001330)的电费仅剩12.0元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 59, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-06-30 18:24:59.0您宿舍(编号: 190815001330)的电费仅剩12.0元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 电费监视系统异常--总循环出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 60, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "elec_monitor.py", line 82, in <module>
+    read_sql()
+  File "elec_monitor.py", line 66, in read_sql
+    'body': f'读取-监视部分出现错误：<pre>{traceback.format_exc()}{monitor(dromNumber, mailto)}</pre>'}
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-06-30 18:24:59.0您宿舍(编号: 190815001330)的电费仅剩12.0元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-06-30 18:24:59.0您宿舍(编号: 190815001330)的电费仅剩12.0元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 204)：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 60, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-06-30 18:24:59.0您宿舍(编号: 190815001330)的电费仅剩12.0元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 电费监视系统异常--总循环出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 60, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "elec_monitor.py", line 83, in <module>
+    read_sql()
+  File "elec_monitor.py", line 64, in read_sql
+    if retry == 5 or monitor(dromNumber, mailto) is None:
+  File "elec_monitor.py", line 25, in monitor
+    surplus = float(data["d"]["data"]["surplus"])
+TypeError: float() argument must be a string or a number, not 'NoneType'
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-06-30 18:24:59.0您宿舍(编号: 190815001330)的电费仅剩12.0元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至Null您宿舍(编号: 204)的电费仅剩Null元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至Null您宿舍(编号: 302)的电费仅剩Null元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-07-01 03:06:00.0您宿舍(编号: 190815001330)的电费仅剩9.21元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-07-02 03:01:42.0您宿舍(编号: 190815001330)的电费仅剩5.22元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-07-06 03:02:50.0您宿舍(编号: 190815001330)的电费仅剩14.12元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-07-09 03:07:51.0您宿舍(编号: 190815001319)的电费仅剩6.61元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-07-09 03:03:06.0您宿舍(编号: 190815001330)的电费仅剩9.8元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-07-10 03:03:06.0您宿舍(编号: 190815001330)的电费仅剩3.74元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-07-11 03:03:27.0您宿舍(编号: 190815001330)的电费仅剩10.04元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-07-12 03:03:38.0您宿舍(编号: 190815001319)的电费仅剩9.82元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-07-13 03:04:35.0您宿舍(编号: 190815001319)的电费仅剩2.08元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-07-13 03:04:45.0您宿舍(编号: 190815001330)的电费仅剩8.88元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-07-14 03:03:38.0您宿舍(编号: 190815001330)的电费仅剩5.28元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-07-15 03:04:38.0您宿舍(编号: 190815001330)的电费仅剩2.31元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-07-24 03:12:45.0您宿舍(编号: 190815001330)的电费仅剩10.13元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 BUPT电费低警告--截至2023-07-25 03:40:15.0您宿舍(编号: 190815001319)的电费仅剩8.46元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-07-25 03:21:41.0您宿舍(编号: 190815001330)的电费仅剩4.43元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 000@pro-ivan.cn
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 80, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 24, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001319)：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 80, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 24, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 80, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 24, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001319)：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 80, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 24, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 85, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 29, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001319)：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 85, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 29, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 85, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 29, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001319)：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 85, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 29, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 80, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 24, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001319)：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 80, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 24, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 90, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 35, in monitor
+    msg = data["m"]
+UnboundLocalError: local variable 'data' referenced before assignment
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001319)：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 90, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor.py", line 35, in monitor
+    msg = data["m"]
+UnboundLocalError: local variable 'data' referenced before assignment
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--总循环出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor.py", line 103, in <module>
+    read_sql()
+NameError: name 'read_sql' is not defined
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-07-28 03:52:17.0您宿舍(编号: 190815001313)的电费仅剩12.83元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-07-28 03:35:56.0您宿舍(编号: 190815001319)的电费仅剩8.92元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-07-29 03:55:11.0您宿舍(编号: 190815001313)的电费仅剩10.46元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 100, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor_proxy.py", line 44, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001319)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 100, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor_proxy.py", line 44, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 100, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor_proxy.py", line 35, in monitor
+    proxy = get_proxy().get("proxy")
+  File "elec_monitor_proxy.py", line 21, in get_proxy
+    time.sleep(10)
+KeyboardInterrupt
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--总循环出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 123, in <module>
+    read_sql()
+  File "elec_monitor_proxy.py", line 107, in read_sql
+    sqlerr_response = requests.post(mail_url, data=sqlerr_data)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 117, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 449, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 444, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 1322, in getresponse
+    response.begin()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 303, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 264, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/local/python3/lib/python3.8/socket.py", line 669, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/local/python3/lib/python3.8/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/local/python3/lib/python3.8/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+KeyboardInterrupt
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 100, in read_sql
+    monitor(dromNumber, mailto)
+  File "elec_monitor_proxy.py", line 44, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--总循环出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 123, in <module>
+    read_sql()
+  File "elec_monitor_proxy.py", line 107, in read_sql
+    sqlerr_response = requests.post(mail_url, data=sqlerr_data)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 117, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 449, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 444, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 1322, in getresponse
+    response.begin()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 303, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 264, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/local/python3/lib/python3.8/socket.py", line 669, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/local/python3/lib/python3.8/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/local/python3/lib/python3.8/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+KeyboardInterrupt
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--总循环出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 126, in <module>
+    except:
+  File "elec_monitor_proxy.py", line 110, in read_sql
+    print(sqlerr_response.text)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 117, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 449, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 444, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 1322, in getresponse
+    response.begin()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 303, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 264, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/local/python3/lib/python3.8/socket.py", line 669, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/local/python3/lib/python3.8/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/local/python3/lib/python3.8/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+KeyboardInterrupt
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 40, in monitor
+    except:
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 117, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 700, in urlopen
+    self._prepare_proxy(conn)
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 996, in _prepare_proxy
+    conn.connect()
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connection.py", line 358, in connect
+    self.sock = conn = self._new_conn()
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 103, in read_sql
+    break
+  File "elec_monitor_proxy.py", line 45, in monitor
+    msg = data["m"]
+KeyboardInterrupt
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 102, in read_sql
+    monitor(dromNumber, mailto, proxy)
+  File "elec_monitor_proxy.py", line 44, in monitor
+    data = json.loads(response.text)
+UnboundLocalError: local variable 'response' referenced before assignment
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001319)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 102, in read_sql
+    monitor(dromNumber, mailto, proxy)
+  File "elec_monitor_proxy.py", line 44, in monitor
+    data = json.loads(response.text)
+UnboundLocalError: local variable 'response' referenced before assignment
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 38, in monitor
+    response = requests.post(base_url, data=post_data, cookies=cookies, proxies={"https": "http://{}".format(proxy)})
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 117, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 700, in urlopen
+    self._prepare_proxy(conn)
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 996, in _prepare_proxy
+    conn.connect()
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connection.py", line 358, in connect
+    self.sock = conn = self._new_conn()
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 103, in read_sql
+    monitor(dromNumber, mailto, proxy)
+  File "elec_monitor_proxy.py", line 43, in monitor
+    time.sleep(2)
+KeyboardInterrupt
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--总循环出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 126, in <module>
+    read_sql()
+  File "elec_monitor_proxy.py", line 110, in read_sql
+    sqlerr_response = requests.post(mail_url, data=sqlerr_data)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 117, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 449, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 444, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 1322, in getresponse
+    response.begin()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 303, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 264, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/local/python3/lib/python3.8/socket.py", line 669, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/local/python3/lib/python3.8/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/local/python3/lib/python3.8/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+KeyboardInterrupt
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 38, in monitor
+    response = requests.post(base_url, data=post_data, cookies=cookies, proxies={"https": "http://{}".format(proxy)})
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 117, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 700, in urlopen
+    self._prepare_proxy(conn)
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 996, in _prepare_proxy
+    conn.connect()
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connection.py", line 358, in connect
+    self.sock = conn = self._new_conn()
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 103, in read_sql
+    monitor(dromNumber, mailto, proxy)
+  File "elec_monitor_proxy.py", line 43, in monitor
+    time.sleep(2)
+KeyboardInterrupt
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--总循环出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 126, in <module>
+    read_sql()
+  File "elec_monitor_proxy.py", line 110, in read_sql
+    sqlerr_response = requests.post(mail_url, data=sqlerr_data)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 117, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 449, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 444, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 1322, in getresponse
+    response.begin()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 303, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 264, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/local/python3/lib/python3.8/socket.py", line 669, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/local/python3/lib/python3.8/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/local/python3/lib/python3.8/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+KeyboardInterrupt
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 38, in monitor
+    response = requests.post(base_url, data=post_data, cookies=cookies, proxies={"https": "http://111.178.11.20:8088"})
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 117, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 700, in urlopen
+    self._prepare_proxy(conn)
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 996, in _prepare_proxy
+    conn.connect()
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connection.py", line 358, in connect
+    self.sock = conn = self._new_conn()
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 103, in read_sql
+    monitor(dromNumber, mailto, proxy)
+  File "elec_monitor_proxy.py", line 43, in monitor
+    time.sleep(2)
+KeyboardInterrupt
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--总循环出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 126, in <module>
+    read_sql()
+  File "elec_monitor_proxy.py", line 110, in read_sql
+    sqlerr_response = requests.post(mail_url, data=sqlerr_data)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 117, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 449, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 444, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 1322, in getresponse
+    response.begin()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 303, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 264, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/local/python3/lib/python3.8/socket.py", line 669, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/local/python3/lib/python3.8/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/local/python3/lib/python3.8/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+KeyboardInterrupt
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-08-08 03:42:24.0您宿舍(编号: 190815001319)的电费仅剩13.92元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-08-19 03:30:28.0您宿舍(编号: 190815001319)的电费仅剩13.66元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-08-30 03:04:22.0您宿舍(编号: 190815001319)的电费仅剩11.69元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-08-31 03:02:55.0您宿舍(编号: 190815001319)的电费仅剩7.22元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-09-01 03:02:33.0您宿舍(编号: 190815001319)的电费仅剩2.18元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-09-04 03:03:52.0您宿舍(编号: 190815001313)的电费仅剩11.19元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 104, in read_sql
+    monitor(dromNumber, mailto, proxy)
+  File "elec_monitor_proxy.py", line 46, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001319)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 104, in read_sql
+    monitor(dromNumber, mailto, proxy)
+  File "elec_monitor_proxy.py", line 46, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--总循环出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 38, in monitor
+    response = requests.post(base_url, data=post_data, cookies=cookies, proxies={"https": "http://{}".format(proxy)}, timeout=5)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 117, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 700, in urlopen
+    self._prepare_proxy(conn)
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 996, in _prepare_proxy
+    conn.connect()
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connection.py", line 369, in connect
+    self._tunnel()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 894, in _tunnel
+    (version, code, message) = response._read_status()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 264, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/local/python3/lib/python3.8/socket.py", line 669, in readinto
+    return self._sock.recv_into(b)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 104, in read_sql
+    monitor(dromNumber, mailto, proxy)
+  File "elec_monitor_proxy.py", line 44, in monitor
+    time.sleep(2)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 130, in <module>
+    read_sql()
+  File "elec_monitor_proxy.py", line 115, in read_sql
+    proxy = get_proxy().get("proxy")
+  File "elec_monitor_proxy.py", line 15, in get_proxy
+    proxy = requests.get("http://198.23.249.216:5010/get/?type=https").json()
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 398, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connection.py", line 239, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 1230, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 1276, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 1225, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 1004, in _send_output
+    self.send(msg)
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 944, in send
+    self.connect()
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 104, in read_sql
+    monitor(dromNumber, mailto, proxy)
+  File "elec_monitor_proxy.py", line 46, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--总循环出现错误：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 130, in <module>
+    read_sql()
+  File "elec_monitor_proxy.py", line 115, in read_sql
+    proxy = get_proxy().get("proxy")
+  File "elec_monitor_proxy.py", line 15, in get_proxy
+    proxy = requests.get("http://198.23.249.216:5010/get/?type=https").json()
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/python3/lib/python3.8/site-packages/requests/adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 449, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/usr/local/python3/lib/python3.8/site-packages/urllib3/connectionpool.py", line 444, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 1322, in getresponse
+    response.begin()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 303, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/python3/lib/python3.8/http/client.py", line 264, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/local/python3/lib/python3.8/socket.py", line 669, in readinto
+    return self._sock.recv_into(b)
+KeyboardInterrupt
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 104, in read_sql
+    monitor(dromNumber, mailto, proxy)
+  File "elec_monitor_proxy.py", line 46, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001319)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 104, in read_sql
+    monitor(dromNumber, mailto, proxy)
+  File "elec_monitor_proxy.py", line 46, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 104, in read_sql
+    monitor(dromNumber, mailto, proxy)
+  File "elec_monitor_proxy.py", line 46, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001319)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 104, in read_sql
+    monitor(dromNumber, mailto, proxy)
+  File "elec_monitor_proxy.py", line 46, in monitor
+    data = json.loads(response.text)
+  File "/usr/local/python3/lib/python3.8/json/__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/local/python3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-10-11 03:02:26.0您宿舍(编号: 190815001319)的电费仅剩14.62元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-10-12 03:02:17.0您宿舍(编号: 190815001319)的电费仅剩12.36元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-10-25 03:03:14.0您宿舍(编号: 190815001313)的电费仅剩14.11元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-10-26 03:03:15.0您宿舍(编号: 190815001313)的电费仅剩11.51元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-12-11 03:04:05.0您宿舍(编号: 190815001313)的电费仅剩14.83元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-12-12 03:04:10.0您宿舍(编号: 190815001313)的电费仅剩13.09元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 Test--<b>Hello World</b> 发送到 2531667489@qq.com
+已完成任务：将 Test--Hello World 发送到 2531667489@qq.com
+已完成任务：将 Test--Hello World 发送到 2531667489@qq.com
+已完成任务：将 Test--Hello World 发送到 2531667489@qq.com
+已完成任务：将 Test--Hello World 发送到 2531667489@qq.com
+已完成任务：将 Test--Hello World 发送到 2531667489@qq.com
+已完成任务：将 Test--<b>Hello World</b> 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-12-13 03:03:44.0您宿舍(编号: 190815001313)的电费仅剩11.49元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-12-14 03:02:50.0您宿舍(编号: 190815001313)的电费仅剩9.6元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 104, in read_sql
+    monitor(dromNumber, mailto, proxy)
+  File "elec_monitor_proxy.py", line 46, in monitor
+    data = json.loads(response.text)
+UnboundLocalError: local variable 'response' referenced before assignment
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-12-16 03:03:01.0您宿舍(编号: 190815001313)的电费仅剩5.1元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-12-16 03:03:01.0您宿舍(编号: 190815001313)的电费仅剩5.1元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 123, in read_sql
+    monitor(dromNumber, mailto, proxy)
+  File "elec_monitor_proxy.py", line 56, in monitor
+    write_to_json(drom_num, surplus_time, surplus)
+NameError: name 'drom_num' is not defined
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001319)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 123, in read_sql
+    monitor(dromNumber, mailto, proxy)
+  File "elec_monitor_proxy.py", line 56, in monitor
+    write_to_json(drom_num, surplus_time, surplus)
+NameError: name 'drom_num' is not defined
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001313)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 123, in read_sql
+    monitor(dromNumber, mailto, proxy)
+  File "elec_monitor_proxy.py", line 45, in monitor
+    data = json.loads(response.text)
+UnboundLocalError: local variable 'response' referenced before assignment
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 电费监视系统异常--读取-监视部分出现错误(宿舍编号: 190815001319)：<pre>Traceback (most recent call last):
+  File "elec_monitor_proxy.py", line 123, in read_sql
+    monitor(dromNumber, mailto, proxy)
+  File "elec_monitor_proxy.py", line 45, in monitor
+    data = json.loads(response.text)
+UnboundLocalError: local variable 'response' referenced before assignment
+</pre> 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-12-21 03:02:32.0您宿舍(编号: 190815001319)的电费仅剩13.94元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-12-22 03:02:28.0您宿舍(编号: 190815001319)的电费仅剩12.78元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2023-12-23 03:02:29.0您宿舍(编号: 190815001319)的电费仅剩11.46元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-07 03:03:33.0您宿舍(编号: 190815001313)的电费仅剩12.59元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-07 03:03:11.0您宿舍(编号: 190815001319)的电费仅剩5.55元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-08 03:03:48.0您宿舍(编号: 190815001313)的电费仅剩11.27元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-08 03:03:09.0您宿舍(编号: 190815001319)的电费仅剩5.12元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-09 03:03:45.0您宿舍(编号: 190815001313)的电费仅剩10.09元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-09 03:02:39.0您宿舍(编号: 190815001319)的电费仅剩4.74元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-12 03:07:02.0您宿舍(编号: 190815001313)的电费仅剩6.48元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-12 03:06:17.0您宿舍(编号: 190815001319)的电费仅剩3.51元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-14 03:02:47.0您宿舍(编号: 190815001313)的电费仅剩4.61元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-14 03:02:32.0您宿舍(编号: 190815001319)的电费仅剩2.6元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-16 03:04:29.0您宿舍(编号: 190815001313)的电费仅剩4.08元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-16 03:03:46.0您宿舍(编号: 190815001319)的电费仅剩1.6元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-16 03:04:29.0您宿舍(编号: 190815001313)的电费仅剩4.08元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-19 03:06:21.0您宿舍(编号: 190815001319)的电费仅剩0.59元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-16 03:04:29.0您宿舍(编号: 190815001313)的电费仅剩4.08元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-20 03:05:11.0您宿舍(编号: 190815001319)的电费仅剩0.32元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-16 03:04:29.0您宿舍(编号: 190815001313)的电费仅剩4.08元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-21 03:10:11.0您宿舍(编号: 190815001319)的电费仅剩0.04元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 576245041@qq.com
+已完成任务：将 BUPT电费低警告--截至2024-01-16 03:04:29.0您宿舍(编号: 190815001313)的电费仅剩4.08元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2531667489@qq.com

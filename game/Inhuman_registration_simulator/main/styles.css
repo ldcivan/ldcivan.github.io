@@ -1,0 +1,56 @@
+body {
+  background-color: #f8f8f8;
+}
+
+h1,
+h2,
+#error-message {
+  text-align: center;
+}
+
+#resultContainer {
+  margin-top: 3rem;
+}
+
+.announce,
+.challenge {
+  margin: 1rem;
+}
+
+.pagination-container {
+  text-align: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  background-color: #999;
+  color: #fff;
+  padding: 1px 6px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.pagination a.active {
+  background-color: #85D1FF;
+}
+
+.page-change {
+  margin: 0;
+  cursor: pointer;
+}
+
+.skip input {
+  width: 50px;
+}
+
+.no-show {
+  display: none;
+}

@@ -60,10 +60,11 @@ if (!isset($_SESSION['visited'])) {
               transition: all 0.5s ease-in-out;
             }
             
-            #overlay img {
+            #popupImg {
               max-width: 90%;
               max-height: 90%;
-              pointer-events: none;
+              /*pointer-events: none;*/
+              cursor: zoom-in;
               transition: all 0.5s ease-in-out;
               z-index: 10000;
             }
@@ -171,7 +172,7 @@ if (!isset($_SESSION['visited'])) {
         <div id="loading_l" class="mdui-overlay mdui-overlay-show" style="z-index: 3000;"></div>
         <div id="overlay">
            <span id="closeBtn">&times;</span>
-           <img id="popupImg" src="" alt="弹出图片">
+           <img id="popupImg" src="" alt="弹出图片" onclick="window.open(document.getElementById('popupImg').src, '_blank');">
            <p>正在加载 请稍后……<br>Now Loading……</p>
         </div>
 		<div class="mdui-drawer" id="left-drawer" style="z-index:3000;">
@@ -433,6 +434,9 @@ if (!isset($_SESSION['visited'])) {
 							</div>
 							<div class="showImg" src="//us.pro-ivan.com/imgbed/xing/xing45.jpg">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/xing/xing45.jpg!w200" src="/Ivanbg.png" alt="xing">
+							</div>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/xing/xing46.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/xing/xing46.jpg!w200" src="/Ivanbg.png" alt="xing">
 							</div>
 						</div>
 						<div class="mdui-panel-item-actions">
@@ -2085,6 +2089,26 @@ if (!isset($_SESSION['visited'])) {
 							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep175-9.jpg">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep175-9.jpg!w200" src="/Ivanbg.png" alt="creep">
 							</div>
+							<br>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep176-1.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep176-1.jpg!w200" src="/Ivanbg.png" alt="creep">
+							</div>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep176-2.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep176-2.jpg!w200" src="/Ivanbg.png" alt="creep">
+							</div>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep176-3.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep176-3.jpg!w200" src="/Ivanbg.png" alt="creep">
+							</div>
+							<br>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep177-1.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep177-1.jpg!w200" src="/Ivanbg.png" alt="creep">
+							</div>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep177-2.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep177-2.jpg!w200" src="/Ivanbg.png" alt="creep">
+							</div>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep177-3.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep177-3.jpg!w200" src="/Ivanbg.png" alt="creep">
+							</div>
 						</div>
 						<div id="btn3" class="mdui-panel-item-actions">
 							<button class="mdui-btn mdui-ripple" onclick="setTimeout(function(){document.getElementById('btn3').scrollIntoView({ block: 'end', behavior: 'smooth' });},400)" mdui-panel-item-close>收起</button>
@@ -3311,6 +3335,19 @@ if (!isset($_SESSION['visited'])) {
 							</div>
 							<div class="showImg" src="//us.pro-ivan.com/imgbed/agm/agm97-3.jpg">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm97-3.jpg!w200" src="/Ivanbg.png" alt="agm">
+							</div>
+							<br>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/agm/agm98-1.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm98-1.jpg!w200" src="/Ivanbg.png" alt="agm">
+							</div>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/agm/agm98-2.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm98-2.jpg!w200" src="/Ivanbg.png" alt="agm">
+							</div>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/agm/agm98-3.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm98-3.jpg!w200" src="/Ivanbg.png" alt="agm">
+							</div>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/agm/agm98-4.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm98-4.jpg!w200" src="/Ivanbg.png" alt="agm">
 							</div>
 						</div>
 						<div id="btn5" class="mdui-panel-item-actions">

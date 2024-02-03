@@ -63,10 +63,7 @@ if(!isset($_SESSION['recheck'])){
 ?>
 <div id="footer">
     <?php
-        if(isset($_COOKIE["log"]) != 1){
-            header("refresh:0;url=/passport/passgive.php?close=yes");
-        }
-        elseif(isset($_COOKIE["passport"]) == FALSE){
+        if(isset($_COOKIE["passport"]) == FALSE){
             setcookie("passport", "by9X45eN7UMI0o75CR9t65eX7cvB88C98ny74bU8C74Xw577N9j", time( )+86400*30, "/", $_SERVER['SERVER_NAME']);
             if($type == 0){
                 setcookie("type", "0", time( )+86400*30, "/", $_SERVER['SERVER_NAME']);

@@ -628,7 +628,7 @@
                 var fans_nodes = fans_node(fans, 7);
                 if (fans_nodes.length != 0) {
                     if (fans_nodes[fans_nodes.length-1][0]==true){
-                        document.getElementById('congratulate').innerHTML = `<h3 id="congratulate_text" style="margin-left:10px; margin-right: 10px; display: inline-block;">恭喜 ${name} 于${fans_nodes[fans_nodes.length-1][2].split(" ")[0]}*达成 ${fans_nodes[fans_nodes.length-1][1]} 粉丝成就！</h3>`;
+                        document.getElementById('congratulate').innerHTML = `<h3 id="congratulate_text" style="margin-left:10px; margin-right: 10px; display: inline-block;">恭喜 ${name} 于${fans_nodes[fans_nodes.length-1][2].split(" ")[0]}**达成 ${fans_nodes[fans_nodes.length-1][1]} 粉丝成就！</h3>`;
                         document.getElementById('congratulate').style.display = 'block'; 
                     }
                 }

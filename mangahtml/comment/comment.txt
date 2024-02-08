@@ -1,3 +1,8 @@
+User_Name 6
+ Comment  不错
+  Time.   2024-02-05 18:57:10(UTC+8) 发自浙江省
+  Page.   new-comic.php
+---------
 User_Name 疯某
  Comment  虫，还好，还行，还能
   Time.   2023-12-07 02:34:53(UTC+8) 发自山东省

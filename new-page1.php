@@ -3349,6 +3349,9 @@ if (!isset($_SESSION['visited'])) {
 							<div class="showImg" src="//us.pro-ivan.com/imgbed/agm/agm98-4.jpg">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm98-4.jpg!w200" src="/Ivanbg.png" alt="agm">
 							</div>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/agm/agm99.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm99.jpg!w200" src="/Ivanbg.png" alt="agm">
+							</div>
 						</div>
 						<div id="btn5" class="mdui-panel-item-actions">
 							<button class="mdui-btn mdui-ripple" onclick="setTimeout(function(){document.getElementById('btn5').scrollIntoView({ block: 'end', behavior: 'smooth' });},400)" mdui-panel-item-close>收起</button>

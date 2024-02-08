@@ -254,7 +254,7 @@
     		                <div id="level-box" class="level-box">
                               <span id="level-text" class="level-text">Lv0</span>
                             </div>
-    		                <div id="uid-str" style="margin-left:10px; display: inline-block; color: gray;" mdui-tooltip="{content: '单击以复制uid'}" onclick="navigator.clipboard.writeText(this.textContent.replace('UID: ', ''));alert('已复制uid到剪切板');">UID: 0</div>
+    		                <div id="uid-str" style="margin-left:10px; display: inline-block; color: gray; cursor: pointer;" mdui-tooltip="{content: '单击以复制uid'}" onclick="navigator.clipboard.writeText(this.textContent.replace('UID: ', ''));alert('已复制uid到剪切板');">UID: 0</div>
                             <div id="official_verify" class="mdui-typo-body-3-opacity" style="margin-left:10px; margin-right:10px;"><i class="mdui-list-item-icon mdui-icon material-icons">error</i>&nbsp;输入id才看得到观测记录哦~</div>
     		            </div>
 		            </div>
@@ -617,11 +617,12 @@
                             else {
                               result = [false, thresholds[i], timeNode.toLocaleString().replace('T', ' ').replaceAll('/','-').split('.')[0]];
                             }
+                            if (JSON.stringify(result)=='[]') {console.log('fans_node calculate skip')}
+                            else {results.push(result);}
                           }
                         }
-                        if (JSON.stringify(result)=='[]') {console.log('fans_node calculate skip')}
-                        else {results.push(result);}
                     }
+                    console.log(results);
                     return results;
                 }
                 
@@ -647,9 +648,9 @@
                     
                       // Find the record from one day ago
                       let dayAgo = [];
-                      for (let j = i-time-2<0?0:i-time-2; j < data.length; j++) {
-                        let timeDiff = Math.abs(new Date(record[0].replace(' ', 'T')) - new Date(data[j][0].replace(' ', 'T'))); //iPadOS似乎不支持Date(x-x-x x:x:x)，但支持(x-x-xTx:x:x)
-                        if (timeDiff <= (0.5*(time*24*60*60*1000) + 4*60*60*1000)) {
+                      for (let j = i; j >= 0; j--) {
+                        let timeDiff = new Date(record[0].replace(' ', 'T')) - new Date(data[j][0].replace(' ', 'T'));//iPadOS似乎不支持Date(x-x-x x:x:x)，但支持(x-x-xTx:x:x)
+                        if (timeDiff >= -4*60*60*1000 && timeDiff <= (1*(time*24*60*60*1000) + 4*60*60*1000)) {
                             dayAgo.push(data[j][1]);
                         }
                         else if(dayAgo.length!==0) {

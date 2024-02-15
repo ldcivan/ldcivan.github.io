@@ -10,29 +10,29 @@
 
 <pre>
 # GitHub520 Host Start
-140.82.114.26                 alive.github.com
-140.82.114.6                  api.github.com
-185.199.110.153               assets-cdn.github.com
-185.199.110.133               avatars.githubusercontent.com
+140.82.113.26                 alive.github.com
+140.82.113.5                  api.github.com
+185.199.111.153               assets-cdn.github.com
+185.199.109.133               avatars.githubusercontent.com
 185.199.109.133               avatars0.githubusercontent.com
 185.199.109.133               avatars1.githubusercontent.com
 185.199.109.133               avatars2.githubusercontent.com
-185.199.110.133               avatars3.githubusercontent.com
-185.199.110.133               avatars4.githubusercontent.com
+185.199.109.133               avatars3.githubusercontent.com
+185.199.109.133               avatars4.githubusercontent.com
 185.199.109.133               avatars5.githubusercontent.com
-185.199.110.133               camo.githubusercontent.com
-140.82.114.21                 central.github.com
+185.199.109.133               camo.githubusercontent.com
+140.82.112.21                 central.github.com
 185.199.109.133               cloud.githubusercontent.com
-140.82.112.9                  codeload.github.com
-140.82.114.22                 collector.github.com
+140.82.112.10                 codeload.github.com
+140.82.113.22                 collector.github.com
 185.199.109.133               desktop.githubusercontent.com
-185.199.110.133               favicons.githubusercontent.com
+185.199.109.133               favicons.githubusercontent.com
 140.82.113.4                  gist.github.com
-52.217.87.188                 github-cloud.s3.amazonaws.com
-52.217.201.177                github-com.s3.amazonaws.com
-52.217.202.105                github-production-release-asset-2e65be.s3.amazonaws.com
-52.217.45.76                  github-production-repository-file-5c1aeb.s3.amazonaws.com
-52.216.204.227                github-production-user-asset-6210df.s3.amazonaws.com
+52.217.72.76                  github-cloud.s3.amazonaws.com
+16.182.69.57                  github-com.s3.amazonaws.com
+52.216.51.25                  github-production-release-asset-2e65be.s3.amazonaws.com
+52.217.125.185                github-production-repository-file-5c1aeb.s3.amazonaws.com
+52.217.117.129                github-production-user-asset-6210df.s3.amazonaws.com
 192.0.66.2                    github.blog
 140.82.113.3                  github.com
 140.82.113.18                 github.community
@@ -50,7 +50,7 @@
 13.107.253.40                 vscode.dev
 20.221.80.166                 copilot-proxy.githubusercontent.com
 
-# Update time: 2024-02-08T04:07:55+08:00
+# Update time: 2024-02-15T01:28:24+08:00
 # Update url: https://pro-ivan.com/api/github520/hosts
 # Star author: https://github.com/521xueweihan/GitHub520
 # This is a back-up from Pro-ivan.com
@@ -59,7 +59,7 @@
 
 </pre>
 
-<br>该内容会自动定时更新， 数据更新时间：2024-02-08T04:07:55+08:00<br>
+<br>该内容会自动定时更新， 数据更新时间：2024-02-15T01:28:24+08:00<br>
 
 <h5>1.1.2 修改 hosts 文件</h5>
 

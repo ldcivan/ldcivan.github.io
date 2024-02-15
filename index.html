@@ -39,19 +39,19 @@
 	</script>
 
     </head>
-    <body style="text-align:center;margin: 0 0;">
+    <body>
+        <div id="bg" style="text-align:center;margin: 0 0;top:0;bottom:0;left:0;right:0;position:fixed;"></div>
         <!--<div class="video" id="video" style ="position: absolute; z-index: -1; top: 0px; left: 0px; bottom: 0px; right: 0px; overflow: hidden; background-size: cover; background-color: transparent; background-repeat: no-repeat; background-position: 50% 50%; background-image: none;">
         
         <source  src="" type="image/webp" />
         
         </div>-->
-        
         <script type="text/JavaScript">
-        //var imgArr = ['2024springfes.png'];
-        var imgArr = ['star.webp','ruma.webp','king.webp','220625假面-1.webp','220625假面-2.webp','220609转生林檎.webp'];
+        var imgArr = ['2024springfes.png'];
+        //var imgArr = ['star.webp','ruma.webp','king.webp','220625假面-1.webp','220625假面-2.webp','220609转生林檎.webp'];
         var index = Math.floor((Math.random()*imgArr.length));
         var imgSrc = imgArr[index];
-        document.write('<style>body{margin: 0;background: url("//us.pro-ivan.com/imgbed/cover/'+imgSrc+'") white center top no-repeat;background-size: cover;}</style>');
+        document.write('<style>#bg{background: url("//us.pro-ivan.com/imgbed/cover/'+imgSrc+'") white center center no-repeat;background-size: cover;}</style>');
         </script>
         
         

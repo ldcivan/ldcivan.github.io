@@ -26,6 +26,7 @@
               display: inline-block;
               text-align: center;
               margin-left: 10px;
+              margin-bottom: 0.67em;
             }
             
             .level-text {
@@ -76,18 +77,6 @@
             }
         
         </style>
-		<script>
-		window.onload = function() {
-		    setTimeout(function() {
-        		if(document.getElementById('result_box')){
-                    document.getElementById('result_box').scrollIntoView({ block: 'end', behavior: 'smooth' });
-                }
-                else if(document.getElementById('chart_box')){
-                    document.getElementById('chart_box').scrollIntoView({ block: 'end', behavior: 'smooth' })
-                }
-		    }, 400);
-		}
-        </script>
 		<script src="/new-js/echarts.min.js"></script>
 		<script>
             function getAverageColor(img) {
@@ -254,7 +243,7 @@
     		                <div id="level-box" class="level-box">
                               <span id="level-text" class="level-text">Lv0</span>
                             </div>
-    		                <div id="uid-str" style="margin-left:10px; display: inline-block; color: gray; cursor: pointer;" mdui-tooltip="{content: '单击以复制uid'}" onclick="navigator.clipboard.writeText(this.textContent.replace('UID: ', ''));alert('已复制uid到剪切板');">UID: 0</div>
+    		                <div id="uid-str" style="margin-left:10px; display: inline-block; color: gray; cursor: pointer; margin-bottom: 0.67em;" mdui-tooltip="{content: '单击以复制uid'}" onclick="navigator.clipboard.writeText(this.textContent.replace('UID: ', ''));alert('已复制uid到剪切板');">UID: 0</div>
                             <div id="official_verify" class="mdui-typo-body-3-opacity" style="margin-left:10px; margin-right:10px;"><i class="mdui-list-item-icon mdui-icon material-icons">error</i>&nbsp;输入id才看得到观测记录哦~</div>
     		            </div>
 		            </div>
@@ -1013,11 +1002,21 @@
                 }
                 reload_chart(); //重载以加载视图内最高最低点
             }, 250);}
-            window.addEventListener('resize', function() {
+            window.addEventListener('resize', function() {setTimeout(function() {
                 if(typeof(myChart)!="undefined"){
                     myChart.resize();
                 }
-            });
+            },500)});
             }
+            
+            setTimeout(function() {
+                if(document.getElementById('result_box')){
+                    document.getElementById('result_box').scrollIntoView({ block: 'end', behavior: 'smooth' });
+                }
+                else if(document.getElementById('chart_box')){
+                    document.getElementById('chart_box').scrollIntoView({ block: 'end', behavior: 'smooth' })
+                }
+            }, 500)
+                
 		</script>
 </html>

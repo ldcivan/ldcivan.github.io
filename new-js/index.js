@@ -243,8 +243,8 @@ document.write(newText);
 //节日祝福设置
 var holidayWishes = [
   { date: "01-01", message: "祝元旦快乐！", cookieName: "new-year-wish-received" }, // 元旦
-  { date: "02-10", message: "祝除夕快乐，希望来年也能多多支持！", cookieName: "chinese-new-year-eve-wish-received" }, // 春节
-  { date: "02-11", message: "祝春节快乐！", cookieName: "chinese-new-year-wish-received" }, // 春节
+  { date: "02-09", message: "祝除夕快乐，希望来年也能多多支持！", cookieName: "chinese-new-year-eve-wish-received" }, // 春节
+  { date: "02-10", message: "祝春节快乐！", cookieName: "chinese-new-year-wish-received" }, // 春节
   { date: "04-05", message: "祝清明节安康！", cookieName: "qingming-festival-wish-received" }, // 清明节
   { date: "05-01", message: "祝劳动节快乐！", cookieName: "labor-day-wish-received" }, // 劳动节
   { date: "05-04", message: "祝青年节快乐！", cookieName: "youth-day-wish-received" }, // 青年节

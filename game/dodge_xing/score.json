@@ -922,5 +922,19 @@
         "density": 25,
         "ifpc": false,
         "token": "65c244523031f"
+    },
+    {
+        "name": "\u9178\u6da9",
+        "score": "5.011",
+        "density": 25,
+        "ifpc": false,
+        "token": "65c987483416c"
+    },
+    {
+        "name": "\u745f\u745fyuzhong",
+        "score": "6.129",
+        "density": 25,
+        "ifpc": false,
+        "token": "65c987e82579a"
     }
 ]

@@ -453,7 +453,7 @@ if (!isset($_SESSION['visited'])) {
 					<div class="mdui-panel-item-body">
 						<div id="child3" style="">
 							<center>
-								<font color="grey">如有条件请务必在<div class="showImg" src="https://afdian.net/@Creep1117" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">爱发电</div>支持苦怕佬！(那边有无码原图)</font>
+								<font color="grey">如有条件请务必在<a href="https://art.drblack-system.com/circle/creep" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">锦里画作室</a>支持苦怕佬！(那边有无码原图)</font>
 							</center>
 							<br>
 							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep1.jpg">
@@ -2100,10 +2100,11 @@ if (!isset($_SESSION['visited'])) {
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep176-3.jpg!w200" src="/Ivanbg.png" alt="creep">
 							</div>
 							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep178-1.jpg">
-								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep177-1.jpg!w200" src="/Ivanbg.png" alt="creep">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep178-1.jpg!w200" src="/Ivanbg.png" alt="creep">
 							</div>
 							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep178-2.jpg">
-								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep177-2.jpg!w200" src="/Ivanbg.png" alt="creep">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep178-2.jpg!w200" src="/Ivanbg.png" alt="creep">
+							</div>
 							<br>
 							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep177-1.jpg">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep177-1.jpg!w200" src="/Ivanbg.png" alt="creep">
@@ -2115,7 +2116,17 @@ if (!isset($_SESSION['visited'])) {
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep177-3.jpg!w200" src="/Ivanbg.png" alt="creep">
 							</div>
 							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep178-3.jpg">
-								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep177-3.jpg!w200" src="/Ivanbg.png" alt="creep">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep178-3.jpg!w200" src="/Ivanbg.png" alt="creep">
+							</div>
+							<br>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep179-1.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep179-1.jpg!w200" src="/Ivanbg.png" alt="creep">
+							</div>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep179-2.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep179-2.jpg!w200" src="/Ivanbg.png" alt="creep">
+							</div>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep179-3.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep179-3.jpg!w200" src="/Ivanbg.png" alt="creep">
 							</div>
 						</div>
 						<div id="btn3" class="mdui-panel-item-actions">
@@ -2132,7 +2143,7 @@ if (!isset($_SESSION['visited'])) {
 					<div class="mdui-panel-item-body">
 						<div id="child4" style="">
 							<center>
-								<font color="grey">如有条件请务必在<div class="showImg" src="https://binitles.fanbox.cc/" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">Fanbox</div>或<div class="showImg" src="https://www.patreon.com/BIInitels" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">Patreon</div>支持冰宫大大大！(那边有无码原图)</font>
+								<font color="grey">如有条件请务必在<a href="https://binitles.fanbox.cc/" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">Fanbox</a>或<a href="https://www.patreon.com/BIInitels" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">Patreon</a>支持冰宫大大大！(那边有无码原图)</font>
 							</center>
 							<br>
 							<div class="showImg" src="//us.pro-ivan.com/imgbed/binggong/binggong1-1.jpg">
@@ -2562,7 +2573,7 @@ if (!isset($_SESSION['visited'])) {
 					<div class="mdui-panel-item-body">
 						<div id="child5" style="">
 							<center>
-								<font color="grey">如有条件请务必在<div class="showImg" src="https://agm94786.fanbox.cc" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">Fanbox</div>支持阿戈魔老师！(那边有无码原图)</font>
+								<font color="grey">如有条件请务必在<a href="https://agm94786.fanbox.cc" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">Fanbox</a>支持阿戈魔老师！(那边有无码原图)</font>
 							</center>
 							<br>
 							<div class="showImg" src="//us.pro-ivan.com/imgbed/agm/agm1-1.jpg">
@@ -3370,6 +3381,7 @@ if (!isset($_SESSION['visited'])) {
 						</div>
 					</div>
 				</div>
+				
 			</div>
 			
 		</div>

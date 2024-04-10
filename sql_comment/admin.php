@@ -22,8 +22,8 @@
 session_start();
 if(!isset($_SESSION['comment_auth'])||$_SESSION['comment_auth']!==true){
     // 设置有效的用户名和密码
-    $validUsername = 'admin';
-    $validPassword = 'Ldc123456';
+    $validUsername = 'yujionako';
+    $validPassword = 'Ldc020321';
     
     // 检查表单提交
 

@@ -43,6 +43,7 @@ if (!isset($_SESSION['visited'])) {
             arr[11] = "11.jpg!w1250";
             arr[12] = "12.jpg!w1250";
             arr[13] = "13.jpg!w1250";
+            var title = 'Foorina_renard';
             var index = 0;
 	    function var2pass() {
             	document.getElementById('textfield').value = index+1;}
@@ -79,7 +80,7 @@ if (!isset($_SESSION['visited'])) {
                 }
 		else
 		    return;
-                this.src = 'http://us.pro-ivan.com/imgbed/manga/Foorina_renard/'+arr[index];//路径！！！！！！！！
+                this.src = 'http://us.pro-ivan.com/imgbed/manga/'+title+'/'+arr[index];//路径！！！！！！！！
 		document.getElementById('textfield').value = index+1;
 		document.getElementById('textfield2').value = index+1;
 		document.getElementById('bigimg').scrollIntoView({ block: 'start', behavior: 'smooth' });
@@ -89,12 +90,12 @@ if (!isset($_SESSION['visited'])) {
 	function turnpage() {
     	    index = document.getElementById('textfield').value-1;
 	    document.getElementById('textfield2').value = index+1;
-	    bigimg.src = 'http://us.pro-ivan.com/imgbed/manga/Foorina_renard/'+arr[index];
+	    bigimg.src = 'http://us.pro-ivan.com/imgbed/manga/'+title+'/'+arr[index];
 	    document.getElementById('bigimg').scrollIntoView({ block: 'start', behavior: 'smooth' });}//路径！！！！！！！！
 	function turnpage2() {
     	    index = document.getElementById('textfield2').value-1;
 	    document.getElementById('textfield').value = index+1;
-	    bigimg.src = 'http://us.pro-ivan.com/imgbed/manga/Foorina_renard/'+arr[index];
+	    bigimg.src = 'http://us.pro-ivan.com/imgbed/manga/'+title+'/'+arr[index];
 	    document.getElementById('bigimg').scrollIntoView({ block: 'start', behavior: 'smooth' });}//路径！！！！！！！！
 
         </script>

@@ -50,7 +50,7 @@ if(isset($_POST['password']) && $_POST['password'] == 'yujionako'){
     header('location:'.$url);
 }
 if(!isset($_SESSION['recheck'])){
-    setcookie("log", "1", time( )+86400*30, "/", $_SERVER['SERVER_NAME']);
+    setcookie("log", "1", time( )+86400*30, "/", $_SERVER['HTTP_HOST']);
     exit('<div id="divcss"><center>
         <img src="/Ivan.png" width=30%><br><br>
         <form method="post">
@@ -63,17 +63,17 @@ if(!isset($_SESSION['recheck'])){
 ?>
 <div id="footer">
     <?php
-        if(isset($_COOKIE["passport"]) == FALSE){
-            setcookie("passport", "by9X45eN7UMI0o75CR9t65eX7cvB88C98ny74bU8C74Xw577N9j", time( )+86400*30, "/", $_SERVER['SERVER_NAME']);
+        if(isset($_COOKIE["passport"]) === FALSE){
+            setcookie("passport", "by9X45eN7UMI0o75CR9t65eX7cvB88C98ny74bU8C74Xw577N9j", time( )+86400*30, "/", $_SERVER['HTTP_HOST']);
             if($type == 0){
-                setcookie("type", "0", time( )+86400*30, "/", $_SERVER['SERVER_NAME']);
+                setcookie("type", "0", time( )+86400*30, "/", $_SERVER['HTTP_HOST']);
             }
             if($type == 1){
-                setcookie("type", "x3X43W547897bM89I54c656drS6f5C6ju7v678f64bynUn8ONU98p", time( )+86400*30, "/", $_SERVER['SERVER_NAME']);
+                setcookie("type", "x3X43W547897bM89I54c656drS6f5C6ju7v678f64bynUn8ONU98p", time( )+86400*30, "/", $_SERVER['HTTP_HOST']);
             }
         }
     ?>
-    <a href="<?php if(isset($_SESSION['comeFrom']))echo $_SESSION['comeFrom']; else $_SESSION['passcomeFrom']; ?>"><font color="#FFFFFF">已添加通行证，点击此处安全退出本页面</font></a>
+    <a href="<?php if(isset($_SESSION['passcomeFrom']))echo $_SESSION['passcomeFrom']; else $_SESSION['comeFrom']; ?>"><font color="#FFFFFF">已添加通行证，点击此处安全退出本页面</font></a>
 </div>
 </body>
 </html>

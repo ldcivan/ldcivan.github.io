@@ -1,19 +1,9 @@
 <?php
 session_start();
 //记录来自哪个界面
-if(strpos($_SERVER['HTTP_REFERER'], "process.php") === false){
-    $current_page = 'http';
-    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
-        $current_page .= "s";
-    }
-    $current_page .= "://";
-    if ($_SERVER['SERVER_PORT'] != '80') {
-        $current_page .= $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . $_SERVER['REQUEST_URI'];
-    } else {
-        $current_page .= $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-    }
-    $_SESSION['comeFrom'] = $current_page;
-}
+$current_page = $_SERVER['REQUEST_URI'];
+$_SESSION['comeFrom'] = $current_page;
+
 if (!isset($_SESSION['visited'])) {
   header("Location:/antiBot/");
   exit();
@@ -82,6 +72,15 @@ if (!isset($_SESSION['visited'])) {
     	</script>
 	</head>
 	<body class="mdui-drawer-body-left mdui-theme-primary-light-blue">
+        <div id="loading_b" class="mdui-dialog mdui-dialog-open" style="display: block;position: fixed;top: 0px;left: 0px;right: 0px;bottom: 0px;margin: auto;max-height:23%;pointer-events: none;">
+	        <div class="mdui-dialog-title" style="pointer-events: none;">请知悉</div>
+            <div class="mdui-dialog-content" style="pointer-events: none;">本页面内的图片可能不适合在公开场合浏览，请留意您所在的场合<br>我们不会承担您在社会层面上的死亡风险</div>
+            <div class="mdui-dialog-actions" style="position: absolute; top: 0px; right: 20px;">
+                <span onclick="document.getElementById('loading_b').className='mdui-dialog';
+                document.getElementById('loading_l').className='mdui-overlay';" style="pointer-events: auto; cursor: pointer;color:gray;font-size:3.0em;">&times;</span>
+            </div>
+        </div>
+        <div id="loading_l" class="mdui-overlay mdui-overlay-show" style="z-index: 3000;"></div>
 		<div class="mdui-drawer" id="left-drawer" style="z-index:3000;">
 			<img src="./Ivan.svg" style="max-width: 100%; max-height: 100%;">
 			<ul class="mdui-list">

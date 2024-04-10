@@ -16,22 +16,39 @@ if (!$conn) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 获取表单数据
     $dromNumber = $_POST["dromNumber"];
+    $dromNumber = mysqli_real_escape_string($conn, $dromNumber);
     $email = $_POST["email"];
+    $email = mysqli_real_escape_string($conn, $email);
     
 
     // 将数据插入到数据库中
     if($email == '000@pro-ivan.cn' ){
         $sql = "DELETE FROM mytable WHERE dromNumber = ".$dromNumber;
         $email = "已清除对应邮箱";
-    }
-    else{
+    } else if ($email == '') {
+        $sql = "SELECT DISTINCT mailto FROM mytable WHERE dromNumber = '".$dromNumber."'";
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+            if(mysqli_num_rows($result) > 0) {
+                // 如果找到结果，则显示邮箱
+                $row = mysqli_fetch_assoc($result);
+                $searchemail = $row['mailto'];
+            } else {
+                // 如果未找到结果，则显示“未绑定过邮箱”
+                $searchemail = "未绑定过邮箱";
+            }
+        } else {
+            echo "查询失败，请重试！";
+        }
+        echo "查询到宿舍ID".$dromNumber."的绑定对象：".$searchemail;
+    } else{
         $sql = "REPLACE INTO mytable (dromNumber, mailto) VALUES ('$dromNumber', '$email')";
     }
 
-    if (mysqli_query($conn, $sql)) {
+    if ($email != '' && mysqli_query($conn, $sql)) {
         echo "数据插入成功";
         echo $dromNumber .'-->' .$email;
-    } else {
+    } else if ($email != '') {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
 }
@@ -168,8 +185,9 @@ mysqli_close($conn);
         <label for="email">邮箱：</label>
         <input name="email" id="email" type="email"><br><br>
         <input id="submit" type="submit" value="提交" style="display:none">
-        <button onclick="check(document.getElementById('email').value)" type="button">提交</button>
-        <button onclick="document.getElementById('email').value = '000@pro-ivan.cn';document.getElementById('submit').click()" type="button">清空宿舍对应的邮箱</button>
+        <button onclick="check(document.getElementById('email').value)" type="button">绑定邮箱到该宿舍</button>
+        <button onclick="document.getElementById('email').value = '';document.getElementById('submit').click()" type="button">查询该宿舍绑定的邮箱</button>
+        <button onclick="document.getElementById('email').value = '000@pro-ivan.cn';document.getElementById('submit').click()" type="button">清空该宿舍绑定的邮箱</button>
     </form>
     <script>
         function check(email){

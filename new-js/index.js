@@ -1,55 +1,3 @@
-/*
-document.write(`
-    <script src="/new-js/bandev.js"></script>
-    <script>
-      devtoolsDetector.addListener(function (isOpen, detail) {
-        console.log('isOpen', isOpen);
-
-        if (isOpen) {
-          document.head.innerHTML = "<meta charset='utf-8'>";
-          document.body.className = "";
-          document.body.innerHTML = "<div style='margin-left:15%;margin-right:15%;top:35%;position: fixed;'><img src='/Ivan.png' width=200px style='margin-left:-15px'><br><h1>你干嘛啊啊哈哟！！</h1><br><font color='grey'>Tips:后台有些东西不想让大家看到，所以没有需要的话就不要F12了</font></div>";
-          debugger;
-          location.reload();
-        }
-      });
-
-      devtoolsDetector.launch();
-    </script>
-    <!--
-          $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  
-           $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  
-               $$$$$$$$ 
-               $$$$$$$$      $$$$$$          $$$$$$$$$$       $$$$$$$        $$$$$
-               $$$$$$$$       $$$$$$        $$$$$$$$$$$$      $$$$$$$$       $$$$$ 
-               $$$$$$$$       $$$$$$        $$$$$$  $$$$$     $$$$$$$$$      $$$$$        
-               $$$$$$$$        $$$$$$      $$$$$$    $$$$$    $$$$$$$$$$$    $$$$$
-               $$$$$$$$         $$$$$$    $$$$$$      $$$$$   $$$$$ $$$$$$   $$$$$        
-               $$$$$$$$          $$$$$$  $$$$$$$$$$$$$$$$$$$  $$$$$  $$$$$$  $$$$$       
-               $$$$$$$$           $$$$$$$$$$$$$$$$$$$$$$$$$$$ $$$$$    $$$$$ $$$$$  
-               $$$$$$$$           $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     $$$$$$$$$$
-               $$$$$$$$            $$$$$$$$$$            $$$$$$$$$$      $$$$$$$$$ 
-               $$$$$$$$             $$$$$$$$              $$$$$$$$$        $$$$$$$
-               $$$$$$$$              $$$$$$                $$$$$$$$         $$$$$$ 
-               $$$$$$$$ 
-               $$$$$$$$   $$$$$$$  $$$$$$$$    $$$$$$   $$$$$$$  $$$$     $$$$$$  $$$$$$$$$       
-               $$$$$$$$   $$$  $$$ $$$  $$$$  $$$  $$$ $$$$$$$$ $$$$$$   $$$  $$  $$$$$$$$$       
-               $$$$$$$$   $$$  $$$ $$$   $$$ $$$   $$$    $$$   $$ $$$  $$$       $  $$$  $       
-               $$$$$$$$   $$$$$$$$ $$$$$$$$$ $$$   $$$    $$$  $$   $$  $$$    $     $$$          
-               $$$$$$$$   $$$$$$$  $$$$$$$    $$$ $$$$ $  $$$ $$$$$$$$$  $$$  $$     $$$         
-               $$$$$$$$   $$$   $$ $$$   $$$  $$$$$$$  $$$$$$ $$    $$$  $$$$$$$     $$$             
-               $$$$$$$$   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$         
-            $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-           $$$$$$$$$$$$$$$   
-    
-    WELCOME! MY FRIEND!!!
-    
-    Pro-Ivan All Right Reserve · ROID: 20211114s10001s41369525-cn
-    -->
-`);
-*/
-
-
 function alert(content, timeout){
     if (!timeout) timeout = 2500;
     mdui.snackbar({
@@ -293,3 +241,93 @@ setTimeout(function() {
     }
 }, 250);
 
+//切换图床
+function switchImgBed() {
+    let elements = document.querySelectorAll('[src*="us.pro-ivan."]:not([src*="!w"]), [href*="us.pro-ivan."]:not([href*="!w"]), [data-src*="us.pro-ivan."]:not([data-src*="!w"])');
+
+    elements.forEach(function(element) {
+        if (element.getAttribute('src')) {
+            if (element.getAttribute('src').includes('us.pro-ivan.com')) {
+                element.setAttribute('src', element.getAttribute('src').replace('us.pro-ivan.com', 'us.pro-ivan.cn')); console.log('switch uri');
+            } else {
+                element.setAttribute('src', element.getAttribute('src').replace('us.pro-ivan.cn', 'us.pro-ivan.com')); console.log('switch uri');
+            }
+        }
+        if (element.getAttribute('data-src')) {
+            if (element.getAttribute('data-src').includes('us.pro-ivan.com')) {
+                element.setAttribute('data-src', element.getAttribute('data-src').replace('us.pro-ivan.com', 'us.pro-ivan.cn')); console.log('switch uri');
+            } else {
+                element.setAttribute('data-src', element.getAttribute('data-src').replace('us.pro-ivan.cn', 'us.pro-ivan.com')); console.log('switch uri');
+            }
+        }
+        if (element.getAttribute('href')) {
+            if (element.getAttribute('href').includes('us.pro-ivan.com')) {
+                element.setAttribute('href', element.getAttribute('href').replace('us.pro-ivan.com', 'us.pro-ivan.cn')); console.log('switch uri');
+            } else {
+                element.setAttribute('href', element.getAttribute('href').replace('us.pro-ivan.cn', 'us.pro-ivan.com')); console.log('switch uri');
+            }
+        }
+    });
+}
+
+//测速
+function getLoadTime(url) {
+    return new Promise((resolve, reject) => {
+        const start = performance.now();
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                const end = performance.now();
+                resolve(end - start);
+            }
+        };
+        xhr.send();
+    });
+}
+
+Promise.all([getLoadTime('https://us.pro-ivan.cn/index.html'), getLoadTime('https://us.pro-ivan.com/index.html')])
+    .then(([time1, time2]) => {
+        if (time1 < time2) {
+            switchImgBed();
+            console.log(`选择us.pro-ivan.cn`);
+        } else {
+            console.log(`选择us.pro-ivan.com`);
+        }
+    })
+    .catch(error => {
+        console.error('发生错误：', error);
+    });
+
+
+
+console.log(`
+      $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  
+       $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  
+           $$$$$$$$ 
+           $$$$$$$$      $$$$$$          $$$$$$$$$$       $$$$$$$        $$$$$
+           $$$$$$$$       $$$$$$        $$$$$$$$$$$$      $$$$$$$$       $$$$$ 
+           $$$$$$$$       $$$$$$        $$$$$$  $$$$$     $$$$$$$$$      $$$$$        
+           $$$$$$$$        $$$$$$      $$$$$$    $$$$$    $$$$$$$$$$$    $$$$$
+           $$$$$$$$         $$$$$$    $$$$$$      $$$$$   $$$$$ $$$$$$   $$$$$        
+           $$$$$$$$          $$$$$$  $$$$$$$$$$$$$$$$$$$  $$$$$  $$$$$$  $$$$$       
+           $$$$$$$$           $$$$$$$$$$$$$$$$$$$$$$$$$$$ $$$$$    $$$$$ $$$$$  
+           $$$$$$$$           $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     $$$$$$$$$$
+           $$$$$$$$            $$$$$$$$$$            $$$$$$$$$$      $$$$$$$$$ 
+           $$$$$$$$             $$$$$$$$              $$$$$$$$$        $$$$$$$
+           $$$$$$$$              $$$$$$                $$$$$$$$         $$$$$$ 
+           $$$$$$$$ 
+           $$$$$$$$   $$$$$$$  $$$$$$$$    $$$$$$   $$$$$$$  $$$$     $$$$$$  $$$$$$$$$       
+           $$$$$$$$   $$$  $$$ $$$  $$$$  $$$  $$$ $$$$$$$$ $$$$$$   $$$  $$  $$$$$$$$$       
+           $$$$$$$$   $$$  $$$ $$$   $$$ $$$   $$$    $$$   $$ $$$  $$$       $  $$$  $       
+           $$$$$$$$   $$$$$$$$ $$$$$$$$$ $$$   $$$    $$$  $$   $$  $$$    $     $$$          
+           $$$$$$$$   $$$$$$$  $$$$$$$    $$$ $$$$ $  $$$ $$$$$$$$$  $$$  $$     $$$         
+           $$$$$$$$   $$$   $$ $$$   $$$  $$$$$$$  $$$$$$ $$    $$$  $$$$$$$     $$$             
+           $$$$$$$$   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$         
+        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$   
+
+WELCOME! MY FRIEND!!!
+
+Pro-Ivan All Right Reserve · ROID: 20211114s10001s41369525-cn
+`)

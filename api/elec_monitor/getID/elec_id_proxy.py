@@ -3,7 +3,7 @@ import json
 import time
 import traceback
 
-YOUR_COOKIE = '80gp61j42746jk0cv9oulhrm04'  # TODO: 在此处填写你登录https://app.bupt.edu.cn/后的cookie中的eai-sess的值
+YOUR_COOKIE = 'vr3ta5ok87d95148j0s65b4ns3'  # TODO: 在此处填写你登录https://app.bupt.edu.cn/后的cookie中的eai-sess的值
 if YOUR_COOKIE == '':
     YOUR_COOKIE = input('未填入cookie，请在此填写您cookie的eai-sess的值：')
 

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>原神，启动！</title>
+  <meta charset="utf-8">
+  <link id="icon" rel="shortcut icon" href="https://ys.mihoyo.com/main/favicon.ico"/>
+  <style>
+    @font-face {
+        font-family: HYWenHei;
+        src: url("https://pro-ivan.cn/GenshinStart/mini-HYWenHei-85W.ttf");
+        font-weight: normal;
+        font-style: normal;
+    }
+  
+    body {
+      font-family: HYWenHei;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: rgba(17, 22, 39, 1);
+    }
+    
+    #mask {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: linear-gradient(to top, rgba(17, 22, 39, 1) 15%, rgba(17, 22, 39, 0.6) 30%, rgba(17, 22, 39, 0) 40%);
+        z-index: 0;
+    }
+
+    #background {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+
+    #loading {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 10000;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+    
+    #loading-text {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    span.title-split-line {
+        width: 3px;
+        height: 28px;
+        background: #666;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+    
+    span.split-line {
+        width: 1px;
+        height: 28px;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+    
+    .inline-info {
+        margin-top: 10px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    
+    #header {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    
+    #logo {
+      max-width: 100%;
+      margin: 15px;
+    }
+    
+    #links {
+      padding: 20px;
+      bottom: 0px;
+    }
+    
+    .link-button {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 1em;
+      font-weight: 500;
+      border: 3px solid rgba(103, 132, 198, 1);
+      border-radius: 4px;
+      font-size: 16px;
+      text-decoration: none;
+      cursor: pointer;
+      color: #fff;
+      background-image: linear-gradient(to top right, rgba(62, 99, 163, 1) 10%, rgba(103, 132, 198, 1) 90%);
+      box-sizing: border-box;
+    }
+    
+    .link-button:hover {
+      border: 3px solid rgba(160, 200, 240, 1);
+      color: rgb(23,48,120);
+      background-image: linear-gradient(to top right, rgba(122, 170, 221, 1) 10%, rgba(178, 218, 246, 1) 90%);
+    }
+    
+    #footer {
+      position: absolute;
+      bottom: 0px;
+      font-size: 1em;
+      box-sizing: border-box;
+      width: 100%;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .link-button, .footer-advice, #mask, #header {
+      filter: hue-rotate(140deg); /* 色相调节，更改主题色用 */
+    }
+    
+    #background, #loading {
+      background-image: url(https://act-webstatic.mihoyo.com/puzzle/hk4e/pz_NJuStjB9Cj/resource/puzzle/2024/01/25/b1e1e0c81816f4c0718ed17027f58609_3336486431732661158.mp4?x-oss-process=video/snapshot,t_1);
+    }
+    
+    @media (max-width: 1024px) {
+        #background,#loading {
+            background-image: url(https://act-webstatic.mihoyo.com/puzzle/hk4e/pz_NJuStjB9Cj/resource/puzzle/2024/01/23/21de0af196d565960576c96dc7cb2629_1410335064164745527.png?x-oss-process=image/format,webp/quality,Q_90);
+        }
+    
+      .link-button {
+        font-size: 2em;
+        border-radius: 10px;
+        margin: 10px;
+        padding: 16px 32px;
+      }
+      #footer {
+          display: block;
+      }
+    }
+    
+  </style>
+</head>
+<body>
+  <div id="loading" style="display: block;">
+      <div id="loading-text">
+        <img src="https://act-webstatic.mihoyo.com/upload/contentweb/hk4e/b6b52488f3e37681298dceb2a928e271_4158568216432006478.png" width="150px">
+        <p style="font-family: HYWenHei;color:white;font-size:25px;">Now Loading...</p>
+      </div>
+  </div>
+  <div id="mask"></div>
+  <div id="background"></div>
+  <div id="header">
+    <div id="logo" style="display: flex; align-items: center;">
+        <h1><img src="https://act-webstatic.mihoyo.com/puzzle/hk4e/pz_e8KxQhR1VI/resource/puzzle/2023/10/24/60e7c7cfc7fff15b011dcf33ec5cb6d6_8483489000290539180.png?x-oss-process=image/format,webp" class="game-logo" alt=""></h1><h1 style="color:white;justify-content: center;display: flex;font-family: HYWenHei;text-shadow: 0px 5px 8px #444; ">，启动！</h1>             
+    </div>
+  </div>
+  
+  <div id="links">
+    <a id="cn-download" class="link-button" href="https://ys-api.mihoyo.com/event/download_porter/link/ys_cn/official/android_default" target="_blank">CN服务器</a>
+    <a id="global-download" class="link-button" href="https://app.adjust.com/z1j5457" target="_blank">Global Server</a>
+    <a class="link-button" href="https://ys.mihoyo.com/cloud" target="_blank">CN 云游戏</a>
+    <!-- 添加更多链接按钮 -->
+  </div>
+  <script>
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    var cn_dl = document.getElementById('cn-download');
+    var global_dl = document.getElementById('global-download');
+
+    if (!isMobile) {
+        cn_dl.href = 'https://ys-api.mihoyo.com/event/download_porter/link/ys_cn/official/pc_default';
+        global_dl.href = 'https://sg-public-api.hoyoverse.com/event/download_porter/trace/ys_global/genshinimpactpc/default?url=https%3A%2F%2Fgenshin.hoyoverse.com%2Fen%2Fhome%3Futm_source%3DHoYoverse%26utm_medium%3Dproducts';
+    }
+  </script>
+  
+  <div id="footer">
+    <div id="logo" style="display: flex; align-items: center;justify-content: center;">
+        <img src="https://webstatic.mihoyo.com/upload/event/2021/03/01/ed39ba943da56c88dec2b18f4bfb0a32_2315648370550091638.png" alt="">
+        <span class="title-split-line"></span>
+        <h1><img src="https://webstatic.mihoyo.com/bh3/upload/officialsites/201908/ys_1565764084_7084.png" class="game-logo" alt=""></h1>              
+    </div>
+    <div class="footer-info" style="display: flex; align-items: center; color: white;justify-content: center;">
+        <div class="footer-advice">
+            <p class="advice-info">抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。<br>适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。</p>
+            <div class="inline-info">                         
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=京公网安备 11011402012324号" rel="nofollow" class="footer-filing-item" target="_blank" style="text-decoration: none;color:white;pointer-events: pointer;">京公网安备11011402012324号</a>
+                <span class="split-line">|</span>
+                <a href="https://beian.miit.gov.cn/" rel="nofollow" class="footer-filing-item" target="_blank" style="text-decoration: none;color:white;pointer-events: pointer;">京ICP备2022003448号 - 1/2</a>
+            </div>
+            <div class="inline-info">                             
+                <span class="footer-filing-item" style="background-color:rgba(0,0,0,0)"> 沪网文〔2022〕1334-052号 </span>
+                <span class="split-line">|</span>
+                <span class="footer-filing-item" style="background-color:rgba(0,0,0,0)">国新出审【2019】2978号</span>
+            </div>
+            <div class="inline-info">                             
+                <span class="footer-filing-item" style="background-color:rgba(0,0,0,0)">© 2020 米哈游版权所有 上海米哈游影铁科技有限公司</span>
+                <span class="split-line">|</span>
+                <span class="footer-filing-item" style="background-color:rgba(0,0,0,0)">真有问题请联系miHoYo 客服电话：400-666-6312</span>
+            </div>
+        </div>
+    </div>
+  </div>
+  <script>
+      window.onload = function() {document.getElementById('loading').style.display='none';}
+  </script>
+</body>
+</html>

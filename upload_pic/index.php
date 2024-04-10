@@ -1,4 +1,10 @@
 <!doctype html>
+<?php
+session_start();
+//记录来自哪个界面
+$current_page = $_SERVER['REQUEST_URI'];
+$_SESSION['comeFrom'] = $current_page;
+?>
 <html lang="zh-cmn-Hans">
 	<head>
 		<meta charset="utf-8">
@@ -47,6 +53,15 @@
     	</script>
 	</head>
 	<body class="mdui-drawer-body-left mdui-theme-primary-light-blue mdui-theme-accent-light-blue">
+        <div id="loading_b" class="mdui-dialog mdui-dialog-open" style="display: block;position: fixed;top: 0px;left: 0px;right: 0px;bottom: 0px;margin: auto;max-height:23%;pointer-events: none;">
+	        <div class="mdui-dialog-title" style="pointer-events: none;">请知悉</div>
+            <div class="mdui-dialog-content" style="pointer-events: none;">本页面内的图片可能不适合在公开场合浏览，请留意您所在的场合<br>我们不会承担您在社会层面上的死亡风险</div>
+            <div class="mdui-dialog-actions" style="position: absolute; top: 0px; right: 20px;">
+                <span onclick="document.getElementById('loading_b').className='mdui-dialog';
+                document.getElementById('loading_l').className='mdui-overlay';" style="pointer-events: auto; cursor: pointer;color:gray;font-size:3.0em;">&times;</span>
+            </div>
+        </div>
+        <div id="loading_l" class="mdui-overlay mdui-overlay-show" style="z-index: 3000;"></div>
 		<div class="mdui-drawer" id="left-drawer" style="z-index:3000;">
 			<img src="/Ivan.svg" style="max-width: 100%; max-height: 100%;">
 			<ul class="mdui-list">
@@ -125,6 +140,9 @@
 				</a>
 				<a id="title" href="/new.html" class="mdui-typo-headline">Pro-Ivan数字库-图片查看</a>
 				<div class="mdui-toolbar-spacer"></div>
+				<a href="javascript:switchImgBed();alert('线路已切换');" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '切换图床线路'}">
+					<i class="mdui-icon material-icons">swap_horiz</i>
+				</a>
 				<a href="javascript:;" class="mdui-btn mdui-btn-icon" onclick="AddFavorite('http://pro-ivan.cn','Pro-Ivan')">
 					<i class="mdui-icon material-icons" mdui-tooltip="{content: '收藏本页'}">star</i>
 				</a>
@@ -134,7 +152,7 @@
 		    <div class="mdui-panel" style="margin-top:70px">
 		        <div class="mdui-panel-item">
 		            <div class="mdui-panel-item-header" style="pointer-events:none;">
-						<div class="mdui-panel-item-title"><b>最近上传的图片</b></div>
+						<div class="mdui-panel-item-title"><b>最近上传的图片</b><br><small>在链接上悬浮片刻可查看预览</small></div>
 						<div class="mdui-panel-item-summary"><button class="mdui-btn mdui-float-right mdui-color-theme mdui-text-color-white-text" style="pointer-events:auto;" onclick="window.open('/new-upload.html', '_self')">返回上传页面</button></div>
 					</div>
     		        <div class="mdui-panel-item-body" style="height:auto!important;">
@@ -178,7 +196,8 @@
         //for ($i = 0; $i < $length; $i++) {
         foreach ($res["files"] as $i => $value){
             if($res["files"][$i]["type"]=="N"){
-                print "<a href='//us.pro-ivan.com".$path.$res["files"][$i]["name"]."' target='_blank'>".$res["files"][$i]["name"]."</a><br>Update Time:".date("Y-m-d TH:i:s",$res["files"][$i]["time"])."<br>File Size:".number_format(($res["files"][$i]["size"]/1024),1)."kb<br>";
+                $pre_img = ' mdui-tooltip="{content: `<img '."src='//us.pro-ivan.com".$path.$res["files"][$i]["name"]."!w200'>`, delay: 600".'}"';
+                print "<a".$pre_img." href='//us.pro-ivan.com".$path.$res["files"][$i]["name"]."' target='_blank'>".$res["files"][$i]["name"]."</a><br>Update Time:".date("Y-m-d TH:i:s",$res["files"][$i]["time"])."<br>File Size:".number_format(($res["files"][$i]["size"]/1024),1)."kb<br>";
             }
         }
 	}

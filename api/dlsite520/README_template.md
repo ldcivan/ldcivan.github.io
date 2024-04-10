@@ -50,7 +50,7 @@ hosts 文件在每个系统的位置不一，详情如下：<br>
 
 · Type: <u>Remote</u><br>
 
-· URL: <u>https://pro-ivan.com/api/github520/hosts</u><br>
+· URL: <u>https://pro-ivan.com/api/dlsite520/hosts</u><br>
 
 · Auto Refresh: 最好选 <u>1 hour</u><br>
 

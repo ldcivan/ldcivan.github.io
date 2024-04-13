@@ -232,12 +232,10 @@ document.getElementById('footer').innerHTML = '<br><HR style="FILTER:alpha(opaci
 setTimeout(function() {
     if(document.getElementById('body').offsetWidth<=720&&document.getElementById('title').innerHTML.length>18){
         document.getElementById('title').style.fontSize  = '14px';
-    }
-    else{
-    
-        if(document.getElementById('body').offsetWidth<=720&&document.getElementById('title').innerHTML.length>14){
+    } else if (document.getElementById('body').offsetWidth<=720&&document.getElementById('title').innerHTML.indexOf("图库") != -1) {
+        document.getElementById('title').style.fontSize  = '16px';
+    } else if(document.getElementById('body').offsetWidth<=720&&document.getElementById('title').innerHTML.length>14) {
             document.getElementById('title').style.fontSize  = '18px';
-        }
     }
 }, 250);
 

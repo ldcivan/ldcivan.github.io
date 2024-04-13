@@ -10,8 +10,8 @@
 
 <pre>
 # GitHub520 Host Start
-140.82.114.25                 alive.github.com
-140.82.114.6                  api.github.com
+140.82.113.26                 alive.github.com
+140.82.113.6                  api.github.com
 185.199.111.153               assets-cdn.github.com
 185.199.109.133               avatars.githubusercontent.com
 185.199.109.133               avatars0.githubusercontent.com
@@ -25,13 +25,13 @@
 185.199.109.133               cloud.githubusercontent.com
 140.82.113.10                 codeload.github.com
 140.82.114.21                 collector.github.com
-185.199.109.133               desktop.githubusercontent.com
+185.199.111.133               desktop.githubusercontent.com
 185.199.109.133               favicons.githubusercontent.com
 140.82.112.3                  gist.github.com
-54.231.196.193                github-cloud.s3.amazonaws.com
-52.216.184.235                github-com.s3.amazonaws.com
-52.216.171.43                 github-production-release-asset-2e65be.s3.amazonaws.com
-54.231.202.249                github-production-repository-file-5c1aeb.s3.amazonaws.com
+3.5.11.209                    github-cloud.s3.amazonaws.com
+52.216.57.233                 github-com.s3.amazonaws.com
+52.217.205.185                github-production-release-asset-2e65be.s3.amazonaws.com
+3.5.10.233                    github-production-repository-file-5c1aeb.s3.amazonaws.com
 54.231.234.57                 github-production-user-asset-6210df.s3.amazonaws.com
 192.0.66.2                    github.blog
 140.82.114.3                  github.com
@@ -39,7 +39,7 @@
 185.199.108.154               github.githubassets.com
 151.101.193.194               github.global.ssl.fastly.net
 185.199.111.153               github.io
-185.199.109.133               github.map.fastly.net
+185.199.111.133               github.map.fastly.net
 185.199.111.153               githubstatus.com
 140.82.112.26                 live.github.com
 185.199.109.133               media.githubusercontent.com
@@ -49,7 +49,7 @@
 185.199.109.133               user-images.githubusercontent.com
 138.91.182.224                copilot-proxy.githubusercontent.com
 
-# Update time: 2024-04-10T14:06:34+08:00
+# Update time: 2024-04-13T13:32:35+08:00
 # Update url: https://pro-ivan.com/api/github520/hosts
 # Star author: https://github.com/521xueweihan/GitHub520
 # This is a back-up from Pro-ivan.com
@@ -58,7 +58,7 @@
 
 </pre>
 
-<br>该内容会自动定时更新， 数据更新时间：2024-04-10T14:06:34+08:00<br>
+<br>该内容会自动定时更新， 数据更新时间：2024-04-13T13:32:35+08:00<br>
 
 <h5>1.1.2 修改 hosts 文件</h5>
 

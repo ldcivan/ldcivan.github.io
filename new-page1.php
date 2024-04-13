@@ -29,6 +29,10 @@ if (!isset($_SESSION['visited'])) {
 		<style>
             .bottom { position: fixed; bottom: -700px; right: -800px; align:center;pointer-events: auto;z-index:2000;}
             .lazy { margin-top: 120px; margin-bottom: 120px; width: 100%; }
+            @media (max-width: 720px) {
+                .lazy { margin-top: 60px; margin-bottom: 60px;}
+            }
+            .shown  { width: 100%; }
 
             .showImg {
                 cursor: zoom-in;
@@ -2176,6 +2180,9 @@ if (!isset($_SESSION['visited'])) {
 							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep184.jpg">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep184.jpg!w200" src="/Ivanbg.png" alt="creep">
 							</div>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep186-1.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep186-1.jpg!w200" src="/Ivanbg.png" alt="creep">
+							</div>
 							<br>
 							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep185-1.jpg">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep185-1.jpg!w200" src="/Ivanbg.png" alt="creep">
@@ -2185,6 +2192,12 @@ if (!isset($_SESSION['visited'])) {
 							</div>
 							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep185-3.jpg">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep185-3.jpg!w200" src="/Ivanbg.png" alt="creep">
+							</div>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep186-2.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep186-2.jpg!w200" src="/Ivanbg.png" alt="creep">
+							</div>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep186-3.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep186-3.jpg!w200" src="/Ivanbg.png" alt="creep">
 							</div>
 						</div>
 						<div id="btn3" class="mdui-panel-item-actions">
@@ -4746,6 +4759,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro1-5.png">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro1-5.png!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro2-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro2-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -4761,6 +4775,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro2-5.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro2-5.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro2-6.png">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro2-6.png!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -4776,6 +4791,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro2-10.png">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro2-10.png!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro2-11.png">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro2-11.png!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -4785,6 +4801,13 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro3-1.png">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro3-1.png!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro5-1.png">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro5-1.png!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro5-2.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro5-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro4-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro4-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -4794,12 +4817,13 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro4-3.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro4-3.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
-                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro5-1.png">
-                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro5-1.png!w200" src="/Ivanbg.png" alt="maguro">
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro7-1.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro7-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
-                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro5-2.jpeg">
-                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro5-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro7-2.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro7-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro6-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro6-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -4809,15 +4833,10 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro6-3.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro6-3.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
-                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro7-1.jpeg">
-                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro7-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
-                            </div>
-                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro7-2.jpeg">
-                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro7-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
-                            </div>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro7-3.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro7-3.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro8-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro8-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -4830,6 +4849,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro9-1.png">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro9-1.png!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro10-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro10-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -4845,6 +4865,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro12-1.gif">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro12-1.gif!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro13-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro13-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -4854,6 +4875,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro13-3.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro13-3.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro14-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro14-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -4869,6 +4891,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro14-5.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro14-5.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro14-6.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro14-6.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -4878,6 +4901,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro14-8.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro14-8.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro15-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro15-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -4893,6 +4917,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro17-1.gif">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro17-1.gif!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro18-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro18-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -4908,6 +4933,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro20-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro20-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro21-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro21-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -4923,6 +4949,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro24-2.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro24-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro25-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro25-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -4935,6 +4962,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro28-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro28-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro29-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro29-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -4950,6 +4978,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro31-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro31-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro32-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro32-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -4965,6 +4994,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro33-2.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro33-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro34-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro34-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -4980,6 +5010,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro37-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro37-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro38-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro38-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -4992,6 +5023,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro40-2.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro40-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro41-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro41-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5010,6 +5042,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro44-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro44-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro45-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro45-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5022,6 +5055,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro47-2.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro47-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro48-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro48-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5037,6 +5071,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro51-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro51-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro52-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro52-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5049,6 +5084,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro55-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro55-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro56-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro56-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5064,6 +5100,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro59-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro59-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro60-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro60-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5079,6 +5116,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro64-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro64-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro65-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro65-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5094,6 +5132,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro67-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro67-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro68-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro68-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5109,6 +5148,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro71-2.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro71-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro72-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro72-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5121,6 +5161,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro74-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro74-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro75-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro75-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5136,6 +5177,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro76-3.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro76-3.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro77-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro77-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5148,6 +5190,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro80-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro80-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro81-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro81-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5160,6 +5203,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro81-4.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro81-4.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro83-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro83-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5175,6 +5219,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro87-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro87-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro88-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro88-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5184,6 +5229,13 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro90-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro90-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro92-1.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro92-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro93-1.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro93-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro91-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro91-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5196,15 +5248,10 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro91-4.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro91-4.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
-                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro92-1.jpeg">
-                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro92-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
-                            </div>
-                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro93-1.jpeg">
-                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro93-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
-                            </div>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro94-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro94-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro96-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro96-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5217,6 +5264,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro98-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro98-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro99-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro99-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5232,6 +5280,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro102-2.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro102-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro103-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro103-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5247,6 +5296,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro105-2.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro105-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro106-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro106-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5259,6 +5309,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro108-3.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro108-3.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro109-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro109-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5274,6 +5325,7 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro111-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro111-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro113-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro113-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
@@ -5289,11 +5341,21 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro114-4.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro114-4.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
+							<br>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro116-1.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro116-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro117.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro117.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro118-1.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro118-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro118-2.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro118-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro119.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro119.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
 						</div>
 						<div id="btn7" class="mdui-panel-item-actions">
@@ -5336,6 +5398,7 @@ if (!isset($_SESSION['visited'])) {
           const timeoutId = setTimeout(() => {
             img.src = img.dataset.src;
             img.classList.remove('lazy');
+            img.classList.add('shown');
             observer.unobserve(img);
             console.log('load')
           }, 1000);

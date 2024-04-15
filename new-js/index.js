@@ -140,27 +140,30 @@ function api() {
 function line_1() {
     //具体咋写，我不知道，域名跳转？
     alert('将跳转到pro-ivan.cn');
-    //window.location.href="http://pro-ivan.cn";
+    setTimeout(function() {
+        window.location.href="https://pro-ivan.cn";
+    }, 2500)
 }
 function line_2() {
     //具体咋写，我不知道，域名跳转？
     alert('将跳转到www.pro-ivan.cn');
-    //window.location.href="http://www.pro-ivan.cn";
+    setTimeout(function() {
+        window.location.href="https://www.pro-ivan.cn";
+    }, 2500)
 }
 function line_3() {
     //具体咋写，我不知道，域名跳转？
     alert('将跳转到pro-ivan.com');
-    //window.location.href="http://pro-ivan.com";
+    setTimeout(function() {
+        window.location.href="https://pro-ivan.com";
+    }, 2500)
 }
 function line_4() {
     //具体咋写，我不知道，域名跳转？
     alert('将跳转到www.pro-ivan.com');
-    //window.location.href="http://www.pro-ivan.com";
-}
-function line_5() {
-    //具体咋写，我不知道，域名跳转？
-    alert('作废项目');
-    //window.location.href="http://xingye.pro-ivan.com";
+    setTimeout(function() {
+        window.location.href="https://www.pro-ivan.com";
+    }, 2500)
 }
 
 // 动态添加meta资源https

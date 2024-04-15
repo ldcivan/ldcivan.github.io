@@ -23,6 +23,10 @@
 > 添加了一批接口与小功能，具体内容参照<a href="/api">Pro-Ivan的Api</a>
 <br>
 > 完善了bilibili粉丝观测姬的功能，具体内容参照<a href="/bilibili">哔哩哔哩粉丝观测</a>
+<br>
+> 增加图片资源的缩略图、懒加载，增加图库、图床的图片查看/预览
+<br>
+> 优化了图库的图片查看功能，增加了来自Cloudflare的图片资源线路及对应的自动线路选择器
 
 <hr>
 Tip：当加载过慢时，您可以切换线路:
@@ -32,5 +36,4 @@ Tip：当加载过慢时，您可以切换线路:
 	<button class="mdui-btn mdui-ripple mdui-color-theme mdui-text-color-white" onclick="line_2()">线路2</button>
 	<button class="mdui-btn mdui-ripple mdui-color-theme mdui-text-color-white" onclick="line_3()">线路3</button>
 	<button class="mdui-btn mdui-ripple mdui-color-theme mdui-text-color-white" onclick="line_4()">线路4</button>
-	<button class="mdui-btn mdui-ripple mdui-color-theme mdui-text-color-white" onclick="line_5()">线路5</button>
 </div>

@@ -31,7 +31,7 @@ def website_connection_test(url):
 
 # 获取IP地址列表
 def get_ip_addresses():
-    url = 'http://198.23.249.216:5010/all/?type=https'  # 替换为实际的API地址
+    url = 'http://proxypool.pro-ivan.com/all/?type=https'  # 替换为实际的API地址
     response = requests.get(url)
     if response.status_code == 200:
         ip_addresses = response.json()

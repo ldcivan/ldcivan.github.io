@@ -1,5 +1,5 @@
 #---------------------------------------------------#
-## 更新：2024-01-12 05:00:48
+## 更新：2024-05-19 15:58:19
 #---------------------------------------------------#
 
 # HTTP 代理端口
@@ -32,14 +32,9 @@ secret: ''
 
 
 proxies:
-  - {"name": "0#委内瑞拉_委内瑞拉__", "type": "http", "server": "190.6.23.218", "port":999, "skip-cert-verify": true}
-  - {"name": "1#越南_胡志明市__viettel.com.vn", "type": "http", "server": "115.77.60.83", "port":4000, "skip-cert-verify": true}
-  - {"name": "2#哈萨克斯坦_哈萨克斯坦__telecom.kz", "type": "http", "server": "95.56.254.139", "port":3128, "skip-cert-verify": true}
-  - {"name": "3#中国_河北_廊坊_联通", "type": "http", "server": "117.74.65.207", "port":8118, "skip-cert-verify": true}
-  - {"name": "4#越南_宁顺省__viettel.com.vn", "type": "http", "server": "27.70.170.114", "port":10006, "skip-cert-verify": true}
-  - {"name": "5#中国_河北_廊坊_联通", "type": "http", "server": "117.74.65.29", "port":8181, "skip-cert-verify": true}
-  - {"name": "6#中国_河北_廊坊_联通", "type": "http", "server": "117.74.65.215", "port":9443, "skip-cert-verify": true}
-  - {"name": "7#越南_平阳省__viettel.com.vn", "type": "http", "server": "171.227.213.254", "port":4002, "skip-cert-verify": true}
+  - {"name": "0#中国_宁夏_中卫_电信/联通/移动", "type": "http", "server": "52.82.123.144", "port":3128, "skip-cert-verify": true}
+  - {"name": "1#中国_香港__dimensionet.com", "type": "http", "server": "147.92.36.42", "port":3129, "skip-cert-verify": true}
+  - {"name": "2#匈牙利_匈牙利__upc.hu", "type": "http", "server": "178.48.68.61", "port":18080, "skip-cert-verify": true}
 
 
 proxy-groups:
@@ -47,14 +42,9 @@ proxy-groups:
   name: Proxy
   type: select
   proxies:
-    - '0#委内瑞拉_委内瑞拉__'
-    - '1#越南_胡志明市__viettel.com.vn'
-    - '2#哈萨克斯坦_哈萨克斯坦__telecom.kz'
-    - '3#中国_河北_廊坊_联通'
-    - '4#越南_宁顺省__viettel.com.vn'
-    - '5#中国_河北_廊坊_联通'
-    - '6#中国_河北_廊坊_联通'
-    - '7#越南_平阳省__viettel.com.vn'
+    - '0#中国_宁夏_中卫_电信/联通/移动'
+    - '1#中国_香港__dimensionet.com'
+    - '2#匈牙利_匈牙利__upc.hu'
 
 -
   name: Domestic

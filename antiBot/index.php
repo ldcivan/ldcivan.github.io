@@ -19,11 +19,12 @@ session_start();
 </head>
 <body>
     <h1>为了服务器的内容安全，我们不得不加入了简单的人机验证</h1>
-    <form method="post" action="process.php">
+    <form method="post" action="./process.php">
         <label for="captcha">请输入验证码：</label>
         <input type="text" name="captcha" id="captcha" />
-        <img src="./captcha.php" alt="验证码" />
+        <img id="captchaImg" src="./captcha.php" alt="验证码" />
         <input type="submit" value="提交" />
+        <button type="button" onclick="document.getElementById('captchaImg').src='./captcha.php';">刷新</button>
     </form>
 </body>
 </html>

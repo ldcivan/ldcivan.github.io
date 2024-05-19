@@ -124,7 +124,7 @@
 				<a href="javascript:;" mdui-drawer="{target: '#left-drawer'}" class="mdui-btn mdui-btn-icon">
 					<i class="mdui-icon material-icons">menu</i>
 				</a>
-				<a href="/new.html" class="mdui-typo-headline">Pro-Ivan数字库-建设中</a>
+				<a id="title" href="/new.html" class="mdui-typo-headline">Pro-Ivan数字库-建设中</a>
 				<div class="mdui-toolbar-spacer"></div>
 				<a href="javascript:AddFavorite('http://pro-ivan.cn','Pro-Ivan');" class="mdui-btn mdui-btn-icon">
 					<i class="mdui-icon material-icons" mdui-tooltip="{content: '收藏本页'}">star</i>

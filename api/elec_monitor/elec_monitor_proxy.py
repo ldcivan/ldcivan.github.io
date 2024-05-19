@@ -6,13 +6,13 @@ import traceback
 import mysql.connector
 
 base_url = "https://app.bupt.edu.cn/buptdf/wap/default/search"
-cookies = {'eai-sess': 'rug8ebtlavq0inpt496sinb544'}
+cookies = {'eai-sess': 'm5eftv45f93kng7r2hs04th4v0'}
 mail_url = "https://pro-ivan.com/api/e-mail/"
 
 
 def get_proxy():
     while True:
-        proxy = requests.get("http://198.23.249.216:5010/get/?type=https").json()
+        proxy = requests.get("http://proxypool.pro-ivan.com/get/?type=https").json()
         if proxy.get("https") == True:
             print(proxy, proxy.get("https"), '找到支持https的ip')
             break
@@ -29,14 +29,18 @@ def mail(mailto, drom_Number, surplus, surplus_time):
     print(mail_response.text)
 
 
-def monitor(drom_Number, mailto, proxy):
+def monitor(drom_Number, mailto, proxy = None):
     post_data = {'dromNumber': drom_Number}
     retry_count = 5
     msg = ""
     while retry_count > 0:
         try:
-            print("http://{}".format(proxy), base_url, post_data, cookies)
-            response = requests.post(base_url, data=post_data, cookies=cookies, proxies={"https": "http://{}".format(proxy)}, timeout=5)
+            if(proxy != None):
+                print("http://{}".format(proxy), base_url, post_data, cookies)
+                response = requests.post(base_url, data=post_data, cookies=cookies, proxies={"https": "http://{}".format(proxy)}, timeout=5)
+            else:
+                print("http://127.0.0.1", base_url, post_data, cookies)
+                response = requests.post(base_url, data=post_data, cookies=cookies)
             print(response.text)
             data = json.loads(response.text)
             msg = data["m"]
@@ -58,7 +62,8 @@ def monitor(drom_Number, mailto, proxy):
         time.sleep(1.2)
         return True
     else:
-        return False
+        proxy = get_proxy().get("proxy")
+        monitor(drom_Number, mailto, proxy)
         
 def write_to_json(drom_num, surplus_time, surplus):
     data = {
@@ -102,6 +107,9 @@ def read():
                     jsonerr_response = requests.post(mail_url, data=jsonerr_data)
                     print(jsonerr_response.text)
                     break
+                else:
+                    time.sleep(5)
+                    continue
 
 def read_sql():
     # 连接MySQL数据库
@@ -112,15 +120,13 @@ def read_sql():
     # 执行SELECT语句查询数据
     query = ("SELECT dromNumber, mailto FROM mytable")
     cursor.execute(query)
-    
-    proxy = get_proxy().get("proxy")
 
     # 遍历查询结果，打印出dromNumber和mailto的值
     for (dromNumber, mailto) in cursor:
         retry = 0
         while True:
             try:
-                monitor(dromNumber, mailto, proxy)
+                monitor(dromNumber, mailto)
                 break
             except:
                 retry = retry +1
@@ -131,7 +137,6 @@ def read_sql():
                     print(sqlerr_response.text)
                     break
                 else:
-                    proxy = get_proxy().get("proxy")
                     time.sleep(5)
                     continue
 

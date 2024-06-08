@@ -19,7 +19,7 @@ i = 0
 
 def get_proxy():
     while True:
-        proxy = requests.get("http://198.23.249.216:5010/get/?type=https").json()
+        proxy = requests.get("http://proxypool.pro-ivan.com/get/?type=https").json()
         if proxy.get("https") == True:
             print('找到支持https的ip', proxy.get("https"), proxy)
             break

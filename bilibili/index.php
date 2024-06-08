@@ -497,6 +497,8 @@
                         if (timeDiff >= (time-1)*24*60*60*1000 + 18*60*60*1000 && timeDiff <= (time-1)*24*60*60*1000 + 30*60*60*1000) {
                           dayAgo = data[j];
                           break;
+                        } else if (timeDiff >= (time-1)*24*60*60*1000 + 30*60*60*1000) {
+                            break
                         }
                       }
                     

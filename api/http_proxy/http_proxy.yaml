@@ -1,5 +1,5 @@
 #---------------------------------------------------#
-## 更新：2024-05-19 15:58:19
+## 更新：2024-06-08 18:54:23
 #---------------------------------------------------#
 
 # HTTP 代理端口
@@ -32,9 +32,8 @@ secret: ''
 
 
 proxies:
-  - {"name": "0#中国_宁夏_中卫_电信/联通/移动", "type": "http", "server": "52.82.123.144", "port":3128, "skip-cert-verify": true}
-  - {"name": "1#中国_香港__dimensionet.com", "type": "http", "server": "147.92.36.42", "port":3129, "skip-cert-verify": true}
-  - {"name": "2#匈牙利_匈牙利__upc.hu", "type": "http", "server": "178.48.68.61", "port":18080, "skip-cert-verify": true}
+  - {"name": "0#美国_俄勒冈州_达尔斯_cloud.google.com", "type": "http", "server": "35.185.196.38", "port":3128, "skip-cert-verify": true}
+  - {"name": "1#匈牙利_匈牙利__upc.hu", "type": "http", "server": "178.48.68.61", "port":18080, "skip-cert-verify": true}
 
 
 proxy-groups:
@@ -42,9 +41,8 @@ proxy-groups:
   name: Proxy
   type: select
   proxies:
-    - '0#中国_宁夏_中卫_电信/联通/移动'
-    - '1#中国_香港__dimensionet.com'
-    - '2#匈牙利_匈牙利__upc.hu'
+    - '0#美国_俄勒冈州_达尔斯_cloud.google.com'
+    - '1#匈牙利_匈牙利__upc.hu'
 
 -
   name: Domestic

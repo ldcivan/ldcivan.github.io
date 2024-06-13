@@ -338,7 +338,7 @@
                 ?>
 		        
 		        <div id="add_box" class="mdui-table-fluid mdui-table th" style="width: 100%;height: auto;margin: 0 auto;">
-                    <div id="chart" style="height:95%;width:99%;margin-top:15px;">
+                    <div id="text_input" style="height:95%;width:99%;margin-top:15px;">
                         <div class="mdui-panel-item-body mdui-text-color-white-text" style="height:auto!important;">
                     		<form class="mdui-textfield mdui-textfield-floating-label" action="./add.php" method="post" style="margin-right:23px;">
                               <div class="mdui-panel-item-header" style="pointer-events:none;">
@@ -354,6 +354,146 @@
                             </form>
                             <button class="mdui-btn mdui-color-theme mdui-text-color-white-text" onclick="document.getElementById('add').click()" style="margin-right:24px;float:right;"> 添 加 </button>
                           <button class="mdui-btn mdui-color-theme mdui-text-color-white-text" onclick="navigator.clipboard.readText().then(function(text) {document.getElementById('new_uid').value = text;});" style="margin-right:24px;float:right;"> 粘 贴 </button><br>
+                        </div>
+                    </div>
+                </div>
+                <div id="ranking" class="mdui-table-fluid mdui-table th" style="width: 100%;height: auto;margin: 0 auto;">
+                    <div id="ranking_title" style="height:95%;width:99%;margin-top:15px;">
+                        <div class="mdui-panel-item-body" style="height:auto!important;">
+                          <div class="mdui-panel-item-header" style="pointer-events:none;">
+                        	<div class="mdui-panel-item-title"><b style="color:black;font-size:1.5rem;">排行榜</b></div>
+                        	<div class="mdui-panel-item-summary"></div>
+                          </div>
+                          <div class="mdui-tab mdui-tab-full-width" mdui-tab>
+                              <a href="#ranking_tab1" class="mdui-ripple">粉丝榜</a>
+                              <a href="#ranking_tab2" class="mdui-ripple">涨幅榜</a>
+                              <a href="#ranking_tab3" class="mdui-ripple">跌幅榜</a>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="ranking_content" class="mdui-table-fluid mdui-table th" style="width: 100%;height: 600px;margin: 0 auto;">
+                    <div id="ranking_content_content" style="height:95%;width:99%;margin-top:15px;">
+                        <div class="mdui-panel-item-body" style="height:auto!important;">
+<?php
+$cache_file = '../bfanscount/cache/ranking.cache';
+$cache_expiration_time = 3600; // 缓存有效期为3600秒（1小时）
+
+$current_time = time();
+
+if (file_exists($cache_file) && ($current_time - filemtime($cache_file) < $cache_expiration_time) && file_get_contents($cache_file) !== '') {
+    // 如果缓存文件存在且未过期，则直接输出缓存内容
+    $ranking_content = file_get_contents($cache_file);
+    echo $ranking_content;
+} else {
+    // 如果缓存文件不存在或已过期，则创建或更新缓存
+    // 这里假设$ranking_content是你提供的新内容
+    $dir = '../bfanscount/json'; // JSON 文件所在目录
+    $infoDir = '../bfanscount/up_info'; // 包含相关信息的目录
+    $ranking_content = '';
+    
+    // 扫描目录并获取所有 JSON 文件
+    $files = glob($dir . '/*.json');
+    
+    // 创建一个数组来存储文件名和对应的最后一组数据的 fans 数量和 rate1
+    $dataToSort = array();
+    
+    foreach ($files as $file) {
+        $jsonData = file_get_contents($file);
+        $data = json_decode($jsonData, true);
+    
+        // 获取最后一组数据
+        $lastData = end($data);
+    
+        // 检查是否存在 rate1 字段
+        if (isset($lastData['rate1'])) {
+            $rate1 = $lastData['rate1'];
+            $rate7 = $lastData['rate7'];
+            $fans = $lastData['fans'];
+    
+            // 获取文件名（不带 .json 后缀）
+            $filename = pathinfo($file, PATHINFO_FILENAME);
+    
+            // 在 ../fanscount/up_info 目录中查找同名的 JSON 文件
+            $infoFile = $infoDir . '/' . $filename . '.json';
+            $infoJsonData = file_get_contents($infoFile);
+            $infoData = json_decode($infoJsonData, true);
+    
+            // 提取 ["data"]["card"]["name"] 和 ["data"]["card"]["face"] 的值
+            $name = $infoData['data']['card']['name'];
+            $face = $infoData['data']['card']['face'];
+    
+            // 存储文件名、fans 数量、rate1、name 和 face 到数组中
+            $dataToSort[] = array(
+                'filename' => $filename,
+                'fans' => $fans,
+                'rate1' => $rate1,
+                'rate7' => $rate7,
+                'name' => $name,
+                'face' => $face
+            );
+        }
+    }
+    
+    // 根据 fans 进行排序
+    usort($dataToSort, function($a, $b) {
+        return $b['fans'] - $a['fans'];
+    });
+    
+    $ranking_content .=  '<div id="ranking_tab1" class="mdui-p-a-2"><ul class="mdui-list" style="width: 80%; position: absolute; left: 50%; transform: translate(-50%, 0%);margin-top:15px;">';
+    // 输出排序后的结果
+    $ranking = 1;
+    foreach ($dataToSort as $data) {
+        $ranking_content .=  '<li class="mdui-list-item" onclick="window.location.href = `./?uid='.$data['filename'].'`;"><i class="mdui-list-item-icon mdui-icon" style="margin-right: 15px; font-weight: bold;">'.$ranking.'</i><div class="mdui-list-item-avatar"><img class="lazy" referrerpolicy="no-referrer" crossorigin="anonymous" data-src="'.$data['face'].'"/></div><div class="mdui-list-item-content mdui-row"><div class="mdui-col-xs-3">'.$data['name'].'</div><div class="mdui-col-xs-3">'.$data['fans'].'</div><div class="mdui-col-xs-3">'.$data['rate1'].'</div><div class="mdui-col-xs-3">'.$data['rate7'].'</div></div></li>';
+        $ranking = $ranking + 1;
+        if ($ranking > 20) break;
+    }
+    $ranking_content .= '</ul></div>';
+    
+    
+    // 根据 rate1 进行排序
+    usort($dataToSort, function($a, $b) {
+        return $b['rate1'] - $a['rate1'];
+    });
+    
+    $ranking_content .=  '<div id="ranking_tab2" class="mdui-p-a-2"><ul class="mdui-list" style="width: 80%; position: absolute; left: 50%; transform: translate(-50%, 0%);margin-top:15px;">';
+    // 输出排序后的结果
+    $ranking = 1;
+    foreach ($dataToSort as $data) {
+        $ranking_content .=  '<li class="mdui-list-item" onclick="window.location.href = `./?uid='.$data['filename'].'`;"><i class="mdui-list-item-icon mdui-icon" style="margin-right: 15px; font-weight: bold;">'.$ranking.'</i><div class="mdui-list-item-avatar"><img class="lazy" referrerpolicy="no-referrer" crossorigin="anonymous" data-src="'.$data['face'].'"/></div><div class="mdui-list-item-content mdui-row"><div class="mdui-col-xs-3">'.$data['name'].'</div><div class="mdui-col-xs-3">'.$data['fans'].'</div><div class="mdui-col-xs-3">'.$data['rate1'].'</div><div class="mdui-col-xs-3">'.$data['rate7'].'</div></div></li>';
+        $ranking = $ranking + 1;
+        if ($ranking > 20) break;
+    }
+    $ranking_content .=  '</ul></div>';
+    
+    // 根据 rate1 进行排序
+    usort($dataToSort, function($a, $b) {
+        return $a['rate1'] - $b['rate1'];
+    });
+    
+    
+    $ranking_content .=  '<div id="ranking_tab3" class="mdui-p-a-2"><ul class="mdui-list" style="width: 80%; position: absolute; left: 50%; transform: translate(-50%, 0%);margin-top:15px;">';
+    // 输出排序后的结果
+    $ranking = 1;
+    foreach ($dataToSort as $data) {
+        $ranking_content .=  '<li class="mdui-list-item" onclick="window.location.href = `./?uid='.$data['filename'].'`;"><i class="mdui-list-item-icon mdui-icon" style="margin-right: 15px; font-weight: bold;">'.$ranking.'</i><div class="mdui-list-item-avatar"><img class="lazy" referrerpolicy="no-referrer" crossorigin="anonymous" data-src="'.$data['face'].'"/></div><div class="mdui-list-item-content mdui-row"><div class="mdui-col-xs-3">'.$data['name'].'</div><div class="mdui-col-xs-3">'.$data['fans'].'</div><div class="mdui-col-xs-3">'.$data['rate1'].'</div><div class="mdui-col-xs-3">'.$data['rate7'].'</div></div></li>';
+        $ranking = $ranking + 1;
+        if ($ranking > 20) break;
+    }
+    $ranking_content .= '</ul></div>';
+    // 更新缓存内容
+    file_put_contents($cache_file, $ranking_content);
+
+    // 输出更新后的$ranking_content
+    echo $ranking_content;
+}
+
+// 输出$ranking_content的更新时间
+$last_update_time = filemtime($cache_file);
+echo "<div style='width: 100%; text-align: center;'>最后更新时间：" . date('Y-m-d H:i:s', $last_update_time) ."</div>";
+
+?>
+
                         </div>
                     </div>
                 </div>
@@ -1021,4 +1161,53 @@
             }, 500)
                 
 		</script>
+        <script>
+        // 获取所有带有 "lazy" 类名的图片元素
+        const lazyImages = document.querySelectorAll('.lazy');
+    
+        // 创建 Intersection Observer 实例
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            // 如果图片进入视窗范围并且停留超过1000ms
+            //console.log(entry.intersectionRatio)
+            if (entry.intersectionRatio >= 0.025) {
+              const img = entry.target;
+    
+              // 停留 1000ms 后加载图片
+              const timeoutId = setTimeout(() => {
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                img.classList.add('shown');
+                observer.unobserve(img);
+                //console.log('load')
+              }, 1000);
+    
+              // 如果图片在 1000ms 内脱离视窗，则取消加载
+              const cancelTimeout = () => {
+                clearTimeout(timeoutId);
+                //console.log('cancel')
+              };
+    
+              // 监听图片脱离视窗事件
+              const visibilityObserver = new IntersectionObserver(([visibilityEntry]) => {
+                if (visibilityEntry.intersectionRatio < 0.025) {
+                  cancelTimeout();
+                }
+              });
+    
+              visibilityObserver.observe(img);
+    
+              // 监听图片加载完成事件
+              img.addEventListener('load', () => {
+                cancelTimeout();
+              });
+            }
+          });
+        });
+    
+        // 遍历所有图片元素并开始观察
+        lazyImages.forEach(image => {
+          observer.observe(image);
+        });
+        </script>
 </html>

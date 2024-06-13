@@ -3452,3 +3452,36 @@ INFO:root:2023-12-17 01:08:24 ('113.95.183.63', 12841) is trying connect to serv
 INFO:root:
 
 ERROR:root:[Errno 104] Connection reset by peerposition 0
+INFO:root:2024-06-10 01:26:21 Server started on 0.0.0.0:14514
+INFO:root:
+
+INFO:root:2024-06-11 17:38:55 ('106.84.232.85', 4220) is trying connect to server
+INFO:root:
+
+INFO:root:2024-06-11 17:39:23 New connection from ('106.84.232.85', 4220), assigned client ID: 4877
+INFO:root:
+
+INFO:root:User 4877: 牛逼<STREAMEND> (2024-06-11 17:39:33)
+INFO:root:
+
+ERROR:root:invalid literal for int() with base 10: b'#exit'position 1
+INFO:root:2024-06-12 12:45:52 Server started on 0.0.0.0:14514
+INFO:root:
+
+INFO:root:2024-06-12 12:47:04 Server started on 0.0.0.0:14514
+INFO:root:
+
+INFO:root:2024-06-13 09:49:54 ('106.85.76.12', 23871) is trying connect to server
+INFO:root:
+
+INFO:root:2024-06-13 09:50:48 New connection from ('106.85.76.12', 23871), assigned client ID: 9795
+INFO:root:
+
+INFO:root:User 9795: 22<STREAMEND> (2024-06-13 09:50:54)
+INFO:root:
+
+ERROR:root:invalid literal for int() with base 10: b'#exit'position 1
+INFO:root:2024-06-13 12:11:55 ('172.233.43.212', 60000) is trying connect to server
+INFO:root:
+
+ERROR:root:[Errno 104] Connection reset by peerposition 0

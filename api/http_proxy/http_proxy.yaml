@@ -1,5 +1,5 @@
 #---------------------------------------------------#
-## 更新：2024-06-13 20:58:03
+## 更新：2024-06-24 22:39:10
 #---------------------------------------------------#
 
 # HTTP 代理端口
@@ -32,8 +32,6 @@ secret: ''
 
 
 proxies:
-  - {"name": "0#中国_中国__阿里云", "type": "http", "server": "8.219.97.248", "port":80, "skip-cert-verify": true}
-  - {"name": "1#美国_俄勒冈州_达尔斯_cloud.google.com", "type": "http", "server": "35.185.196.38", "port":3128, "skip-cert-verify": true}
 
 
 proxy-groups:
@@ -41,8 +39,6 @@ proxy-groups:
   name: Proxy
   type: select
   proxies:
-    - '0#中国_中国__阿里云'
-    - '1#美国_俄勒冈州_达尔斯_cloud.google.com'
 
 -
   name: Domestic

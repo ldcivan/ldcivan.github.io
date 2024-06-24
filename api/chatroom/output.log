@@ -3485,3 +3485,10 @@ INFO:root:2024-06-13 12:11:55 ('172.233.43.212', 60000) is trying connect to ser
 INFO:root:
 
 ERROR:root:[Errno 104] Connection reset by peerposition 0
+INFO:root:2024-06-15 11:00:23 ('183.227.201.39', 3474) is trying connect to server
+INFO:root:
+
+INFO:root:2024-06-17 06:33:36 ('139.177.180.13', 60000) is trying connect to server
+INFO:root:
+
+ERROR:root:[Errno 104] Connection reset by peerposition 0

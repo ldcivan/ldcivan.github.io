@@ -98,7 +98,7 @@
 		</label>
 		<button id="search" type="button" onclick="query()" disabled>正在载入</button>
 	    <button id="back" type="button" onclick="window.location.replace('../')" style="pointer-events: auto;">返回</button>
-	    <p id="result">&nbsp;<br>&nbsp;<br>&nbsp;</p>
+	    <p id="result"><!--&nbsp;<br>&nbsp;<br>-->&nbsp;</p>
 	</form>
 	<center style="font-size: 16px; line-height: 22px;">
 	    当上方表单不可互动时，是在加载宿舍编号列表，请稍等。
@@ -164,7 +164,7 @@
             var elec_data = jsonData
             var drom_data = elec_data[part_select][1][partment_select][1][floor_select][1][drom_select]
             //var content = `宿舍编号：${drom_data.drom_Number}<br>电费余额：${drom_data.surplus} 元<br>电费记录时间：${drom_data.surplus_time}`
-            var content = `宿舍编号：${drom_data.drom_Num}<br>电费余额：${drom_data.surplus} 元<br>电费记录时间：${drom_data.time}<br>为避免ip被ban，不再提供每日更新的电费余额信息，只保留宿舍编号信息`
+            var content = `宿舍编号：${drom_data.drom_Num}<br><!--电费余额：${drom_data.surplus} 元<br>电费记录时间：${drom_data.time}<br>-->为避免ip被ban，不再提供每日更新的电费余额信息，只保留宿舍编号信息`
             document.getElementById("result").innerHTML = content;
         }
         

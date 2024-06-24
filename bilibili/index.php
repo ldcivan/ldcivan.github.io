@@ -364,6 +364,7 @@
                         	<div class="mdui-panel-item-title"><b style="color:black;font-size:1.5rem;">排行榜</b></div>
                         	<div class="mdui-panel-item-summary"></div>
                           </div>
+                          <div style="color:gray;margin-left:25px;">非全站排行 仅采用本站记录数据</div>
                           <div class="mdui-tab mdui-tab-full-width" mdui-tab>
                               <a href="#ranking_tab1" class="mdui-ripple">粉丝榜</a>
                               <a href="#ranking_tab2" class="mdui-ripple">涨幅榜</a>
@@ -376,12 +377,36 @@
                     <div id="ranking_content_content" style="height:95%;width:99%;margin-top:15px;">
                         <div class="mdui-panel-item-body" style="height:auto!important;">
 <?php
+function formatNumber($number, $isFans) {
+    if ($number > 0 && !$isFans) {
+        $formatted_number = "<font color='red'>";
+    } elseif ($number < 0 && !$isFans) {
+        $formatted_number = "<font color='green'>";
+    } elseif (!$number || ($number === 0 && !$isFans)) {
+        $formatted_number = "<font color='grey'>";
+    } else {
+        $formatted_number = "<font color='black'>";
+    }
+    
+    if (!$number) {
+        $formatted_number .= '-';
+    } elseif ($number < 10000 && $number > -10000) {
+        $formatted_number .= $number;
+    } elseif($number < 10000000 || $number > -1000000) {
+        $formatted_number .= number_format($number / 10000, 1, '.', '') . '万';
+    } else {
+        $formatted_number .= number_format($number / 10000, 0, '.', '') . '万';
+    }
+    $formatted_number .= "</font>";
+    return $formatted_number;
+}
+
 $cache_file = '../bfanscount/cache/ranking.cache';
 $cache_expiration_time = 3600; // 缓存有效期为3600秒（1小时）
 
 $current_time = time();
 
-if (file_exists($cache_file) && ($current_time - filemtime($cache_file) < $cache_expiration_time) && file_get_contents($cache_file) !== '') {
+if (file_exists($cache_file) && ($current_time - filemtime($cache_file) < $cache_expiration_time) && file_get_contents($cache_file) !== '' || ((date('G') >= 6 && date('G') <= 9) || (date('G') >= 18 && date('G') <= 21))) {
     // 如果缓存文件存在且未过期，则直接输出缓存内容
     $ranking_content = file_get_contents($cache_file);
     echo $ranking_content;
@@ -440,11 +465,11 @@ if (file_exists($cache_file) && ($current_time - filemtime($cache_file) < $cache
         return $b['fans'] - $a['fans'];
     });
     
-    $ranking_content .=  '<div id="ranking_tab1" class="mdui-p-a-2"><ul class="mdui-list" style="width: 80%; position: absolute; left: 50%; transform: translate(-50%, 0%);margin-top:15px;">';
+    $ranking_content .=  '<div id="ranking_tab1" class="mdui-p-a-2"><ul class="mdui-list" style="width: 100%; position: absolute; left: 50%; transform: translate(-50%, 0%); margin-top:25px;">';
     // 输出排序后的结果
     $ranking = 1;
     foreach ($dataToSort as $data) {
-        $ranking_content .=  '<li class="mdui-list-item" onclick="window.location.href = `./?uid='.$data['filename'].'`;"><i class="mdui-list-item-icon mdui-icon" style="margin-right: 15px; font-weight: bold;">'.$ranking.'</i><div class="mdui-list-item-avatar"><img class="lazy" referrerpolicy="no-referrer" crossorigin="anonymous" data-src="'.$data['face'].'"/></div><div class="mdui-list-item-content mdui-row"><div class="mdui-col-xs-3">'.$data['name'].'</div><div class="mdui-col-xs-3">'.$data['fans'].'</div><div class="mdui-col-xs-3">'.$data['rate1'].'</div><div class="mdui-col-xs-3">'.$data['rate7'].'</div></div></li>';
+        $ranking_content .=  '<li class="mdui-list-item" onclick="window.location.href = `./?uid='.$data['filename'].'`;"><i class="mdui-list-item-icon mdui-icon" style="margin-right: 15px; font-weight: bold;">'.$ranking.'</i><div class="mdui-list-item-avatar"><img class="lazy" referrerpolicy="no-referrer" crossorigin="anonymous" data-src="'.$data['face'].'"/></div><div class="mdui-list-item-content mdui-row"><div class="mdui-col-xs-3">'.$data['name'].'</div><div class="mdui-col-xs-3">'.formatNumber($data['fans'], true).'</div><div class="mdui-col-xs-3">'.formatNumber($data['rate1'], false).'</div><div class="mdui-col-xs-3">'.formatNumber($data['rate7'], false).'</div></div></li>';
         $ranking = $ranking + 1;
         if ($ranking > 20) break;
     }
@@ -456,11 +481,11 @@ if (file_exists($cache_file) && ($current_time - filemtime($cache_file) < $cache
         return $b['rate1'] - $a['rate1'];
     });
     
-    $ranking_content .=  '<div id="ranking_tab2" class="mdui-p-a-2"><ul class="mdui-list" style="width: 80%; position: absolute; left: 50%; transform: translate(-50%, 0%);margin-top:15px;">';
+    $ranking_content .=  '<div id="ranking_tab2" class="mdui-p-a-2"><ul class="mdui-list" style="width: 100%; position: absolute; left: 50%; transform: translate(-50%, 0%); margin-top:25px;">';
     // 输出排序后的结果
     $ranking = 1;
     foreach ($dataToSort as $data) {
-        $ranking_content .=  '<li class="mdui-list-item" onclick="window.location.href = `./?uid='.$data['filename'].'`;"><i class="mdui-list-item-icon mdui-icon" style="margin-right: 15px; font-weight: bold;">'.$ranking.'</i><div class="mdui-list-item-avatar"><img class="lazy" referrerpolicy="no-referrer" crossorigin="anonymous" data-src="'.$data['face'].'"/></div><div class="mdui-list-item-content mdui-row"><div class="mdui-col-xs-3">'.$data['name'].'</div><div class="mdui-col-xs-3">'.$data['fans'].'</div><div class="mdui-col-xs-3">'.$data['rate1'].'</div><div class="mdui-col-xs-3">'.$data['rate7'].'</div></div></li>';
+        $ranking_content .=  '<li class="mdui-list-item" onclick="window.location.href = `./?uid='.$data['filename'].'`;"><i class="mdui-list-item-icon mdui-icon" style="margin-right: 15px; font-weight: bold;">'.$ranking.'</i><div class="mdui-list-item-avatar"><img class="lazy" referrerpolicy="no-referrer" crossorigin="anonymous" data-src="'.$data['face'].'"/></div><div class="mdui-list-item-content mdui-row"><div class="mdui-col-xs-3">'.$data['name'].'</div><div class="mdui-col-xs-3">'.formatNumber($data['fans'], true).'</div><div class="mdui-col-xs-3">'.formatNumber($data['rate1'], false).'</div><div class="mdui-col-xs-3">'.formatNumber($data['rate7'], false).'</div></div></li>';
         $ranking = $ranking + 1;
         if ($ranking > 20) break;
     }
@@ -472,11 +497,11 @@ if (file_exists($cache_file) && ($current_time - filemtime($cache_file) < $cache
     });
     
     
-    $ranking_content .=  '<div id="ranking_tab3" class="mdui-p-a-2"><ul class="mdui-list" style="width: 80%; position: absolute; left: 50%; transform: translate(-50%, 0%);margin-top:15px;">';
+    $ranking_content .=  '<div id="ranking_tab3" class="mdui-p-a-2"><ul class="mdui-list" style="width: 100%; position: absolute; left: 50%; transform: translate(-50%, 0%); margin-top:25px;">';
     // 输出排序后的结果
     $ranking = 1;
     foreach ($dataToSort as $data) {
-        $ranking_content .=  '<li class="mdui-list-item" onclick="window.location.href = `./?uid='.$data['filename'].'`;"><i class="mdui-list-item-icon mdui-icon" style="margin-right: 15px; font-weight: bold;">'.$ranking.'</i><div class="mdui-list-item-avatar"><img class="lazy" referrerpolicy="no-referrer" crossorigin="anonymous" data-src="'.$data['face'].'"/></div><div class="mdui-list-item-content mdui-row"><div class="mdui-col-xs-3">'.$data['name'].'</div><div class="mdui-col-xs-3">'.$data['fans'].'</div><div class="mdui-col-xs-3">'.$data['rate1'].'</div><div class="mdui-col-xs-3">'.$data['rate7'].'</div></div></li>';
+        $ranking_content .=  '<li class="mdui-list-item" onclick="window.location.href = `./?uid='.$data['filename'].'`;"><i class="mdui-list-item-icon mdui-icon" style="margin-right: 15px; font-weight: bold;">'.$ranking.'</i><div class="mdui-list-item-avatar"><img class="lazy" referrerpolicy="no-referrer" crossorigin="anonymous" data-src="'.$data['face'].'"/></div><div class="mdui-list-item-content mdui-row"><div class="mdui-col-xs-3">'.$data['name'].'</div><div class="mdui-col-xs-3">'.formatNumber($data['fans'], true).'</div><div class="mdui-col-xs-3">'.formatNumber($data['rate1'], false).'</div><div class="mdui-col-xs-3">'.formatNumber($data['rate7'], false).'</div></div></li>';
         $ranking = $ranking + 1;
         if ($ranking > 20) break;
     }
@@ -541,7 +566,7 @@ echo "<div style='width: 100%; text-align: center;'>最后更新时间：" . dat
             var myChart;
             if (isNaN(uid)) {
               uid = -1;
-              console.error('Invalid uid parameter');
+              console.log('Invalid uid parameter');
             }
             else{
             var data =[];

@@ -1,5 +1,5 @@
 #---------------------------------------------------#
-## 更新：2024-07-03 11:13:53
+## 更新：2024-07-08 18:12:12
 #---------------------------------------------------#
 
 # HTTP 代理端口
@@ -32,8 +32,8 @@ secret: ''
 
 
 proxies:
-  - {"name": "0#中国_中国__阿里云", "type": "http", "server": "8.219.97.248", "port":80, "skip-cert-verify": true}
-  - {"name": "1#墨西哥_墨西哥__telmex.com", "type": "http", "server": "189.240.60.171", "port":9090, "skip-cert-verify": true}
+  - {"name": "0#中国_中国__阿里云", "type": "http", "server": "8.216.132.13", "port":31280, "skip-cert-verify": true}
+  - {"name": "1#中国_台湾_彰化县_cloud.google.com", "type": "http", "server": "104.199.205.181", "port":3128, "skip-cert-verify": true}
 
 
 proxy-groups:
@@ -42,7 +42,7 @@ proxy-groups:
   type: select
   proxies:
     - '0#中国_中国__阿里云'
-    - '1#墨西哥_墨西哥__telmex.com'
+    - '1#中国_台湾_彰化县_cloud.google.com'
 
 -
   name: Domestic

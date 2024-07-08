@@ -7,7 +7,7 @@ $width = 120; // 验证码图像的宽度
 $height = 40; // 验证码图像的高度
 
 // 创建一个随机字符串作为验证码
-$captcha = substr(str_shuffle("123456789abdefghjmnqrtuyABDEFGHJLMNQRTUY"), 0, $length);
+$captcha = substr(str_shuffle("123456789abdefghijmnqrtuyABDEFGHJLMNQRTUY"), 0, $length);
 
 // 将验证码存储在 session 变量中
 $_SESSION['captcha'] = $captcha;
@@ -49,8 +49,8 @@ for ($i = 0; $i < $length; $i++) {
 }
 
 // 扭曲图像
-$amplitude = 0; // 扭曲振幅
-$phase = 137; // 扭曲相位
+$amplitude = 180; // 扭曲振幅
+$phase = 180; // 扭曲相位
 for ($x = 0; $x < $width; $x++) {
     for ($y = 0; $y < $height; $y++) {
         $sx = $x + $amplitude * sin($y / $height * 2 * M_PI + $phase);
@@ -70,7 +70,7 @@ for ($i = 0; $i < 100; $i++) {
 }
 
 // 添加随机干扰线
-for ($i = 0; $i < 5; $i++) {
+for ($i = 0; $i < 10; $i++) {
     $color = imagecolorallocate($image, rand(0, 255), rand(0, 255), rand(0, 255));
     imageline($image, rand(0, $width), rand(0, $height), rand(0, $width), rand(0, $height), $color);
 }

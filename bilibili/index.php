@@ -303,18 +303,37 @@
                             // 处理用户提交的搜索请求
                     		$query = $_POST['key'];
                     
-                    		// 查找包含博主名称的 JSON 文件
-                    		$files = glob('../bfanscount/up_info/*.json');
-                    		$matches = array();
-                    		foreach ($files as $file) {
-                    			$data = json_decode(file_get_contents($file), true);
-                    			if (isset($data['data']['card']['name']) && stripos($data['data']['card']['name'], $query) !== false) {
-                    				$matches[] = array(
-                    					'uid' => $data['data']['card']['mid'],
-                    					'name' => $data['data']['card']['name']
-                    				);
-                    			}
-                    		}
+                            $files = glob('../bfanscount/up_info/*.json');
+                            $cacheFile = '../bfanscount/cache/search.cache';
+                            
+                            // 检查是否存在缓存文件，如果不存在或缓存数据少于 JSON 文件数量，则更新缓存
+                            if (!file_exists($cacheFile) || count(json_decode(file_get_contents($cacheFile), true)) < count($files)) {
+                                $cachedData = array();
+                                
+                                foreach ($files as $file) {
+                                    $data = json_decode(file_get_contents($file), true);
+                                    if (isset($data['data']['card']['mid'])) {
+                                        $cachedData[] = array(
+                                            'uid' => $data['data']['card']['mid'],
+                                            'name' => $data['data']['card']['name']
+                                        );
+                                    }
+                                }
+                                
+                                file_put_contents($cacheFile, json_encode($cachedData));
+                            } else {
+                                // 直接从缓存文件中读取数据
+                                $cachedData = json_decode(file_get_contents($cacheFile), true);
+                            }
+                            
+                            // 在缓存数据中查找匹配项
+                            $matches = array();
+                            foreach ($cachedData as $data) {
+                                if (stripos($data['name'], $query) !== false) {
+                                    $matches[] = $data;
+                                }
+                            }
+
                     
                     		// 如果找到了匹配项，则将其列出
                     		//echo "<script>alert('".count($files)."')</script>";
@@ -406,10 +425,14 @@ $cache_expiration_time = 3600; // 缓存有效期为3600秒（1小时）
 
 $current_time = time();
 
-if (file_exists($cache_file) && ($current_time - filemtime($cache_file) < $cache_expiration_time) && file_get_contents($cache_file) !== '' || ((date('G') >= 6 && date('G') <= 9) || (date('G') >= 18 && date('G') <= 21))) {
+if (file_exists($cache_file) && ($current_time - filemtime($cache_file) < $cache_expiration_time) && file_get_contents($cache_file) !== '' || ((date('G') >= 6 && date('G') < 9) || (date('G') >= 18 && date('G') < 21))) {
     // 如果缓存文件存在且未过期，则直接输出缓存内容
     $ranking_content = file_get_contents($cache_file);
     echo $ranking_content;
+    $last_update_time = date('Y-m-d H:i:s', filemtime($cache_file));
+    if (((date('G') >= 6 && date('G') < 9) || (date('G') >= 18 && date('G') < 21))) {
+        $last_update_time .= '(粉丝数据更新中，榜单暂停更新)';
+    }
 } else {
     // 如果缓存文件不存在或已过期，则创建或更新缓存
     // 这里假设$ranking_content是你提供的新内容
@@ -511,11 +534,12 @@ if (file_exists($cache_file) && ($current_time - filemtime($cache_file) < $cache
 
     // 输出更新后的$ranking_content
     echo $ranking_content;
+    //$last_update_time = filemtime($cache_file);
+    $last_update_time = date('Y-m-d H:i:s');
 }
 
 // 输出$ranking_content的更新时间
-$last_update_time = filemtime($cache_file);
-echo "<div style='width: 100%; text-align: center;'>最后更新时间：" . date('Y-m-d H:i:s', $last_update_time) ."</div>";
+echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新时间：" . $last_update_time ."</div>";
 
 ?>
 

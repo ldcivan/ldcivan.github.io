@@ -13,11 +13,10 @@
 146.75.30.167                 www.twitch.tv
 99.84.220.163                 static-cdn.jtvnw.net
 18.160.5.184                  static.twitchcdn.net
-52.85.247.92                  vod-secure.twitch.tv
-13.32.208.116                 clips-media-assets2.twitch.tv
+52.85.247.100                 vod-secure.twitch.tv
 108.139.47.50                 sb.scorecardresearch.com
 
-# Update time: 2024-07-03T02:53:34+08:00
+# Update time: 2024-07-08T09:12:05+08:00
 # Update url: https://pro-ivan.com/api/twitch520/hosts
 # Star author: https://github.com/521xueweihan/GitHub520
 # This is a back-up from Pro-ivan.com
@@ -26,7 +25,7 @@
 
 </pre>
 
-<br>该内容会自动定时更新， 数据更新时间：2024-07-03T02:53:34+08:00<br>
+<br>该内容会自动定时更新， 数据更新时间：2024-07-08T09:12:05+08:00<br>
 
 <h5>1.1.2 修改 hosts 文件</h5>
 

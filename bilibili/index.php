@@ -888,6 +888,21 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     return num;
                   }
                 }
+                
+                function formatNumber4Charts(num) { //防数字过长
+                  if (num == null) {
+                      return '-'
+                  }
+                  if (num >= 1000000 || num <= -1000000) {
+                      return (num / 10000).toFixed(0) + 'M';
+                  } else if (num >= 10000 || num <= -10000) {
+                      return (num / 10000).toFixed(0) + 'W';
+                  } else if (num >= 1000 || num <= -1000) {
+                      return (num / 1000).toFixed(0) + 'K';
+                  } {
+                    return num;
+                  }
+                }
     
     
                 document.getElementById('base_info').innerHTML = `<div class="mdui-row mdui-col-12 mdui-center mdui-valign" style="max-width:1200px;"><div class="mdui-table-fluid mdui-table mdui-col-xs-4" style="height:110px;margin-bottom:15px;"><div style="float:left;margin-left:5px;"><p id="" class="mdui-typo-body-2-opacity">粉丝总数量</p></div><div class="mdui-typo" style="margin-bottom:15px;float:right;bottom:0px;right:5px;position:absolute;"><h2 id="" style="margin-right:5px;"><b>${formatNumber(fans[fans.length-1][1])}</b></h2></div></div><div class="mdui-table-fluid mdui-table mdui-col-xs-4" style="height:110px;margin-left:15px;margin-bottom:15px;"><div style="float:left;margin-left:5px;"><p id="" class="mdui-typo-body-2-opacity">1日增长量</p></div><div class="mdui-typo" style="margin-bottom:15px;float:right;bottom:0px;right:5px;position:absolute;"><h2 id="" style="margin-right:5px;"><b>${formatNumber((rate1[rate1.length-1][1]))}</b></h2></div></div><div class="mdui-table-fluid mdui-table mdui-col-xs-4" style="height:110px;margin-left:15px;margin-bottom:15px;"><div style="float:left;margin-left:5px;"><p id="" class="mdui-typo-body-2-opacity">7日增长量</p></div><div class="mdui-typo" style="margin-bottom:15px;float:right;bottom:0px;right:5px;position:absolute;"><h2 id="" style="margin-right:5px;"><b>${rate7[rate7.length-1][1] == null ? '-' : formatNumber((rate7[rate7.length-1][1]*7).toFixed(0))}</b></h2></div></div></div>`;
@@ -965,7 +980,10 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                         alignTicks: true,
                         scale: true,
                         axisLabel: {
-                          inside: true
+                          inside: true,
+                          formatter: function(value){
+                              return formatNumber4Charts(value);
+                          }
                         }
                     },
                     {
@@ -975,7 +993,10 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                         alignTicks: true,
                         scale: false,
                         axisLabel: {
-                          inside: true
+                          inside: true,
+                          formatter: function(value){
+                              return formatNumber4Charts(value);
+                          }
                         }
                     }
                   ],
@@ -991,6 +1012,11 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     emphasis: {
                         focus: 'series',
                         blurScope: 'coordinateSystem'
+                    },
+                    tooltip: {
+                        valueFormatter: function(value){
+                            return value+"";
+                        }
                     }
                   },
                   {
@@ -1004,6 +1030,11 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     emphasis: {
                         focus: 'series',
                         blurScope: 'coordinateSystem'
+                    },
+                    tooltip: {
+                        valueFormatter: function(value){
+                            return value+"";
+                        }
                     }
                   },
                   {
@@ -1017,6 +1048,11 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     emphasis: {
                         focus: 'series',
                         blurScope: 'coordinateSystem'
+                    },
+                    tooltip: {
+                        valueFormatter: function(value){
+                            return value+"";
+                        }
                     }
                   },
                   {
@@ -1030,6 +1066,11 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     emphasis: {
                         focus: 'series',
                         blurScope: 'coordinateSystem'
+                    },
+                    tooltip: {
+                        valueFormatter: function(value){
+                            return value+"";
+                        }
                     }
                   },
                   {
@@ -1046,6 +1087,11 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     emphasis: {
                         focus: 'series',
                         blurScope: 'coordinateSystem'
+                    },
+                    tooltip: {
+                        valueFormatter: function(value){
+                            return value+"";
+                        }
                     }
                   },
                   {
@@ -1062,6 +1108,11 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     emphasis: {
                         focus: 'series',
                         blurScope: 'coordinateSystem'
+                    },
+                    tooltip: {
+                        valueFormatter: function(value){
+                            return value+"";
+                        }
                     }
                   },
                   {
@@ -1078,6 +1129,11 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     emphasis: {
                         focus: 'series',
                         blurScope: 'coordinateSystem'
+                    },
+                    tooltip: {
+                        valueFormatter: function(value){
+                            return value+"";
+                        }
                     }
                   },
                   {
@@ -1094,6 +1150,11 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     emphasis: {
                         focus: 'series',
                         blurScope: 'coordinateSystem'
+                    },
+                    tooltip: {
+                        valueFormatter: function(value){
+                            return value+"";
+                        }
                     }
                   },
                   {
@@ -1110,7 +1171,12 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     //smooth: true,
                     data: fans_nodes4chart,
                     showSymbol: true,
-                    yAxisIndex: 0
+                    yAxisIndex: 0,
+                    tooltip: {
+                        valueFormatter: function(value){
+                            return value+"";
+                        }
+                    }
                   },
                   {
                     name: '视图内最高粉丝记录',
@@ -1126,7 +1192,12 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     //smooth: true,
                     data: [],
                     showSymbol: true,
-                    yAxisIndex: 0
+                    yAxisIndex: 0,
+                    tooltip: {
+                        valueFormatter: function(value){
+                            return value+"";
+                        }
+                    }
                   },
                   {
                     name: '视图内最低粉丝记录',
@@ -1142,7 +1213,12 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     //smooth: true,
                     data: [],
                     showSymbol: true,
-                    yAxisIndex: 0
+                    yAxisIndex: 0,
+                    tooltip: {
+                        valueFormatter: function(value){
+                            return value+"";
+                        }
+                    }
                   }
                   ]
                 };

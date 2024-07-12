@@ -1,0 +1,500 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>双层图合成（幻影坦克）</title>
+		<style>
+			.square-button:disabled {
+              cursor: not-allowed;
+              background-color: #cccccc;
+            }
+            .square-button:disabled:hover {
+              cursor: not-allowed;
+              background-color: #cccccc;
+            }
+            
+			#qiehuan-button:disabled {
+              cursor: not-allowed;
+              background-color: #cccccc;
+            }
+            #qiehuan-button:disabled:hover {
+              cursor: not-allowed;
+              background-color: #cccccc;
+            }
+		</style>
+	</head>
+
+	<body>
+		<div class="content input">
+            <div class="file-upload">
+              <p id="selectimg1" onclick="document.getElementById('input1').click();">选择要显示的图片,较亮</p>
+              <input id="input1" type="file" accept="image/*" title="请选择一个 表层图片">
+              <p id="selectimg2" onclick="document.getElementById('input2').click();">选择要隐藏的图片,较暗</p>
+              <input id="input2" type="file" accept="image/*" title="请选择一个 里层图片">
+            </div>
+			<div class="button">
+				<ul>
+				    <li>
+				        <button id="deleteimg1" class="square-button delete" onclick="deleteimg1();" disabled>清空表图</button>
+				        <button id="deleteimg2" class="square-button delete" onclick="deleteimg2();" disabled>清空里图</button>
+				    </li>
+				    <li>
+				        <button id="deleteimg3" class="square-button delete" onclick="deleteimg3();" disabled>清空去色图</button>
+				        <button id="deleteimg4" class="square-button delete" onclick="deleteimg4();" disabled>清空色阶图</button>
+				    </li>
+				</ul>
+				<ul>
+					<li>
+						<button id="quse" class="square-button" disabled>去色</button>
+						<button id="sejie" class="square-button" disabled>色阶</button>
+						<button id="output" class="square-button" disabled>结果</button>
+					</li>
+					<li>
+						<button id="bianse" class="square-button" onclick="toggleBackground()" disabled>切换颜色</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="content result">
+			<div id="output_div">
+			    <img class="output">
+			</div>
+			<div id="sejie_div">
+			    <img class="sejie1">
+			    <img class="sejie2">
+			</div>
+			<div id="quse_div">
+			    <img class="quse1">
+			    <img class="quse2">
+			</div>
+			<div id="show_div">
+			    <img class="show1">
+			    <img class="show2">
+			</div>
+		</div>
+		
+		<div id="circle-button">
+    		<button id="init-button" class="circle-button" onclick="init()">清空</button>
+    		<button id="qiehuan-button" class="circle-button" onclick="toggleBackground()" disabled>切换</button>
+        	<button id="open-button" class="circle-button">说明</button>
+    	</div>
+    	<div id="floating-window">
+    		<h2>使用说明</h2>
+    		<p>1.上传表里图后，依次点击去色、色阶、结果按钮，即可获得幻影图片。</p>
+    		<p>2.在某些情况下，跳过去色也能生成质量较好的幻影图片，可以尝试。</p>
+    		<p>3.点击切换颜色（或侧栏上的切换）可以预览幻影图片效果。</p>
+    		<p>4.点击图片可以直接保存图片；请注意，你保存的图片一定要是PNG，否则该幻影图片将失效。</p>
+    		<p>5.您可以点击侧栏上的清空以初始化整个面板。</p>
+    		<p>注意：请放心，本网页的解算发生在您的设备本地，您上传的任何图片都不会保存到远程服务器。</p>
+    	</div>
+    	<div id="window-background"></div>
+
+        <script>
+        </script>
+    	<script>
+    		var img1 = document.createElement("img")
+    		var img2 = document.createElement("img")
+    		var del1 = document.getElementById("deleteimg1")
+    		var del2 = document.getElementById("deleteimg2")
+    		var del3 = document.getElementById("deleteimg3")
+    		var del4 = document.getElementById("deleteimg4")
+    		var btn1 = document.getElementById("quse")
+    		var btn2 = document.getElementById("sejie")
+    		var btn3 = document.getElementById("output")
+    		var input1 = document.getElementById("input1")
+    		var input2 = document.getElementById("input2")
+    		var show1 = document.querySelector("img.show1")
+    		var show2 = document.querySelector("img.show2")
+    		var quse1 = document.querySelector("img.quse1")
+    		var quse2 = document.querySelector("img.quse2")
+    		var sejie1 = document.querySelector("img.sejie1")
+    		var sejie2 = document.querySelector("img.sejie2")
+    		var output = document.querySelector("img.output")
+    		var selecttext1 = document.getElementById("selectimg1");
+    		var selecttext2 = document.getElementById("selectimg2");
+            
+        	function init(){ //清空与初始化
+                // 隐藏侧栏切换钮
+                document.getElementById("qiehuan-button").disabled = "disabled";
+        	    // 获取所有的按钮元素
+                var buttons = document.querySelectorAll('.button button');
+                // 将所有按钮设置 disabled 属性
+                for (var i = 0; i < buttons.length; i++) {
+                  buttons[i].disabled="disabled";
+                }
+                
+                // 获取所有的图片元素
+                const images = document.querySelectorAll('img');
+                // 将所有图片的 src 属性设置为空字符串
+                images.forEach(image => {
+                  image.removeAttribute("src");
+                });
+                
+                // 获取所有的输入框元素
+                const inputs = document.querySelectorAll('input[type="file"]');
+                // 将所有输入框的值设置为空字符串
+                inputs.forEach(input => {
+                  input.value = "";
+                });
+                
+                selecttext1.innerHTML = "选择要显示的图片,较亮"
+                selecttext2.innerHTML = "选择要隐藏的图片,较暗"
+        	}
+        	
+        	function deleteimg1(){
+        	    input1.value = "";
+        	    del1.disabled="disabled";
+        	    selecttext1.innerHTML = "选择要显示的图片,较亮";
+        	    show1.removeAttribute("src");
+        	    quse1.removeAttribute("src");
+        	    sejie1.removeAttribute("src");
+        	    img1.removeAttribute("src");
+        	    btn1.disabled = "disabled";
+        	    btn2.disabled = "disabled";
+        	    btn3.disabled = "disabled";
+        	}
+        	function deleteimg2(){
+        	    input2.value = "";
+        	    del2.disabled="disabled";
+        	    selecttext2.innerHTML = "选择要隐藏的图片,较暗";
+        	    show2.removeAttribute("src");
+        	    quse2.removeAttribute("src");
+        	    sejie2.removeAttribute("src");
+        	    img2.removeAttribute("src");
+        	    btn1.disabled = "disabled";
+        	    btn2.disabled = "disabled";
+        	    btn3.disabled = "disabled";
+        	}
+        	
+        	function deleteimg3(){
+        	    del3.disabled="disabled";
+        	    quse1.removeAttribute("src");
+        	    quse2.removeAttribute("src");
+        	    btn3.disabled = "disabled";
+        	    var reader1 = new FileReader()
+    			reader1.readAsDataURL(input1.files[0])
+    			reader1.onload = function(){
+    				img1.src = reader1.result
+    			}
+    			var reader2 = new FileReader()
+    			reader2.readAsDataURL(input2.files[0])
+    			reader2.onload = function(){
+    				img2.src = reader2.result
+    			}
+        	}
+        	function deleteimg4(){
+        	    del4.disabled="disabled";
+        	    sejie1.removeAttribute("src");
+        	    sejie2.removeAttribute("src");
+        	    btn3.disabled = "disabled";
+        	    var reader1 = new FileReader()
+    			reader1.readAsDataURL(input1.files[0])
+    			reader1.onload = function(){
+    				img1.src = reader1.result
+    			}
+    			var reader2 = new FileReader()
+    			reader2.readAsDataURL(input2.files[0])
+    			reader2.onload = function(){
+    				img2.src = reader2.result
+    			}
+        	}
+    		
+    		input1.addEventListener("change",function(){
+    			document.querySelector("div.result").style.display = "block"
+    			selecttext1.innerHTML = "√&nbsp;已选择表图"
+        	    quse1.removeAttribute("src");
+        	    sejie1.removeAttribute("src");
+        	    btn3.disabled = "disabled";
+    			checkInputs();
+    			var reader = new FileReader()
+    			reader.readAsDataURL(this.files[0])
+    			reader.onload = function(){
+    				img1.src = reader.result
+    				show1.src = reader.result
+    			}
+    		})
+    		input2.addEventListener("change",function(){
+    			document.querySelector("div.result").style.display = "block"
+    			selecttext2.innerHTML = "√&nbsp;已选择里图"
+        	    quse2.removeAttribute("src");
+        	    sejie2.removeAttribute("src");
+        	    btn3.disabled = "disabled";
+    			checkInputs();
+    			var reader = new FileReader()
+    			reader.readAsDataURL(this.files[0])
+    			reader.onload = function(){
+    				img2.src = reader.result
+    				show2.src = reader.result
+    			}
+    		})
+            
+    		function checkInputs() {
+              if (input1.files.length > 0 && input2.files.length > 0) {
+                var isImage1 = input1.files[0].type.startsWith("image/");
+                var isImage2 = input2.files[0].type.startsWith("image/");
+                if (isImage1 && isImage2) {
+                  btn1.removeAttribute("disabled");
+    			  btn2.removeAttribute("disabled");
+                }
+              }
+              if (input1.files.length > 0) {
+                var isImage1 = input1.files[0].type.startsWith("image/");
+                if (isImage1) {
+                  del1.removeAttribute("disabled");
+                }
+              }
+              if (input2.files.length > 0) {
+                var isImage2 = input2.files[0].type.startsWith("image/");
+                if (isImage2) {
+                  del2.removeAttribute("disabled");
+                }
+              }
+            }
+    		btn1.onclick = function(){
+    			if(!quse1.src && !quse2.src) {
+    			    quse1.src = Desaturate(img1)
+        			quse2.src = Desaturate(img2)
+        			img1.src = Desaturate(img1)
+                    img2.src = Desaturate(img2)
+                    del3.removeAttribute("disabled");
+    			}
+    		}
+    		
+    		btn2.onclick = function(){
+    		    if(!sejie1.src && !sejie2.src) {
+        			btn3.removeAttribute("disabled");
+        			sejie1.src = Levels(img1,img2)["output1"]
+        			sejie2.src = Levels(img1,img2)["output2"]
+        			img1.src = Levels(img1,img2)["output1"]
+        			img2.src = Levels(img1,img2)["output2"]
+                    del4.removeAttribute("disabled");
+    		    }
+    		}
+    		btn3.onclick = function(){
+    			output.src = MirageTank(img1,img2)
+    			document.getElementById("bianse").removeAttribute("disabled");
+    			document.getElementById("qiehuan-button").removeAttribute("disabled");
+    		}
+    		//去色
+    		function Desaturate(img){
+    			var c = document.createElement("canvas")
+    			var ctx = c.getContext("2d")
+    			c.width = img.width
+    			c.height = img.height
+    			ctx.drawImage(img,0,0)
+    			var data = ctx.getImageData(0,0,c.width,c.height)
+    			var R,G,B,max,mix
+    			for(var i = 0 ; i < data.data.length ; i+=4 ){
+    				R = data.data[i + 0]
+    				G = data.data[i + 1]
+    				B = data.data[i + 2]
+    				if(R > G){
+    					max = R
+    					mix = G
+    				}else{
+    					max = G
+    					mix = R
+    				}
+    				if( B > max ){
+    					max = B
+    				}
+    				if( B < mix ){
+    					mix = B
+    				}
+    				data.data[i + 0] = ( mix + max )/2
+    				data.data[i + 1] = ( mix + max )/2
+    				data.data[i + 2] = ( mix + max )/2
+    			}
+    			ctx.putImageData(data,0,0)
+    			return c.toDataURL()
+    		}
+    		function FindMixMax(img){
+    			var c = document.createElement("canvas")
+    			var ctx = c.getContext("2d")
+    			c.width = img.width
+    			c.height = img.height
+    			ctx.drawImage(img,0,0)
+    			var data = ctx.getImageData(0,0,c.width,c.height)
+    			var R,G,B,Mix=0,Max=0
+    			for( var i = 0 ; i < data.data.length ; i+=4 ){
+    				R = data.data[ i + 0 ]
+    				G = data.data[ i + 1 ]
+    				B = data.data[ i + 2 ]
+    				if( R < Mix ){
+    					Mix = R
+    				}	
+    				if( R > Max ){
+    					Max = R
+    				}
+    				if( G < Mix ){
+    					Mix = G
+    				}
+    				if( G > Max ){
+    					Max = G
+    				}
+    				if( B < Mix ){
+    					Mix = B
+    				}
+    				if( B > Max ){
+    					Max = B
+    				}
+    			}
+    			var result = {"Mix" : Mix,"Max" : Max}
+    			return result
+    		}
+    		function Levels(img1,img2){
+    			//img1亮显示，img2暗隐藏
+    			var c = document.createElement("canvas")
+    			var ctx = c.getContext("2d")
+    			c.width = Math.max(img1.width, img2.width);
+    			c.height = Math.max(img1.height, img2.height);
+    			ctx.drawImage(img1,0,0)
+    			var data1 = ctx.getImageData(0,0,c.width,c.height)
+    			ctx.drawImage(img2,0,0)
+    			var data2 = ctx.getImageData(0,0,c.width,c.height)
+    			var img1_mix = FindMixMax(img1)["Mix"]//0
+    			var img1_change = 128 - img1_mix//128
+    			var img2_max = FindMixMax(img2)["Max"]//255
+    			var img2_change = 127 - img2_max//-128
+    			
+    			var R,G,B
+    			//img1变亮
+    			for( var i = 0 ; i < data1.data.length ; i+=4 ){
+    				R = data1.data[ i + 0 ]
+    				G = data1.data[ i + 1 ]
+    				B = data1.data[ i + 2 ]
+    				data1.data[ i + 0 ] = R+(255-R)/255*img1_change
+    				data1.data[ i + 1 ] = G+(255-G)/255*img1_change
+    				data1.data[ i + 2 ] = B+(255-B)/255*img1_change
+    			}
+    			//img2压暗
+    			for( var i = 0 ; i < data2.data.length ; i+=4 ){
+    				R = data2.data[ i + 0 ]
+    				G = data2.data[ i + 1 ]
+    				B = data2.data[ i + 2 ]
+    				data2.data[ i + 0 ] = R+(R)/255*img2_change
+    				data2.data[ i + 1 ] = G+(G)/255*img2_change
+    				data2.data[ i + 2 ] = B+(B)/255*img2_change
+    			}
+    			var n = data2.data[ 42 ]
+    			c.width = img1.width;
+    			c.height = img1.height;
+    			ctx.putImageData(data1,0,0)
+    			var output1 = c.toDataURL()
+    			ctx.clearRect(0,0,c.width,c.height)
+    			c.width = img2.width;
+    			c.height = img2.height;
+    			ctx.putImageData(data2,0,0)
+    			var output2 = c.toDataURL()
+    			return { "output1" : output1 , "output2" : output2 }
+    		}
+    		function MirageTank(img1,img2){
+    			var c = document.createElement("canvas")
+    			c.width = img2.width;
+    			c.height = img2.height;
+    			var ctx = c.getContext("2d")
+    			ctx.drawImage(img1,0,0,img2.width,img2.height)
+    			var data1 = ctx.getImageData(0,0,img2.width,img2.height)
+    			ctx.drawImage(img2,0,0,img2.width,img2.height)
+    			var data2 = ctx.getImageData(0,0,img2.width,img2.height)
+    			var data3 = ctx.createImageData(img2.width,img2.height)
+    			var R1,G1,B1,A1;//亮
+    			var R2,G2,B2,A2;//暗
+    			var R3,G3,B3,A3;
+    			for(var i=0;i<data1.data.length;i+=4){
+    				//恭喜这里遇到了区间问题，0~255 or 0~1？
+    				R1 = data1.data[i + 0] //0~255
+    				G1 = data1.data[i + 1] //0~255
+    				B1 = data1.data[i + 2] //0~255
+    				avg1 = (R1 + G1 + B1) / 3 //0~255
+    				R2 = data2.data[i + 0]
+    				G2 = data2.data[i + 1]
+    				B2 = data2.data[i + 2]
+    				avg2 = (R2 + G2 + B2) / 3
+    				A3 = avg2 - avg1 + 255 //0~255
+    				if (A3 === 0) {
+    					A3 = 0.0001
+    				}
+    				R3 = R2 * 255 / A3 //等同于 R2 / A3 * 255
+    				G3 = G2 * 255 / A3
+    				B3 = B2 * 255 / A3
+    				data3.data[i + 0] = R3
+    				data3.data[i + 1] = G3
+    				data3.data[i + 2] = B3
+    				data3.data[i + 3] = A3
+    			}
+    			ctx.putImageData(data3,0,0)
+    			return c.toDataURL()
+    		}
+    		//切换背景色
+    		function toggleBackground() {
+                var div = document.getElementById("output_div");
+                if (div.style.backgroundColor === 'black') {
+                  div.style.backgroundColor = 'white';
+                } else {
+                  div.style.backgroundColor = 'black';
+                }
+            }
+            
+            // 获取所有图片元素
+            const images = document.querySelectorAll('img');
+            
+            // 为每个图片元素添加点击事件监听器
+            images.forEach((img) => {
+              img.addEventListener('click', () => {
+                const link = document.createElement('a');
+                link.href = img.src;
+                link.download = img.getAttribute('class') + '.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              });
+            });
+            
+            //说明弹窗
+            var floatingWindow = document.getElementById('floating-window');
+            var windowBackground = document.getElementById('window-background');
+    		var openButton = document.getElementById('open-button');
+    
+    		openButton.addEventListener('click', function() {
+              if (floatingWindow.classList.contains('show')) {
+                floatingWindow.classList.remove('show');
+                windowBackground.classList.remove('show');
+                
+              } else {
+                floatingWindow.classList.add('show');
+                windowBackground.classList.add('show');
+                
+              }
+            });
+            windowBackground.addEventListener('click', function() {
+              if (floatingWindow.classList.contains('show')) {
+                floatingWindow.classList.remove('show');
+                windowBackground.classList.remove('show');
+                
+              }
+            });
+    	</script>
+    	<script>
+            function loadCSS() {
+              var link = document.createElement("link");
+              link.rel = "stylesheet";
+              if (window.innerWidth > window.innerHeight) {
+                link.href = "style.css";
+              } else {
+                link.href = "m_style.css";
+              }
+              document.head.appendChild(link);
+            }
+            
+            window.addEventListener("resize", function() {
+              // 移除旧的CSS文件
+              var oldLink = document.getElementsByTagName("link")[0];
+              document.head.removeChild(oldLink);
+              // 加载新的CSS文件
+              loadCSS();
+            });
+            loadCSS();
+    	</script>
+	</body>
+</html>

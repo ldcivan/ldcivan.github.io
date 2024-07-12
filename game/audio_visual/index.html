@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>音乐可视化</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            background-color: rgba(255, 255, 255, 1);
+        }
+        
+        .button {
+          display: inline-block;
+          position: relative;
+          width: 5vh;
+          height: 5vh;
+          border: 1px solid gray;
+          border-radius: 50%;
+          background-color: #e0e0e0;
+          text-align: center;
+          line-height: 6vh;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+          box-shadow: 0 0px 7.5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .button svg {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 80%;
+          height: auto;
+        }
+        
+        .button:hover {
+          background-color: #eee;
+          box-shadow: 0 0px 10.5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .button:active {
+          background-color: #bbb;
+          box-shadow: 0 0px 4.5px rgba(0, 0, 0, 0.5);
+        }
+        
+        #content {
+            position: fixed;
+            left: -1px;
+            right: -1px;
+            top: -1px;
+            bottom: 30vh;
+            margin: auto;
+            text-align: center;
+        }
+        
+        #contentImg {
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -65%); 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            object-position: center; 
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 70%, rgba(255, 255, 255, 0) 100%); 
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 70%, rgba(0, 0, 0, 0) 100%); 
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 70%, rgba(0, 0, 0, 0) 100%);
+        }
+        
+        #frequencyChart {
+          z-index: -1;
+          box-sizing: border-box;
+          bottom: 30%;
+          position: fixed;
+          max-height: 40vh;
+        }
+        
+        #profile {
+            height: 35%;
+            position: fixed;
+            bottom: 0;
+        }
+        
+        #profile-cover {
+            margin: auto 2vw;
+            border-radius: 50%;
+            border: 4vh solid #444450;
+            box-sizing: border-box;
+            width: 30vh;
+            height: 30vh;
+            top: 50%;
+            left: 50%;
+            object-fit: cover; 
+            object-position: center; 
+        }
+    </style>
+    <style>
+        .audio-player {
+          position: fixed;
+          bottom:  5vh;
+          margin: auto 2vw;
+          display: inline-block;
+          width: calc(90vw - 30vh);
+          height: 25vh;
+          padding: 2.3vh;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          box-sizing: border-box;
+          background-color: rgba(246, 246, 246, 0.4);
+        }
+        .audio-progress {
+          width: 100%;
+          height: 1.15vh;
+          background-color: #e0e0e0;
+          margin-top: 10px;
+          border-radius: 5px;
+          display: inline-block;
+        }
+        .audio-progress-bar {
+          height: 100%;
+          background-color: #007bff;
+          width: 0%;
+          border-radius: 5px;
+        }
+        .audio-controls {
+          display: inline-block;
+        }
+        
+        .rotate {
+            transition: transform 1s ease;
+            animation: rotate 12s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(360deg);
+            }
+        }
+        
+        /* 设置标题的样式 */
+        .title {
+          font-size: 2.8vh;
+          font-weight: bold;
+          text-align: left;
+          margin: 5px 0;
+        }
+    
+        /* 设置副标题的样式 */
+        .subtitle {
+          font-size: 1.8vh;
+          font-weight: normal;
+          text-align: left;
+          margin: 2px 0;
+          color: grey;
+        }
+    
+        /* 设置歌词容器的样式 */
+        .lyrics-container {
+          position: fixed;
+          bottom: 6.5vh;
+          width: calc(84vw - 30vh);
+          margin: 2px 0;
+          overflow: hidden;
+          height: auto;
+          /*border: 1px solid #ccc;*/
+          font-size: 2.0vh;
+          font-style: italic;
+          transition: opacity 0.10s ease-in-out;
+          opacity: 1;
+        }
+        
+        .sublyrics {
+          font-size: 1.5vh;
+          bottom: 9vh;
+          color: grey;
+        }
+        
+        .fade {
+          opacity: 0;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script>
+        function getAverageColor(img) {
+          var canvas = document.createElement('canvas');
+          var ctx = canvas.getContext('2d');
+          var width = canvas.width = img.naturalWidth;
+          var height = canvas.height = img.naturalHeight;
+        
+          ctx.drawImage(img, 0, 0);
+        
+          var imageData = ctx.getImageData(0, 0, width, height);
+          var data = imageData.data;
+          var r = 0;
+          var g = 0;
+          var b = 0;
+          var skip = 0;
+        
+          for (var i = 0, l = data.length; i < l; i += 4) {
+            if(data[i]<10&&data[i+1]<10&&data[i+2]<10) {skip++;continue;}
+            if(data[i]>=245&&data[i+1]>=245&&data[i+2]>=245) {skip++;continue;}
+            r += data[i];
+            g += data[i+1];
+            b += data[i+2];
+          }
+        
+          r = Math.floor(1.00 * r / ((data.length / 4)-skip));
+          g = Math.floor(1.00 * g / ((data.length / 4)-skip));
+          b = Math.floor(1.00 * b / ((data.length / 4)-skip));
+          
+
+        
+          return { r: r<=255?r:255, g: g<=255?g:255, b: b<=255?b:255 };
+        }
+        
+        function load_color() {
+            if(json_bg_color==="0"||json_bg_color==="") {
+                var rgb = getAverageColor(document.getElementById('contentImg'));
+                var rgbStr = ' rgb(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ')';
+                document.getElementById('body').style['background-color'] = rgbStr;
+            }
+        }
+	</script>
+    <script>
+        var standardA4;
+        var frequencyStep;
+        var standardFrequencies, standardFrequenciesList;
+        // 标准音高频率表
+        function frequencyInit(A4) {
+            standardA4 = A4||440.00;
+            frequencyStep = Math.pow(2, 1/12);
+            standardFrequencies = {
+                /*
+                'C1': standardA4*Math.pow(frequencyStep,-45),
+                'C#1': standardA4*Math.pow(frequencyStep,-44),
+                'D1': standardA4*Math.pow(frequencyStep,-43),
+                'D#1': standardA4*Math.pow(frequencyStep,-42),
+                'E1': standardA4*Math.pow(frequencyStep,-41),
+                'F1': standardA4*Math.pow(frequencyStep,-40),
+                'F#1': standardA4*Math.pow(frequencyStep,-39),
+                'G1': standardA4*Math.pow(frequencyStep,-38),
+                'G#1': standardA4*Math.pow(frequencyStep,-37),
+                'A1': standardA4*Math.pow(frequencyStep,-36),
+                'A#1': standardA4*Math.pow(frequencyStep,-35),
+                'B1':standardA4*Math.pow(frequencyStep,-34),
+                'C2': standardA4*Math.pow(frequencyStep,-33),
+                'C#2': standardA4*Math.pow(frequencyStep,-32),
+                */
+                'D2': standardA4*Math.pow(frequencyStep,-31),
+                'D#2': standardA4*Math.pow(frequencyStep,-30),
+                'E2': standardA4*Math.pow(frequencyStep,-29),
+                'F2': standardA4*Math.pow(frequencyStep,-28),
+                'F#2': standardA4*Math.pow(frequencyStep,-27),
+                'G2': standardA4*Math.pow(frequencyStep,-26),
+                'G#2': standardA4*Math.pow(frequencyStep,-25),
+                'A2': standardA4*Math.pow(frequencyStep,-24),
+                'A#2': standardA4*Math.pow(frequencyStep,-23),
+                'B2': standardA4*Math.pow(frequencyStep,-22),
+                'C3': standardA4*Math.pow(frequencyStep,-21),
+                'C#3': standardA4*Math.pow(frequencyStep,-20),
+                'D3': standardA4*Math.pow(frequencyStep,-19),
+                'D#3': standardA4*Math.pow(frequencyStep,-18),
+                'E3': standardA4*Math.pow(frequencyStep,-17),
+                'F3': standardA4*Math.pow(frequencyStep,-16),
+                'F#3': standardA4*Math.pow(frequencyStep,-15),
+                'G3': standardA4*Math.pow(frequencyStep,-14),
+                'G#3': standardA4*Math.pow(frequencyStep,-13),
+                'A3': standardA4*Math.pow(frequencyStep,-12),
+                'A#3': standardA4*Math.pow(frequencyStep,-11),
+                'B3': standardA4*Math.pow(frequencyStep,-10),
+                'C4': standardA4*Math.pow(frequencyStep,-9),
+                'C#4': standardA4*Math.pow(frequencyStep,-8),
+                'D4': standardA4*Math.pow(frequencyStep,-7),
+                'D#4': standardA4*Math.pow(frequencyStep,-6),
+                'E4': standardA4*Math.pow(frequencyStep,-5),
+                'F4': standardA4*Math.pow(frequencyStep,-4),
+                'F#4': standardA4*Math.pow(frequencyStep,-3),
+                'G4': standardA4*Math.pow(frequencyStep,-2),
+                'G#4': standardA4*Math.pow(frequencyStep,-1),
+                'A4': standardA4*Math.pow(frequencyStep,0),
+                'A#4': standardA4*Math.pow(frequencyStep,1),
+                'B4': standardA4*Math.pow(frequencyStep,2),
+                'C5': standardA4*Math.pow(frequencyStep,3),
+                'C#5': standardA4*Math.pow(frequencyStep,4),
+                'D5': standardA4*Math.pow(frequencyStep,5),
+                'D#5': standardA4*Math.pow(frequencyStep,6),
+                'E5': standardA4*Math.pow(frequencyStep,7),
+                'F5': standardA4*Math.pow(frequencyStep,8),
+                'F#5': standardA4*Math.pow(frequencyStep,9),
+                'G5': standardA4*Math.pow(frequencyStep,10),
+                'G#5': standardA4*Math.pow(frequencyStep,11),
+                'A5': standardA4*Math.pow(frequencyStep,12),
+                'A#5': standardA4*Math.pow(frequencyStep,13),
+                'B5': standardA4*Math.pow(frequencyStep,14),
+                'C6': standardA4*Math.pow(frequencyStep,15),
+                'C#6': standardA4*Math.pow(frequencyStep,16),
+                'D6': standardA4*Math.pow(frequencyStep,17),
+                'D#6': standardA4*Math.pow(frequencyStep,18),
+                'E6': standardA4*Math.pow(frequencyStep,19),
+                'F6': standardA4*Math.pow(frequencyStep,20),
+                'F#6': standardA4*Math.pow(frequencyStep,21),
+                'G6': standardA4*Math.pow(frequencyStep,22),
+                'G#6': standardA4*Math.pow(frequencyStep,23),
+                'A6': standardA4*Math.pow(frequencyStep,24),
+                'A#6': standardA4*Math.pow(frequencyStep,25),
+                'B6': standardA4*Math.pow(frequencyStep,26),
+                'C7': standardA4*Math.pow(frequencyStep,27),
+                'C#7': standardA4*Math.pow(frequencyStep,28),
+                'D7': standardA4*Math.pow(frequencyStep,29),
+                'D#7': standardA4*Math.pow(frequencyStep,30),
+                'E7': standardA4*Math.pow(frequencyStep,31),
+                'F7': standardA4*Math.pow(frequencyStep,32),
+                'F#7': standardA4*Math.pow(frequencyStep,33),
+                'G7': standardA4*Math.pow(frequencyStep,34),
+                'G#7': standardA4*Math.pow(frequencyStep,35),
+                'A7': standardA4*Math.pow(frequencyStep,36),
+                'A#7': standardA4*Math.pow(frequencyStep,37),
+                'B7': standardA4*Math.pow(frequencyStep,38),
+                'C8': standardA4*Math.pow(frequencyStep,39),
+                'C#8': standardA4*Math.pow(frequencyStep,40),
+                'D8': standardA4*Math.pow(frequencyStep,41),
+                'D#8': standardA4*Math.pow(frequencyStep,42),
+                'E8': standardA4*Math.pow(frequencyStep,43),
+                'F8': standardA4*Math.pow(frequencyStep,44),
+                'F#8': standardA4*Math.pow(frequencyStep,45),
+                'G8': standardA4*Math.pow(frequencyStep,46),
+                'G#8': standardA4*Math.pow(frequencyStep,47),
+                'A8': standardA4*Math.pow(frequencyStep,48),
+                'A#8': standardA4*Math.pow(frequencyStep,49),
+                'B8': standardA4*Math.pow(frequencyStep,50),
+                'C9': standardA4*Math.pow(frequencyStep,51),
+                'C#9': standardA4*Math.pow(frequencyStep,52),
+                'D9': standardA4*Math.pow(frequencyStep,53),
+                'D#9': standardA4*Math.pow(frequencyStep,54),
+                'E9': standardA4*Math.pow(frequencyStep,55),
+                'F9': standardA4*Math.pow(frequencyStep,56),
+                'F#9': standardA4*Math.pow(frequencyStep,57),
+                'G9': standardA4*Math.pow(frequencyStep,58),
+                'G#9': standardA4*Math.pow(frequencyStep,59),
+                'A9': standardA4*Math.pow(frequencyStep,60),
+                'A#9': standardA4*Math.pow(frequencyStep,61),
+                'B9': standardA4*Math.pow(frequencyStep,62),
+                'C10': standardA4*Math.pow(frequencyStep,63),
+                'C#10': standardA4*Math.pow(frequencyStep,64),
+                'D10': standardA4*Math.pow(frequencyStep,65),
+                'D#10': standardA4*Math.pow(frequencyStep,66),
+                /*
+                'E10': standardA4*Math.pow(frequencyStep,67),
+                'F10': standardA4*Math.pow(frequencyStep,68),
+                'F#10': standardA4*Math.pow(frequencyStep,69),
+                'G10': standardA4*Math.pow(frequencyStep,70),
+                'G#10': standardA4*Math.pow(frequencyStep,71),
+                'A10': standardA4*Math.pow(frequencyStep,72),
+                'A#10': standardA4*Math.pow(frequencyStep,73),
+                'B10': standardA4*Math.pow(frequencyStep,74),
+                */
+            };
+            standardFrequenciesList = [];
+            for (var note in standardFrequencies) {
+                standardFrequenciesList.push(standardFrequencies[note]);
+            }
+        }
+        frequencyInit();
+    </script>
+</head>
+<body id="body">
+    <div id="content"  onclick="document.getElementById('contentImgFile').click();">
+        <input type="file" id="contentImgFile" accept="image/*" style="display:none;">
+        <img id="contentImg" src="./demo.jpg" onload="load_color();">
+    </div>
+    <div style="position:fixed;bottom:0;left:0;width:100%;z-index:-1;"><canvas id="frequencyChart" height="" width="100%"></canvas></div>
+    <div id="profile">
+      <input type="file" id="coverFile" accept="image/*" style="display:none;">
+      <img id="profile-cover" src="./demo.jpg" onclick="document.getElementById('coverFile').click();">
+      <div class="audio-player">
+        <input type="file" id="audioFile" accept="audio/*" style="display:none;">
+        <div class="audio-controls">
+          <button id="playButton" class="button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" color="grey" fill="gray" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+          </button>
+          <button id="stopButton" class="button" style="margin-left:0.8vh;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" color="grey" fill="gray" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><rect x="6" y="6" width="12" height="12"></rect></svg>
+          </button>
+          <span id="clock" onclick="document.getElementById('audioFile').click();" style="right:5px;position:absolute;margin-right:20px;vertical-align: middle;font-size:2vh;">00:00/00:00</span>
+        </div>
+        <div class="audio-progress">
+          <div class="audio-progress-bar"></div>
+          <audio id="h5Audio" src="" style="display:none;"></audio>
+        </div>
+        <input type="file" id="infoJson" accept=".json" style="display:none;">
+        <div id="title" class="title" onclick="document.getElementById('infoJson').click();">这是标题</div>
+        <div id="subtitle" class="subtitle" onclick="document.getElementById('infoJson').click();">这是副标题</div>
+        <div id="sublyrics" class="lyrics-container sublyrics" onclick="document.getElementById('infoJson').click();">
+            这是副歌词
+        </div>
+        <div id="lyrics" class="lyrics-container" onclick="document.getElementById('infoJson').click();">
+            这是歌词
+        </div>
+      </div>
+    </div>
+<script>
+    let lyrics = {};
+    let lyrics_delay;
+    let json_bg_color = "";
+    document.addEventListener('DOMContentLoaded', function() {
+      const coverFile = document.getElementById('coverFile');
+      const cover = document.getElementById('profile-cover');
+      const contentImgFile = document.getElementById('contentImgFile');
+      const contentImg = document.getElementById('contentImg');
+      const infoJson = document.getElementById('infoJson');
+
+      coverFile.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+          const imageDataURL = event.target.result;
+          cover.src = imageDataURL;
+        };
+
+        reader.readAsDataURL(file);
+      });
+      
+      contentImgFile.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+          const imageDataURL = event.target.result;
+          contentImg.src = imageDataURL;
+        };
+
+        reader.readAsDataURL(file);
+      });
+      
+      infoJson.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+            const contents = event.target.result;
+            //console.log(contents);
+            const jsonData = JSON.parse(contents);
+            
+            // 在这里可以使用 jsonData 对象进行进一步的操作
+            document.getElementById('title').innerHTML = jsonData.title;
+            document.getElementById('subtitle').innerHTML = jsonData.subtitle;
+            lyrics = jsonData.lyrics;
+            lyrics_delay = jsonData.delay;
+            document.getElementById('lyrics').innerHTML = lyrics[0][1];
+            document.getElementById('sublyrics').innerHTML = lyrics[0].length > 2 ? lyrics[0][2] : '';
+            json_bg_color = jsonData.bg_color;
+            if(json_bg_color!=='0') {
+                document.getElementById('body').style['background-color'] = json_bg_color;
+            }
+        };
+
+        reader.readAsText(file);
+      });
+    });
+    
+document.addEventListener('keydown', function(event) {
+  const keyCode = event.keyCode;
+  
+  if (keyCode === 32) {
+    document.getElementById('playButton').click();
+  }
+});
+</script>
+  <script>
+    const audioFileInput = document.getElementById('audioFile');
+    const playButton = document.getElementById('playButton');
+    const stopButton = document.getElementById('stopButton');
+    const audioProgressBar = document.querySelector('.audio-progress-bar');
+
+    let audioContext;
+    let audioSource;
+    let audioBuffer;
+    let audioDuration;
+    let intervalID;
+    let isPlaying = false;
+    let startTime = 0;
+    let pauseTime = 0; // 新增的暂停时间点变量
+
+    audioFileInput.addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      document.getElementById('h5Audio').src = URL.createObjectURL(file);
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        const arrayBuffer = e.target.result;
+
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+        audioContext.decodeAudioData(arrayBuffer, function(buffer) {
+          audioBuffer = buffer;
+          audioDuration = audioBuffer.duration;
+          document.getElementById('clock').innerHTML = '00:00'+'/'+formatTime(audioDuration.toFixed(0));
+        });
+      };
+
+      reader.readAsArrayBuffer(file);
+    });
+
+    playButton.addEventListener('click', function() {
+      if (audioBuffer) {
+        if (!isPlaying) {
+          playAudio();
+        } else {
+          pauseAudio();
+        }
+      }
+    });
+
+    stopButton.addEventListener('click', function() {
+      stopAudio();
+    });
+
+    function playAudio() {
+      isPlaying = true;
+      playButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 0 23 24" color="grey" fill="gray" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="icon"><polygon points="5 5 17 12 5 19 5 5"></polygon></svg>';
+      document.getElementById('profile-cover').classList.add('rotate');
+      //document.getElementById('h5Audio').currentTime = audioContext.currentTime - pauseTime;
+      document.getElementById('h5Audio').play();
+          
+      // 创建一个AudioBufferSourceNode来播放解码后的音频数据
+      audioSource = audioContext.createBufferSource();
+      audioSource.buffer = audioBuffer;
+      //audioSource.connect(audioContext.destination);
+      
+      // 创建一个AnalyserNode用于获取音频数据的频谱信息
+      var analyser = audioContext.createAnalyser();
+      analyser.fftSize = 8192; // 设置FFT大小
+    
+      // 连接节点
+      audioSource.connect(analyser);
+      //analyser.connect(audioContext.destination);
+      
+        // 计算频率
+        function calculateFrequency() {
+            // 获取频谱数据
+            var spectrum = new Uint8Array(analyser.frequencyBinCount);
+            analyser.getByteFrequencyData(spectrum);
+            
+            var frequencyDistribution = new Array(analyser.frequencyBinCount).fill(0);
+            var frequencyDistributionCount = new Array(analyser.frequencyBinCount).fill(0);
+            // 将频谱数据转换为频率分布数据
+            for (var i = 0; i < spectrum.length; i++) {
+                var frequency = i * audioContext.sampleRate / analyser.fftSize;
+                var index = 0;
+                var closestDeviation = Infinity;
+                for (var j = 0; j < standardFrequenciesList.length; j++) {
+                    var deviation = Math.abs(frequency - standardFrequenciesList[j]);
+                    if (deviation < closestDeviation) {
+                        index = j;
+                        closestDeviation = deviation;
+                    }
+                }
+                frequencyDistribution[index] += spectrum[i];
+                frequencyDistributionCount[index]++;
+            }
+            for(var i=0; i<frequencyDistribution.length; i++) {
+                if(frequencyDistributionCount[i]!==0)
+                    frequencyDistribution[i]=Math.pow(frequencyDistribution[i]/frequencyDistributionCount[i],2);
+                else 
+                    frequencyDistribution[i] = 0;
+            }
+            //console.log(frequencyDistribution)
+            // 获取canvas元素
+            var canvas = document.getElementById('frequencyChart');
+            if (Chart.getChart(canvas)) {
+                // 销毁之前的图表
+                Chart.getChart(canvas).destroy();
+            }
+            
+            // 创建条形图
+            var labelList = [];
+            for(var note in standardFrequencies) labelList.push(note);
+            var chart = new Chart(canvas, {
+                type: 'bar',
+                data: {
+                    labels: labelList, // 标签为频率值
+                    datasets: [{
+                        label: '频率分布',
+                        data: frequencyDistribution, // 使用频率分布数据
+                        backgroundColor: 'rgba(64, 64, 64, 0.2)', // 条形的背景颜色
+                        borderColor: 'rgba(64, 64, 64, 0.2)', // 条形的边框颜色
+                        borderWidth: 1, // 条形的边框宽度
+                        barPercentage: 1.2
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    animation: false,
+                    scales: {
+                        x: {
+                            display: false
+                        },
+                        y: {
+                            beginAtZero: true, // y轴从0开始
+                            max: 90000,
+                            display: false
+                        }
+                    }
+                }
+            });
+            //document.getElementById('volume').innerHTML = '音量：' + volume.toFixed(2) + ' 单位 ';
+            
+            updateProgress();
+        }
+
+        intervalID = setInterval(calculateFrequency, 50); // 每100毫秒计算一次频率
+
+      if(startTime % audioDuration == 0)
+        audioSource.start(0);
+      else
+        audioSource.start(0, startTime % audioDuration);
+       pauseTime = audioContext.currentTime - startTime; // 更新开始时间点
+
+      //requestAnimationFrame(updateProgress);
+    }
+
+    function pauseAudio() {
+      isPlaying = false;
+      playButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" color="grey" fill="gray" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
+      document.getElementById('profile-cover').classList.remove('rotate');
+      document.getElementById('h5Audio').pause();
+    
+      
+      startTime = audioContext.currentTime - pauseTime; // 记录暂停时间点
+      audioSource.stop();
+      audioSource.disconnect();
+      clearInterval(intervalID);
+    }
+
+    function stopAudio() {
+      isPlaying = false;
+      playButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" color="grey" fill="gray" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
+      document.getElementById('profile-cover').classList.remove('rotate');
+      document.getElementById('h5Audio').pause();
+      document.getElementById('h5Audio').currentTime = 0;
+
+      if (audioSource) {
+        audioSource.stop();
+        audioSource.disconnect();
+        audioContext.currentTime = 0;
+      }
+      clearInterval(intervalID);
+
+      //audioProgressBar.style.width = '0%';
+      pauseTime = 0; startTime = 0; // 重置暂停时间点为零
+    }
+    
+    function formatTime(seconds) {
+      const minutes = Math.floor(seconds / 60);
+      const remainingSeconds = seconds % 60;
+    
+      const formattedMinutes = String(minutes).padStart(2, '0');
+      const formattedSeconds = String(remainingSeconds).padStart(2, '0');
+    
+      return `${formattedMinutes}:${formattedSeconds}`;
+    }
+
+    function updateProgress() {
+      //console.log(startTime,pauseTime,audioContext.currentTime)
+      if (isPlaying) {
+        const currentTime = audioContext.currentTime - pauseTime; // 更新当前时间点
+        const progress = (currentTime / audioDuration) * 100;
+        audioProgressBar.style.width = `${progress}%`;
+        document.getElementById('clock').innerHTML = formatTime(currentTime.toFixed(0))+'/'+formatTime(audioDuration.toFixed(0));
+        
+        // 找到当前时间点对应的歌词
+        if(JSON.stringify(lyrics)!=='{}') {
+            let currentLyric;
+            for (let i = 0; i < lyrics.length; i++) {
+              const lyricTime = parseFloat(lyrics[i][0]) + parseFloat(lyrics_delay);
+              const nextLyricTime = i < lyrics.length - 1 ? parseFloat(lyrics[i + 1][0]) + parseFloat(lyrics_delay) : Infinity;
+            
+              if (currentTime >= lyricTime && currentTime < nextLyricTime) {
+                currentLyric = lyrics[i];
+                break;
+              }
+            }
+        
+            // 将当前歌词赋值给指定元素的 innerHTML
+            if(document.getElementById('lyrics').innerHTML != currentLyric[1]) {
+                document.getElementById('lyrics').classList.add('fade');
+                document.getElementById('sublyrics').classList.add('fade');
+                setTimeout(function() {
+                    document.getElementById('lyrics').innerHTML = currentLyric[1];
+                    document.getElementById('sublyrics').innerHTML = currentLyric.length > 2 ? currentLyric[2] : "";
+                    document.getElementById('lyrics').classList.remove('fade');
+                    document.getElementById('sublyrics').classList.remove('fade');
+                }, 100);
+            }
+        }
+
+        if (currentTime >= audioDuration) {
+          stopAudio();
+        } //else {
+          //requestAnimationFrame(updateProgress);
+        //}
+      }
+    }
+  </script>
+</body>
+</html>

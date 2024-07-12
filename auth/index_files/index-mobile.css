@@ -1,0 +1,161 @@
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+html,body {
+	color: #000;
+	font-size: 14px;
+}
+
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+
+.auto {
+	height: auto;
+	overflow: hidden;
+}
+
+#app {
+	width: 100%;
+	/*min-height: calc(100vh - 150px);*/
+	min-height: 100vh;
+	position: relative;
+}
+.appbox {
+	margin: 20px 20px 130px;
+}
+
+.lan .fr {
+	text-align: right;
+}
+.lan .fl {
+	width: 50%;
+}
+.lan img {
+	width: 100%;
+}
+
+.logo {
+	margin-top: 50px;
+	text-align: center;
+}
+.logo img {
+	width: 21vw;
+	height: 21vw;
+}
+.tongyi {
+	font-size: 20px;
+	line-height: 40px;
+	font-weight: bold;
+}
+.login-title {
+	text-align: center;
+}
+.login-title .title_a {
+	font-size: 16px;
+	color: #999;
+	line-height: 40px;
+}
+
+.login-from {
+	margin-top: 40px;
+}
+.img-code {
+	width: 94px;
+	height: 40px;
+	border-radius: 4px;
+	display: block;
+	margin: -8px -10px -8px 0;
+}
+
+.van-cell {
+	padding: 14px 10px;
+}
+
+.error-message {
+	margin-top: 10px;
+	margin-left: 10px;
+	color: red;
+	text-align: right;
+}
+
+.change-type {
+	margin-top: 20px;
+	margin-left: 10px;
+}
+.change-type a {
+	font-size: 14px;
+}
+.van-cell:not(:last-child)::after {
+	left: 0;
+}
+
+.vanbtn {
+	margin-top: 30px;
+	border-radius: 10px;
+	font-size: 16px;
+}
+
+.get-code-btn {
+	margin: -5px -10px -5px 0;
+}
+
+.footer {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	text-align: center;
+	line-height: 50px;
+	width: 100%;
+}
+.footer a {
+	margin: 0 10px;
+	font-size: 12px;
+	text-decoration: underline;
+}
+
+.tips {
+	line-height: 22px;
+	margin: 0 20px;
+	font-weight: 300;
+	color: #999;
+	font-size: 14px;
+	padding-bottom: 30px;
+}
+.tips b {
+	font-weight: bold;
+}
+.tips a {
+	margin: 0;
+}
+
+[v-cloak] {
+	display: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

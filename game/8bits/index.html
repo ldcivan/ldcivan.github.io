@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>放8bits音乐制作器</title>
+    <meta charset="utf-8">
+    <style>
+        #piano-roll {
+            display: grid;
+            grid-template-columns: repeat(32, 30px);
+            grid-template-rows: repeat(8, 30px);
+            gap: 2px;
+            margin-bottom: 10px;
+            padding: 40px 20px;
+        }
+        .piano-roll div {
+            background-color: #eee;
+            border: 1px solid #999;
+        }
+        .piano-roll div.wave1 {
+            background-color: #CC0055!important;
+        }
+        .piano-roll div.wave2 {
+            background-color: #ffcc00!important;
+        }
+        .piano-roll div.wave3 {
+            background-color: #55CC55!important;
+        }
+        .piano-roll div.wave4 {
+            background-color: #0055CC!important;
+        }
+        button {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="piano-roll" class="piano-roll"></div>
+    <div style="position:fixed;bottom:10px;background-color:#ccc;padding:6px;margin:auto;left:0;right:0;text-align:center;">
+    <button onclick="play()">播放</button>
+    <button onclick="stop()">停止</button>
+    <button onclick="clearPianoRoll()">清空</button>
+        每格时长：<input id="beep_time" type="number" value=500>
+        卷帘长度：<input id="roll_length" type="number" value=128>
+        <button onclick="beep_time=document.getElementById('beep_time').value;roll_length=parseInt(document.getElementById('roll_length').value);pianoRoll = Array.from({ length: frequencies.length }, () => Array(roll_length).fill(0));pianoInit();document.getElementById('piano-roll').style['grid-template-rows'] = `repeat(${frequencies.length}, 30px)`;document.getElementById('piano-roll').style['grid-template-columns'] = `repeat(${roll_length}, 30px)`;stop();">OK</button>
+    </div>
+    <script>
+        // 定义音符的频率
+        const frequencies = [
+            987.77, 932.33, 880.00, 830.61, 784.00, 739.99, 698.46, 659.26, 622.25, 587.33, 554.37, 523.25, 493.88, 466.16, 440.00, 415.30, 392.00, 370.00, 349.23, 329.63, 311.13, 293.66, 277.18, 261.63, 246.94, 233.08, 220.00, 207.65, 196.00, 184.99, 174.61, 164.81, 155.56, 146.83, 138.59, 130.81
+        ];
+        let roll_length = 128;
+        let beep_time = 250;
+        document.getElementById('piano-roll').style['grid-template-rows'] = `repeat(${frequencies.length}, 30px)`;
+        document.getElementById('piano-roll').style['grid-template-columns'] = `repeat(${roll_length}, 30px)`;
+        
+        // 创建钢琴卷帘的二维数组
+        let pianoRoll = Array.from({ length: frequencies.length }, () => Array(roll_length).fill(0));
+        
+        // 创建音符的波形类型
+        const waveforms = ['sine', 'square', 'triangle', 'sawtooth'];
+        
+        // 创建音频上下文
+        let audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        
+        // 创建音符播放函数
+        function playNote (frequency, waveform) {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+        
+            oscillator.type = waveform;
+            oscillator.frequency.value = frequency;
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            if(waveform==waveforms[1]||waveform==waveforms[3]) gainNode.gain.value = 0.4;
+            oscillator.start();
+        
+            return {
+                stop: function () {
+                    oscillator.stop();
+                    oscillator.disconnect();
+                    gainNode.disconnect();
+                }
+            };
+        }
+        
+        // 创建播放函数
+        function play () {
+            pianoRoll.forEach((row, rowIndex) => {
+                row.forEach((note, columnIndex) => {
+                    if (note !== 0) {
+                        const frequency = frequencies[rowIndex];
+                        const waveform = waveforms[note - 1];
+                        const startTime = columnIndex * (beep_time/1000);
+                        const endTime = startTime + (beep_time/1000);
+        
+                        setTimeout(() => {
+                            const notePlayer = playNote(frequency, waveform);
+                            setTimeout(() => notePlayer.stop(), beep_time);
+                        }, startTime * 1000);
+                    }
+                });
+            });
+        }
+        
+        // 创建停止函数
+        function stop () {
+            audioContext.close();
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        
+        // 创建清空函数
+        function clearPianoRoll () {
+            pianoRoll.forEach(row => row.fill(0));
+            const pianoRollDivs = document.querySelectorAll('.piano-roll div');
+            pianoRollDivs.forEach(div => div.className='');
+        }
+        
+        // 创建点击事件处理函数
+        function handlePianoRollClick (rowIndex, columnIndex, div) {
+            const noteValue = pianoRoll[rowIndex][columnIndex];
+            const nextNoteValue = ((noteValue + 1) % (waveforms.length+1));
+        
+            pianoRoll[rowIndex][columnIndex] = nextNoteValue;
+            console.log(nextNoteValue)
+        
+            if (nextNoteValue === 0) {
+                div.className="";
+            } else {
+                div.className="wave"+nextNoteValue;
+            }
+        }
+        
+        // 创建钢琴卷帘
+        function pianoInit() {
+            document.getElementById('piano-roll').innerHTML = '';
+            const pianoRollDiv = document.querySelector('.piano-roll');
+            pianoRoll.forEach((row, rowIndex) => {
+                row.forEach((note, columnIndex) => {
+                    const div = document.createElement('div');
+                    div.addEventListener('click', () => handlePianoRollClick(rowIndex, columnIndex, div));
+                    if(rowIndex%12==1||rowIndex%12==3||rowIndex%12==5||rowIndex%12==8||rowIndex%12==10) div.style["background-color"]='#ccc';
+                    pianoRollDiv.appendChild(div);
+                });
+            });
+        }
+        pianoInit();
+    </script>
+</body>
+</html>

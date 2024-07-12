@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>弹球游戏</title>
+	<style>
+		canvas {
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="gameCanvas" width="1600" height="850"></canvas>
+
+	<script>
+        function getQueryVariable(variable) {
+          //获取当前URL中的查询字符串部分（即问号后面的部分）
+          var query = window.location.search.substring(1);
+          //把查询字符串按照&符号分割成数组
+          var vars = query.split("&");
+          //遍历数组中的每个元素
+          for (var i = 0; i < vars.length; i++) {
+            //把当前元素按照=符号分割成键和值
+            var pair = vars[i].split("=");
+            //如果当前元素的键等于参数名，则返回对应的值
+            if (pair[0] == variable) {
+              return pair[1];
+            }
+          }
+          //如果没有找到匹配的参数名，则返回false
+          return false;
+        }
+        var compu_control = getQueryVariable('computer')===false?4:getQueryVariable('computer'); // 加入电脑玩家吗？
+        
+		// 获取 canvas 元素
+		var canvas = document.getElementById("gameCanvas");
+		
+		const rect = canvas.getBoundingClientRect();
+
+		// 获取画笔
+		var ctx = canvas.getContext("2d");
+
+		// 定义球的属性
+		var ball = {
+			x: canvas.width/2,
+			y: canvas.height/2,
+			radius: 10,
+			speed: 5,
+			dx: BallDx(),
+			dy: BallDx()
+		};
+
+		// 定义两个玩家的板子属性
+		var player1 = {
+			x: 20,
+			y: canvas.height/2 - 50,
+			width: 10,
+			height: 150,
+			speed: 8,
+			score: 0
+		};
+
+		var player2 = {
+			x: canvas.width - 30,
+			y: canvas.height/2 - 50,
+			width: 10,
+			height: 150,
+			speed: 4,
+			score: 0
+		};
+
+		// 玩家按键标志
+        let keysPressed = {};
+        
+        // 监听键盘按下事件
+        document.addEventListener("keydown", function(event) {
+          keysPressed[event.key] = true;
+        });
+        
+        // 监听键盘松开事件
+        document.addEventListener("keyup", function(event) {
+          keysPressed[event.key] = false;
+        });
+
+		// 更新游戏状态
+		function update() {
+		    // 检查玩家 1 的按键标志
+              if (keysPressed["w"]) {
+                player1.y -= player1.speed;
+              }
+              if (keysPressed["s"]) {
+                player1.y += player1.speed;
+              }
+            
+              // 检查玩家 2 的按键标志
+              if (keysPressed["ArrowUp"]) {
+                player2.y -= player2.speed;
+              }
+              if (keysPressed["ArrowDown"]) {
+                player2.y += player2.speed;
+              }
+		    
+			// 更新球的位置
+			ball.x += ball.dx;
+			ball.y += ball.dy;
+
+			// 球碰到顶部或底部，反弹
+			if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) {
+				ball.dy = -ball.dy;
+			}
+
+			// 球碰到玩家板子，反弹
+			if (ball.x - ball.radius < player1.x + player1.width && ball.y > player1.y && ball.y < player1.y + player1.height) {
+				ball.dx = -ball.dx;
+			} else if (ball.x + ball.radius > player2.x && ball.y > player2.y && ball.y < player2.y + player2.height) {
+				ball.dx = -ball.dx;
+			}
+				handleCollision();
+			
+
+			// 玩家板子不能超出边界
+			if (player1.y < 0) {
+				player1.y = 0;
+			} else if (player1.y + player1.height > canvas.height) {
+				player1.y = canvas.height - player1.height;
+			}
+
+			
+			if (player2.y < 0) {
+				player2.y = 0;
+			} else if (player2.y + player2.height > canvas.height) {
+				player2.y = canvas.height - player2.height;
+			}
+				// 判断是否有玩家得分
+		if (ball.x - ball.radius < 0) {
+			player2.score++;
+			resetBall();
+		} else if (ball.x + ball.radius > canvas.width) {
+			player1.score++;
+			resetBall();
+		}
+	}
+	
+    	function handleCollision(paddle) {// 检查球是否与玩家 1 的板子碰撞
+        // 检查球是否与玩家 1 的板子碰撞
+        if (ball.x - ball.radius < player1.x + player1.width &&
+            ball.y + ball.radius > player1.y &&
+            ball.y - ball.radius < player1.y + player1.height) {
+          // 计算板子的中心点
+          let center = player1.y + player1.height / 2;
+          // 计算球与板子中心点的相对距离
+          let deltaY = ball.y - center;
+          // 根据相对距离计算出反弹角度
+          ball.angle = deltaY / (player1.height / 2) * Math.PI / 4;
+          // 确保球的反弹角度不会超出一定范围
+          if (ball.angle < -Math.PI / 2) {
+            ball.angle = -Math.PI / 2;
+          } else if (ball.angle > Math.PI / 2) {
+            ball.angle = Math.PI / 2;
+          }
+          // 根据板子的速度调整球的速度和方向
+          ball.speed *= 1.025;
+          if (player1.speed < 0) {
+            ball.dx = -ball.speed * Math.cos(ball.angle);
+            ball.dy = -ball.speed * Math.sin(ball.angle);
+          } else if (player1.speed > 0) {
+            ball.dx = ball.speed * Math.cos(ball.angle);
+            ball.dy = -ball.speed * Math.sin(ball.angle);
+          } else {
+            ball.dx = ball.speed * Math.cos(ball.angle) * Math.sign(ball.dx);
+            ball.dy = -ball.speed * Math.sin(ball.angle);
+          }
+        }
+        
+        // 检查球是否与玩家 2 的板子碰撞（类似的处理逻辑）
+        if (ball.x + ball.radius > player2.x &&
+            ball.y + ball.radius > player2.y &&
+            ball.y - ball.radius < player2.y + player2.height) {
+          let center = player2.y + player2.height / 2;
+          let deltaY = ball.y - center;
+          ball.angle = deltaY / (player2.height / 2) * Math.PI / 4;
+          if (ball.angle < -Math.PI / 2) {
+            ball.angle = -Math.PI / 2;
+          } else if (ball.angle > Math.PI / 2) {
+            ball.angle = Math.PI / 2;
+          }
+          ball.speed *= 1.05;
+          if (player2.speed < 0) {
+            ball.dx = ball.speed * Math.cos(ball.angle);
+            ball.dy = -ball.speed * Math.sin(ball.angle);
+          } else if (player2.speed > 0) {
+            ball.dx = -ball.speed * Math.cos(ball.angle);
+            ball.dy = -ball.speed * Math.sin(ball.angle);
+          } else {
+            ball.dx = -ball.speed * Math.cos(ball.angle) * Math.sign(ball.dx);
+            ball.dy = -ball.speed * Math.sin(ball.angle);
+          }
+        }
+        
+        }
+
+        function aiMove(player, threshold) {
+          // 计算球的纵向位置与玩家 1 中心点的距离
+          let ballDistance = ball.y - (player.y + player.height / 2);
+        
+          // 当球在玩家 1 上方时，向上移动
+          if (ballDistance < -threshold) {
+            player.y = player.y - player.speed;
+          }
+          // 当球在玩家 1 下方时，向下移动
+          else if (ballDistance > threshold) {
+            player.y = player.y + player.speed;
+          }
+          // 否则，停止移动
+          else {
+            player.y = player.y;
+          }
+        }
+        
+        function aiMove_dev(player) {
+          // 获取球和板子的位置和速度
+          const ballX = ball.x;
+          const ballY = ball.y;
+          const paddleY = player.y;
+          const PADDLE_X = player.x;
+          const PADDLE_HEIGHT = player.height;
+          const ballSpeed = Math.sqrt(ball.dx * ball.dx + ball.dy * ball.dy);
+          const ballAngle = Math.atan2(ball.dy, ball.dx);
+        
+          // 计算球的下一个位置
+          let nextBallX = ballX + ball.dx;
+          let nextBallY = ballY + ball.dy;
+        
+          // 计算球到达player1板子所需的时间
+          let timeToPaddle = (PADDLE_X - nextBallX) / ball.dx;
+        
+          // 计算球在到达player1板子时的位置
+          let predictedBallY = nextBallY + timeToPaddle * ball.dy;
+        
+          // 计算player1板子需要移动的距离
+          let distanceToMove = predictedBallY - (paddleY + PADDLE_HEIGHT / 2);
+
+        
+          // 将player1板子移动到新位置上
+          if (distanceToMove + Math.random()*100 - 50 > 0)
+            player.y = player.y + player.speed;
+          else
+            player.y = player.y - player.speed;
+        }
+        
+        function aiMove_devp(player) {
+          // 获取球和板子的位置和速度
+          const ballX = ball.x;
+          const ballY = ball.y;
+          const paddleY = player.y;
+          const PADDLE_X = player.x;
+          const PADDLE_HEIGHT = player.height;
+          const ballSpeed = Math.sqrt(ball.dx * ball.dx + ball.dy * ball.dy);
+          const ballAngle = Math.atan2(ball.dy, ball.dx);
+        
+            // 计算球的下一个位置
+          let nextBallX = ballX + ball.dx;
+          let nextBallY = ballY + ball.dy;
+        
+          // 计算球到达player1板子所需的时间
+          let timeToPaddle = (PADDLE_X - nextBallX) / ball.dx;
+        
+          // 计算球在到达player1板子时的位置
+          let predictedBallY = nextBallY + timeToPaddle * ball.dy;
+        
+          // 如果球会碰到player1板子
+          if (predictedBallY > player.y && predictedBallY < player.y + PADDLE_HEIGHT) {
+            // 计算球碰到板子的位置和时间
+            let collidePoint = predictedBallY - player.y - PADDLE_HEIGHT / 2;
+            let collideTime = timeToPaddle - collidePoint / ball.dy;
+        
+            // 计算反弹后的位置
+            let nextBallAngle = Math.PI - ballAngle;
+            let nextBallSpeed = ballSpeed;
+            let nextBallX = PADDLE_X - ball.radius;
+            let nextBallY = ball.y + nextBallSpeed * Math.sin(nextBallAngle) * collideTime;
+          }
+        
+          // 计算player1板子需要移动的距离
+          let distanceToMove = predictedBallY - (paddleY + PADDLE_HEIGHT / 2);
+
+        
+          // 将player1板子移动到新位置上
+          if (distanceToMove + Math.random()*100 - 50 > 0)
+            player.y = player.y + player.speed;
+          else
+            player.y = player.y - player.speed;
+        }
+        
+        function aiMove_devpp(player) {
+          // 获取球和板子的位置和速度
+          const ballX = ball.x;
+          const ballY = ball.y;
+          const paddleY = player.y;
+          const PADDLE_X = player.x;
+          const PADDLE_HEIGHT = player.height;
+          const ballSpeed = Math.sqrt(ball.dx * ball.dx + ball.dy * ball.dy);
+          const ballAngle = Math.atan2(ball.dy, ball.dx);
+        
+            // 计算球的下一个位置
+          let nextBallX = ballX + ball.dx;
+          let nextBallY = ballY + ball.dy;
+        
+          // 计算球到达player1板子所需的时间
+          let timeToPaddle = (PADDLE_X - nextBallX) / ball.dx;
+        
+          // 计算球在到达player1板子时的位置
+          let predictedBallY = nextBallY + timeToPaddle * ball.dy;
+        
+          // 如果球会碰到player1板子
+          if (predictedBallY > player.y && predictedBallY < player.y + PADDLE_HEIGHT) {
+            // 计算球碰到板子的位置和时间
+            let collidePoint = predictedBallY - player.y - PADDLE_HEIGHT / 2;
+            let collideTime = timeToPaddle - collidePoint / ball.dy;
+        
+            // 计算反弹后的位置
+            let nextBallAngle = Math.PI - ballAngle;
+            let nextBallSpeed = ballSpeed;
+            let nextBallX = PADDLE_X - ball.radius;
+            let nextBallY = ball.y + nextBallSpeed * Math.sin(nextBallAngle) * collideTime;
+          }
+          
+
+        
+          // 计算player1板子需要移动的距离
+          if(predictedBallY > canvas.height) predictedBallY = 2*canvas.height - predictedBallY;
+          else if(predictedBallY < 0) predictedBallY = - predictedBallY;
+          
+          let distanceToMove = predictedBallY - (paddleY + PADDLE_HEIGHT / 2);
+          
+          
+
+        
+          // 将player1板子移动到新位置上
+          if (distanceToMove + Math.random()*100 - 50 > 0)
+            player.y = player.y + player.speed;
+          else
+            player.y = player.y - player.speed;
+        }
+
+          function touch_move(player){
+              canvas.addEventListener('mousemove', function(event) {
+                  
+                  player.y = event.clientY - rect.top - player.height/2;
+                  
+                  // 使用 x 和 y 坐标进行操作
+              });
+              
+              canvas.addEventListener('touchmove', function(event) {
+                  
+                  player.y = event.clientY - rect.top - player.height/2;
+                  
+                  // 使用 x 和 y 坐标进行操作
+              });
+          }
+
+    	// 重置球的位置和速度
+    	function resetBall() {
+    		ball.x = canvas.width/2;
+    		ball.y = canvas.height/2;
+    		ball.dx = BallDx(); // 产生 -1 到 1 之间的随机数;
+    		ball.dy = BallDx();
+    		ball.speed = 5;
+    	}
+    
+        function BallDx(){let dx = Math.random() * 10 - 5;if(Math.abs(dx) < 2) dx = BallDx();return dx;}
+    
+    	// 绘制游戏场景
+    	function draw() {
+    		// 绘制背景
+    		ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    		// 绘制球
+    		ctx.beginPath();
+    		ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI*2);
+    		ctx.fillStyle = "#000";
+    		ctx.fill();
+    		ctx.closePath();
+    		
+    		// 绘制AI预测的球的轨道
+            ctx.beginPath();
+            ctx.strokeStyle = '#ff0000';
+            ctx.moveTo(ball.x, ball.y);
+            let predictedX = ball.x + ball.dx * 20;
+            let predictedY = ball.y + ball.dy * 20;
+            while (predictedX > 0 && predictedX < canvas.width && predictedY > 0 && predictedY < canvas.height) {
+              predictedX += ball.dx;
+              predictedY += ball.dy;
+              ctx.lineTo(predictedX, predictedY);
+            }
+            //ctx.stroke();
+    
+    		// 绘制玩家板子
+    		ctx.fillRect(player1.x, player1.y, player1.width, player1.height);
+    		ctx.fillRect(player2.x, player2.y, player2.width, player2.height);
+    
+    		// 绘制得分
+    		ctx.font = "20px Arial";
+    		ctx.fillText("Player 1: " + player1.score + "\n Speed: " + player1.speed + "\n Height: " + player1.height, 20, 30);
+    		ctx.fillText("Player 2: " + player2.score + "\n Speed: " + player2.speed + "\n Height: " + player2.height, canvas.width - 300, 30);
+    	}
+    
+    	// 游戏循环
+    	let lastTime = 0;
+    	let frames = 0;
+    	let fps = 0;
+    	touch_move(player1);
+    	function gameLoop() {
+    		if(compu_control=='0') {console.log('manualControl')}
+    		else if(compu_control==='1') {aiMove(player2, 50);}
+    		else if(compu_control==='2') {aiMove_dev(player2);}
+    		else if(compu_control==='3') {aiMove_devp(player2);}
+    		else {aiMove_devpp(player2);}
+    		update();
+    		draw();
+    		// 计算帧率
+              let currentTime = performance.now();
+              frames++;
+              if (currentTime > lastTime + 1000) {
+                fps = Math.round((frames * 1000) / (currentTime - lastTime));
+                
+                
+                frames = 0;
+                lastTime = currentTime;
+              }
+              ctx.fillText(`FPS: ${fps} BallSpeed: ${ball.speed.toFixed(2)}`, canvas.width/2 - 120, 30);
+              ctx.fillText(`Add '?computer=1/2/3/4' behind url for different AI player2, add '?computer=0' for manual player2`, canvas.width/2 - 420, canvas.height - 40);
+              ctx.fillText(`W/S to control p1, ↑/↓ to control p2`, canvas.width/2 - 140, canvas.height - 10);
+    
+    		// 循环调用 gameLoop 函数
+    		requestAnimationFrame(gameLoop);
+    	}
+    
+    	// 开始游戏
+    	gameLoop();
+    </script>
+</body>
+</html>
+			

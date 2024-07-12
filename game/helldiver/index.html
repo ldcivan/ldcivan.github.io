@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>冻肉模拟器</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    #container {
+        text-align: center;
+        border: 2px solid black;
+        padding: 20px;
+    }
+    #commandDisplay {
+        border: 1px solid black;
+        width: 450px;
+        height: 75px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+    }
+    button {
+        margin: 5px;
+        padding: 15px 20px;
+        font-size: 20px;
+    }
+    p {
+       display: inline-block;
+    }
+    svg {
+        width: 60px;
+    }
+</style>
+</head>
+<body>
+<div id="container">
+    <div>
+        计时：<p id="timer">0.0</p>s&nbsp;
+        输入：<p id="inputCount">0</p><br>
+        速率：<p id="inputRate">0.0</p>/s&nbsp;
+        错误：<p id="errorCount">0</p><br>
+    </div>
+    <div id="commandDisplay">按动WASD中任意键以开始</div>
+    <button id="buttonW">W</button>
+    <br>
+    <button id="buttonA">A</button>
+    <button id="buttonS">S</button>
+    <button id="buttonD">D</button>
+    <br>
+    <div>
+        是否限定指令表：<input id="limitedList" type="checkbox">
+        <label for="commands">选择命令：</label>
+        <select id="commands" multiple>
+            <option value="" disabled>---愛國行政中心---</option>
+            <option value="機槍">機槍</option>
+            <option value="反器材步槍">反器材步槍</option>
+            <option value="輕機槍">輕機槍</option>
+            <option value="反坦克消耗品">反坦克消耗品</option>
+            <option value="無後座力步槍">無後座力步槍</option>
+            <option value="火焰噴射器">火焰噴射器</option>
+            <option value="機炮">機炮</option>
+            <option value="磁軌炮">磁軌炮</option>
+            <option value="長矛">長矛</option>
+            <option value="重機槍">重機槍</option>
+            <option value="" disabled>---軌道大炮---</option>
+            <option value="軌道格林機槍彈幕">軌道格林機槍彈幕</option>
+            <option value="軌道空爆打擊">軌道空爆打擊</option>
+            <option value="軌道120mm高爆彈彈幕">軌道120mm高爆彈彈幕</option>
+            <option value="軌道380mm高爆彈彈幕">軌道380mm高爆彈彈幕</option>
+            <option value="軌道步行者彈幕">軌道步行者彈幕</option>
+            <option value="軌道雷射">軌道雷射</option>
+            <option value="軌道電磁炮攻擊">軌道電磁炮攻擊</option>
+            <option value="" disabled>---機庫---</option>
+            <option value="飛鷹機槍掃射">飛鷹機槍掃射</option>
+            <option value="飛鷹空襲">飛鷹空襲</option>
+            <option value="飛鷹集束炸彈">飛鷹集束炸彈</option>
+            <option value="飛鷹凝固汽油彈空襲">飛鷹凝固汽油彈空襲</option>
+            <option value="彈跳背包">彈跳背包</option>
+            <option value="飛鷹煙霧突襲">飛鷹煙霧突襲</option>
+            <option value="飛鷹110mm火箭莢槍">飛鷹110mm火箭莢槍</option>
+            <option value="飛鷹500kg炸彈">飛鷹500kg炸彈</option>
+            <option value="" disabled>---艦橋---</option>
+            <option value="軌道精準攻擊">軌道精準攻擊</option>
+            <option value="軌道毒氣攻擊">軌道毒氣攻擊</option>
+            <option value="軌道電磁干擾打擊">軌道電磁干擾打擊</option>
+            <option value="軌道煙霧空襲">軌道煙霧空襲</option>
+            <option value="重機槍炮台">重機槍炮台</option>
+            <option value="防護罩生成中繼器">防護罩生成中繼器</option>
+            <option value="特斯拉塔">特斯拉塔</option>
+            <option value="" disabled>---工程灣---</option>
+            <option value="反步兵雷區">反步兵雷區</option>
+            <option value="補給背包">補給背包</option>
+            <option value="榴彈發射器">榴彈發射器</option>
+            <option value="雷射大炮">雷射大炮</option>
+            <option value="燃燒地雷">燃燒地雷</option>
+            <option value="「護衛犬」漫遊者">「護衛犬」漫遊者</option>
+            <option value="彈道防護罩背包">彈道防護罩背包</option>
+            <option value="電弧發射器">電弧發射器</option>
+            <option value="防護罩生成背包">防護罩生成背包</option>
+            <option value="類星體大砲">類星體大砲</option>
+            <option value="" disabled>---機器廠房---</option>
+            <option value="哨戒機槍">哨戒機槍</option>
+            <option value="哨戒格林炮">哨戒格林炮</option>
+            <option value="哨戒迫擊炮">哨戒迫擊炮</option>
+            <option value="「護衛犬」">「護衛犬」</option>
+            <option value="哨戒機炮">哨戒機炮</option>
+            <option value="哨戒火箭炮">哨戒火箭炮</option>
+            <option value="電磁干擾哨戒迫擊炮">電磁干擾哨戒迫擊炮</option>
+            <option value="愛國者外骨骼裝甲">愛國者外骨骼裝甲</option>
+            <option value="" disabled>---常備技能---</option>
+            <option value="增援">增援</option>
+            <option value="SOS信標">SOS信標</option>
+            <option value="重新補給">重新補給</option>
+            <option value="飛鷹重新武裝">飛鷹重新武裝</option>
+            <option value="絕地彈">絕地彈</option>
+            <option value="SEAF大砲">SEAF大砲</option>
+        </select>
+    </div>
+    <br>
+    <div>
+        剩余命令：<input id="limit" type="text" value="20">
+        <button onclick="init();">全部重置</button>
+    </div>
+</div>
+
+<script>
+    let currentCommands = '';
+    let expectedCommands = '';
+    let selectedCommandsList = [];
+    let inputCount = 0;
+    let errorCount = 0;
+    let inputRate = 0;
+    let countdown = 3;
+    let seconds = 0;
+    let counting = false;
+    let limit = parseInt(document.getElementById("limit").value);
+    let countdownInterval;
+    let timerInterval;
+    const commandsList = {"機槍":"SASWD",
+        "反器材步槍":"SADWS",
+        "輕機槍":"SASWWA",
+        "反坦克消耗品":"SSAWD",
+        "無後座力步槍":"SADDA",
+        "火焰噴射器":"SAWSW",
+        "機炮":"SASWWD",
+        "磁軌炮":"SDSWAD",
+        "長矛":"SSWSS",
+        "重機槍":"SAWSS",
+        "軌道格林機槍彈幕":"DSAWW",
+        "軌道空爆打擊":"DDD",
+        "軌道120mm高爆彈彈幕":"DDSADS",
+        "軌道380mm高爆彈彈幕":"DSWWASS",
+        "軌道步行者彈幕":"DSDSDS",
+        "軌道雷射":"DSWDS",
+        "軌道電磁炮攻擊":"DWSSD",
+        "飛鷹機槍掃射":"WDD",
+        "飛鷹空襲":"WDSD",
+        "飛鷹集束炸彈":"WDSSD",
+        "飛鷹凝固汽油彈空襲":"WDSW",
+        "彈跳背包":"SWWSW",
+        "飛鷹煙霧突襲":"WDWS",
+        "飛鷹110mm火箭莢槍":"WDWA",
+        "飛鷹500kg炸彈":"WDSSS",
+        "軌道精準攻擊":"DDW",
+        "軌道毒氣攻擊":"DDSD",
+        "軌道電磁干擾打擊":"DDAS",
+        "軌道煙霧空襲":"DDSW",
+        "重機槍炮台":"SWADDA",
+        "防護罩生成中繼器":"SSADAD",
+        "特斯拉塔":"SWDWAD",
+        "反步兵雷區":"SAWD",
+        "補給背包":"SASWWS",
+        "榴彈發射器":"SAWAS",
+        "雷射大炮":"SASWA",
+        "燃燒地雷":"SAAS",
+        "「護衛犬」漫遊者":"SWAWDD",
+        "彈道防護罩背包":"SAWWD",
+        "電弧發射器":"SDSWAA",
+        "防護罩生成背包":"SWADAD",
+        "類星體大砲":"SSWAD",
+        "哨戒機槍":"SWDDW",
+        "哨戒格林炮":"SWDA",
+        "哨戒迫擊炮":"SWDDS",
+        "「護衛犬」":"SWAWDS",
+        "哨戒機炮":"SWDWAW",
+        "哨戒火箭炮":"SWDDA",
+        "電磁干擾哨戒迫擊炮":"SWDSD",
+        "愛國者外骨骼裝甲":"ASDWASS",
+        "增援":"WSDAW",
+        "SOS信標":"WSDW",
+        "重新補給":"SSWD",
+        "飛鷹重新武裝":"WWAWD",
+        "絕地彈":"SWASWDSW",
+        "SEAF大砲":"DWWS",
+    };
+    
+    function buildList() {
+        const selectedOptions = document.getElementById("commands").selectedOptions;
+        selectedCommandsList = [];
+        let randomCommands = '';
+        for (let option of selectedOptions) {
+            const selectedValue = option.value;
+            const selectedContent = commandsList[selectedValue];
+    
+            selectedCommandsList.push(selectedContent);
+            console.log(selectedContent)
+        }
+    }
+    
+    function init() {
+        resetTimer();
+        document.getElementById('commandDisplay').innerText = "按动WASD中任意键以开始";
+        selectedCommandsList = [];
+        currentCommands = '';
+        expectedCommands = '';
+        inputCount = 0;
+        errorCount = 0;
+        inputRate = 0;
+        countdown = 3;
+        seconds = 0;
+        counting = false;
+        document.getElementById("limit").value = 20;
+        limit = parseInt(document.getElementById("limit").value);
+    }
+
+    function startTimer() {
+        timerInterval = setInterval(updateTimer, 100);
+    }
+
+    function stopTimer() {
+        clearInterval(timerInterval);
+    }
+
+    function resetTimer() {
+        clearInterval(timerInterval);
+        seconds = 0;
+        document.getElementById("timer").innerText = "0.0";
+    }
+
+    function updateTimer() {
+        if (limit === 0) {
+            stopTimer();
+            let opinion = '';
+            if (inputRate - errorCount*0.1 < 1.5) {
+                opinion = "☆☆☆☆☆ 可耻行为"; 
+            } else if (inputRate - errorCount*0.1 >= 1.5 && inputRate - errorCount*0.1 <= 2.5) {
+                opinion = "★☆☆☆☆ 服务不佳"; 
+            } else if (inputRate - errorCount*0.1 >= 2.5 && inputRate - errorCount*0.1 <= 3.5) {
+                opinion = "★★☆☆☆ 服务不佳"; 
+            } else if (inputRate - errorCount*0.1 >= 3.5 && inputRate - errorCount*0.1 <= 4.5) {
+                opinion = "★★★☆☆ 光荣使命"; 
+            } else if (inputRate - errorCount*0.1 >= 4.5 && inputRate - errorCount*0.1 <= 5.5) {
+                opinion = "★★★★☆ 光荣使命"; 
+            } else if (inputRate - errorCount*0.1 > 5.5) {
+                opinion = "★★★★★ 爱国精英"; 
+            }
+            alert(opinion);
+        } else {
+            seconds += 0.1;
+            let formattedTime = seconds.toFixed(1);
+            document.getElementById("timer").innerText = formattedTime;
+            document.getElementById("inputCount").innerText = inputCount;
+            document.getElementById("inputRate").innerText = inputRate;
+            document.getElementById("errorCount").innerText = errorCount;
+        }
+    }
+
+    function generateRandomCommands() {
+        if (!document.getElementById("limitedList").checked) {
+            const commands = ['W', 'A', 'S', 'D'];
+            const length = Math.floor(Math.random() * 5) + 3; // Random length between 3 and 6
+            let randomCommands = '';
+            for (let i = 0; i < length; i++) {
+                randomCommands += commands[Math.floor(Math.random() * commands.length)];
+            }
+            return randomCommands;
+        } else {
+            randomCommands = selectedCommandsList[Math.floor(Math.random() * selectedCommandsList.length)];
+            return randomCommands;
+        }
+    }
+
+    function displayCommandsInSVG(currentCommands, expectedCommands) {
+        const svgIcons = {
+            'W': '<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M511.530667 768.512a42.666667 42.666667 0 0 1-42.666667-42.666667v-256h-170.666667l213.333334-213.333333 213.333333 213.333333h-170.666667v256a42.666667 42.666667 0 0 1-42.666666 42.666667z" fill="#000000"></path></svg>',
+            'A': '<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M768.512 511.530667a42.666667 42.666667 0 0 0-42.666667-42.666667h-256v-170.666667l-213.333333 213.333334 213.333333 213.333333v-170.666667h256a42.666667 42.666667 0 0 0 42.666667-42.666666z" fill="#000000"></path></svg>',
+            'S': '<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M511.488 256.512a42.666667 42.666667 0 0 0-42.666667 42.666667v256h-170.666666l213.333333 213.333333 213.333333-213.333333h-170.666666v-256a42.666667 42.666667 0 0 0-42.666667-42.666667z" fill="#000000"></path></svg>',
+            'D': '<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M256.512 511.530667a42.666667 42.666667 0 0 1 42.666667-42.666667h256v-170.666667l213.333333 213.333334-213.333333 213.333333v-170.666667h-256a42.666667 42.666667 0 0 1-42.666667-42.666666z" fill="#000000"></path></svg>'
+        };
+        const svgIconsGrey = {
+            'W': '<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M511.530667 768.512a42.666667 42.666667 0 0 1-42.666667-42.666667v-256h-170.666667l213.333334-213.333333 213.333333 213.333333h-170.666667v256a42.666667 42.666667 0 0 1-42.666666 42.666667z" fill="#cccccc"></path></svg>',
+            'A': '<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M768.512 511.530667a42.666667 42.666667 0 0 0-42.666667-42.666667h-256v-170.666667l-213.333333 213.333334 213.333333 213.333333v-170.666667h256a42.666667 42.666667 0 0 0 42.666667-42.666666z" fill="#cccccc"></path></svg>',
+            'S': '<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M511.488 256.512a42.666667 42.666667 0 0 0-42.666667 42.666667v256h-170.666666l213.333333 213.333333 213.333333-213.333333h-170.666666v-256a42.666667 42.666667 0 0 0-42.666667-42.666667z" fill="#cccccc"></path></svg>',
+            'D': '<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M256.512 511.530667a42.666667 42.666667 0 0 1 42.666667-42.666667h256v-170.666667l213.333333 213.333334-213.333333 213.333333v-170.666667h-256a42.666667 42.666667 0 0 1-42.666667-42.666666z" fill="#cccccc"></path></svg>'
+        };
+
+        let svgCode = '';
+        for (let currentCommand of currentCommands) {
+            svgCode += svgIconsGrey[currentCommand];
+        }
+        for (let expectedCommand = currentCommands.length; expectedCommand < expectedCommands.length; expectedCommand++) {
+            svgCode += svgIcons[expectedCommands[expectedCommand]];
+        }
+
+        return svgCode;
+    }
+
+    function startCountdown() {
+        counting = true;
+        limit = parseInt(document.getElementById("limit").value);
+        countdown = 3;
+        countdownInterval = setInterval(function() {
+            if (countdown === 0) {
+                clearInterval(countdownInterval);
+                buildList();
+                expectedCommands = generateRandomCommands();
+                document.getElementById('commandDisplay').innerHTML = displayCommandsInSVG(currentCommands, expectedCommands);
+                startTimer();
+                counting = false;
+            } else {
+                document.getElementById('commandDisplay').innerText = countdown;
+                countdown--;
+            }
+        }, 1000);
+    }
+
+    function checkUserInput(key) {
+        currentCommands += key.toUpperCase();
+        if (currentCommands === expectedCommands) {
+            limit--;
+            document.getElementById("limit").value = limit;
+            if (limit !== 0) {
+                currentCommands = '';
+                expectedCommands = generateRandomCommands();
+                document.getElementById('commandDisplay').innerHTML = displayCommandsInSVG(currentCommands, expectedCommands);
+            }
+        } else if (!expectedCommands.startsWith(currentCommands)) {
+            currentCommands = '';
+            document.getElementById('commandDisplay').innerHTML = "错误输入<br>" + displayCommandsInSVG(currentCommands, expectedCommands);
+            errorCount++;
+        }
+        inputCount++;
+        inputRate = (inputCount/seconds).toFixed(3);
+    }
+
+    document.addEventListener('keydown', function(event) {
+        const key = event.key.toUpperCase();
+        if (key === 'W' || key === 'A' || key === 'S' || key === 'D') {
+            if (expectedCommands === '' && !counting) {
+                startCountdown();
+            } else if (limit !== 0) {
+                checkUserInput(key);
+                document.getElementById('commandDisplay').innerHTML = displayCommandsInSVG(currentCommands, expectedCommands)
+            }
+        }
+    });
+
+    document.getElementById('buttonW').addEventListener('click', function() {
+        if (expectedCommands === '' && !counting) {
+            startCountdown();
+        } else if (limit !== 0) {
+            checkUserInput('W');
+            document.getElementById('commandDisplay').innerHTML = displayCommandsInSVG(currentCommands, expectedCommands)
+        }
+    });
+
+    document.getElementById('buttonA').addEventListener('click', function() {
+        if (expectedCommands === '' && !counting) {
+            startCountdown();
+        } else if (limit !== 0) {
+            checkUserInput('A');
+            document.getElementById('commandDisplay').innerHTML = displayCommandsInSVG(currentCommands, expectedCommands)
+        }
+    });
+
+    document.getElementById('buttonS').addEventListener('click', function() {
+        if (expectedCommands === '' && !counting) {
+            startCountdown();
+        } else if (limit !== 0) {
+            checkUserInput('S');
+            document.getElementById('commandDisplay').innerHTML = displayCommandsInSVG(currentCommands, expectedCommands)
+        }
+    });
+
+    document.getElementById('buttonD').addEventListener('click', function() {
+        if (expectedCommands === '' && !counting) {
+            startCountdown();
+        } else if (limit !== 0) {
+            checkUserInput('D');
+            document.getElementById('commandDisplay').innerHTML = displayCommandsInSVG(currentCommands, expectedCommands)
+        }
+    });
+</script>
+</body>
+</html>

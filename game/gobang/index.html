@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>五!子!棋!</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            margin: 15px;
+            font-size: 1.8vh;
+        }
+        
+        #chart {
+            border: 2px solid grey;
+            margin: 5px;
+        }
+        
+        table {
+          border-collapse: collapse;
+          background-color: #eef;
+          margin: 0 auto;
+        }
+        
+        td {
+          width: 45px;
+          height: 45px;
+          border: 1px solid black;
+          text-align: center;
+          font-size: 27px;
+          cursor: pointer;
+        }
+        
+        td.empty:hover, td.player1:hover, td.player2:hover {
+          background-color: #fff;
+        }
+        
+        td.empty {
+          background-color: #eef;
+        }
+        
+        td.player1 {
+          background-color: #fcc;
+        }
+        
+        td.player2 {
+          background-color: #cfc;
+        }
+        
+        td.lastMove {
+          position: relative;
+        }
+        
+        td.lastMove::before {
+          content: "";
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          border: 3px solid red;
+          border-radius: 4px;
+          animation: blink 2s infinite;
+        }
+        
+        @keyframes blink {
+          0% {
+            opacity: 1;
+            border-width: 2px;
+          }
+          50% {
+            opacity: 0;
+            border-width: 4px;
+          }
+          100% {
+            opacity: 1;
+            border-width: 2px;
+          }
+        }
+
+        button {
+          margin: 5px;
+          display: inline-block;
+          padding: 10px 20px;
+          font-size: 1.8vh;
+          font-weight: bold;
+          text-align: center;
+          text-decoration: none;
+          background-color: #4CAF50;
+          color: #fff;
+          border: none;
+          border-radius: 0.4em;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+          background-color: #45a049;
+        }
+        
+        button:active {
+          background-color: #3e8e41;
+        }
+        
+        p,h2 {
+            margin-left: 5px;
+        }
+
+        p.waiting {
+          position: relative;
+        }
+        p.waiting::after {
+          content: '▲'; /* Unicode 左箭头字符编码 */
+          transform: rotate(90deg);
+          display: inline-block;
+          color: grey;
+          position: absolute;
+          left: -1.8vh; /* 调整箭头位置，根据需要进行调整 */
+        }
+
+        p.playing {
+          position: relative;
+        }
+        p.playing::after {
+          content: '▲'; /* Unicode 左箭头字符编码 */
+          transform: rotate(90deg);
+          display: inline-block;
+          color: red;
+          animation: blink 2s infinite;
+          position: absolute;
+          left: -1.8vh; /* 调整箭头位置，根据需要进行调整 */
+        }
+        
+        @keyframes blink {
+          0% {
+            opacity: 0;
+          }
+          50% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+          }
+        }
+        
+        .current-player {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div style="display:inline-block;border:2px solid grey;margin-left: 1.2vh;padding: 1.2vh;">
+        <p id="player2-color" style="margin-left:1.8vh;"></p>
+        <table id="board"></table>
+        <p id="player1-color" style="margin-left:1.8vh;"></p>
+    </div>
+    <div style="display:inline-block;border:2px solid grey;margin-left: 1.2vh;padding: 1.2vh;">
+        <h2>五子棋</h2>
+        <p class="current-player">当前执子方: <span id="current-player"></span></p>
+        <p>上次落子位置: (<span id="last-move"></span>)</p>
+        <p>当前玩家思考时间: <span id="timer">0</span> 秒</p>
+        <p>已进行的步数: <span id="step">0</span> 步</p>
+        <div style="display:inline-block;">
+            <button onclick="undoMove(true,1)">悔棋</button>
+            <button onclick="temp_computerMove()">帮帮我电脑先生!</button>
+            <br>
+            <button onclick="restartGame()">重开!</button>
+            <button id="compu_switch" onclick="compu_switch()"></button>
+        </div>
+    </div>
+    <div id="chart" style="width: 1000px;height: 200px;margin-left: 1.2vh;"></div>
+    
+    <script>
+        var board = [];
+        var playerColor;
+        var currentPlayer;
+        var lastMove;
+        var timer = 0;
+        var calculating = false;
+        var calculated = false;
+        var timerInterval;
+        var scoreHistory = {'p1':[], 'p2':[]};
+        let bestScore = -Infinity;
+        let bestMove = [{ row: -1, col: -1 }];
+        let step = 0;
+        let lastUndo,lastCompu = new Date().getTime();
+        
+        function getQueryVariable(variable) {
+          //获取当前URL中的查询字符串部分（即问号后面的部分）
+          var query = window.location.search.substring(1);
+          //把查询字符串按照&符号分割成数组
+          var vars = query.split("&");
+          //遍历数组中的每个元素
+          for (var i = 0; i < vars.length; i++) {
+            //把当前元素按照=符号分割成键和值
+            var pair = vars[i].split("=");
+            //如果当前元素的键等于参数名，则返回对应的值
+            if (pair[0] == variable) {
+              return pair[1];
+            }
+          }
+          //如果没有找到匹配的参数名，则返回false
+          return false;
+        }
+        var compu_control = getQueryVariable('computer')===false?1:getQueryVariable('computer'); // 加入电脑玩家吗？
+        
+        initializeBoard();
+        
+        function initializeBoard() {
+            board = [];
+            playerColor = Math.random() < 0.5 ? '⚫' : '⚪';
+            currentPlayer = '⚫' ;
+            lastMove = [null];
+            timer = 0;
+            calculating = false;
+            calculated = false;
+            scoreHistory = {'p1':[], 'p2':[]};
+            bestScore = -Infinity;
+            bestMove = [{ row: -1, col: -1 }];
+            step = 0;
+            
+            var boardElement = document.getElementById('board');
+            boardElement.innerHTML = '';
+            
+            for (var row = 0; row < 15; row++) {
+                var tr = document.createElement('tr');
+                board.push([]);
+                
+                for (var col = 0; col < 15; col++) {
+                    var td = document.createElement('td');
+                    td.onclick = makeMove.bind(null, row, col, true);
+                    td.classList.add('empty');
+                    tr.appendChild(td);
+                    board[row].push('');
+                }
+                
+                boardElement.appendChild(tr);
+            }
+            
+            if(!timerInterval) 
+                startTimer();
+            else 
+                resetTimer();
+            setTimeout(function() {
+                currentPlayer = '⚫' ;
+                updateUI();
+            });
+        }
+        
+        function makeMove(row, col, manual) {
+            if(calculating===true) return;
+
+            if(compu_control===1&&currentPlayer!==playerColor&&manual===true) {
+                alert('别急，电脑还在想');
+                return;
+            }
+            if (board[row][col] !== '') {
+                alert('不可用的位置');
+                return;
+            }
+            
+            board[row][col] = currentPlayer;
+            lastMove.push([row, col]);
+            
+            updateUI();
+            
+            setTimeout(function(){
+                if (checkWin(row, col)) {
+                    alert('玩家 ' + currentPlayer + ' 获胜！');
+                    initializeBoard();
+                    return;
+                }
+            },50);
+            resetTimer();
+            step++;
+            
+            setTimeout(function(){currentPlayer = currentPlayer === '⚫' ? '⚪' : '⚫';updateUI();calculated = false;},50);
+        }
+        
+        function computerMove(type) {
+          if (calculating===true) return;
+          else calculating = true;
+          document.getElementById('board').style="pointer-events:none";
+          const rows = board.length;
+          const cols = board[0].length;
+        
+          bestScore = -Infinity;
+          bestMove = [{ row: -1, col: -1 }];
+        
+          // 遍历棋盘上的每个空位
+          for (let row = 0; row < rows; row++) {
+            for (let col = 0; col < cols; col++) {
+              if (board[row][col] === '') {
+                // 临时落子
+                board[row][col] = currentPlayer;
+        
+                // 计算当前落子位置的评分
+                //const score = evaluate(board, currentPlayer);
+                const score = alphaBeta(board, currentPlayer, 0, -Infinity, Infinity, false);
+        
+                // 撤销临时落子
+                board[row][col] = '';
+        
+                // 更新最佳评分和落子位置
+                //console.log(row,col,score);
+                if (score > bestScore) {
+                  bestScore = score;
+                  bestMove = [];
+                  bestMove.push({row, col});
+                } else if (score == bestScore) {
+                    bestMove.push({row, col});
+                }
+              }
+            }
+          }
+          
+          setTimeout(function() {
+          if(bestScore === -Infinity) {
+              alert('棋盘已满，平局');
+              initializeBoard();
+              return
+          }
+          },50);
+          
+          if(currentPlayer=='⚫') bestScore = bestScore - 400;
+          
+          var random_select = Math.floor(Math.random() * bestMove.length);
+          console.log(bestMove[random_select]['row'],bestMove[random_select]['col'],bestScore,currentPlayer)
+          if(calculated===false) {
+              if(currentPlayer===playerColor) {
+                  scoreHistory['p1'].push(bestScore);
+              } else if (currentPlayer===(playerColor === '⚫' ? '⚪' : '⚫')){
+                  scoreHistory['p2'].push(bestScore);
+              }
+          }
+          if(type!==false) {
+            setTimeout(function() {
+                makeMove(bestMove[random_select]['row'], bestMove[random_select]['col'], false);
+            }, 50);
+          }
+          
+          document.getElementById('board').style="pointer-events:auto";
+          calculating = false;
+          calculated = true;
+        }
+        
+        function temp_computerMove() {
+            if (new Date().getTime()-lastCompu<5000) {
+                alert('你可以思考一下再问电脑吗？');
+                return;
+            } else {
+                lastCompu = new Date().getTime();
+            }
+            if(calculating===true) return;
+            var random_select = Math.floor(Math.random() * bestMove.length);
+            if (board[bestMove[random_select]['row']][bestMove[random_select]['col']]==='')
+                makeMove(bestMove[random_select]['row'], bestMove[random_select]['col'], true);
+            else
+                computerMove();
+        }
+        
+        function alphaBeta(board, player, depth, alpha, beta, isMaximizing) {
+          const rows = board.length;
+          const cols = board[0].length;
+          // 检查游戏是否结束或达到搜索深度，如果是，则返回当前局面的评分
+          if (isGameOver(board) || depth === 0) {
+            return evaluate(board, player);
+          }
+        
+          if (isMaximizing) {
+            let maxScore = -Infinity;
+        
+            // 遍历棋盘上的每个空位
+            for (let row = 0; row < rows; row++) {
+              for (let col = 0; col < cols; col++) {
+                if (board[row][col] === '') {
+                  // 临时落子
+                  board[row][col] = player;
+        
+                  // 递归调用alphaBeta函数进行搜索
+                  const score = alphaBeta(board, player, depth - 1, alpha, beta, false);
+        
+                  // 撤销临时落子
+                  board[row][col] = '';
+        
+                  // 更新最大评分和alpha值
+                  maxScore = Math.max(maxScore, score);
+                  alpha = Math.max(alpha, score);
+        
+                  // 进行α剪枝
+                  if (beta <= alpha) {
+                    break;
+                  }
+                }
+              }
+            }
+        
+            return maxScore;
+          } else {
+            let minScore = Infinity;
+        
+            // 遍历棋盘上的每个空位
+            for (let row = 0; row < rows; row++) {
+              for (let col = 0; col < cols; col++) {
+                if (board[row][col] === '') {
+                  // 临时落子
+                  board[row][col] = getOpponent(player);
+        
+                  // 递归调用alphaBeta函数进行搜索
+                  const score = alphaBeta(board, player, depth - 1, alpha, beta, true);
+        
+                  // 撤销临时落子
+                  board[row][col] = '';
+        
+                  // 更新最小评分和beta值
+                  minScore = Math.min(minScore, score);
+                  beta = Math.min(beta, score);
+        
+                  // 进行β剪枝
+                  if (beta <= alpha) {
+                    break;
+                  }
+                }
+              }
+            }
+        
+            return minScore;
+          }
+        }
+        
+        function evaluate(board, player) {
+          const rows = board.length;
+          const cols = board[0].length;
+        
+          let score = 0;
+        
+          // 检查水平方向的连子数量
+          for (let row = 0; row < rows; row++) {
+            for (let col = 0; col < cols - 4; col++) {
+              const window = board[row].slice(col, col + 5);
+              score += evaluateWindow(window, player);
+            }
+          }
+        
+          // 检查垂直方向的连子数量
+          for (let col = 0; col < cols; col++) {
+            for (let row = 0; row < rows - 4; row++) {
+              const window = [];
+              for (let i = 0; i < 5; i++) {
+                window.push(board[row + i][col]);
+              }
+              score += evaluateWindow(window, player);
+            }
+          }
+        
+          // 检查主对角线方向的连子数量
+          for (let row = 0; row < rows - 4; row++) {
+            for (let col = 0; col < cols - 4; col++) {
+              const window = [];
+              for (let i = 0; i < 5; i++) {
+                window.push(board[row + i][col + i]);
+              }
+              score += evaluateWindow(window, player);
+            }
+          }
+        
+          // 检查副对角线方向的连子数量
+          for (let row = 4; row < rows; row++) {
+            for (let col = 0; col < cols - 4; col++) {
+              const window = [];
+              for (let i = 0; i < 5; i++) {
+                window.push(board[row - i][col + i]);
+              }
+              score += evaluateWindow(window, player);
+            }
+          }
+        
+          return score;
+        }
+        
+        function evaluateWindow(window, player) {
+          const opponent = player === '⚫' ? '⚪' : '⚫';
+          let score = 0;
+        
+          const playerCount = window.filter(cell => cell === player).length;
+          const opponentCount = window.filter(cell => cell === opponent).length;
+          const emptyCount = window.filter(cell => cell === '').length;
+        
+          // 进攻评估
+          if (playerCount === 5) {
+              score += 5000;
+          } else if (playerCount === 4 && emptyCount === 1) {
+            score += 420;
+          } else if (playerCount === 3 && emptyCount === 2) {
+            score += 100;
+          } else if (playerCount === 2 && emptyCount === 3) {
+            score += 40;
+          } else if (playerCount === 1 && emptyCount === 4) {
+            score += 20;
+          }
+        
+          // 防守评估
+          if (opponentCount === 4 && emptyCount === 1) {
+            score -= 1500;
+          } else if (opponentCount === 3 && emptyCount === 2) {
+            score -= 320;
+          } else if (opponentCount === 2 && emptyCount === 3) {
+            score -= 40;
+          } else if (opponentCount === 1 && emptyCount === 4) {
+            score -= 20;
+          }
+          
+          
+          return score;
+        }
+        
+        // 辅助函数：获取对手的棋子颜色
+        function getOpponent(player) {
+          return player === '⚫' ? '⚪' : '⚫';
+        }
+        
+        // 辅助函数：检查游戏是否结束
+        function isGameOver(board) {
+          const rows = board.length;
+          const cols = board[0].length;
+        
+          // 检查水平方向
+          for (let row = 0; row < rows; row++) {
+            for (let col = 0; col < cols - 4; col++) {
+              const window = board[row].slice(col, col + 5);
+              if (isWinningWindow(window)) {
+                return true;
+              }
+            }
+          }
+        
+          // 检查垂直方向
+          for (let col = 0; col < cols; col++) {
+            for (let row = 0; row < rows - 4; row++) {
+              const window = [];
+              for (let i = 0; i < 5; i++) {
+                window.push(board[row + i][col]);
+              }
+              if (isWinningWindow(window)) {
+                return true;
+              }
+            }
+          }
+        
+          // 检查主对角线方向
+          for (let row = 0; row < rows - 4; row++) {
+            for (let col = 0; col < cols - 4; col++) {
+              const window = [];
+              for (let i = 0; i < 5; i++) {
+                window.push(board[row + i][col + i]);
+              }
+              if (isWinningWindow(window)) {
+                return true;
+              }
+            }
+          }
+        
+          // 检查副对角线方向
+          for (let row = 4; row < rows; row++) {
+            for (let col = 0; col < cols - 4; col++) {
+              const window = [];
+              for (let i = 0; i < 5; i++) {
+                window.push(board[row - i][col + i]);
+              }
+              if (isWinningWindow(window)) {
+                return true;
+              }
+            }
+          }
+        
+          // 检查棋盘是否已满
+          for (let row = 0; row < rows; row++) {
+            for (let col = 0; col < cols; col++) {
+              if (board[row][col] === '') {
+                return false; // 存在空位，游戏未结束
+              }
+            }
+          }
+        
+          return true; // 棋盘已满，游戏结束
+        }
+        
+        function isWinningWindow(window) {
+          const firstCell = window[0];
+          if (firstCell === '') {
+            return false; // 五子连线不可能包含空位
+          }
+          return window.every(cell => cell === firstCell); // 检查五子是否相同
+        }
+        
+        function checkWin(row, col) {
+            var directions = [
+                [0, 1],  // 右
+                [1, 0],  // 下
+                [1, 1],  // 右下
+                [-1, 1]  // 右上
+            ];
+            
+            var currentPlayer = board[row][col];
+            
+            for (var i = 0; i < directions.length; i++) {
+                var dx = directions[i][0];
+                var dy = directions[i][1];
+                var count = 1;
+                
+                // 向一个方向延伸
+                for (var j = 1; j <= 4; j++) {
+                    var newRow = row + j * dx;
+                    var newCol = col + j * dy;
+                    
+                    if (newRow < 0 || newRow >= 15 || newCol < 0 || newCol >= 15 || board[newRow][newCol] !== currentPlayer) {
+                        break;
+                    }
+                    
+                    count++;
+                }
+                
+                // 向相反方向延伸
+                for (var j = 1; j <= 4; j++) {
+                    var newRow = row - j * dx;
+                    var newCol = col - j * dy;
+                    
+                    if (newRow < 0 || newRow >= 15 || newCol < 0 || newCol >= 15 || board[newRow][newCol] !== currentPlayer) {
+                        break;
+                    }
+                    
+                    count++;
+                }
+                
+                if (count >= 5) {
+                    return true;
+                }
+            }
+            
+            return false;
+        }
+        
+        function undoMove(type, flag) {
+            if (new Date().getTime()-lastUndo<1000&&type) {
+                alert('悔棋也那么急吗？');
+                return;
+            } else {
+                lastUndo = new Date().getTime();
+                compu_control=0;
+            }
+            if (calculating == true) return;
+            calculated = false;
+            if (lastMove[lastMove.length - 1] === null) {
+                alert('已经到记录尽头了');
+                return;
+            }
+            
+            var row = lastMove[lastMove.length - 1][0];
+            var col = lastMove[lastMove.length - 1][1];
+            
+            if(board[row][col]!=='') {
+                scoreHistory['p1'].pop();
+                scoreHistory['p2'].pop();
+            }
+            board[row][col] = '';
+            lastMove.pop();
+            currentPlayer = currentPlayer === '⚫' ? '⚪' : '⚫';
+            
+            step--;
+            updateUI();
+            resetTimer();
+            if((getQueryVariable('computer')===false?1:getQueryVariable('computer'))===1&&flag!==0)
+                setTimeout(function() {undoMove(false,flag-1);}, 1000);
+            else {
+                setTimeout(function() {compu_control = getQueryVariable('computer')===false?1:getQueryVariable('computer');updateUI();}, 50);
+                return;
+            }
+        }
+        
+        function restartGame() {
+            initializeBoard();
+        }
+        
+        function compu_switch() {
+            compu_control == '0' ? window.location.replace("./?computer=1") : window.location.replace("./?computer=0");
+        }
+   
+        function makeChart(scoreHistory) {
+          var canvas = document.createElement('canvas');
+          var chartDiv = document.getElementById('chart');
+          canvas.width = 1000;
+          canvas.height = 200;
+          
+          chartDiv.innerHTML = '';
+          chartDiv.appendChild(canvas);
+          
+          var ctx = canvas.getContext('2d');
+          
+          var players = Object.keys(scoreHistory);
+          var colors = ['green', 'red'];  // p1对应蓝色，p2对应红色
+          
+          var maxScore = Math.max(
+            ...players.map(player => Math.max(...scoreHistory[player])),
+            -Infinity  // 添加0作为最小值，以确保负数部分也能适应canvas的高度
+          );
+        
+          var minScore = Math.min(
+            ...players.map(player => Math.min(...scoreHistory[player])),
+            Infinity  // 添加0作为最小值，以确保负数部分也能适应canvas的高度
+          );
+          
+          var xPadding = 40;
+          var yPadding = 10;
+          var chartWidth = canvas.width - xPadding * 2;
+          var chartHeight = canvas.height - yPadding * 2;
+          
+          var xScale = chartWidth / ((scoreHistory['p1'].length - 1)>(scoreHistory['p2'].length - 1)?(scoreHistory['p1'].length - 1):(scoreHistory['p2'].length - 1));
+          
+          var range = Math.max(maxScore - minScore, 1);  // 计算分数范围，确保至少为1
+          // 调整y轴的比例尺
+          var yScale = chartHeight / range;
+          
+          ctx.lineWidth = 2;
+          
+          for (var i = 0; i < players.length; i++) {
+            var player = players[i];
+            var scores = scoreHistory[player];
+            var color = colors[i];
+            
+            ctx.strokeStyle = color;
+            
+            ctx.beginPath();
+            ctx.moveTo(xPadding.toFixed(2), (canvas.height - yPadding - (scores[0] - minScore) * yScale).toFixed(2));
+            
+            for (var j = 1; j < scores.length; j++) {
+              ctx.lineTo((xPadding + j * xScale).toFixed(2), (canvas.height - yPadding - (scores[j] - minScore) * yScale).toFixed(2));
+            }
+            
+            ctx.stroke();
+            
+            // 标注代表色
+            ctx.fillStyle = color;
+            ctx.fillRect(10, 10 + i * 20, 10, 10);
+            ctx.fillStyle = 'black';
+            ctx.fillText(player, 25, 20 + i * 20);
+          }
+        }
+        
+        function updateUI() {
+            var boardElement = document.getElementById('board');
+            
+            for (var row = 0; row < 15; row++) {
+                for (var col = 0; col < 15; col++) {
+                    var td = boardElement.rows[row].cells[col];
+                    td.textContent = board[row][col];
+                    td.classList.remove(...td.classList);
+                    if(board[row][col]===playerColor) {
+                        td.classList.add('player2')
+                    } else if (board[row][col]==='') {
+                        td.classList.add('empty');
+                    } else {
+                        td.classList.add('player1');
+                    }
+                    if(lastMove&&lastMove[lastMove.length - 1]!==null) {
+                        if(row===lastMove[lastMove.length - 1][0] && col===lastMove[lastMove.length - 1][1]) {
+                            td.classList.add('lastMove');
+                        }
+                    }
+                }
+            }
+            
+            document.getElementById('player1-color').innerHTML = 'P1棋子颜色: ' + playerColor;
+            document.getElementById('player2-color').innerHTML = 'P2棋子颜色: ' + (playerColor === '⚫' ? '⚪' : '⚫') + (compu_control=='1'?' (电脑)':'');
+            document.getElementById('current-player').innerHTML = currentPlayer;
+            document.getElementById('last-move').innerHTML = lastMove[lastMove.length - 1] === null ? '-,-' : lastMove[lastMove.length - 1];
+            document.getElementById('compu_switch').innerHTML = compu_control == '0' ? "电脑玩家, 启动!" : "关闭电脑玩家";
+            if (currentPlayer==playerColor) {
+                document.getElementById('player1-color').classList.add('playing');
+                document.getElementById('player2-color').classList.remove('playing');
+                document.getElementById('player2-color').classList.add('waiting');
+                document.getElementById('player1-color').classList.remove('waiting');
+            }
+            else {
+                document.getElementById('player2-color').classList.add('playing');
+                document.getElementById('player1-color').classList.remove('playing');
+                document.getElementById('player1-color').classList.add('waiting');
+                document.getElementById('player2-color').classList.remove('waiting');
+            }
+        }
+        
+        function startTimer() {
+            timerInterval = setInterval(function() {
+                timer++;
+                document.getElementById('timer').textContent = timer;
+                document.getElementById('step').textContent = step;
+                currentPlayer !== '⚫' ? '⚪' : '⚫';
+                if(currentPlayer!=playerColor&&compu_control=='1'&&calculating===false) {
+                //if(compu_control=='1'&&calculating===false) {
+                    computerMove();
+                } else if (calculated===false) {
+                    computerMove(false);
+                }
+                makeChart(scoreHistory);
+            }, 1000);
+        }
+        
+        function resetTimer() {
+            clearInterval(timerInterval);
+            timer = 0;
+            document.getElementById('timer').textContent = timer;
+            startTimer();
+        }
+    </script>
+</body>
+</html>

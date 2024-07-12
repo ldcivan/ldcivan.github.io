@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
+		<meta name="renderer" content="webkit" />
+		<meta name="force-rendering" content="webkit" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="stylesheet" href="./mdui/css/mdui.css" />
+		<link rel="stylesheet" href="./new-js/index.css">
+		<title>Pro-Ivan数字库-关于</title>
+		<meta name="keywords" content="动漫图片,动漫资讯,动漫,二次元,漫画,动画,游戏,Cosplay,ACG,番剧,视频分享,壁纸,神曲,热门动漫,热门番剧">
+		<meta name="description" content="技术宅社团，什么活都整！">
+		<script type="text/javascript">
+            function AddFavorite(url,title){
+             var ua = navigator.userAgent.toLowerCase();
+             if(ua.indexOf("msie 8")>-1){
+              external.AddToFavoritesBar(url,title,"");//IE8
+              }else{
+              try {
+              window.external.addFavorite(url, title);
+              } catch(e) {
+              try {
+              window.sidebar.addPanel(title, url, "");//firefox
+              } catch(e) {
+              alert("加入收藏失败，请使用Ctrl+D或手动进行添加");
+              }
+              }
+              }
+              return false;
+            }
+        </script>
+		<script>
+        	var _hmt = _hmt || [];
+        	(function() {
+         	 var hm = document.createElement("script");
+         	 hm.src = "https://hm.baidu.com/hm.js?90415f833f988b0bccfb250d70f115f6";
+         	 var s = document.getElementsByTagName("script")[0]; 
+         	 s.parentNode.insertBefore(hm, s);
+        	})();
+    	</script>
+	</head>
+	<body class="mdui-drawer-body-left mdui-theme-primary-light-blue">
+		<div class="mdui-drawer" id="left-drawer" style="z-index:3000;">
+			<img src="./Ivan.svg" style="max-width: 100%; max-height: 100%;">
+			<ul class="mdui-list">
+				<li class="mdui-list-item mdui-ripple" onclick="home()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">home</i>
+					<div class="mdui-list-item-content">主页</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" mdui-dialog="{target: '#announcement'}">
+					<i class="mdui-list-item-icon mdui-icon material-icons">message</i>
+					<div class="mdui-list-item-content">公告</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" mdui-dialog="{target: '#support'}">
+					<i class="mdui-list-item-icon mdui-icon material-icons">account_balance_wallet</i>
+					<div class="mdui-list-item-content">支持我们</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="imgs()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">image</i>
+					<div class="mdui-list-item-content">图库</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="comic()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">book</i>
+					<div class="mdui-list-item-content">漫画</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="img_bed()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">cloud_queue</i>
+					<div class="mdui-list-item-content">图床</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="download()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">file_download</i>
+					<div class="mdui-list-item-content">下载站</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="little_game()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">extension</i>
+					<div class="mdui-list-item-content">小游戏</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="bfanscount()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">people</i>
+					<div class="mdui-list-item-content">Bilibili粉丝量观测</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="api()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">leak_add</i>
+					<div class="mdui-list-item-content">Api接口</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="alert('you are here')">
+					<i class="mdui-list-item-icon mdui-icon material-icons">face</i>
+					<div class="mdui-list-item-content">关于我们</div>
+				</li>
+			</ul>
+		</div>
+		<div class="mdui-dialog" id="announcement">
+			<div class="mdui-dialog-title">公告</div>
+			<div class="mdui-dialog-content">
+				<div id="GG"></div>
+			</div>
+			<div class="mdui-dialog-actions">
+				<button class="mdui-btn mdui-ripple mdui-text-color-theme mdui-text-color-white" mdui-dialog-close >关闭</button>
+			</div>
+		</div>
+		<div class="mdui-dialog" id="support">
+			<div class="mdui-dialog-title">支持我们</div>
+			<div class="mdui-dialog-content">
+				如果您有能力，还请多多支持我们！
+				<br>
+				<img src="/sponsor/weixin.webp" class="support-img" width="48%" />
+				<img src="/sponsor/alipay.webp" class="support-img" width="48%" style="margin-left:2%;"/>
+			</div>
+			<div class="mdui-dialog-actions">
+				<button class="mdui-btn mdui-ripple mdui-text-color-theme mdui-text-color-white" mdui-dialog-close >关闭</button>
+			</div>
+		</div>
+		<div class="mdui-appbar">
+			<div class="mdui-toolbar mdui-color-theme" style="position:fixed;z-index:1000;margin-top:-15px;" mdui-headroom>
+				<a href="javascript:;" mdui-drawer="{target: '#left-drawer'}" class="mdui-btn mdui-btn-icon">
+					<i class="mdui-icon material-icons">menu</i>
+				</a>
+				<a id="title" href="/new.html" class="mdui-typo-headline">Pro-Ivan数字库-关于</a>
+				<div class="mdui-toolbar-spacer"></div>
+				<a href="javascript:;" class="mdui-btn mdui-btn-icon" onclick="AddFavorite('http://pro-ivan.cn','Pro-Ivan')">
+					<i class="mdui-icon material-icons" mdui-tooltip="{content: '收藏本页'}">star</i>
+				</a>
+			</div>
+		</div>
+        <div id="body" class="mdui-container-fluid">
+        <div class="mdui-toolbar"></div>
+        <h3>简介</h3>
+        <p>Ivan社下属的VUP钰中及那珂，主要在bilibili活动。画师是Ldcivan。<s>其实就是那珂作为画师的名字。</s>
+            钰中的直播内容通常是原神，绘画；因为嗓子有点问题，直播时很少说话，可以说是无声系VUP。那珂一般情况下不出面，只是作幕后管理人员存在。
+            钰中直播结束后经常忘记下播，（导致水出来的直播时长直线上升。）（现在连水直播都很少了。)</p>
+        <h3>背景设定</h3>
+        <p><b>钰中</b>，3岁时因为一不小心摔进了一个深坑差点毙命，结果被住在深坑中的那珂捡到并把她变成了死不了的妖怪。是一只很能接受现状的狐狸。结果不但接受了妖怪的身份，甚至很快的融入了人类社会，现在寄于檐枫娘的檐枫动漫社篱下。Ivan社就是在这种情况下实质是由钰中以那珂的名义建立的。钰中同时成功做到了许多人没能做到的事:把那珂从那个深坑中劝了出来。</p>
+        <p><b>那珂</b>，不公布年龄倒不是因为保密问题，那珂只是纯粹忘记了自己的生日。很多年前在坑中闲逛时捡到了钰中，也许是一个人在坑中太久太无聊，就把钰中留了下来。除了热衷于学习各种绘画技术，其他的方面就是个老古董。同时常常健忘，据她自己说原因是为了不让脑子里东西太多而刻意遗忘了一些事情——不过她也许不会忘记钰中是怎么样把她劝出来的吧。</p>
+        <h3>信息简表</h3>
+        <div>
+            <div class="row">
+                <div class="mdui-col-sm-6">
+                    <div id="card-one">
+                        <div class="mdui-card">
+                            <div class="mdui-card-media">
+                            <img src="//us.pro-ivan.com/imgbed/aboutme/yujio3.0.webp"/>
+                            <div class="mdui-card-media-covered mdui-card-media-covered-gradient">
+                            <div class="mdui-card-primary">
+                             <div class="mdui-card-primary-title">钰中</div>
+                             <div class="mdui-card-primary-subtitle">Yujio</div>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="mdui-card-actions">
+                                <p><b>发色：</b>银色</p>
+                                <p><b>瞳色：</b>左蓝右橙</p>
+                                <p><b>身高：</b>180(cm)</p>
+                                <p><b>生日：</b>3.21</p>
+                                <p><b>星座：</b>白羊</p>
+                                <p><b>活动地区：</b>中国</p>
+                                <p><b>活动范围：</b><img src="http://pro-ivan.cn/Bilibili_Logo_Blue.svg" alt="" width="50"></p>
+                                <p><b>所属：</b><img src="./Ivan.png" alt="Ivan社徽" width="50"> ，BUPT檐枫动漫社</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdui-col-sm-6">
+                    <div id="card-one">
+                        <div class="mdui-card">
+                            <div class="mdui-card-media">
+                            <img src="//us.pro-ivan.com/imgbed/aboutme/nako1.0.webp"/>
+                            <div class="mdui-card-media-covered mdui-card-media-covered-gradient">
+                            <div class="mdui-card-primary">
+                             <div class="mdui-card-primary-title">那珂</div>
+                             <div class="mdui-card-primary-subtitle">Nako</div>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="mdui-card-actions">
+                                <b>&nbsp;</b>
+                                <p><b>发色：</b>黑/暗红色</p>
+                                <p><b>瞳色：</b>红色</p>
+                                <p><b>身高：</b>166(cm)</p>
+                                <p><b>生日：</b>3.21</p>
+                                <p><b>星座：</b>白羊</p>
+                                <p><b>活动地区：</b>中国</p>
+                                <p><b>活动范围：</b>-</p>
+                                <p><b>所属：</b><img src="./Ivan.png" alt="Ivan社徽" width="50"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><center><div><div class='mdui-table-fluid mdui-table th' style='margin-left:1%;width:98%;'><br><form action='/comment/comment.php' method='post'><table class='mdui-table'><tbody><tr><th><label class='mdui-textfield-label'>昵称</label><input type='text' class='mdui-textfield-input' name='name' placeholder='请输入昵称(小于25字)' required='required' maxlength='25' style='width:98%;'><br><label class='mdui-textfield-label'>评论</label><input type='text' class='mdui-textfield-input' name='comment' placeholder='要讲文明哟~(小于200字)' required='required' maxlength='200' style='width:98%;'><br><label class='mdui-textfield-label'>电邮</label><input type='text' class='mdui-textfield-input' name='contact' placeholder='或者其他联系方式（选填）' maxlength='200' style='width:98%;'><br><center><input class='mdui-btn mdui-ripple mdui-btn-raised mdui-btn-dense mdui-color-theme' type='submit' id ='submitButton' value='发送' onclick=''></center></th></tr></tbody></table></form><br><embed src='/sql_comment/' width='90%'/></div></div><br><div style="margin-bottom:15px;"><font size="2" color=#C0C0C0>Powered by <a href="https://github.com/Tvogmbh/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color="#C0C0C0" target="_blank">Tvogmbh</font></a> · ©2022-2023 Pro-Ivan Studio</font><br><a href="https://stats.uptimerobot.com/Oo6ykFNrDn" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>站点在线状态</font></a><font size="2" color=#C0C0C0> · </font><a href="/test_server/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>服务器状态</font></a><br><font size="2" color=#C0C0C0>友情链接 · </font><a href="https://acg.umoes.top/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>Yoo！萌</font></a><font size="2" color=#C0C0C0> · </font><a href="https://sweetily.club/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>Sweetily的粉丝站</font></a><font size="2" color=#C0C0C0> · </font><a href="https://momomitsuki.com/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>美月もも的粉丝站</font></a><br><a href="http://beian.miit.gov.cn" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" target="_blank"><font size="2" color=#C0C0C0>京ICP备2022003448号-1/2</font></a><font size="2" color=#C0C0C0> · </font><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11011402012324" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="/beian.png" style="float:left;"/><font size="2" color=#C0C0C0>京公网安备 11011402012324号</font></a><font size="2" color=#C0C0C0> · </font><a href="https://icp.gov.moe/?keyword=20241113" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" target="_blank"><font size="2" color=#C0C0C0>萌ICP备20241113号</font></a></div></center>
+	<footer><div id="not-footer"></div></footer>
+    </body>
+    <script src="./mdui/js/mdui.min.js"></script>
+    <script src="./new-js/index.js"></script>
+</html> 

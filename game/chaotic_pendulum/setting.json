@@ -1,0 +1,1 @@
+{"g": 9.8, "unit_step": 500, "count": 3, "max_orbit_len": 500, "show_orbit": true, "orbit_width":2, "rob_width": 2, "mass": [1, 1, 1], "length": [0.7, 0.9, 1.2], "theta": [0, 0.5, 1], "v": [2, 4, -2], "ball_color": ["255,0,0", "0,255,0", "0,0,255"], "rod_color": ["255,255,255","255,255,255","255,255,255"]}

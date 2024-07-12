@@ -1,0 +1,33 @@
+{
+  "count": {
+    "max":6,
+    "min":1,
+    "tick":1,
+    "text":"count of balls",
+    "type":"slider",
+    "value":2
+  },
+  "backgroundColor": {
+    "text": "Background",
+    "type": "color",
+    "value": "#000000"
+  },
+  "showOrbit":{
+    "type":"checkbox",
+    "value":true,
+    "text":"show Orbit"
+  },
+  "orbitLength":{
+    "type":"slider",
+    "max":100,
+    "min":0,
+    "tick":5,
+    "text":"length of Orbit",
+    "value":1000
+  },
+  "standard":{
+    "type":"checkbox",
+    "value":true,
+    "text":"standard mode"
+  }
+}

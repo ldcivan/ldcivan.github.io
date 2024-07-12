@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+	<head>
+		<meta charset="utf-8">
+        <link rel="shortcut icon" href="/favicon.ico">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
+		<meta name="renderer" content="webkit" />
+		<meta name="force-rendering" content="webkit" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<link rel="stylesheet" href="./mdui/css/mdui.css" />
+		<link rel="stylesheet" href="./new-js/index.css">
+		<title>Pro-Ivan数字库-主页</title>
+		<meta name="keywords" content="动漫图片,动漫资讯,动漫,二次元,漫画,动画,游戏,Cosplay,ACG,番剧,视频分享,壁纸,神曲,热门动漫,热门番剧">
+		<meta name="description" content="技术宅社团，什么活都整！">
+		<script type="text/javascript">  
+            function disptime(){  
+                var today=new Date();
+                var yy=today.getYear()+1900;
+                var MM=today.getMonth()+1;
+                var dd=today.getDate();
+                var hh=today.getHours();  
+                var mm=today.getMinutes();  
+                var ss = today.getSeconds();
+                function zero(num){
+                    if(num < 10) {
+                        num = '0' + String(num)
+                    }
+                    return num
+                }
+                document.getElementById("myclock").innerHTML="现在是"+yy+"年"+MM+"月"+dd+"日 "+zero(hh)+":"+zero(mm)+":"+zero(ss)+"，欢迎您来到本页！"  
+                 
+            }   
+            //setInterval（）方法可以按照指定的周期调用函数或计算表达式  
+            var mytime = setInterval("disptime()",1000);  
+        </script>  
+		<script type="text/javascript">
+            function AddFavorite(url,title){
+             var ua = navigator.userAgent.toLowerCase();
+             if(ua.indexOf("msie 8")>-1){
+              external.AddToFavoritesBar(url,title,"");//IE8
+              }else{
+              try {
+              window.external.addFavorite(url, title);
+              } catch(e) {
+              try {
+              window.sidebar.addPanel(title, url, "");//firefox
+              } catch(e) {
+              alert("加入收藏失败，请使用Ctrl+D或手动进行添加");
+              }
+              }
+              }
+              return false;
+            }
+        </script>
+		<script>
+        	var _hmt = _hmt || [];
+        	(function() {
+         	 var hm = document.createElement("script");
+         	 hm.src = "https://hm.baidu.com/hm.js?90415f833f988b0bccfb250d70f115f6";
+         	 var s = document.getElementsByTagName("script")[0]; 
+         	 s.parentNode.insertBefore(hm, s);
+        	})();
+    	</script>
+	</head>
+	<body class="mdui-drawer-body-left mdui-theme-primary-light-blue">
+		<div class="mdui-drawer" id="left-drawer" style="z-index:3000;">
+			<img src="./Ivan.svg" style="max-width: 100%; max-height: 100%;">
+			<ul class="mdui-list">
+				<li class="mdui-list-item mdui-ripple" onclick="alert('you are here')">
+					<i class="mdui-list-item-icon mdui-icon material-icons">home</i>
+					<div class="mdui-list-item-content">主页</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" mdui-dialog="{target: '#announcement'}">
+					<i class="mdui-list-item-icon mdui-icon material-icons">message</i>
+					<div class="mdui-list-item-content">公告</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" mdui-dialog="{target: '#support'}">
+					<i class="mdui-list-item-icon mdui-icon material-icons">account_balance_wallet</i>
+					<div class="mdui-list-item-content">支持我们</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="imgs();">
+					<i class="mdui-list-item-icon mdui-icon material-icons">image</i>
+					<div class="mdui-list-item-content">图库</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="comic();">
+					<i class="mdui-list-item-icon mdui-icon material-icons">book</i>
+					<div class="mdui-list-item-content">漫画</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="img_bed()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">cloud_queue</i>
+					<div class="mdui-list-item-content">图床</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="download()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">file_download</i>
+					<div class="mdui-list-item-content">下载站</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="little_game()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">extension</i>
+					<div class="mdui-list-item-content">小游戏</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="bfanscount()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">people</i>
+					<div class="mdui-list-item-content">Bilibili粉丝量观测</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="api()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">leak_add</i>
+					<div class="mdui-list-item-content">Api接口</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="about()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">face</i>
+					<div class="mdui-list-item-content">关于我们</div>
+				</li>
+			</ul>
+		</div>
+		<div class="mdui-dialog" id="announcement">
+			<div class="mdui-dialog-title">公告</div>
+			<div class="mdui-dialog-content">
+				<div id="GG"></div>
+			</div>
+			<div class="mdui-dialog-actions">
+				<button class="mdui-btn mdui-ripple mdui-text-color-theme mdui-text-color-white" mdui-dialog-close >关闭</button>
+			</div>
+		</div>
+		<div class="mdui-dialog" id="support">
+			<div class="mdui-dialog-title">支持我们</div>
+			<div class="mdui-dialog-content">
+                如果您有能力，还请多多支持我们！
+				<br>
+				<img src="/sponsor/weixin.webp" class="support-img" width="48%" />
+				<img src="/sponsor/alipay.webp" class="support-img" width="48%" style="margin-left:2%;"/>
+			</div>
+			<div class="mdui-dialog-actions">
+				<button class="mdui-btn mdui-ripple mdui-text-color-theme mdui-text-color-white" mdui-dialog-close >关闭</button>
+			</div>
+		</div>
+		<div class="mdui-appbar">
+			<div class="mdui-toolbar mdui-color-theme" style="position:fixed;z-index:1000;margin-top:-15px;" mdui-headroom>
+				<a href="javascript:;" mdui-drawer="{target: '#left-drawer'}" class="mdui-btn mdui-btn-icon">
+					<i class="mdui-icon material-icons">menu</i>
+				</a>
+				<a id="title" href="/new.html" class="mdui-typo-headline">Pro-Ivan数字库-主页</a>
+				<div class="mdui-toolbar-spacer"></div>
+				<a href="javascript:;" class="mdui-btn mdui-btn-icon" onclick="AddFavorite('http://pro-ivan.cn','Pro-Ivan')">
+					<i class="mdui-icon material-icons" mdui-tooltip="{content: '收藏本页'}">star</i>
+				</a>
+			</div>
+		</div>
+		<div id="body" class="mdui-container-fluid">
+		    <div class="mdui-toolbar"></div>
+			<div id="content">
+			    <center class="mdui-typo"><h4><small id="myclock">&nbsp;</small></h4></center> 
+				<nav class="mdui-text-color-theme toc" style="line-height: 1.5em;margin-left:5px;border-left: 3px solid;font-size: 18px;">
+				    <div class="mdui-typo"><h4 id="导航" style="vertical-align: top; margin-left: 10px;"><small>CONTENTS</small></h4></div>
+					<ul style="list-style: none;">
+						<li>
+							<a href="#本站应用" style="font-size: 1.2em;color: inherit;text-decoration: none;">本站应用</a>
+							<ul style="list-style: none;">
+								<li>
+									<a href="/new-page1.php" style="color: inherit;text-decoration: none;">图库</a>
+								</li>
+								<li>
+								    <a href="/new-upload.html" style="color: inherit;text-decoration: none;">图床</a>
+								</li>
+								<li>
+								    <a href="/new-comic.php" style="color: inherit;text-decoration: none;">漫画</a>
+								</li>
+								<li>
+									<a href="/game/" style="color: inherit;text-decoration: none;">小游戏</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#捐赠者" style="font-size: 1.2em;color: inherit;text-decoration: none;">捐赠者们</a>
+						</li>
+						<li>
+							<a href="#支出" style="font-size: 1.2em;color: inherit;text-decoration: none;">本站所有的支出</a>
+						</li>
+						<li>
+							<a href="#fans" style="font-size: 1.2em;color: inherit;text-decoration: none;">Bilibili粉丝记录</a>
+						</li>
+						<li>
+							<a href="#留言板" style="font-size: 1.2em;color: inherit;text-decoration: none;">留言板</a>
+						</li>
+					</ul>
+				</nav>
+				<div class="mdui-typo"><h3 id="本站应用">本站应用</h3></div>
+				<div class="row">
+					<div class="mdui-col-sm-6">
+						<div class="mdui-card">
+							<!-- 卡片的标题和副标题 -->
+							<div class="mdui-card-primary">
+								<div class="mdui-card-primary-title">图库</div>
+								<div class="mdui-card-primary-subtitle"></div>
+							</div>
+							<!-- 卡片的内容 -->
+							<div class="mdui-card-content">存放了醒爷 苦怕 冰宫 阿戈魔的作品</div>
+							<!-- 卡片的按钮 -->
+							<div class="mdui-card-actions">
+								<button class="mdui-btn mdui-float-right mdui-color-theme mdui-text-color-white-text" onclick="imgs()">前往</button>
+							</div>
+						</div>
+						<div class="mdui-card">
+							<!-- 卡片的标题和副标题 -->
+							<div class="mdui-card-primary">
+								<div class="mdui-card-primary-title">漫画</div>
+								<div class="mdui-card-primary-subtitle"></div>
+							</div>
+							<!-- 卡片的内容 -->
+							<div class="mdui-card-content">收藏了一些比较热门的漫画</div>
+							<!-- 卡片的按钮 -->
+							<div class="mdui-card-actions">
+								<button class="mdui-btn mdui-float-right mdui-color-theme mdui-text-color-white" onclick="comic()">前往</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="mdui-col-sm-6">
+						<div class="mdui-card">
+							<!-- 卡片的标题和副标题 -->
+							<div class="mdui-card-primary">
+								<div class="mdui-card-primary-title">图床</div>
+								<div class="mdui-card-primary-subtitle"></div>
+							</div>
+							<!-- 卡片的内容 -->
+							<div class="mdui-card-content">供以上传一些在Bilibili会被审核删除的图片</div>
+							<!-- 卡片的按钮 -->
+							<div class="mdui-card-actions">
+								<button class="mdui-btn mdui-float-right mdui-color-theme mdui-text-color-white" onclick="img_bed()">前往</button>
+							</div>
+						</div>
+						<div class="mdui-card">
+							<!-- 卡片的标题和副标题 -->
+							<div class="mdui-card-primary">
+								<div class="mdui-card-primary-title">小游戏</div>
+								<div class="mdui-card-primary-subtitle"></div>
+							</div>
+							<!-- 卡片的内容 -->
+							<div class="mdui-card-content">收藏了一些网页端的小游戏</div>
+							<!-- 卡片的按钮 -->
+							<div class="mdui-card-actions">
+								<button class="mdui-btn mdui-float-right mdui-color-theme mdui-text-color-white" onclick="little_game()">前往</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="mdui-typo">
+				    <h3 id="捐赠者" style="margin-top: 20px;">捐赠者<br><small>非常感谢给予我们帮助的同学们！这里的内容是手动誊写的，可能有错漏，要纠正可以留言~</small></h3>
+				    
+				</div>
+				<div class="mdui-table-fluid">
+					<table class="mdui-table">
+						<thead>
+							<tr>
+								<th>捐赠者</th>
+								<th>金额</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>s*a</th>
+								<td>￥1.05</td>
+							</tr>
+							<tr>
+								<th>a*e</th>
+								<td>￥6.66</td>
+							</tr>
+							<tr>
+								<th>*禅</th>
+								<td>￥10.00</td>
+							</tr>
+							<tr>
+								<th>*泠</th>
+								<td>￥10.00</td>
+							</tr>
+							<tr>
+								<th>*林</th>
+								<td>￥5.00</td>
+							</tr>
+							<tr>
+								<th>**鑫</th>
+								<td>￥15.00</td>
+							</tr>
+							<tr>
+								<th>r*m:建议买瓶冰露</th>
+								<td>￥1.00(我这冰露一块五(bushi)</td>
+							</tr>
+							<tr>
+								<th>*照</th>
+								<td>￥3.00</td>
+							</tr>
+							<tr>
+								<th>匿名捐款</th>
+								<td>￥8.88</td>
+							</tr>
+							<tr>
+								<th>*烂</th>
+								<td>￥5.00</td>
+							</tr>
+							<tr>
+								<th>p*d</th>
+								<td>￥3.00</td>
+							</tr>
+							<tr>
+								<th>D*k</th>
+								<td>¥5.00</td>
+							</tr>
+							<tr>
+								<th>*上</th>
+								<td>¥5.00</td>
+							</tr>
+							<tr>
+								<th>*鹏</th>
+								<td>¥11.01</td>
+							</tr>
+							<tr>
+								<th>*夜</th>
+								<td>¥1.14</td>
+							</tr>
+							<tr>
+								<th>*.</th>
+								<td>¥1.00</td>
+							</tr>
+							<tr>
+								<th>*哥</th>
+								<td>¥5.00</td>
+							</tr>
+							<tr>
+								<th>*纬</th>
+								<td>¥3.00</td>
+							</tr>
+							<tr>
+								<th>a*e</th>
+								<td>¥11.11</td>
+							</tr>
+							<tr>
+								<th>P*y</th>
+								<td>¥10.00</td>
+							</tr>
+							<tr>
+								<th>*人</th>
+								<td>¥3.00</td>
+							</tr>
+							<tr>
+								<th>一位不愿意透露姓名的用户</th>
+								<td>¥0.50</td>
+							</tr>
+							<tr>
+							    <th>**宇</th>
+							    <td>¥1.00</td>
+							</tr>
+							<tr>
+							    <th>*章</th>
+							    <td>¥20.00</td>
+							</tr>
+							<tr>
+							    <th>J*g</th>
+							    <td>¥1.00</td>
+							</tr>
+							<tr>
+							    <th>T*m</th>
+							    <td>¥10.00</td>
+							</tr>
+							<tr>
+							    <th>*弈</th>
+							    <td>¥0.20</td>
+							</tr>
+							<tr>
+							    <th>**凡</th>
+							    <td>¥1.00</td>
+							</tr>
+							<tr>
+							    <th>咔妃茵Coffeine</th>
+							    <td>¥0.50</td>
+							</tr>
+							<tr>
+							    <th>*喝</th>
+							    <td>¥0.20</td>
+							</tr>
+							<tr>
+							    <th>*狗</th>
+							    <td>¥6.99</td>
+							</tr>
+							<tr>
+							    <th>*集</th>
+							    <td>¥6.60</td>
+							</tr>
+							<tr>
+							    <th>*平</th>
+							    <td>¥30.00</td>
+							</tr>
+							<tr>
+							    <th>**光</th>
+							    <td>¥1.00</td>
+							</tr>
+							<tr>
+							    <th>**韵</th>
+							    <td>¥1.00</td>
+							</tr>
+							<tr>
+							    <th>*笑</th>
+							    <td>¥3.00</td>
+							</tr>
+							<tr>
+							    <th>*я</th>
+							    <td>¥5.60</td>
+							</tr>
+							<tr>
+							    <th>*长</th>
+							    <td>¥6.66</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div>
+					<div class="mdui-typo"><h3 id="支出">网站运行支出公示</h3></div>
+					<div class="mdui-table-fluid">
+						<table class="mdui-table">
+							<tbody>
+								<tr>
+									<th>支出款项</th>
+									<th>金额</th>
+								</tr>
+								<tr>
+									<th>proivan.vicp.fun永久域名注册</th>
+									<td>￥56.00</td>
+								</tr>
+								<tr>
+									<th>内网穿透服务2年</th>
+									<td>￥760.00</td>
+								</tr>
+								<tr>
+									<th>pro-ivan.cn域名注册2年</th>
+									<td>￥72.00</td>
+								</tr>
+								<tr>
+									<th>pro-ivan.cn域名CNAME解析2年</th>
+									<td>￥20.00</td>
+								</tr>
+								<tr>
+									<th>主机安全保持</th>
+									<td>￥48.00</td>
+								</tr>
+								<tr>
+									<th>2023年ESC云主机费用</th>
+									<td>￥475.70</td>
+								</tr>
+								<tr>
+									<th>pro-ivan.com域名续费1年</th>
+									<td>￥72.00</td>
+								</tr>
+								<tr>
+									<th>服务器更换/升级</th>
+									<td>￥1042.00</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div>
+					<div class="mdui-typo"><h3 id="fans">还有醒着的么 粉丝记录(UTC+8)</h3></div>
+					<div class="mdui-table-fluid">
+						<table class="mdui-table">
+							<tbody>
+								<tr>
+									<th>
+									    <center>
+									    <embed src="/bfanscount/json/2100679.json" width="90%"/><br>
+                                    	<div style="margin-right:5%;float:right;"><a href="javascript:bfanscount();" target="_self"><button class="mdui-btn mdui-float-right mdui-color-theme mdui-text-color-white">查看更多up的粉丝记录>>></button></a><br>如想获得更多up的粉丝变化请于下方留言</div><br>
+                                    	</center>
+                                    </th>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	<footer><div id="footer"></div></footer>
+	
+	<script src="./mdui/js/mdui.min.js"></script>
+	<script src="./new-js/index.js"></script>
+	</body>
+</html>
+<!--
+      $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  
+       $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  
+           $$$$$$$$ 
+           $$$$$$$$      $$$$$$          $$$$$$$$$$       $$$$$$$        $$$$$
+           $$$$$$$$       $$$$$$        $$$$$$$$$$$$      $$$$$$$$       $$$$$ 
+           $$$$$$$$       $$$$$$        $$$$$$  $$$$$     $$$$$$$$$      $$$$$        
+           $$$$$$$$        $$$$$$      $$$$$$    $$$$$    $$$$$$$$$$$    $$$$$
+           $$$$$$$$         $$$$$$    $$$$$$      $$$$$   $$$$$ $$$$$$   $$$$$        
+           $$$$$$$$          $$$$$$  $$$$$$$$$$$$$$$$$$$  $$$$$  $$$$$$  $$$$$       
+           $$$$$$$$           $$$$$$$$$$$$$$$$$$$$$$$$$$$ $$$$$    $$$$$ $$$$$  
+           $$$$$$$$           $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     $$$$$$$$$$
+           $$$$$$$$            $$$$$$$$$$            $$$$$$$$$$      $$$$$$$$$ 
+           $$$$$$$$             $$$$$$$$              $$$$$$$$$        $$$$$$$
+           $$$$$$$$              $$$$$$                $$$$$$$$         $$$$$$ 
+           $$$$$$$$ 
+           $$$$$$$$   $$$$$$$  $$$$$$$$    $$$$$$   $$$$$$$  $$$$     $$$$$$  $$$$$$$$$       
+           $$$$$$$$   $$$$$$$$ $$$$$$$$$  $$$ $$$$ $$$$$$$$ $$$$$$   $$$  $$  $$$$$$$$$       
+           $$$$$$$$   $$$  $$$ $$$   $$$ $$$   $$$    $$$   $$ $$$  $$$       $  $$$  $       
+           $$$$$$$$   $$$$$$$$ $$$$$$$$$ $$$   $$$    $$$  $$   $$  $$$    $     $$$          
+           $$$$$$$$   $$$$$$$  $$$$$$$    $$$ $$$$ $  $$$ $$$$$$$$$  $$$  $$     $$$         
+           $$$$$$$$   $$$   $$ $$$ $$$$$  $$$$$$$  $$$$$$ $$    $$$  $$$$$$$     $$$             
+           $$$$$$$$   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$         
+        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$   
+
+WELCOME to BACKSTAGE! MY FRIEND!!!
+
+Pro-Ivan All Right Reserve · ROID: 20211114s10001s41369525-cn
+-->

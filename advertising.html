@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
+		<meta name="renderer" content="webkit" />
+		<meta name="force-rendering" content="webkit" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<link rel="stylesheet" href="./mdui/css/mdui.css" />
+		<link rel="stylesheet" href="./new-js/index.css">
+		<title>Pro-Ivan数字库-友链&推介</title>
+
+		<script type="text/javascript">
+            function AddFavorite(url,title){
+             var ua = navigator.userAgent.toLowerCase();
+             if(ua.indexOf("msie 8")>-1){
+              external.AddToFavoritesBar(url,title,"");//IE8
+              }else{
+              try {
+              window.external.addFavorite(url, title);
+              } catch(e) {
+              try {
+              window.sidebar.addPanel(title, url, "");//firefox
+              } catch(e) {
+              alert("加入收藏失败，请使用Ctrl+D或手动进行添加");
+              }
+              }
+              }
+              return false;
+            }
+        </script>
+		<script>
+        	var _hmt = _hmt || [];
+        	(function() {
+         	 var hm = document.createElement("script");
+         	 hm.src = "https://hm.baidu.com/hm.js?90415f833f988b0bccfb250d70f115f6";
+         	 var s = document.getElementsByTagName("script")[0]; 
+         	 s.parentNode.insertBefore(hm, s);
+        	})();
+    	</script>
+	</head>
+	<body class="mdui-drawer-body-left mdui-theme-primary-light-blue">
+		<div class="mdui-drawer" id="left-drawer" style="z-index:3000;">
+			<img src="./Ivan.png" style="max-width: 100%; max-height: 100%;">
+			<ul class="mdui-list">
+				<li class="mdui-list-item mdui-ripple" onclick="home()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">home</i>
+					<div class="mdui-list-item-content">主页</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" mdui-dialog="{target: '#announcement'}">
+					<i class="mdui-list-item-icon mdui-icon material-icons">message</i>
+					<div class="mdui-list-item-content">公告</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" mdui-dialog="{target: '#support'}">
+					<i class="mdui-list-item-icon mdui-icon material-icons">account_balance_wallet</i>
+					<div class="mdui-list-item-content">支持我们</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="imgs()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">image</i>
+					<div class="mdui-list-item-content">图库</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="comic()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">book</i>
+					<div class="mdui-list-item-content">漫画</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="img_bed()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">cloud_queue</i>
+					<div class="mdui-list-item-content">图床</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="download()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">file_download</i>
+					<div class="mdui-list-item-content">下载站</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="little_game()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">extension</i>
+					<div class="mdui-list-item-content">小游戏</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="bfanscount()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">people</i>
+					<div class="mdui-list-item-content">Bilibili粉丝量观测</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="api()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">leak_add</i>
+					<div class="mdui-list-item-content">Api接口</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="about()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">face</i>
+					<div class="mdui-list-item-content">关于我们</div>
+				</li>
+			</ul>
+		</div>
+		<div class="mdui-dialog" id="announcement">
+			<div class="mdui-dialog-title">公告</div>
+			<div class="mdui-dialog-content">
+				<div id="GG"></div>
+			</div>
+			<div class="mdui-dialog-actions">
+				<button class="mdui-btn mdui-ripple mdui-text-color-theme mdui-text-color-white" mdui-dialog-close >关闭</button>
+			</div>
+		</div>
+		<div class="mdui-dialog" id="support">
+			<div class="mdui-dialog-title">支持我们</div>
+			<div class="mdui-dialog-content">
+                如果您有能力，还请多多支持我们！
+				<br>
+				<img src="/sponsor/weixin.jpg" class="support-img" width="48%" />
+				<img src="/sponsor/alipay.jpg" class="support-img" width="48%" style="margin-left:2%;"/>
+			</div>
+			<div class="mdui-dialog-actions">
+				<button class="mdui-btn mdui-ripple mdui-text-color-theme mdui-text-color-white" mdui-dialog-close >关闭</button>
+			</div>
+		</div>
+		<div class="mdui-appbar">
+			<div class="mdui-toolbar mdui-color-theme" style="position:fixed;z-index:1000;margin-top:-15px;" mdui-headroom>
+				<a href="javascript:;" mdui-drawer="{target: '#left-drawer'}" class="mdui-btn mdui-btn-icon">
+					<i class="mdui-icon material-icons">menu</i>
+				</a>
+				<a href="/new.html" id="title" class="mdui-typo-headline">Pro-Ivan数字库-友链&推介</a>
+				<div class="mdui-toolbar-spacer"></div>
+				<a href="javascript:AddFavorite('http://pro-ivan.cn','Pro-Ivan');" class="mdui-btn mdui-btn-icon">
+					<i class="mdui-icon material-icons" mdui-tooltip="{content: '收藏本页'}">star</i>
+				</a>
+			</div>
+		</div>
+		<div id="body">
+		<div class="mdui-container" style="padding-top:50px">
+            
+            <div class="mdui-typo"><h1>宣传与推介 <small><del>钰中严选</del></small></h1></div>
+            <div class="mdui-row">
+              <div class="mdui-col-sm-6 mdui-col-md-4">
+                <div class="mdui-card mdui-col">
+                  <!-- 卡片的媒体内容，可以包含图片、视频等媒体内容，以及标题、副标题 -->
+                  <div class="mdui-card-media">
+                    <img src="//us.pro-ivan.com/imgbed/advertising/RJ01049645_Ricca.webp"/>
+                    <div class="mdui-card-media-covered">
+                      <div class="mdui-card-primary">
+                        <div class="mdui-card-primary-title">实例名称</div>
+                        <div class="mdui-card-primary-subtitle">示例网址</div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 卡片的内容 -->
+                  <div class="mdui-card-content">这是一句描述 & 那珂，这就定板了别改了</div>
+                
+                  <!-- 卡片的按钮 -->
+                  <div class="mdui-card-actions">
+                    <button class="mdui-btn mdui-ripple mdui-float-right">前往</button>
+                  </div>
+                
+                </div>
+              </div>
+              <div class="mdui-col-sm-6 mdui-col-md-4">
+                <div class="mdui-card mdui-col">
+                  <!-- 卡片的媒体内容，可以包含图片、视频等媒体内容，以及标题、副标题 -->
+                  <div class="mdui-card-media">
+                    <img src="//us.pro-ivan.com/imgbed/cover/220609%E8%BD%AC%E7%94%9F%E6%9E%97%E6%AA%8E.webp"/>
+                    <div class="mdui-card-media-covered">
+                      <div class="mdui-card-primary">
+                        <div class="mdui-card-primary-title">名称</div>
+                        <div class="mdui-card-primary-subtitle">网址</div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 卡片的内容 -->
+                  <div class="mdui-card-content">这是一句描述 & 那珂，这就定板了别改了</div>
+                
+                  <!-- 卡片的按钮 -->
+                  <div class="mdui-card-actions">
+                    <button class="mdui-btn mdui-ripple mdui-float-right">前往</button>
+                  </div>
+                
+                </div>
+              </div>
+              <div class="mdui-col-sm-6 mdui-col-md-4">
+                <div class="mdui-card mdui-col">
+                  <!-- 卡片的媒体内容，可以包含图片、视频等媒体内容，以及标题、副标题 -->
+                  <div class="mdui-card-media">
+                    <img src="//us.pro-ivan.com/imgbed/cover/220609%E8%BD%AC%E7%94%9F%E6%9E%97%E6%AA%8E.webp"/>
+                    <div class="mdui-card-media-covered">
+                      <div class="mdui-card-primary">
+                        <div class="mdui-card-primary-title">名称</div>
+                        <div class="mdui-card-primary-subtitle">网址</div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 卡片的内容 -->
+                  <div class="mdui-card-content">这是一句描述 & 那珂，这就定板了别改了</div>
+                
+                  <!-- 卡片的按钮 -->
+                  <div class="mdui-card-actions">
+                    <button class="mdui-btn mdui-ripple mdui-float-right">前往</button>
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+            
+            
+		    <div class="mdui-typo"><h1>友情链接 <small>欢迎留言添加友链</small></h1></div>
+            <div class="mdui-row">
+              <div class="mdui-col-sm-6 mdui-col-md-4">
+                <div class="mdui-card mdui-col">
+                  <!-- 卡片的媒体内容，可以包含图片、视频等媒体内容，以及标题、副标题 -->
+                  <div class="mdui-card-media">
+                    <img src="//us.pro-ivan.com/imgbed/advertising/Yoomoe.png"/>
+                    <div class="mdui-card-media-covered">
+                      <div class="mdui-card-primary">
+                        <div class="mdui-card-primary-title">Yoo!萌</div>
+                        <div class="mdui-card-primary-subtitle">acg.umoes.top</div>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <!-- 卡片的内容 -->
+                  <div class="mdui-card-content">一个二次元资源分享网站</div>
+                
+                  <!-- 卡片的按钮 -->
+                  <div class="mdui-card-actions">
+                    <button class="mdui-btn mdui-ripple mdui-float-right" onclick="window.open('//acg.umoes.top', '_blank');">前往</button>
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+        </div>
+        </div>
+		<footer><div id="footer"></div></footer>
+		</body>
+	<script src="./mdui/js/mdui.min.js"></script>
+	<script src="./new-js/index.js"></script>
+</html>
+<!--
+
+
+       $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+      $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  
+      $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  
+       $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  
+           $$$$$$$$ 
+           $$$$$$$$ 
+           $$$$$$$$  $$$$$$          $$$$$$$$$$      $$$$$$$        $$$$$
+           $$$$$$$$   $$$$$$        $$$$$$$$$$$$     $$$$$$$$       $$$$$ 
+           $$$$$$$$   $$$$$$        $$$$$$  $$$$$    $$$$$$$$$      $$$$$        
+           $$$$$$$$    $$$$$$      $$$$$$    $$$$$   $$$$$$$$$$$    $$$$$
+           $$$$$$$$     $$$$$$    $$$$$$      $$$$$  $$$$$ $$$$$$   $$$$$        
+           $$$$$$$$      $$$$$$  $$$$$$$$$$$$$$$$$$$ $$$$$  $$$$$$  $$$$$       
+           $$$$$$$$       $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$    $$$$$ $$$$$  
+           $$$$$$$$       $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$     $$$$$$$$$$
+           $$$$$$$$        $$$$$$$$$$            $$$$$$$$$      $$$$$$$$$ 
+           $$$$$$$$         $$$$$$$$              $$$$$$$$        $$$$$$$
+           $$$$$$$$          $$$$$$                $$$$$$$         $$$$$$ 
+           $$$$$$$$ 
+           $$$$$$$$                                                        
+           $$$$$$$$   $$$$$$$  $$$$$$$$    $$$$$$   $$$$$$$  $$$$     $$$$$$  $$$$$$$$$       
+           $$$$$$$$   $$$$$$$$ $$$$$$$$$  $$$ $$$$ $$$$$$$$ $$$$$$   $$$  $$  $$$$$$$$$       
+           $$$$$$$$   $$$  $$$ $$$   $$$ $$$   $$$    $$$   $$ $$$  $$$       $  $$$  $       
+           $$$$$$$$   $$$$$$$$ $$$$$$$$$ $$$   $$$    $$$  $$   $$  $$$    $     $$$          
+           $$$$$$$$   $$$$$$$  $$$$$$$    $$$ $$$$ $  $$$ $$$$$$$$$  $$$  $$     $$$         
+           $$$$$$$$   $$$   $$ $$$ $$$$$  $$$$$$$  $$$$$$ $$    $$$  $$$$$$$     $$$             
+           $$$$$$$$   $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$         
+        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+       $$$$$$$$$$$$$$$   
+        $$$$$$$$$$$$$ 
+
+WELCOME to BACKSTAGE! MY FRIEND!!!
+
+Pro-Ivan All Right Reserve · ROID: 20211114s10001s41369525-cn
+
+
+
+-->

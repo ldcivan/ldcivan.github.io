@@ -1,0 +1,41 @@
+window.Config = {
+
+  // 显示标题
+  SiteName: 'Pro-ivan 站点状态监视',
+
+  // UptimeRobot Api Keys
+  // 支持 Monitor-Specific 和 Read-Only
+  ApiKeys: [
+    'm794068521-12f2f34409953c1e5f104c05',//yunzai
+    'm792824373-c702190dde4e3009b21d16b4',//www.pro-ivan.com
+    'm794328285-5ac728028e6c8a0b98fd4bc8',//www.pro-ivan.cn
+    'm792824370-6f74c5657537c2165d0d09a0',//pro-ivan.com
+    'm794328286-8fcb7df0de5a276626d3596c',//pro-ivan.cn
+    'm792824402-842670db142b617f7a80e09f',//image bed CDN
+    'm794351039-66b02e2f955f4546dddd7bdc',//pixiv NOW
+    'm794351042-0924b9e38b4747ccd8d23077',//pximg mirror
+    //'m794351043-978c301257487c2f924f61e4',//Proxy
+  ],
+
+  // 日志天数
+  CountDays: 90,
+
+  // 是否显示检测站点的链接
+  ShowLink: false,
+
+  // 导航栏菜单
+  Navi: [
+    {
+      text: '主站',
+      url: 'https://pro-ivan.com/'
+    },
+    {
+      text: 'GitHub',
+      url: 'https://github.com/ldcivan'
+    },
+    {
+      text: 'bilibili',
+      url: 'https://space.bilibili.com/11022578'
+    },
+  ],
+};

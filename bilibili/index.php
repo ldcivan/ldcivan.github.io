@@ -590,7 +590,7 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
             var myChart;
             if (isNaN(uid)) {
               uid = -1;
-              console.log('Invalid uid parameter');
+              console.warn('Invalid uid parameter');
             }
             else{
             var data =[];
@@ -893,12 +893,12 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                   if (num == null) {
                       return '-'
                   }
-                  if (num >= 1000000 || num <= -1000000) {
-                      return (num / 10000).toFixed(0) + 'M';
+                  if (num >= 10000000 || num <= -10000000) {
+                      return (num / 1000000).toFixed(1) + 'M';
+                  } else if (num >= 100000 || num <= -100000) {
+                      return (num / 10000).toFixed(1) + 'W';
                   } else if (num >= 10000 || num <= -10000) {
-                      return (num / 10000).toFixed(0) + 'W';
-                  } else if (num >= 1000 || num <= -1000) {
-                      return (num / 1000).toFixed(0) + 'K';
+                      return (num / 1000).toFixed(1) + 'K';
                   } {
                     return num;
                   }
@@ -922,7 +922,7 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                   animationDuration: 2000,
                   aria: {
                     show: true,
-                    description: `这是一份关于${name}的粉丝量变化的图表，该表以时间为横轴，以粉丝量计数与粉丝变化量为纵轴，涵盖粉丝量、周均粉丝量、两周均粉丝量、月均粉丝量、1日粉丝变化量、7日内粉丝日均变化量、14日内粉丝日均变化量、30日内粉丝日均变化量以及视图内粉丝数最高最低点、up主粉丝里程碑共计11个计量指标。截止到时间：${fans[fans.length-1][0]}，${name}已收获粉丝${fans[fans.length-1][1]}人，近一日粉丝变化量为${(rate1[rate1.length-1][1])}，近七日粉丝变化量为${rate7[rate7.length-1][1] == null ? '-' : (rate7[rate7.length-1][1]*7).toFixed(0)}（折合日均变化量${rate7[rate7.length-1][1] == null ? '-' : (rate7[rate7.length-1][1]*1).toFixed(0)}）。` + (fans_nodes.length===0?`在目前的记录中，还未找到${name}达到过的粉丝数里程碑。`:`此外，${name}还在日期：${(fans_nodes[fans_nodes.length-1][2]).split(" ")[0]}达成了${fans_nodes[fans_nodes.length-1][1]}粉丝的里程碑。}`)
+                    description: `这是一份关于up主${name}的粉丝量变化的图表，该表以时间为横轴，以粉丝量计数与粉丝变化量为纵轴，涵盖粉丝量、周均粉丝量、两周均粉丝量、月均粉丝量、1日粉丝变化量、7日内粉丝日均变化量、14日内粉丝日均变化量、30日内粉丝日均变化量以及视图内粉丝数最高最低点、up主粉丝里程碑共计11个计量指标。截止到时间：${fans[fans.length-1][0]}，${name}已收获粉丝${fans[fans.length-1][1]}人，近一日粉丝变化量为${(rate1[rate1.length-1][1])}，近七日粉丝变化量为${rate7[rate7.length-1][1] == null ? '暂无数据' : (rate7[rate7.length-1][1]*7).toFixed(0)}（折合日均变化量${rate7[rate7.length-1][1] == null ? '暂无数据' : (rate7[rate7.length-1][1]*1).toFixed(0)}），近十四日粉丝变化量为${rate14[rate14.length-1][1] == null ? '暂无数据' : (rate14[rate14.length-1][1]*7).toFixed(0)}（折合日均变化量${rate14[rate14.length-1][1] == null ? '暂无数据' : (rate14[rate14.length-1][1]*1).toFixed(0)}），近三十日粉丝变化量为${rate30[rate30.length-1][1] == null ? '暂无数据' : (rate30[rate30.length-1][1]*7).toFixed(0)}（折合日均变化量${rate30[rate30.length-1][1] == null ? '暂无数据' : (rate30[rate30.length-1][1]*1).toFixed(0)}）。` + (fans_nodes.length===0?`在目前的记录中，还未找到${name}达到过的粉丝数里程碑。`:`此外，${name}最近还在日期：${(fans_nodes[fans_nodes.length-1][2]).split(" ")[0]}达成了${fans_nodes[fans_nodes.length-1][1]}粉丝的里程碑。`)
                   },
                   title: {
                     left: 'center',

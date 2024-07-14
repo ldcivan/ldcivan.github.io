@@ -1,5 +1,5 @@
 #---------------------------------------------------#
-## 更新：2024-07-12 23:24:32
+## 更新：2024-07-14 10:50:22
 #---------------------------------------------------#
 
 # HTTP 代理端口
@@ -32,6 +32,8 @@ secret: ''
 
 
 proxies:
+  - {"name": "0#美国_美国__", "type": "http", "server": "172.183.241.1", "port":8080, "skip-cert-verify": true}
+  - {"name": "1#中国_中国__阿里云", "type": "http", "server": "8.219.97.248", "port":80, "skip-cert-verify": true}
 
 
 proxy-groups:
@@ -39,6 +41,8 @@ proxy-groups:
   name: Proxy
   type: select
   proxies:
+    - '0#美国_美国__'
+    - '1#中国_中国__阿里云'
 
 -
   name: Domestic

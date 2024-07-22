@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+	<head>
+		<meta charset="utf-8">
+		<meta name="robots" content="noindex,follow"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
+		<meta name="renderer" content="webkit" />
+		<meta name="force-rendering" content="webkit" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<link rel="stylesheet" href="/mdui/css/mdui.css" />
+		<link rel="stylesheet" href="/new-js/index.css">
+		<!--<script type="text/javascript" src="/passport/passcheck.php"></script>-->
+		<title>Pro-Ivan数字库-漫展问答</title>
+		<meta name="keywords" content="动漫图片,动漫资讯,动漫,二次元,漫画,动画,游戏,Cosplay,ACG,番剧,视频分享,壁纸,神曲,热门动漫,热门番剧">
+		<meta name="description" content="技术宅社团，什么活都整！">
+		
+		<script type="text/javascript">
+            function AddFavorite(url,title){
+             var ua = navigator.userAgent.toLowerCase();
+             if(ua.indexOf("msie 8")>-1){
+              external.AddToFavoritesBar(url,title,"");//IE8
+              }else{
+              try {
+              window.external.addFavorite(url, title);
+              } catch(e) {
+              try {
+              window.sidebar.addPanel(title, url, "");//firefox
+              } catch(e) {
+              alert("加入收藏失败，请使用Ctrl+D或手动进行添加");
+              }
+              }
+              }
+              return false;
+            }
+        </script>
+        <script>
+            
+        </script>
+		<script>
+        	var _hmt = _hmt || [];
+        	(function() {
+         	 var hm = document.createElement("script");
+         	 hm.src = "https://hm.baidu.com/hm.js?90415f833f988b0bccfb250d70f115f6";
+         	 var s = document.getElementsByTagName("script")[0]; 
+         	 s.parentNode.insertBefore(hm, s);
+        	})();
+    	</script>
+	</head>
+	<body class="mdui-drawer-body-left mdui-theme-primary-light-blue mdui-theme-accent-light-blue">
+		<div class="mdui-drawer" id="left-drawer" style="z-index:3000;">
+			<img src="/Ivan.svg" style="max-width: 100%; max-height: 100%;">
+			<ul class="mdui-list">
+				<li class="mdui-list-item mdui-ripple" onclick="home()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">home</i>
+					<div class="mdui-list-item-content">主页</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" mdui-dialog="{target: '#announcement'}">
+					<i class="mdui-list-item-icon mdui-icon material-icons">message</i>
+					<div class="mdui-list-item-content">公告</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" mdui-dialog="{target: '#support'}">
+					<i class="mdui-list-item-icon mdui-icon material-icons">account_balance_wallet</i>
+					<div class="mdui-list-item-content">支持我们</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="imgs()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">image</i>
+					<div class="mdui-list-item-content">图库</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="comic()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">book</i>
+					<div class="mdui-list-item-content">漫画</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="img_bed()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">cloud_queue</i>
+					<div class="mdui-list-item-content">图床</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="alert('you are here')">
+					<i class="mdui-list-item-icon mdui-icon material-icons">file_download</i>
+					<div class="mdui-list-item-content">下载站</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="little_game()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">extension</i>
+					<div class="mdui-list-item-content">小游戏</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="bfanscount()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">people</i>
+					<div class="mdui-list-item-content">Bilibili粉丝量观测</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="api()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">leak_add</i>
+					<div class="mdui-list-item-content">Api接口</div>
+				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="about()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">face</i>
+					<div class="mdui-list-item-content">关于我们</div>
+				</li>
+			</ul>
+		</div>
+		<div class="mdui-dialog" id="announcement">
+			<div class="mdui-dialog-title">公告</div>
+			<div class="mdui-dialog-content">
+				<div id="GG"></div>
+			</div>
+			<div class="mdui-dialog-actions">
+				<button class="mdui-btn mdui-ripple mdui-text-color-theme mdui-text-color-white" mdui-dialog-close >关闭</button>
+			</div>
+		</div>
+		<div class="mdui-dialog" id="support">
+			<div class="mdui-dialog-title">支持我们</div>
+			<div class="mdui-dialog-content">
+                如果您有能力，还请多多支持我们！
+				<br>
+				<img src="/sponsor/weixin.jpg" class="support-img" width="48%" />
+				<img src="/sponsor/alipay.jpg" class="support-img" width="48%" style="margin-left:2%;"/>
+			</div>
+			<div class="mdui-dialog-actions">
+				<button class="mdui-btn mdui-ripple mdui-text-color-theme mdui-text-color-white" mdui-dialog-close >关闭</button>
+			</div>
+		</div>
+		</div>
+		<div class="mdui-appbar">
+			<div class="mdui-toolbar mdui-color-theme" style="position:fixed;z-index:1000;margin-top:-75px;" mdui-headroom>
+				<a href="javascript:;" mdui-drawer="{target: '#left-drawer'}" class="mdui-btn mdui-btn-icon">
+					<i class="mdui-icon material-icons">menu</i>
+				</a>
+				<a id="title" href="/new.html" class="mdui-typo-headline">Pro-Ivan数字库-漫展问答</a>
+				<div class="mdui-toolbar-spacer"></div>
+				<a href="javascript:;" class="mdui-btn mdui-btn-icon" onclick="AddFavorite('http://pro-ivan.cn','Pro-Ivan')">
+					<i class="mdui-icon material-icons" mdui-tooltip="{content: '收藏本页'}">star</i>
+				</a>
+			</div>
+		</div>
+		<div id="body" class="mdui-container-fluid">
+		    <div class="mdui-panel" style="margin-top:70px">
+		        <div class="mdui-panel-item">
+    		        <div class="mdui-panel-item-body mdui-typo" style="height:auto!important;">
+					    <div class="mdui-panel-item-title" style="width: 100%;"><h3><b>我的身份？</b></h3></div>
+                        首先，感谢您以任何方式来到了这个页面~这意味着我们之间已经有过互动了~<br>
+                        因为不方便说话，所以在这里做一下自我介绍，我是钰中，目前正在扮演来自原神的角色<a href="https://mzh.moegirl.org.cn/%E7%BB%AE%E8%89%AF%E8%89%AF" target="_blank">绮良良</a>（是一只可爱的猫又~）<br>
+                        您可能注意到钰中的cosplay似乎与常规不太一样：这其实是cosplay的一个分支，这一表演形式的分支名为Kigurumi，扮演者则被称为Kigger；但是，要专门介绍Kigurumi可就得讲太久了，您感兴趣可以在<a href="https://mzh.moegirl.org.cn/Kigurumi" target="_blank">萌娘百科</a>查看关于Kigurumi的更多资料<br>
+                        另外，我还在页面最下方准备了一些<a href="#QA">常见问题的回答</a>，希望能解答您的疑惑~<br>
+                        那么接下来，钰中希望您在萤火虫继续玩的开心；但在之前，<b>钰中希望您能将我们之间拍的照片/视频（如果有）分享给我！</b><br>
+					    <div class="mdui-panel-item-title" style="width: 100%;"><h3><b>怎样把照片分享给我？</b></h3></div>
+                        您可以选择：<br>
+                        <li>在<a href="#form">下面的表单</a>上传文件（最方便，但仅可上传图片）</li>
+                        <li>使用iOS的隔空投送（仅限Apple设备）<b>（用这种方式请直接打开手机在我头前晃不然我看不到）</b></li>
+                        <li>发邮件到<a href="mailto:ldcivan@foxmail.com" target="_blank">ldcivan@foxmail.com</a>（最推荐，且可附带视频）</li>
+                        <li>扫描下方二维码，添加我的微信后再发送（不推荐，因为添加好友需要时间且微信文件压缩极其严重）</li>
+                        请放心，我会妥善处理有关您的媒体内容，您的图像、声音信息在您不声明的情况下默认不会被发布到任何公开平台上<br>
+                        <center><img src="./myWechatQR.jpg" width="300px" max-width="100%"><br><small style="color: grey;">微信号 YujioNakoMKII</small></center>
+                        <hr>
+                        <div id="form" class="mdui-panel-item-title" style="width: 100%;"><h3><b>上传图片（支持上传PNG及JPG）</b></h3></div>
+                        <form id="upload_form" name="upload_form" action="./upload.php" method="post" enctype="multipart/form-data">
+                            <div class="mdui-textfield mdui-textfield-floating-label">
+                            <label class='mdui-textfield-label'>您的称呼(选填)</label>
+                            <input type='text' class='mdui-textfield-input' name='platform'  maxlength='50' style='width:98%;'>
+                            </div>
+                            <div class="mdui-textfield mdui-textfield-floating-label">
+                            <label class='mdui-textfield-label'>您的留言(选填)</label>
+                            <input type='text' class='mdui-textfield-input' name='author' maxlength='50' style='width:98%;'>
+                            </div>
+                            <center>
+                            <input type="hidden" name="<?php echo ini_get('session.upload_progress.name'); ?>" value="test">
+                            <input type="file" name="file[]" id="file" onchange="showProgress();" style="display:none;" multiple>
+                            <input class="mdui-btn mdui-ripple mdui-btn-raised mdui-btn-dense mdui-color-theme" type="button" onclick="document.getElementById('file').click();" value="选择文件">
+                            <input class="mdui-btn mdui-ripple mdui-btn-raised mdui-btn-dense mdui-color-theme" name="uploadfile" type="submit" value="上传文件" onclick="startProgress()" style="margin-left:15px;">
+                            <i id="file_status" class="mdui-icon material-icons" style="visibility: hidden; color: green;">check</i><br>
+                            </center>
+                            <center>
+                            <br><br>
+                            <div id="mdui-progress" class="mdui-progress" style="display:none;">
+                                <div id="bar" class="mdui-progress-determinate" style="width:0%;"></div>
+                            </div>
+                            </center>
+                        </form>
+                        <div id="QA" class="mdui-panel-item-title" style="width: 100%;"><h3><b>Q&A</b></h3></div>
+                        <div class="mdui-typo">
+                          <blockquote>
+                            <footer>与Kigger互动有什么要注意的吗？</footer>
+                            <p>不要随便接触kigger的任何部位。头壳与C服自然不必多说，而Kigger的皮肤本质是布料，随便乱摸可能会脏污或损坏皮肤。<br>
+                            不要推搡拉扯Kigger，请用告诉我你想要调整的站位或动作。头壳内部视野狭窄，对平衡把控非常不利，通过拉扯调整站位或动作可能让Kigger人仰马翻。<br>
+                            若这里没有能解答你疑问的Q&A，提问时请尽量使答案可以用点头或摇头回答。因为Kigurumi的“完全扮演”的性质，Kigger并不愿意出声。<br>
+                            请遵守其他基本的社交礼仪。</p>
+                          </blockquote>
+                          <blockquote>
+                            <footer>你看得见路吗？</footer>
+                            <p>看得见。你可以凑近点看，我的睫毛上方和眼白上都是有开小孔的~</p>
+                          </blockquote>
+                          <blockquote>
+                            <footer>能喝水吃东西嘛？</footer>
+                            <p>一般不会吃东西，不过找个角落喝口水倒没问题（但也不好喝多，因为上厕所很不方便）。</p>
+                          </blockquote>
+                          <blockquote>
+                            <footer>这天气，戴着这个不热吗？</footer>
+                            <p>热，热死了，汗流浃背，所以现在一些头壳是可以选装风扇的。</p>
+                          </blockquote>
+                          <blockquote>
+                            <footer>你的性别是？</footer>
+                            <p>我的性别是绮良良~</p>
+                          </blockquote>
+                          <blockquote>
+                            <footer>这一套装备是哪一家的？贵吗？</footer>
+                            <p>头壳是NFD家的，价格3400元；皮肤是麦薇家的，价格850；C服是三分妄想家的，价格791元；脚套是牛牛兽厂家的，属于是随便找了个兽装脚套，价格208元：总价是5249元。</p>
+                          </blockquote>
+                          <blockquote>
+                            <footer>你是坐什么交通工具来的？</footer>
+                            <p>如果是按照计划进行的话，是打车过来的，回去的话准备坐地铁回去。</p>
+                          </blockquote>
+                        </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	</body>
+	<footer><div id="footer"></div></footer>
+	<script src="/mdui/js/mdui.min.js"></script>
+	<script src="/new-js/index.js"></script>
+	<script src="/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript">
+        function showProgress(){
+            $('#mdui-progress').show();
+            document.getElementById('file_status').style.visibility = "visible";
+        }
+        function startProgress(){ 
+            $('#mdui-progress #bar').attr("class","mdui-progress-indeterminate");
+        }
+    </script>
+	<script>
+	    function isInclude(name){
+            var js= /php$/i.test(name);
+            var es=document.getElementsByTagName(js?'script':'link');
+            for(var i=0;i<es.length;i++) 
+            if(es[i][js?'src':'href'].indexOf(name)!=-1)return true;
+            return false;
+        }
+         
+        //alert(isInclude("passcheck.php"));
+        //if(!isInclude("passcheck.php")) window.open('/passport/passgive.php', '_self');
+	</script>
+</html>

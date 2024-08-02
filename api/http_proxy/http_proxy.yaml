@@ -1,5 +1,5 @@
 #---------------------------------------------------#
-## 更新：2024-07-22 21:19:59
+## 更新：2024-08-02 09:40:47
 #---------------------------------------------------#
 
 # HTTP 代理端口
@@ -32,6 +32,7 @@ secret: ''
 
 
 proxies:
+  - {"name": "0#德国_巴伐利亚州_纽伦堡_contabo.de", "type": "http", "server": "5.189.130.42", "port":23055, "skip-cert-verify": true}
 
 
 proxy-groups:
@@ -39,6 +40,7 @@ proxy-groups:
   name: Proxy
   type: select
   proxies:
+    - '0#德国_巴伐利亚州_纽伦堡_contabo.de'
 
 -
   name: Domestic

@@ -1,3 +1,24 @@
+/*
+document.write(`
+    <script src="/new-js/bandev.js"></script>
+    <script>
+      devtoolsDetector.addListener(function (isOpen, detail) {
+        console.log('isOpen', isOpen);
+
+        if (isOpen) {
+          document.head.innerHTML = "<meta charset='utf-8'>";
+          document.body.className = "";
+          document.body.innerHTML = "<div style='margin-left:15%;margin-right:15%;top:35%;position: fixed;'><img src='/Ivan.png' width=200px style='margin-left:-15px'><br><h1>你干嘛啊啊哈哟！！</h1><br><font color='grey'>Tips:后台有些东西不想让大家看到，所以没有需要的话就不要F12了</font></div>";
+          debugger;
+          location.reload();
+        }
+      });
+
+      devtoolsDetector.launch();
+    </script>
+`);
+*/
+
 function alert(content, timeout){
     if (!timeout) timeout = 2500;
     mdui.snackbar({
@@ -7,21 +28,22 @@ function alert(content, timeout){
 }
 
 
-
-if (!localStorage.getItem("first-visited")) {
-  // 设置标记表示已访问过
-  localStorage.setItem("first-visited", "true");
-  
-  document.write(`
-    <div id="floating-window">
-      <div id="floating-content">
-        <p id="floating-message">在留言提问之前请先确定<br>你已经详阅左侧栏公告了~</p>
-        <p><button id="floating-close-button" mdui-dialog="{target: '#announcement'}" onclick="document.getElementById('floating-window').style.display = 'none';">关闭</button></p>
-      </div>
-    </div>
-  `);
-  
-  alert('您似乎是第一次来到本网站<br>为了您能更顺利地使用本网站，在提出任何疑问前请先查看侧栏中的公告，谢谢！', 10000)
+if (!document.querySelector('nopop')) {
+    if (!localStorage.getItem("first-visited")) {
+      // 设置标记表示已访问过
+      localStorage.setItem("first-visited", "true");
+      
+      document.write(`
+        <div id="floating-window">
+          <div id="floating-content">
+            <p id="floating-message">在留言提问之前请先确定<br>你已经详阅左侧栏公告了~</p>
+            <p><button id="floating-close-button" mdui-dialog="{target: '#announcement'}" onclick="document.getElementById('floating-window').style.display = 'none';">关闭</button></p>
+          </div>
+        </div>
+      `);
+      
+      alert('您似乎是第一次来到本网站<br>为了您能更顺利地使用本网站，在提出任何疑问前请先查看侧栏中的公告，谢谢！', 10000)
+    }
 }
 
 
@@ -202,7 +224,7 @@ var holidayWishes = [
   { date: "06-01", message: "祝儿童节快乐！就算成年了也要保持童心哦~", cookieName: "childrens-day-wish-received" }, // 儿童节
   { date: "06-07", message: "祝各位学子高考顺利！", cookieName: "gaokao-wish-received" }, // 高考
   { date: "06-22", message: "祝端午节安康！", cookieName: "dragonboat-festival-wish-received" }, // 端午节
-  { date: "09-29", message: "祝中秋节快乐！", cookieName: "mid-autumn-wish-received" }, // 中秋节
+  { date: "09-17", message: "祝中秋节快乐！", cookieName: "mid-autumn-wish-received" }, // 中秋节
   { date: "10-01", message: "祝国庆节快乐！", cookieName: "national-day-wish-received" }, // 国庆节
   { date: "12-25", message: "祝圣诞节快乐！", cookieName: "christmas-wish-received" } // 圣诞节
 ];
@@ -229,7 +251,12 @@ checkForHolidayWishes();
 
 
 if(document.getElementById("footer")!=null){
-document.getElementById('footer').innerHTML = '<br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%" color=#C0C0C0 SIZE=3><div class="mdui-container-fluid"><h3 id="留言板">留言板</h3><div class="mdui-table-fluid mdui-table th" style="width:100%;"><br><form action="/comment/comment.php" method="post"><table class="mdui-table"><tbody><tr><th><label class="mdui-textfield-label">昵称</label><input type="text" class="mdui-textfield-input" name="name" placeholder="请输入昵称(小于25字)" required="required" maxlength="25" style="width:98%;"><br><label class="mdui-textfield-label">评论</label><input type="text" class="mdui-textfield-input" name="comment" placeholder="要讲文明哟~(小于200字)" required="required" maxlength="200" style="width:98%;"><br><label class="mdui-textfield-label">电邮</label><input type="text" class="mdui-textfield-input" name="contact" placeholder="或者其他联系方式（选填）" maxlength="200" style="width:98%;"><br><center><input class="mdui-btn mdui-ripple mdui-btn-raised mdui-btn-dense mdui-color-theme" type="submit" id ="submitButton" value="发送" onclick=""></center></th></tr></tbody></table></form><br><embed src="/sql_comment/" width="90%"/></div></div><br><div style="margin-bottom:15px;"><font size="2" color=#C0C0C0>Powered by <a href="https://github.com/Tvogmbh/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color="#C0C0C0" target="_blank">Tvogmbh</font></a> · ©2022-2023 Pro-Ivan Studio</font><br><a href="https://stats.uptimerobot.com/Oo6ykFNrDn" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>站点在线状态</font></a><font size="2" color=#C0C0C0> · </font><a href="/test_server/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>服务器状态</font></a><br><font size="2" color=#C0C0C0>友情链接 · </font><a href="https://acg.umoes.top/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>Yoo！萌</font></a><font size="2" color=#C0C0C0> · </font><a href="https://sweetily.club/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>Sweetily的粉丝站</font></a><font size="2" color=#C0C0C0> · </font><a href="https://momomitsuki.com/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>美月もも的粉丝站</font></a><br><a href="http://beian.miit.gov.cn" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" target="_blank"><font size="2" color=#C0C0C0>京ICP备2022003448号-1/2</font></a><font size="2" color=#C0C0C0> · </font><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11011402012324" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="/beian.png" style="float:left;"/><font size="2" color=#C0C0C0>京公网安备 11011402012324号</font></a><font size="2" color=#C0C0C0> · </font><a href="https://icp.gov.moe/?keyword=20241113" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" target="_blank"><font size="2" color=#C0C0C0>萌ICP备20241113号</font></a></div>';
+    let footer_content = '<br>';
+    if (!document.querySelector('nofootertitle')) {
+        footer_content += '<HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%" color=#C0C0C0 SIZE=3><div class="mdui-container-fluid"><h3 id="留言板">留言板</h3>';
+    }
+    footer_content += '<div class="mdui-table-fluid mdui-table th" style="width:100%;"><br><form action="/comment/comment.php" method="post"><table class="mdui-table"><tbody><tr><th><label class="mdui-textfield-label">昵称</label><input type="text" class="mdui-textfield-input" name="name" placeholder="请输入昵称(小于25字)" required="required" maxlength="25" style="width:98%;"><br><label class="mdui-textfield-label">评论</label><input type="text" class="mdui-textfield-input" name="comment" placeholder="要讲文明哟~(小于200字)" required="required" maxlength="200" style="width:98%;"><br><label class="mdui-textfield-label">电邮</label><input type="text" class="mdui-textfield-input" name="contact" placeholder="或者其他联系方式（选填）" maxlength="200" style="width:98%;"><br><center><input class="mdui-btn mdui-ripple mdui-btn-raised mdui-btn-dense mdui-color-theme" type="submit" id ="submitButton" value="发送" onclick=""></center></th></tr></tbody></table></form><br><embed src="/sql_comment/" width="90%"/></div></div><br><div style="margin-bottom:15px;"><font size="2" color=#C0C0C0>Designed by <a href="https://github.com/Tvogmbh/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color="#C0C0C0" target="_blank">Tvogmbh</font></a> · ©2022-2024 Pro-Ivan Studio</font><br><a href="https://stats.uptimerobot.com/Oo6ykFNrDn" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>站点在线状态</font></a><font size="2" color=#C0C0C0> · </font><a href="/test_server/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>服务器状态</font></a><br><font size="2" color=#C0C0C0>友情链接 · </font><a href="https://acg.umoes.top/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>Yoo！萌</font></a><font size="2" color=#C0C0C0> · </font><a href="https://sweetily.club/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>Sweetily的粉丝站</font></a><font size="2" color=#C0C0C0> · </font><a href="https://momomitsuki.com/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>美月もも的粉丝站</font></a><font size="2" color=#C0C0C0> · </font><a href="https://objection.yvfox.com" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>坎尤的一斤鸭梨</font></a><br><a href="//beian.miit.gov.cn" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" target="_blank"><font size="2" color=#C0C0C0>京ICP备2022003448号-1/2</font></a><font size="2" color=#C0C0C0> · </font><a target="_blank" href="//www.beian.gov.cn/portal/registerSystemInfo?recordcode=11011402012324" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="/beian.png" style="float:left;"/><font size="2" color=#C0C0C0>京公网安备 11011402012324号</font></a><font size="2" color=#C0C0C0> · </font><a href="https://icp.gov.moe/?keyword=20241113" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" target="_blank"><font size="2" color=#C0C0C0>萌ICP备20241113号</font></a></div>';
+    document.getElementById('footer').innerHTML = footer_content;
 }
 //页面标题防止溢出
 setTimeout(function() {
@@ -303,6 +330,8 @@ Promise.all([getLoadTime('https://us.pro-ivan.cn/index.html?'+Math.floor(Math.ra
 
 
 console.log(`
+index.js LOADED
+
       $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  
        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  
            $$$$$$$$ 

@@ -158,4 +158,4 @@ if __name__ == '__main__':
     while True:
         main(True)
         print("Waiting.")
-        time.sleep(1800)
+        time.sleep(600)

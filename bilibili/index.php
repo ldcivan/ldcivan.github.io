@@ -270,7 +270,7 @@
 		                <div class="mdui-panel-item-body mdui-text-color-white-text" style="height:auto!important;">
                           <form class="mdui-textfield mdui-textfield-floating-label" action="" method="post" style="margin-right:23px;">
                               <div class="mdui-panel-item-header" style="pointer-events:none;">
-        						<div class="mdui-panel-item-title"><b style="color:black;font-size:1.5rem;">搜索器</b></div>
+        						<div class="mdui-panel-item-title" style="width: 100%;"><b style="color:black;font-size:1.5rem;">搜索器</b></div>
         						<div class="mdui-panel-item-summary"></div>
         					  </div>
                               <i class="mdui-icon material-icons">account_circle</i>
@@ -361,7 +361,7 @@
                         <div class="mdui-panel-item-body mdui-text-color-white-text" style="height:auto!important;">
                     		<form class="mdui-textfield mdui-textfield-floating-label" action="./add.php" method="post" style="margin-right:23px;">
                               <div class="mdui-panel-item-header" style="pointer-events:none;">
-                            	<div class="mdui-panel-item-title"><b style="color:black;font-size:1.5rem;">添加器(试运行)</b></div>
+                            	<div class="mdui-panel-item-title" style="width: 100%;"><b style="color:black;font-size:1.5rem;">添加器(试运行)</b></div>
                             	<div class="mdui-panel-item-summary"></div>
                               </div>
                               <div style="color:gray;margin-left:25px;">已纳入观测up主数量：<div id="ob_count" style="display:inline-block;">N/A</div></div>
@@ -380,7 +380,7 @@
                     <div id="ranking_title" style="height:95%;width:99%;margin-top:15px;">
                         <div class="mdui-panel-item-body" style="height:auto!important;">
                           <div class="mdui-panel-item-header" style="pointer-events:none;">
-                        	<div class="mdui-panel-item-title"><b style="color:black;font-size:1.5rem;">排行榜</b></div>
+                        	<div class="mdui-panel-item-title" style="width: 100%;"><b style="color:black;font-size:1.5rem;">排行榜</b></div>
                         	<div class="mdui-panel-item-summary"></div>
                           </div>
                           <div style="color:gray;margin-left:25px;">非全站排行 仅采用本站记录数据</div>
@@ -421,7 +421,7 @@ function formatNumber($number, $isFans) {
 }
 
 $cache_file = '../bfanscount/cache/ranking.cache';
-$cache_expiration_time = 3600; // 缓存有效期为3600秒（1小时）
+$cache_expiration_time = 7200; // 缓存有效期为7200秒（2小时）
 
 $current_time = time();
 
@@ -701,7 +701,7 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                      
                       // Add the result to the output array
                       if (time != 1 && fansDiff != null) {fansDiff = (fansDiff/time).toFixed(2);}
-                      if(result.length === 0 || fansDiff != null) {
+                      if(fansDiff != null) {
                           result.push(
                              [record[0], fansDiff]
                           );
@@ -905,7 +905,7 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                 }
     
     
-                document.getElementById('base_info').innerHTML = `<div class="mdui-row mdui-col-12 mdui-center mdui-valign" style="max-width:1200px;"><div class="mdui-table-fluid mdui-table mdui-col-xs-4" style="height:110px;margin-bottom:15px;"><div style="float:left;margin-left:5px;"><p id="" class="mdui-typo-body-2-opacity">粉丝总数量</p></div><div class="mdui-typo" style="margin-bottom:15px;float:right;bottom:0px;right:5px;position:absolute;"><h2 id="" style="margin-right:5px;"><b>${formatNumber(fans[fans.length-1][1])}</b></h2></div></div><div class="mdui-table-fluid mdui-table mdui-col-xs-4" style="height:110px;margin-left:15px;margin-bottom:15px;"><div style="float:left;margin-left:5px;"><p id="" class="mdui-typo-body-2-opacity">1日增长量</p></div><div class="mdui-typo" style="margin-bottom:15px;float:right;bottom:0px;right:5px;position:absolute;"><h2 id="" style="margin-right:5px;"><b>${formatNumber((rate1[rate1.length-1][1]))}</b></h2></div></div><div class="mdui-table-fluid mdui-table mdui-col-xs-4" style="height:110px;margin-left:15px;margin-bottom:15px;"><div style="float:left;margin-left:5px;"><p id="" class="mdui-typo-body-2-opacity">7日增长量</p></div><div class="mdui-typo" style="margin-bottom:15px;float:right;bottom:0px;right:5px;position:absolute;"><h2 id="" style="margin-right:5px;"><b>${rate7[rate7.length-1][1] == null ? '-' : formatNumber((rate7[rate7.length-1][1]*7).toFixed(0))}</b></h2></div></div></div>`;
+                document.getElementById('base_info').innerHTML = `<div class="mdui-row mdui-col-12 mdui-center mdui-valign" style="max-width:1200px;"><div class="mdui-table-fluid mdui-table mdui-col-xs-4" style="height:110px;margin-bottom:15px;"><div style="float:left;margin-left:5px;"><p id="" class="mdui-typo-body-2-opacity">粉丝总数量</p></div><div class="mdui-typo" style="margin-bottom:15px;float:right;bottom:0px;right:5px;position:absolute;"><h2 id="" style="margin-right:5px;"><b>${formatNumber(fans[fans.length-1][1])}</b></h2></div></div><div class="mdui-table-fluid mdui-table mdui-col-xs-4" style="height:110px;margin-left:15px;margin-bottom:15px;"><div style="float:left;margin-left:5px;"><p id="" class="mdui-typo-body-2-opacity">1日增长量</p></div><div class="mdui-typo" style="margin-bottom:15px;float:right;bottom:0px;right:5px;position:absolute;"><h2 id="" style="margin-right:5px;"><b>${formatNumber((rate1[rate1.length-1][1]))}</b></h2></div></div><div class="mdui-table-fluid mdui-table mdui-col-xs-4" style="height:110px;margin-left:15px;margin-bottom:15px;"><div style="float:left;margin-left:5px;"><p id="" class="mdui-typo-body-2-opacity">7日增长量</p></div><div class="mdui-typo" style="margin-bottom:15px;float:right;bottom:0px;right:5px;position:absolute;"><h2 id="" style="margin-right:5px;"><b>${rate7.length===0?'-':(rate7[rate7.length-1][1] == null ? '-' : formatNumber((rate7[rate7.length-1][1]*7).toFixed(0)))}</b></h2></div></div></div>`;
                 
                 document.getElementById('notes').innerHTML = `* X日均粉丝量计算方法为对应时间点两侧共计X日内所有数据的均值<br>** 为估计值，估计方法是参考里程碑节点两端数据点连成的线性方程<br>本表最后更新时间：${fans[fans.length-1][0]}`;
                 document.getElementById('notes').style.padding = '12px';
@@ -922,7 +922,7 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                   animationDuration: 2000,
                   aria: {
                     show: true,
-                    description: `这是一份关于up主${name}的粉丝量变化的图表，该表以时间为横轴，以粉丝量计数与粉丝变化量为纵轴，涵盖粉丝量、周均粉丝量、两周均粉丝量、月均粉丝量、1日粉丝变化量、7日内粉丝日均变化量、14日内粉丝日均变化量、30日内粉丝日均变化量以及视图内粉丝数最高最低点、up主粉丝里程碑共计11个计量指标。截止到时间：${fans[fans.length-1][0]}，${name}已收获粉丝${fans[fans.length-1][1]}人，近一日粉丝变化量为${(rate1[rate1.length-1][1])}，近七日粉丝变化量为${rate7[rate7.length-1][1] == null ? '暂无数据' : (rate7[rate7.length-1][1]*7).toFixed(0)}（折合日均变化量${rate7[rate7.length-1][1] == null ? '暂无数据' : (rate7[rate7.length-1][1]*1).toFixed(0)}），近十四日粉丝变化量为${rate14[rate14.length-1][1] == null ? '暂无数据' : (rate14[rate14.length-1][1]*7).toFixed(0)}（折合日均变化量${rate14[rate14.length-1][1] == null ? '暂无数据' : (rate14[rate14.length-1][1]*1).toFixed(0)}），近三十日粉丝变化量为${rate30[rate30.length-1][1] == null ? '暂无数据' : (rate30[rate30.length-1][1]*7).toFixed(0)}（折合日均变化量${rate30[rate30.length-1][1] == null ? '暂无数据' : (rate30[rate30.length-1][1]*1).toFixed(0)}）。` + (fans_nodes.length===0?`在目前的记录中，还未找到${name}达到过的粉丝数里程碑。`:`此外，${name}最近还在日期：${(fans_nodes[fans_nodes.length-1][2]).split(" ")[0]}达成了${fans_nodes[fans_nodes.length-1][1]}粉丝的里程碑。`)
+                    description: `这是一份关于up主${name}的粉丝量变化的图表，该表以时间为横轴，以粉丝量计数与粉丝变化量为纵轴，涵盖粉丝量、周均粉丝量、两周均粉丝量、月均粉丝量、1日粉丝变化量、7日内粉丝日均变化量、14日内粉丝日均变化量、30日内粉丝日均变化量以及视图内粉丝数最高最低点、up主粉丝里程碑共计11个计量指标。截止到时间：${fans[fans.length-1][0]}，${name}已收获粉丝${fans[fans.length-1][1]}人，近一日粉丝变化量为${(rate1[rate1.length-1][1])}，近七日粉丝变化量为${rate7.length===0?'暂无数据':(rate7[rate7.length-1][1] == null ? '暂无数据' : (rate7[rate7.length-1][1]*7).toFixed(0))}（折合日均变化量${rate7.length===0?'暂无数据':(rate7[rate7.length-1][1] == null ? '暂无数据' : (rate7[rate7.length-1][1]*1).toFixed(0))}），近十四日粉丝变化量为${rate14.length===0?'暂无数据':(rate14[rate14.length-1][1] == null ? '暂无数据' : (rate14[rate14.length-1][1]*7).toFixed(0))}（折合日均变化量${rate14.length===0?'暂无数据':(rate14[rate14.length-1][1] == null ? '暂无数据' : (rate14[rate14.length-1][1]*1).toFixed(0))}），近三十日粉丝变化量为${rate30.length===0?'暂无数据':(rate30[rate30.length-1][1] == null ? '暂无数据' : (rate30[rate30.length-1][1]*7).toFixed(0))}（折合日均变化量${rate30.length===0?'暂无数据':(rate30[rate30.length-1][1] == null ? '暂无数据' : (rate30[rate30.length-1][1]*1).toFixed(0))}）。` + (fans_nodes.length===0?`在目前的记录中，还未找到${name}达到过的粉丝数里程碑。`:`此外，${name}最近还在日期：${(fans_nodes[fans_nodes.length-1][2]).split(" ")[0]}达成了${fans_nodes[fans_nodes.length-1][1]}粉丝的里程碑。`)
                   },
                   title: {
                     left: 'center',
@@ -1012,12 +1012,12 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     emphasis: {
                         focus: 'series',
                         blurScope: 'coordinateSystem'
-                    },
-                    tooltip: {
-                        valueFormatter: function(value){
-                            return value+"";
-                        }
-                    }
+                    }//,
+                    //tooltip: {
+                    //    valueFormatter: function(value){
+                    //        return value+"";
+                    //    }
+                    //}
                   },
                   {
                     name: '粉丝数周均*',
@@ -1030,12 +1030,12 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     emphasis: {
                         focus: 'series',
                         blurScope: 'coordinateSystem'
-                    },
-                    tooltip: {
-                        valueFormatter: function(value){
-                            return value+"";
-                        }
-                    }
+                    }//,
+                    //tooltip: {
+                    //    valueFormatter: function(value){
+                    //        return value+"";
+                    //    }
+                    //}
                   },
                   {
                     name: '粉丝数二周均*',
@@ -1048,12 +1048,12 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     emphasis: {
                         focus: 'series',
                         blurScope: 'coordinateSystem'
-                    },
-                    tooltip: {
-                        valueFormatter: function(value){
-                            return value+"";
-                        }
-                    }
+                    }//,
+                    //tooltip: {
+                    //    valueFormatter: function(value){
+                    //        return value+"";
+                    //    }
+                    //}
                   },
                   {
                     name: '粉丝数月均*',
@@ -1066,12 +1066,12 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     emphasis: {
                         focus: 'series',
                         blurScope: 'coordinateSystem'
-                    },
-                    tooltip: {
-                        valueFormatter: function(value){
-                            return value+"";
-                        }
-                    }
+                    }//,
+                    //tooltip: {
+                    //    valueFormatter: function(value){
+                    //        return value+"";
+                    //    }
+                    //}
                   },
                   {
                     name: '1日增长',
@@ -1087,12 +1087,12 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     emphasis: {
                         focus: 'series',
                         blurScope: 'coordinateSystem'
-                    },
-                    tooltip: {
-                        valueFormatter: function(value){
-                            return value+"";
-                        }
-                    }
+                    }//,
+                    //tooltip: {
+                    //    valueFormatter: function(value){
+                    //        return value+"";
+                    //    }
+                    //}
                   },
                   {
                     name: '7日增长(日均)',
@@ -1108,12 +1108,12 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     emphasis: {
                         focus: 'series',
                         blurScope: 'coordinateSystem'
-                    },
-                    tooltip: {
-                        valueFormatter: function(value){
-                            return value+"";
-                        }
-                    }
+                    }//,
+                    //tooltip: {
+                    //    valueFormatter: function(value){
+                    //        return value+"";
+                    //    }
+                    //}
                   },
                   {
                     name: '14日增长(日均)',
@@ -1129,12 +1129,12 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     emphasis: {
                         focus: 'series',
                         blurScope: 'coordinateSystem'
-                    },
-                    tooltip: {
-                        valueFormatter: function(value){
-                            return value+"";
-                        }
-                    }
+                    }//,
+                    //tooltip: {
+                    //    valueFormatter: function(value){
+                    //        return value+"";
+                    //    }
+                    //}
                   },
                   {
                     name: '30日增长(日均)',
@@ -1150,12 +1150,12 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     emphasis: {
                         focus: 'series',
                         blurScope: 'coordinateSystem'
-                    },
-                    tooltip: {
-                        valueFormatter: function(value){
-                            return value+"";
-                        }
-                    }
+                    }//,
+                    //tooltip: {
+                    //    valueFormatter: function(value){
+                    //        return value+"";
+                    //    }
+                    //}
                   },
                   {
                     name: 'UP主粉丝量里程碑**',
@@ -1171,12 +1171,12 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     //smooth: true,
                     data: fans_nodes4chart,
                     showSymbol: true,
-                    yAxisIndex: 0,
-                    tooltip: {
-                        valueFormatter: function(value){
-                            return value+"";
-                        }
-                    }
+                    yAxisIndex: 0//,
+                    //tooltip: {
+                    //    valueFormatter: function(value){
+                    //        return value+"";
+                    //    }
+                    //}
                   },
                   {
                     name: '视图内最高粉丝记录',
@@ -1192,12 +1192,12 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     //smooth: true,
                     data: [],
                     showSymbol: true,
-                    yAxisIndex: 0,
-                    tooltip: {
-                        valueFormatter: function(value){
-                            return value+"";
-                        }
-                    }
+                    yAxisIndex: 0//,
+                    //tooltip: {
+                    //    valueFormatter: function(value){
+                    //        return value+"";
+                    //    }
+                    //}
                   },
                   {
                     name: '视图内最低粉丝记录',
@@ -1213,12 +1213,12 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                     //smooth: true,
                     data: [],
                     showSymbol: true,
-                    yAxisIndex: 0,
-                    tooltip: {
-                        valueFormatter: function(value){
-                            return value+"";
-                        }
-                    }
+                    yAxisIndex: 0//,
+                    //tooltip: {
+                    //    valueFormatter: function(value){
+                    //        return value+"";
+                    //    }
+                    //}
                   }
                   ]
                 };

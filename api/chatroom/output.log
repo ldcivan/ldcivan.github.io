@@ -1033,3 +1033,32 @@ INFO:root:2024-07-21 09:35:06 ('39.103.166.74', 41238) is trying connect to serv
 INFO:root:
 
 ERROR:root:invalid literal for int() with base 10: b'GET / HTTP/2\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36\r\n\r\n'position 0
+INFO:root:2024-07-25 22:06:08 ('80.66.66.28', 62487) is trying connect to server
+INFO:root:
+
+ERROR:root:invalid literal for int() with base 10: b'\x03\x00\x00/*\xe0\x00\x00\x00\x00\x00Cookie: mstshash=Administr\r\n\x01\x00\x08\x00\x03\x00\x00\x00'position 0
+ERROR:root:[Errno 104] Connection reset by peerposition 0
+INFO:root:2024-07-26 17:28:56 ('80.66.66.28', 62684) is trying connect to server
+INFO:root:
+
+ERROR:root:invalid literal for int() with base 10: b'\x03\x00\x00/*\xe0\x00\x00\x00\x00\x00Cookie: mstshash=Administr\r\n\x01\x00\x08\x00\x03\x00\x00\x00'position 0
+ERROR:root:[Errno 104] Connection reset by peerposition 0
+INFO:root:2024-07-27 13:53:17 ('79.124.58.86', 60692) is trying connect to server
+INFO:root:
+
+ERROR:root:invalid literal for int() with base 10: b'\x12\x01\x00^\x00\x00\x01\x00\x00\x00$\x00\x06\x01\x00*\x00\x01\x02\x00+\x00\x01\x03\x00,\x00\x04\x04\x000\x00\x01\x05\x001\x00$\x06\x00U\x00\x01\xff\x04\x07\x0c\xbc\x00\x00\x00\x00\x00\x00\x15\xd0\position 0
+ERROR:root:[Errno 104] Connection reset by peerposition 0
+INFO:root:2024-07-28 20:25:40 ('79.124.59.182', 27498) is trying connect to server
+INFO:root:
+
+INFO:root:2024-07-28 20:25:42 ('79.124.59.182', 31710) is trying connect to server
+INFO:root:
+
+ERROR:root:invalid literal for int() with base 10: b"\x16\x03\x03\x00\x96\x01\x00\x00\x92\x03\x03f\xa68\xc5\x8d\xed\x8f\xb9\xcf\xb8\x9e\xd4\x08.i\xbb\xe0\xcd'\x7fg&@\xa1^k\xd6\xda3\xd1\xcb\xae\x00\x004\xc0(\xc0'\xc0\x14\xc0\x13\x00\x9f\x00\x9e\x009\x0position 0
+ERROR:root:invalid literal for int() with base 10: b"\x16\x03\x03\x00\x96\x01\x00\x00\x92\x03\x03f\xa68\xc6\xf1*\x1e\xfdF\x89k#\x0c\xe9\xa3\x07\x7f\xbc\xa5]\x1b\x9c4J~\xc6F\x9aE\x9e\x96A\x00\x004\xc0(\xc0'\xc0\x14\xc0\x13\x00\x9f\x00\x9e\x009\x003\x00position 0
+ERROR:root:[Errno 104] Connection reset by peerposition 0
+ERROR:root:[Errno 104] Connection reset by peerposition 0
+INFO:root:2024-07-31 04:20:23 ('91.92.255.42', 36496) is trying connect to server
+INFO:root:
+
+ERROR:root:[Errno 104] Connection reset by peerposition 0

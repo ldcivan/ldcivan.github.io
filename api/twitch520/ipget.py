@@ -18,7 +18,7 @@ from requests_html import HTMLSession
 from retry import retry
 
 DLSITE_URLS = [
-    'www.twitch.tv', 'k.twitchcdn.net', 'static-cdn.jtvnw.net', 'static.twitchcdn.net', 'vod-secure.twitch.tv', 'www.gstatic.com', 'clips-media-assets2.twitch.tv', 'panels.twitch.tv', 'sb.scorecardresearch.com'
+    'www.twitch.tv', 'k.twitchcdn.net', 'static-cdn.jtvnw.net', 'static.twitchcdn.net', 'vod-secure.twitch.tv', 'www.gstatic.com', 'clips-media-assets2.twitch.tv', 'panels.twitch.tv', 'sb.scorecardresearch.com', 'assets.twitch.tv'
 ]
 
 HOSTS_TEMPLATE = """# Twitch520 Host Start
@@ -158,4 +158,4 @@ if __name__ == '__main__':
     while True:
         main(True)
         print("Waiting.")
-        time.sleep(1800)
+        time.sleep(600)

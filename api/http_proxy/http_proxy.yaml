@@ -1,5 +1,5 @@
 #---------------------------------------------------#
-## 更新：2024-08-02 09:40:47
+## 更新：2024-08-06 21:28:16
 #---------------------------------------------------#
 
 # HTTP 代理端口
@@ -32,7 +32,11 @@ secret: ''
 
 
 proxies:
-  - {"name": "0#德国_巴伐利亚州_纽伦堡_contabo.de", "type": "http", "server": "5.189.130.42", "port":23055, "skip-cert-verify": true}
+  - {"name": "0#中国_内蒙古_呼和浩特_联通", "type": "http", "server": "116.114.20.148", "port":3128, "skip-cert-verify": true}
+  - {"name": "1#加拿大_魁北克省_蒙特利尔_globo.tech", "type": "http", "server": "67.43.227.226", "port":31091, "skip-cert-verify": true}
+  - {"name": "2#中国_浙江_温州_电信", "type": "http", "server": "115.223.11.212", "port":50000, "skip-cert-verify": true}
+  - {"name": "3#俄罗斯_卡巴尔达－巴尔卡尔共和国__rt.ru", "type": "http", "server": "85.172.174.26", "port":3128, "skip-cert-verify": true}
+  - {"name": "4#中国_中国__阿里云", "type": "http", "server": "8.219.97.248", "port":80, "skip-cert-verify": true}
 
 
 proxy-groups:
@@ -40,7 +44,11 @@ proxy-groups:
   name: Proxy
   type: select
   proxies:
-    - '0#德国_巴伐利亚州_纽伦堡_contabo.de'
+    - '0#中国_内蒙古_呼和浩特_联通'
+    - '1#加拿大_魁北克省_蒙特利尔_globo.tech'
+    - '2#中国_浙江_温州_电信'
+    - '3#俄罗斯_卡巴尔达－巴尔卡尔共和国__rt.ru'
+    - '4#中国_中国__阿里云'
 
 -
   name: Domestic

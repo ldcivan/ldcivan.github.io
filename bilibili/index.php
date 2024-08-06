@@ -385,9 +385,11 @@
                           </div>
                           <div style="color:gray;margin-left:25px;">非全站排行 仅采用本站记录数据</div>
                           <div class="mdui-tab mdui-tab-full-width" mdui-tab>
-                              <a href="#ranking_tab1" class="mdui-ripple">粉丝榜</a>
-                              <a href="#ranking_tab2" class="mdui-ripple">涨幅榜</a>
-                              <a href="#ranking_tab3" class="mdui-ripple">跌幅榜</a>
+                              <a href="#ranking_tab1" class="mdui-ripple">7日涨幅榜</a>
+                              <a href="#ranking_tab2" class="mdui-ripple">1日涨幅榜</a>
+                              <a href="#ranking_tab3" class="mdui-ripple mdui-tab-active">当前粉丝榜</a>
+                              <a href="#ranking_tab4" class="mdui-ripple">1日跌幅榜</a>
+                              <a href="#ranking_tab5" class="mdui-ripple">7日跌幅榜</a>
                           </div>
                         </div>
                     </div>
@@ -483,9 +485,10 @@ if (file_exists($cache_file) && ($current_time - filemtime($cache_file) < $cache
         }
     }
     
-    // 根据 fans 进行排序
+    
+    // 根据 rate7 进行排序
     usort($dataToSort, function($a, $b) {
-        return $b['fans'] - $a['fans'];
+        return $b['rate7'] - $a['rate7'];
     });
     
     $ranking_content .=  '<div id="ranking_tab1" class="mdui-p-a-2"><ul class="mdui-list" style="width: 100%; position: absolute; left: 50%; transform: translate(-50%, 0%); margin-top:25px;">';
@@ -496,7 +499,7 @@ if (file_exists($cache_file) && ($current_time - filemtime($cache_file) < $cache
         $ranking = $ranking + 1;
         if ($ranking > 20) break;
     }
-    $ranking_content .= '</ul></div>';
+    $ranking_content .=  '</ul></div>';
     
     
     // 根据 rate1 进行排序
@@ -514,11 +517,10 @@ if (file_exists($cache_file) && ($current_time - filemtime($cache_file) < $cache
     }
     $ranking_content .=  '</ul></div>';
     
-    // 根据 rate1 进行排序
+    // 根据 fans 进行排序
     usort($dataToSort, function($a, $b) {
-        return $a['rate1'] - $b['rate1'];
+        return $b['fans'] - $a['fans'];
     });
-    
     
     $ranking_content .=  '<div id="ranking_tab3" class="mdui-p-a-2"><ul class="mdui-list" style="width: 100%; position: absolute; left: 50%; transform: translate(-50%, 0%); margin-top:25px;">';
     // 输出排序后的结果
@@ -529,6 +531,40 @@ if (file_exists($cache_file) && ($current_time - filemtime($cache_file) < $cache
         if ($ranking > 20) break;
     }
     $ranking_content .= '</ul></div>';
+    
+    // 根据 rate1 进行排序
+    usort($dataToSort, function($a, $b) {
+        return $a['rate1'] - $b['rate1'];
+    });
+    
+    
+    $ranking_content .=  '<div id="ranking_tab4" class="mdui-p-a-2"><ul class="mdui-list" style="width: 100%; position: absolute; left: 50%; transform: translate(-50%, 0%); margin-top:25px;">';
+    // 输出排序后的结果
+    $ranking = 1;
+    foreach ($dataToSort as $data) {
+        $ranking_content .=  '<li class="mdui-list-item" onclick="window.location.href = `./?uid='.$data['filename'].'`;"><i class="mdui-list-item-icon mdui-icon" style="margin-right: 15px; font-weight: bold;">'.$ranking.'</i><div class="mdui-list-item-avatar"><img class="lazy" referrerpolicy="no-referrer" crossorigin="anonymous" data-src="'.$data['face'].'"/></div><div class="mdui-list-item-content mdui-row"><div class="mdui-col-xs-3">'.$data['name'].'</div><div class="mdui-col-xs-3">'.formatNumber($data['fans'], true).'</div><div class="mdui-col-xs-3">'.formatNumber($data['rate1'], false).'</div><div class="mdui-col-xs-3">'.formatNumber($data['rate7'], false).'</div></div></li>';
+        $ranking = $ranking + 1;
+        if ($ranking > 20) break;
+    }
+    $ranking_content .= '</ul></div>';
+    
+    // 根据 rate7 进行排序
+    usort($dataToSort, function($a, $b) {
+        return $a['rate7'] - $b['rate7'];
+    });
+    
+    
+    $ranking_content .=  '<div id="ranking_tab5" class="mdui-p-a-2"><ul class="mdui-list" style="width: 100%; position: absolute; left: 50%; transform: translate(-50%, 0%); margin-top:25px;">';
+    // 输出排序后的结果
+    $ranking = 1;
+    foreach ($dataToSort as $data) {
+        $ranking_content .=  '<li class="mdui-list-item" onclick="window.location.href = `./?uid='.$data['filename'].'`;"><i class="mdui-list-item-icon mdui-icon" style="margin-right: 15px; font-weight: bold;">'.$ranking.'</i><div class="mdui-list-item-avatar"><img class="lazy" referrerpolicy="no-referrer" crossorigin="anonymous" data-src="'.$data['face'].'"/></div><div class="mdui-list-item-content mdui-row"><div class="mdui-col-xs-3">'.$data['name'].'</div><div class="mdui-col-xs-3">'.formatNumber($data['fans'], true).'</div><div class="mdui-col-xs-3">'.formatNumber($data['rate1'], false).'</div><div class="mdui-col-xs-3">'.formatNumber($data['rate7'], false).'</div></div></li>';
+        $ranking = $ranking + 1;
+        if ($ranking > 20) break;
+    }
+    $ranking_content .= '</ul></div>';
+    
+    
     // 更新缓存内容
     file_put_contents($cache_file, $ranking_content);
 
@@ -905,7 +941,7 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                 }
     
     
-                document.getElementById('base_info').innerHTML = `<div class="mdui-row mdui-col-12 mdui-center mdui-valign" style="max-width:1200px;"><div class="mdui-table-fluid mdui-table mdui-col-xs-4" style="height:110px;margin-bottom:15px;"><div style="float:left;margin-left:5px;"><p id="" class="mdui-typo-body-2-opacity">粉丝总数量</p></div><div class="mdui-typo" style="margin-bottom:15px;float:right;bottom:0px;right:5px;position:absolute;"><h2 id="" style="margin-right:5px;"><b>${formatNumber(fans[fans.length-1][1])}</b></h2></div></div><div class="mdui-table-fluid mdui-table mdui-col-xs-4" style="height:110px;margin-left:15px;margin-bottom:15px;"><div style="float:left;margin-left:5px;"><p id="" class="mdui-typo-body-2-opacity">1日增长量</p></div><div class="mdui-typo" style="margin-bottom:15px;float:right;bottom:0px;right:5px;position:absolute;"><h2 id="" style="margin-right:5px;"><b>${formatNumber((rate1[rate1.length-1][1]))}</b></h2></div></div><div class="mdui-table-fluid mdui-table mdui-col-xs-4" style="height:110px;margin-left:15px;margin-bottom:15px;"><div style="float:left;margin-left:5px;"><p id="" class="mdui-typo-body-2-opacity">7日增长量</p></div><div class="mdui-typo" style="margin-bottom:15px;float:right;bottom:0px;right:5px;position:absolute;"><h2 id="" style="margin-right:5px;"><b>${rate7.length===0?'-':(rate7[rate7.length-1][1] == null ? '-' : formatNumber((rate7[rate7.length-1][1]*7).toFixed(0)))}</b></h2></div></div></div>`;
+                document.getElementById('base_info').innerHTML = `<div class="mdui-row mdui-col-12 mdui-center mdui-valign" style="max-width:1200px;"><div class="mdui-table-fluid mdui-table mdui-col-xs-4" style="height:110px;margin-bottom:15px;"><div style="float:left;margin-left:5px;"><p id="" class="mdui-typo-body-2-opacity">粉丝总数量</p></div><div class="mdui-typo" style="margin-bottom:15px;float:right;bottom:0px;right:5px;position:absolute;"><h2 id="" style="margin-right:5px;"><b>${formatNumber(fans[fans.length-1][1])}</b></h2></div></div><div class="mdui-table-fluid mdui-table mdui-col-xs-4" style="height:110px;margin-left:15px;margin-bottom:15px;"><div style="float:left;margin-left:5px;"><p id="" class="mdui-typo-body-2-opacity">1日增长量</p></div><div class="mdui-typo" style="margin-bottom:15px;float:right;bottom:0px;right:5px;position:absolute;"><h2 id="" style="margin-right:5px;"><b>${rate1.length===0?'-':formatNumber((rate1[rate1.length-1][1]))}</b></h2></div></div><div class="mdui-table-fluid mdui-table mdui-col-xs-4" style="height:110px;margin-left:15px;margin-bottom:15px;"><div style="float:left;margin-left:5px;"><p id="" class="mdui-typo-body-2-opacity">7日增长量</p></div><div class="mdui-typo" style="margin-bottom:15px;float:right;bottom:0px;right:5px;position:absolute;"><h2 id="" style="margin-right:5px;"><b>${rate7.length===0?'-':(rate7[rate7.length-1][1] == null ? '-' : formatNumber((rate7[rate7.length-1][1]*7).toFixed(0)))}</b></h2></div></div></div>`;
                 
                 document.getElementById('notes').innerHTML = `* X日均粉丝量计算方法为对应时间点两侧共计X日内所有数据的均值<br>** 为估计值，估计方法是参考里程碑节点两端数据点连成的线性方程<br>本表最后更新时间：${fans[fans.length-1][0]}`;
                 document.getElementById('notes').style.padding = '12px';
@@ -922,7 +958,7 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                   animationDuration: 2000,
                   aria: {
                     show: true,
-                    description: `这是一份关于up主${name}的粉丝量变化的图表，该表以时间为横轴，以粉丝量计数与粉丝变化量为纵轴，涵盖粉丝量、周均粉丝量、两周均粉丝量、月均粉丝量、1日粉丝变化量、7日内粉丝日均变化量、14日内粉丝日均变化量、30日内粉丝日均变化量以及视图内粉丝数最高最低点、up主粉丝里程碑共计11个计量指标。截止到时间：${fans[fans.length-1][0]}，${name}已收获粉丝${fans[fans.length-1][1]}人，近一日粉丝变化量为${(rate1[rate1.length-1][1])}，近七日粉丝变化量为${rate7.length===0?'暂无数据':(rate7[rate7.length-1][1] == null ? '暂无数据' : (rate7[rate7.length-1][1]*7).toFixed(0))}（折合日均变化量${rate7.length===0?'暂无数据':(rate7[rate7.length-1][1] == null ? '暂无数据' : (rate7[rate7.length-1][1]*1).toFixed(0))}），近十四日粉丝变化量为${rate14.length===0?'暂无数据':(rate14[rate14.length-1][1] == null ? '暂无数据' : (rate14[rate14.length-1][1]*7).toFixed(0))}（折合日均变化量${rate14.length===0?'暂无数据':(rate14[rate14.length-1][1] == null ? '暂无数据' : (rate14[rate14.length-1][1]*1).toFixed(0))}），近三十日粉丝变化量为${rate30.length===0?'暂无数据':(rate30[rate30.length-1][1] == null ? '暂无数据' : (rate30[rate30.length-1][1]*7).toFixed(0))}（折合日均变化量${rate30.length===0?'暂无数据':(rate30[rate30.length-1][1] == null ? '暂无数据' : (rate30[rate30.length-1][1]*1).toFixed(0))}）。` + (fans_nodes.length===0?`在目前的记录中，还未找到${name}达到过的粉丝数里程碑。`:`此外，${name}最近还在日期：${(fans_nodes[fans_nodes.length-1][2]).split(" ")[0]}达成了${fans_nodes[fans_nodes.length-1][1]}粉丝的里程碑。`)
+                    description: `这是一份关于up主${name}的粉丝量变化的图表，该表以时间为横轴，以粉丝量计数与粉丝变化量为纵轴，涵盖粉丝量、周均粉丝量、两周均粉丝量、月均粉丝量、1日粉丝变化量、7日内粉丝日均变化量、14日内粉丝日均变化量、30日内粉丝日均变化量以及视图内粉丝数最高最低点、up主粉丝里程碑共计11个计量指标。截止到时间：${fans[fans.length-1][0]}，${name}已收获粉丝${fans[fans.length-1][1]}人，近一日粉丝变化量为${(rate1.length===0?'暂无数据':rate1[rate1.length-1][1])}，近七日粉丝变化量为${rate7.length===0?'暂无数据':(rate7[rate7.length-1][1] == null ? '暂无数据' : (rate7[rate7.length-1][1]*7).toFixed(0))}（折合日均变化量${rate7.length===0?'暂无数据':(rate7[rate7.length-1][1] == null ? '暂无数据' : (rate7[rate7.length-1][1]*1).toFixed(0))}），近十四日粉丝变化量为${rate14.length===0?'暂无数据':(rate14[rate14.length-1][1] == null ? '暂无数据' : (rate14[rate14.length-1][1]*7).toFixed(0))}（折合日均变化量${rate14.length===0?'暂无数据':(rate14[rate14.length-1][1] == null ? '暂无数据' : (rate14[rate14.length-1][1]*1).toFixed(0))}），近三十日粉丝变化量为${rate30.length===0?'暂无数据':(rate30[rate30.length-1][1] == null ? '暂无数据' : (rate30[rate30.length-1][1]*7).toFixed(0))}（折合日均变化量${rate30.length===0?'暂无数据':(rate30[rate30.length-1][1] == null ? '暂无数据' : (rate30[rate30.length-1][1]*1).toFixed(0))}）。` + (fans_nodes.length===0?`在目前的记录中，还未找到${name}达到过的粉丝数里程碑。`:`此外，${name}最近还在日期：${(fans_nodes[fans_nodes.length-1][2]).split(" ")[0]}达成了${fans_nodes[fans_nodes.length-1][1]}粉丝的里程碑。`)
                   },
                   title: {
                     left: 'center',
@@ -981,9 +1017,9 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                         scale: true,
                         axisLabel: {
                           inside: true,
-                          formatter: function(value){
-                              return formatNumber4Charts(value);
-                          }
+                          //formatter: function(value){
+                          //    return formatNumber4Charts(value);
+                          //}
                         }
                     },
                     {
@@ -994,9 +1030,9 @@ echo "<div style='width: 100%; text-align: center; font-size: 1em;'>最后更新
                         scale: false,
                         axisLabel: {
                           inside: true,
-                          formatter: function(value){
-                              return formatNumber4Charts(value);
-                          }
+                          //formatter: function(value){
+                          //    return formatNumber4Charts(value);
+                          //}
                         }
                     }
                   ],

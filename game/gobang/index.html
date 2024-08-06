@@ -220,11 +220,11 @@
             var boardElement = document.getElementById('board');
             boardElement.innerHTML = '';
             
-            for (var row = 0; row < 15; row++) {
+            for (var row = 0; row < 13; row++) {
                 var tr = document.createElement('tr');
                 board.push([]);
                 
-                for (var col = 0; col < 15; col++) {
+                for (var col = 0; col < 13; col++) {
                     var td = document.createElement('td');
                     td.onclick = makeMove.bind(null, row, col, true);
                     td.classList.add('empty');
@@ -611,7 +611,7 @@
                     var newRow = row + j * dx;
                     var newCol = col + j * dy;
                     
-                    if (newRow < 0 || newRow >= 15 || newCol < 0 || newCol >= 15 || board[newRow][newCol] !== currentPlayer) {
+                    if (newRow < 0 || newRow >= 13 || newCol < 0 || newCol >= 13 || board[newRow][newCol] !== currentPlayer) {
                         break;
                     }
                     
@@ -623,7 +623,7 @@
                     var newRow = row - j * dx;
                     var newCol = col - j * dy;
                     
-                    if (newRow < 0 || newRow >= 15 || newCol < 0 || newCol >= 15 || board[newRow][newCol] !== currentPlayer) {
+                    if (newRow < 0 || newRow >= 13 || newCol < 0 || newCol >= 13 || board[newRow][newCol] !== currentPlayer) {
                         break;
                     }
                     
@@ -747,8 +747,8 @@
         function updateUI() {
             var boardElement = document.getElementById('board');
             
-            for (var row = 0; row < 15; row++) {
-                for (var col = 0; col < 15; col++) {
+            for (var row = 0; row < 13; row++) {
+                for (var col = 0; col < 13; col++) {
                     var td = boardElement.rows[row].cells[col];
                     td.textContent = board[row][col];
                     td.classList.remove(...td.classList);

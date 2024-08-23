@@ -52,7 +52,7 @@ if(isset($_POST['password']) && $_POST['password'] == 'yujionako'){
 if(!isset($_SESSION['recheck'])){
     setcookie("log", "1", time( )+86400*30, "/", $_SERVER['HTTP_HOST']);
     exit('<div id="divcss"><center>
-        <img src="/Ivan.png" width=30%><br><br>
+        <img src="/Ivan.svg" width=30%><br><br>
         <form method="post">
             管理员密码：<br><input type="password" name="password" />
             <input type="submit" value="确定" /><br>维护中，仅持有管理员密码者可进入管理<br>输入管理密码仍然会到此界面，请清除cookie

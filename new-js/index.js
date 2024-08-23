@@ -48,6 +48,78 @@ if (!document.querySelector('nopop')) {
 
 
 
+//切换图床
+function switchImgBed() {
+    let elements = document.querySelectorAll('[src*="us.pro-ivan."]:not([src*="!w"]), [href*="us.pro-ivan."]:not([href*="!w"]), [data-src*="us.pro-ivan."]:not([data-src*="!w"])');
+
+    elements.forEach(function(element) {
+        if (element.getAttribute('src')) {
+            if (element.getAttribute('src').includes('us.pro-ivan.com')) {
+                element.setAttribute('src', element.getAttribute('src').replace('us.pro-ivan.com', 'us.pro-ivan.cn')); console.log('switch uri');
+            } else {
+                element.setAttribute('src', element.getAttribute('src').replace('us.pro-ivan.cn', 'us.pro-ivan.com')); console.log('switch uri');
+            }
+        }
+        if (element.getAttribute('data-src')) {
+            if (element.getAttribute('data-src').includes('us.pro-ivan.com')) {
+                element.setAttribute('data-src', element.getAttribute('data-src').replace('us.pro-ivan.com', 'us.pro-ivan.cn')); console.log('switch uri');
+            } else {
+                element.setAttribute('data-src', element.getAttribute('data-src').replace('us.pro-ivan.cn', 'us.pro-ivan.com')); console.log('switch uri');
+            }
+        }
+        if (element.getAttribute('href')) {
+            if (element.getAttribute('href').includes('us.pro-ivan.com')) {
+                element.setAttribute('href', element.getAttribute('href').replace('us.pro-ivan.com', 'us.pro-ivan.cn')); console.log('switch uri');
+            } else {
+                element.setAttribute('href', element.getAttribute('href').replace('us.pro-ivan.cn', 'us.pro-ivan.com')); console.log('switch uri');
+            }
+        }
+    });
+}
+
+// 测速
+function getLoadTime(url) {
+    return new Promise((resolve, reject) => {
+        const startTime = performance.now();
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.onload = function() {
+            const endTime = performance.now();
+            const loadTime = endTime - startTime;
+            resolve({ loadTime, responseTime: xhr.getResponseHeader('Date') });
+        };
+        xhr.onerror = function() {
+            reject('请求出错');
+        };
+        xhr.send();
+    });
+}
+
+Promise.all([
+    getLoadTime('https://us.pro-ivan.cn/favicon.ico?' + Math.floor(Math.random() * 1000000).toString().padStart(6, '0')),
+    getLoadTime('https://us.pro-ivan.com/favicon.ico?' + Math.floor(Math.random() * 1000000).toString().padStart(6, '0'))
+])
+    .then(([site1, site2]) => {
+        const site1Score = calculateScore(site1.loadTime, site1.responseTime);
+        const site2Score = calculateScore(site2.loadTime, site2.responseTime);
+
+        if (site1Score > site2Score) {
+            switchImgBed();
+            console.log('选择us.pro-ivan.cn');
+        } else {
+            console.log('选择us.pro-ivan.com');
+        }
+    })
+    .catch(error => {
+        console.error('发生错误：', error);
+    });
+
+function calculateScore(loadTime, responseTime) {
+    // 这里可以根据具体情况定义一个综合评分算法
+    // 例如，可以将下载速度和响应速度加权平均
+    return (2 * loadTime + responseTime) / 3;
+}
+
 webdriver = window.navigator.webdriver;
 if(webdriver){
     var xmlhttp = new XMLHttpRequest();
@@ -159,6 +231,9 @@ function bfanscount() {
 function api() {
     window.open('/api/', '_blank');
 }
+function advertising() {
+    window.open('/advertising.html', '_blank');
+}
 function line_1() {
     //具体咋写，我不知道，域名跳转？
     alert('将跳转到pro-ivan.cn');
@@ -268,64 +343,6 @@ setTimeout(function() {
             document.getElementById('title').style.fontSize  = '18px';
     }
 }, 250);
-
-//切换图床
-function switchImgBed() {
-    let elements = document.querySelectorAll('[src*="us.pro-ivan."]:not([src*="!w"]), [href*="us.pro-ivan."]:not([href*="!w"]), [data-src*="us.pro-ivan."]:not([data-src*="!w"])');
-
-    elements.forEach(function(element) {
-        if (element.getAttribute('src')) {
-            if (element.getAttribute('src').includes('us.pro-ivan.com')) {
-                element.setAttribute('src', element.getAttribute('src').replace('us.pro-ivan.com', 'us.pro-ivan.cn')); console.log('switch uri');
-            } else {
-                element.setAttribute('src', element.getAttribute('src').replace('us.pro-ivan.cn', 'us.pro-ivan.com')); console.log('switch uri');
-            }
-        }
-        if (element.getAttribute('data-src')) {
-            if (element.getAttribute('data-src').includes('us.pro-ivan.com')) {
-                element.setAttribute('data-src', element.getAttribute('data-src').replace('us.pro-ivan.com', 'us.pro-ivan.cn')); console.log('switch uri');
-            } else {
-                element.setAttribute('data-src', element.getAttribute('data-src').replace('us.pro-ivan.cn', 'us.pro-ivan.com')); console.log('switch uri');
-            }
-        }
-        if (element.getAttribute('href')) {
-            if (element.getAttribute('href').includes('us.pro-ivan.com')) {
-                element.setAttribute('href', element.getAttribute('href').replace('us.pro-ivan.com', 'us.pro-ivan.cn')); console.log('switch uri');
-            } else {
-                element.setAttribute('href', element.getAttribute('href').replace('us.pro-ivan.cn', 'us.pro-ivan.com')); console.log('switch uri');
-            }
-        }
-    });
-}
-
-//测速
-function getLoadTime(url) {
-    return new Promise((resolve, reject) => {
-        const start = performance.now();
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', url, true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4) {
-                const end = performance.now();
-                resolve(end - start);
-            }
-        };
-        xhr.send();
-    });
-}
-
-Promise.all([getLoadTime('https://us.pro-ivan.cn/index.html?'+Math.floor(Math.random() * 1000000).toString().padStart(6, '0')), getLoadTime('https://us.pro-ivan.com/index.html?'+Math.floor(Math.random() * 1000000).toString().padStart(6, '0'))])
-    .then(([time1, time2]) => {
-        if (time1 < time2) {
-            switchImgBed();
-            console.log(`选择us.pro-ivan.cn`);
-        } else {
-            console.log(`选择us.pro-ivan.com`);
-        }
-    })
-    .catch(error => {
-        console.error('发生错误：', error);
-    });
 
 
 

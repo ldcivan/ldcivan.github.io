@@ -1,13 +1,13 @@
 # Twitch520 Host Start
-151.101.2.167                 www.twitch.tv
+151.101.66.167                www.twitch.tv
 99.84.220.163                 static-cdn.jtvnw.net
 18.160.5.184                  static.twitchcdn.net
-52.85.247.100                 vod-secure.twitch.tv
+52.85.247.29                  vod-secure.twitch.tv
 13.32.208.26                  clips-media-assets2.twitch.tv
-3.162.3.20                    sb.scorecardresearch.com
-18.67.65.18                   assets.twitch.tv
+3.162.3.55                    sb.scorecardresearch.com
+18.67.65.4                    assets.twitch.tv
 
-# Update time: 2024-08-06T13:31:18+08:00
+# Update time: 2024-08-07T12:46:40+08:00
 # Update url: https://pro-ivan.com/api/twitch520/hosts
 # Star author: https://github.com/521xueweihan/GitHub520
 # This is a back-up from Pro-ivan.com

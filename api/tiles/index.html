@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片API控制界面</title>
+    <style>
+        .image-container {
+            margin: 6px;
+            white-space: nowrap;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .control-group {
+            margin-bottom: 10px;
+        }
+        .control-group label {
+            margin-right: 10px;
+        }
+        .buttons {
+            margin-bottom: 20px;
+        }
+        .buttons button {
+            margin: 0 5px;
+        }
+        .image-container img {
+            margin: 0px;
+            margin-top: -6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="control-group">
+            <label for="x">X:</label>
+            <input type="number" id="x" value="0" >
+            <button onclick="changeX(1)">+</button>
+            <button onclick="changeX(-1)">-</button>
+        </div>
+        <div class="control-group">
+            <label for="y">Y:</label>
+            <input type="number" id="y" value="0" >
+            <button onclick="changeY(1)">+</button>
+            <button onclick="changeY(-1)">-</button>
+        </div>
+        <div class="control-group">
+            <label for="level">Level:</label>
+            <input type="number" id="level" value="1" >
+            <button onclick="changeLevel(1)">+</button>
+            <button onclick="changeLevel(-1)">-</button>
+        </div>
+        <div class="control-group">
+            <label for="type">Type:</label>
+            <select id="type" onchange="updateImage()">
+                <option value="0">Bing 卫星图</option>
+                <option value="1">Bing 路网卫星混合图</option>
+                <option value="2">Bing 路网图</option>
+                <option value="3">Google 路网图</option>
+                <option value="4">Google 路网地形混合图</option>
+                <option value="5">Google 地形遮罩图</option>
+                <option value="6">Google 卫星图</option>
+                <option value="7">Google带标记卫星图</option>
+                <option value="8">天地图 卫星图</option>
+                <option value="9">天地图 路网图</option>
+                <option value="10">天地图 文字标注</option>
+                <option value="11">天地图 影像标注</option>
+                <option value="12">高德 卫星图</option>
+                <option value="13">高德 矢量底层图</option>
+                <option value="14">ArcGIS 卫星图</option>
+                <option value="15">ArcGIS 路网图</option>
+                <option value="16">吉林一号 全球卫星图</option>
+                <option value="17">吉林一号 全国卫星图</option>
+                <option value="18">百度 卫星图</option>
+                <option value="19">百度 路网图</option>
+                <option value="20">百度 路网图</option>
+                <option value="21">百度 标注图</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label for="show-surrounding">显示周围图像:</label>
+            <input type="checkbox" id="show-surrounding" onchange="updateImage()">
+        </div>
+        <button onclick="copyUrlToClipboard()">复制URL到粘贴板</button>
+        <div class="image-container" id="image-container"></div>
+        <br>
+    </div>
+    
+    <script>
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.hash.substring(1));
+            return {
+                x: params.get('x') || 0,
+                y: params.get('y') || 0,
+                level: params.get('level') || 1,
+                type: params.get('type') || 0,
+                showSurrounding: params.get('showSurrounding') === 'true'
+            };
+        }
+        
+        function applyUrlParams() {
+            const params = getUrlParams();
+            document.getElementById('x').value = params.x;
+            document.getElementById('y').value = params.y;
+            document.getElementById('level').value = params.level;
+            document.getElementById('type').value = params.type;
+            document.getElementById('show-surrounding').checked = params.showSurrounding;
+            updateImage();
+        }
+        
+        // Call this function when the page loads
+        window.onload = applyUrlParams;
+    </script>
+
+    <script>
+        function changeX(delta) {
+            const xInput = document.getElementById('x');
+            xInput.value = parseInt(xInput.value) + delta;
+            updateImage();
+        }
+
+        function changeY(delta) {
+            const yInput = document.getElementById('y');
+            yInput.value = parseInt(yInput.value) + delta;
+            updateImage();
+        }
+
+        function changeLevel(delta) {
+            const levelInput = document.getElementById('level');
+            const xInput = document.getElementById('x');
+            const yInput = document.getElementById('y');
+
+            let newLevel = parseInt(levelInput.value) + delta;
+            if (newLevel < 1) newLevel = 1;
+
+            if (delta > 0) {
+                xInput.value = Math.ceil(parseInt(xInput.value) * 2);
+                yInput.value = Math.ceil(parseInt(yInput.value) * 2);
+            } else if (delta < 0) {
+                xInput.value = Math.ceil(parseInt(xInput.value) / 2);
+                yInput.value = Math.ceil(parseInt(yInput.value) / 2);
+            }
+
+            levelInput.value = newLevel;
+            updateImage();
+        }
+
+        function updateImage() {
+            const level = parseInt(document.getElementById('level').value);
+            const x = parseInt(document.getElementById('x').value) % Math.pow(2,level);
+            const y = parseInt(document.getElementById('y').value) % Math.pow(2,level);
+            const type = parseInt(document.getElementById('type').value);
+            const showSurrounding = document.getElementById('show-surrounding').checked;
+
+            const imageContainer = document.getElementById('image-container');
+            imageContainer.innerHTML = '';
+
+            const imageUrl = `https://tiles.pro-ivan.cn/${x}/${y}/${level}/${type}/`;
+            const img = document.createElement('img');
+            img.src = imageUrl;
+            img.alt = `Image ${x}, ${y}, ${level}, ${type}`;
+            if(!showSurrounding) {
+                imageContainer.appendChild(img);
+            }
+            else if (showSurrounding) {
+                const offsets = [-1, 0, 1];
+                const anti_offsets = [1, 0, -1];
+                const anti_index = [16,17,18,19,20,21];
+                if (anti_index.includes(type)){ //这玩意y轴方向是反的
+                    anti_offsets.forEach(dy => {
+                        offsets.forEach(dx => {
+                            
+                            const surroundingImageUrl = `https://tiles.pro-ivan.cn/${parseInt(x) + dx}/${parseInt(y) + dy}/${level}/${type}/`;
+                            const surroundingImg = document.createElement('img');
+                            surroundingImg.src = surroundingImageUrl;
+                            surroundingImg.alt = `Image ${parseInt(x) + dx}, ${parseInt(y) + dy}, ${level}, ${type}`;
+                            surroundingImg.width = 256;
+                            surroundingImg.height = 256;
+                            imageContainer.appendChild(surroundingImg);
+                            
+                        });
+                        imageContainer.innerHTML += "<br>";
+                    });
+                } else {
+                    offsets.forEach(dy => {
+                        offsets.forEach(dx => {
+                            
+                            const surroundingImageUrl = `https://tiles.pro-ivan.cn/${parseInt(x) + dx}/${parseInt(y) + dy}/${level}/${type}/`;
+                            const surroundingImg = document.createElement('img');
+                            surroundingImg.src = surroundingImageUrl;
+                            surroundingImg.alt = `Image ${parseInt(x) + dx}, ${parseInt(y) + dy}, ${level}, ${type}`;
+                            surroundingImg.width = 256;
+                            surroundingImg.height = 256;
+                            imageContainer.appendChild(surroundingImg);
+                            
+                        });
+                        imageContainer.innerHTML += "<br>";
+                    });
+                }
+            }
+        }
+
+        // Initialize the image display
+        updateImage();
+        
+function copyUrlToClipboard() {
+    const x = document.getElementById('x').value;
+    const y = document.getElementById('y').value;
+    const level = document.getElementById('level').value;
+    const type = document.getElementById('type').value;
+    const showSurrounding = document.getElementById('show-surrounding').checked;
+
+    const url = `${window.location.origin}${window.location.pathname}#x=${x}&y=${y}&level=${level}&type=${type}&showSurrounding=${showSurrounding}`;
+    
+    navigator.clipboard.writeText(url).then(() => {
+        alert('URL已复制到粘贴板');
+    }).catch(err => {
+        console.error('无法复制URL: ', err);
+    });
+}
+    </script>
+</body>
+</html>

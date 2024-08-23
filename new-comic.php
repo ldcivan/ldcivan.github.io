@@ -128,6 +128,10 @@ if (!isset($_SESSION['visited'])) {
 					<i class="mdui-list-item-icon mdui-icon material-icons">face</i>
 					<div class="mdui-list-item-content">关于我们</div>
 				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="advertising()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">web</i>
+					<div class="mdui-list-item-content">友链&推介</div>
+				</li>
 			</ul>
 		</div>
 		<div class="mdui-dialog" id="announcement">
@@ -554,26 +558,82 @@ if (!isset($_SESSION['visited'])) {
             //alert(isInclude("passcheck.php"));
             if(!isInclude("passcheck.php")) window.open('/passport/passgive.php', '_self');
     	</script>
-    	<script>
-          var lazyImages = document.querySelectorAll('.lazy');
-          var options = {
-            rootMargin: '0px',
-            threshold: 0.1
-          };
-        
-          var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-              if (entry.intersectionRatio > 0) {
-                entry.target.src = entry.target.dataset.src;
-                entry.target.classList.remove('lazy');
-                observer.unobserve(entry.target);
-              }
-            });
-          }, options);
-        
-          lazyImages.forEach(function(img) {
-            observer.observe(img);
+        <script>
+        document.querySelectorAll('.lazy').forEach(function(el) {
+            const src = el.getAttribute('data-src').replace('w750', 'info');
+            
+            fetch(src, {
+              method: 'GET',
+              mode: 'cors'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const ratio = data.height / data.width;
+                    
+                    // 计算新的高度
+                    const newHeight = el.offsetWidth * ratio;
+                    
+                    // 计算padding值
+                    const paddingTop = (newHeight - el.offsetHeight + parseFloat(getComputedStyle(el).paddingTop)) / 2;
+                    const paddingBottom = (newHeight - el.offsetHeight + parseFloat(getComputedStyle(el).paddingBottom)) / 2;
+                    
+                    // 设置新的高度和填充
+                    el.style.paddingTop = paddingTop + 'px';
+                    el.style.paddingBottom = paddingBottom + 'px';
+                })
+                .catch(error => console.error('Error fetching image info:', error));
+        });
+        </script>
+        <script>
+        // 获取所有带有 "lazy" 类名的图片元素
+        const lazyImages = document.querySelectorAll('.lazy');
+    
+        // 创建 Intersection Observer 实例
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            // 如果图片进入视窗范围并且停留超过1000ms
+            //console.log(entry.intersectionRatio)
+            if (entry.intersectionRatio >= 0) {
+              const img = entry.target;
+    
+              // 停留 1000ms 后加载图片
+              const timeoutId = setTimeout(() => {
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                img.classList.add('shown');
+                observer.unobserve(img);
+                img.style.paddingTop = '0';
+                img.style.paddingBottom = '0';
+                //console.log('load')
+              }, 1000);
+    
+              // 如果图片在 1000ms 内脱离视窗，则取消加载
+              const cancelTimeout = () => {
+                clearTimeout(timeoutId);
+                //console.log('cancel')
+              };
+    
+              // 监听图片脱离视窗事件
+              const visibilityObserver = new IntersectionObserver(([visibilityEntry]) => {
+                if (visibilityEntry.intersectionRatio < 0.025) {
+                  cancelTimeout();
+                }
+              });
+    
+              visibilityObserver.observe(img);
+    
+              // 监听图片加载完成事件
+              img.addEventListener('load', () => {
+                cancelTimeout();
+              });
+            }
           });
+        });
+    
+        // 遍历所有图片元素并开始观察
+        lazyImages.forEach(image => {
+          observer.observe(image);
+        });
         </script>
         </body>
 </html>

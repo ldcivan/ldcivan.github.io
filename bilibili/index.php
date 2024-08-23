@@ -194,6 +194,10 @@
 					<i class="mdui-list-item-icon mdui-icon material-icons">face</i>
 					<div class="mdui-list-item-content">关于我们</div>
 				</li>
+				<li class="mdui-list-item mdui-ripple" onclick="advertising()">
+					<i class="mdui-list-item-icon mdui-icon material-icons">web</i>
+					<div class="mdui-list-item-content">友链&推介</div>
+				</li>
 			</ul>
 		</div>
 		<div class="mdui-dialog" id="announcement">

@@ -1,5 +1,5 @@
 #---------------------------------------------------#
-## 更新：2024-08-23 20:01:00
+## 更新：2024-08-26 21:47:40
 #---------------------------------------------------#
 
 # HTTP 代理端口
@@ -32,7 +32,7 @@ secret: ''
 
 
 proxies:
-  - {"name": "0#美国_伊利诺伊州_雅培公园_", "type": "http", "server": "130.36.47.108", "port":443, "skip-cert-verify": true}
+  - {"name": "0#厄瓜多尔_厄瓜多尔__transnexa.com", "type": "http", "server": "177.234.241.27", "port":999, "skip-cert-verify": true}
 
 
 proxy-groups:
@@ -40,7 +40,7 @@ proxy-groups:
   name: Proxy
   type: select
   proxies:
-    - '0#美国_伊利诺伊州_雅培公园_'
+    - '0#厄瓜多尔_厄瓜多尔__transnexa.com'
 
 -
   name: Domestic

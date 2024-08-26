@@ -2513,3 +2513,13 @@ INFO:root:2024-08-20 19:08:03 ('101.133.136.80', 54622) is trying connect to ser
 INFO:root:
 
 ERROR:root:invalid literal for int() with base 10: b'GET / HTTP/2\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36\r\n\r\n'position 0
+INFO:root:2024-08-25 21:50:36 ('193.32.162.18', 42100) is trying connect to server
+INFO:root:
+
+ERROR:root:invalid literal for int() with base 10: b'SSH-2.0-OpenSSH\r\n'position 0
+ERROR:root:[Errno 104] Connection reset by peerposition 0
+INFO:root:2024-08-26 06:20:10 ('79.110.62.170', 63530) is trying connect to server
+INFO:root:
+
+ERROR:root:invalid literal for int() with base 10: b'\x03\x00\x00/*\xe0\x00\x00\x00\x00\x00Cookie: mstshash=Administr\r\n\x01\x00\x08\x00\x03\x00\x00\x00'position 0
+ERROR:root:[Errno 104] Connection reset by peerposition 0

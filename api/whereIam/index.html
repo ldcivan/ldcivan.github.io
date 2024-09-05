@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>钰中在哪？</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        body {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        #map {
+            height: 400px;
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            position: relative;
+            box-sizing: border-box; /* 确保padding不会导致元素大小变化 */
+        }
+
+        #handle {
+            height: 20px;
+            background-color: #ccc;
+            cursor: ns-resize;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h3>钰中在哪？</h3>
+    <div>
+        <label for="start_time">开始时间:</label>
+        <input type="datetime-local" id="start_time" name="start_time">
+        <label for="end_time">结束时间:</label>
+        <input type="datetime-local" id="end_time" name="end_time">
+        <button onclick="loadData()">加载数据</button>
+        <button id="stepMode" onclick="stepMode()">等时间间隔输出</button>
+        <label for="tile_source">地图类型:</label>
+        <select id="tile_source" onchange="changeTileSource()">
+            <option value="0">Bing 卫星图</option>
+            <option value="1">Bing 路网卫星混合图</option>
+            <option value="2">Bing 路网图</option>
+            <option value="3">Google 路网图</option>
+            <option value="4">Google 路网地形混合图</option>
+            <option value="5">Google 地形遮罩图</option>
+            <option value="6">Google 卫星图</option>
+            <option value="7">Google带标记卫星图</option>
+            <option value="8">天地图 卫星图</option>
+            <option value="9">天地图 路网图</option>
+            <option value="10">天地图 文字标注</option>
+            <option value="11">天地图 影像标注</option>
+            <option value="12">高德 卫星图</option>
+            <option value="13">高德 矢量底层图</option>
+            <option value="14">ArcGIS 卫星图</option>
+            <option value="15">ArcGIS 路网图</option>
+            <option value="16">吉林一号 全球卫星图</option>
+            <option value="17">吉林一号 全国卫星图</option>
+            <option value="18">百度 卫星图</option>
+            <option value="19">百度 路网图</option>
+            <option value="20">百度 路网图</option>
+            <option value="21">百度 标注图</option>
+            <option value="22" selected>openstreet 路网图</option>
+        </select>
+    </div>
+    <div id="map"></div>
+    <div id="handle">
+        <svg width="20" height="20" viewBox="0 0 100 100">
+          <line x1="0" y1="25" x2="100" y2="25" stroke="black" stroke-width="10" />
+          <line x1="0" y1="50" x2="100" y2="50" stroke="black" stroke-width="10" />
+          <line x1="0" y1="75" x2="100" y2="75" stroke="black" stroke-width="10" />
+        </svg>
+    </div>
+
+    <script>
+        var EQUAL_STEP = true;
+        var map = L.map('map').setView([0, 0], 2);
+        var tileLayer = L.tileLayer('https://tiles.pro-ivan.cn/{x}/{y}/{z}/22', {
+            attribution: '&copy; <a href="https://tiles.pro-ivan.cn/">Pro-Ivan Tiles Integration</a> contributors'
+        }).addTo(map);
+
+        // 切换瓦片图源的函数
+        function changeTileSource() {
+            var tileSource = 'https://tiles.pro-ivan.cn/{x}/{y}/{z}/' + document.getElementById('tile_source').value;
+            
+
+            // 移除当前的瓦片图层
+            map.removeLayer(tileLayer);
+
+            // 创建新的瓦片图层并添加到地图中
+            tileLayer = L.tileLayer(tileSource, {
+                attribution: '&copy; <a href="https://tiles.pro-ivan.cn/">Pro-Ivan Tiles Integration</a> contributors'
+            }).addTo(map);
+        }
+
+        // 设置默认时间范围为当前时间到一天前
+        document.addEventListener('DOMContentLoaded', (event) => {
+            let datetime = new Date();
+            let timezoneOffset = datetime.getTimezoneOffset() * 60000; // 获取当前时区与UTC的时间差（以毫秒为单位）
+            let localDatetime = new Date(datetime - timezoneOffset); // 调整时间，得到当前时区时间
+
+            var oneDayAgo = new Date(localDatetime.getTime() - 24 * 60 * 60 * 1000);
+            document.getElementById('end_time').value = localDatetime.toISOString().slice(0, 16);
+            document.getElementById('start_time').value = oneDayAgo.toISOString().slice(0, 16);
+            loadData(); // 页面加载时自动加载数据
+        });
+
+        function loadData() {
+            var startTime = document.getElementById('start_time').value;
+            var endTime = document.getElementById('end_time').value;
+
+            fetch(`get_location.php?start=${startTime.replace('T','%20')}&end=${endTime.replace('T','%20')}`, {method: 'GET'})
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Received data:", data); // 调试信息
+
+                    // 清除之前的标记和连线
+                    map.eachLayer(function (layer) {
+                        if (layer instanceof L.Marker || layer instanceof L.Polyline) {
+                            map.removeLayer(layer);
+                        }
+                    });
+
+                    var latlngs = [];
+                    var times = [];
+                    data.forEach(point => {
+                        latlngs.push([point.latitude, point.longitude]);
+                        times.push(new Date(point.time.replace(' ','T')).getTime());
+                    });
+
+                    if (latlngs.length > 0) {
+                        // 逐步显现标点和连线
+                        showMarkersAndLinesGradually(latlngs, data, times);
+                        map.fitBounds(latlngs);
+                    } else {
+                        console.log("No data points to display.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error); // 调试信息
+                });
+        }
+
+        function showMarkersAndLinesGradually(latlngs, data, times) {
+            var totalDuration = 8000; // 总时长10秒
+            var minTime = Math.min(...times);
+            var maxTime = Math.max(...times);
+
+            // 计算每个点的显示时间
+            var displayTimes = times.map(time => totalDuration * (time - minTime) / (maxTime - minTime));
+
+            latlngs.forEach((latlng, index) => {
+                setTimeout(() => {
+                    var marker = L.marker(latlng).addTo(map);
+                    marker.bindPopup(`Longitude: ${data[index].longitude}<br>Latitude: ${data[index].latitude}<br>Time: ${data[index].time}`);
+                    
+                    // 画出到下一个点的连线
+                    if (index !== 0) {
+                        var color = getColor(times[index], minTime, maxTime);
+                        L.polyline([latlngs[index - 1], latlng], { color: color, opacity: 0.4 }).addTo(map);
+                    }
+                }, EQUAL_STEP?(totalDuration/(latlngs.length - 1) * index):displayTimes[index]);
+            });
+        }
+
+        function getColor(time, minTime, maxTime) {
+            var ratio = (time - minTime) / (maxTime - minTime);
+            var r = Math.floor(255 * (1 - ratio));
+            var g = Math.floor(255 * ratio);
+            var b = 0;
+            return `rgb(${r},${g},${b})`;
+        }
+        
+        function stepMode() {
+            EQUAL_STEP = EQUAL_STEP?false:true;
+            document.getElementById("stepMode").innerHTML = EQUAL_STEP?"等时间间隔输出":"实际时间间隔输出";
+        }
+        
+        // 实现拖动手柄调整 #map 高度
+        const handle = document.getElementById('handle');
+        const mapDiv = document.getElementById('map');
+        let isDragging = false;
+
+        handle.addEventListener('mousedown', function(e) {
+            isDragging = true;
+            document.body.style.cursor = 'ns-resize';
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (isDragging) {
+                const newHeight = e.clientY - mapDiv.offsetTop;
+                if (newHeight > 50) { // 设置最小高度
+                    mapDiv.style.height = newHeight + 'px';
+                    map.invalidateSize();
+                }
+            }
+        });
+
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+            document.body.style.cursor = 'default';
+        });
+
+        // 触摸事件支持
+        handle.addEventListener('touchstart', function(e) {
+            isDragging = true;
+            document.body.style.cursor = 'ns-resize';
+        });
+
+        document.addEventListener('touchmove', function(e) {
+            if (isDragging) {
+                const touch = e.touches[0];
+                const newHeight = touch.clientY - mapDiv.offsetTop;
+                if (newHeight > 50) { // 设置最小高度
+                    mapDiv.style.height = newHeight + 'px';
+                    map.invalidateSize();
+                }
+            }
+        });
+
+        document.addEventListener('touchend', function() {
+            isDragging = false;
+            document.body.style.cursor = 'default';
+        });
+    </script>
+</body>
+</html>

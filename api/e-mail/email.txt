@@ -1576,3 +1576,4 @@ b.send(JSON.stringify(a));c.classList.add("feedback-hidden");d.classList.remove(
 已完成任务：将 BUPT电费低警告--截至Null您宿舍(编号: 29201)的电费仅剩Null元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2212708123@qq.com
 已完成任务：将 BUPT电费低警告--截至Null您宿舍(编号: 29201)的电费仅剩Null元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2212708123@qq.com
 已完成任务：将 BUPT电费低警告--截至Null您宿舍(编号: 29201)的电费仅剩Null元，已小于15元。为了防止断电给您造成损失，请及时充值！ 发送到 2212708123@qq.com
+已完成任务：将 新留言通报(妮露狐粉丝站)--<b><font size=2.5>User_Name itsuki (Contact )</font></b><br><br><b>Comment</b><font size=2 style='margin-left:10px;'><pre>└Just wanted to say I really love her voice! So smoothing :)</pre></font><br><br><font size=1.5 color=#808080>  Time.   2024-08-31 20:17:35(UTC+8)<br>from 0(14.100.18.128)<br>In page https://www.sweetily.club/<br>end.</font> 发送到 2531667489@qq.com

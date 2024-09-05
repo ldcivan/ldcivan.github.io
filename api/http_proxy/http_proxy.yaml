@@ -1,5 +1,5 @@
 #---------------------------------------------------#
-## 更新：2024-08-26 21:47:40
+## 更新：2024-09-05 14:12:57
 #---------------------------------------------------#
 
 # HTTP 代理端口
@@ -32,7 +32,9 @@ secret: ''
 
 
 proxies:
-  - {"name": "0#厄瓜多尔_厄瓜多尔__transnexa.com", "type": "http", "server": "177.234.241.27", "port":999, "skip-cert-verify": true}
+  - {"name": "0#美国_俄勒冈州_波特兰_amazon.com", "type": "http", "server": "34.215.74.117", "port":3128, "skip-cert-verify": true}
+  - {"name": "1#厄瓜多尔_厄瓜多尔__transnexa.com", "type": "http", "server": "177.234.241.25", "port":999, "skip-cert-verify": true}
+  - {"name": "2#中国_中国__tencent.com", "type": "http", "server": "175.178.179.214", "port":10008, "skip-cert-verify": true}
 
 
 proxy-groups:
@@ -40,7 +42,9 @@ proxy-groups:
   name: Proxy
   type: select
   proxies:
-    - '0#厄瓜多尔_厄瓜多尔__transnexa.com'
+    - '0#美国_俄勒冈州_波特兰_amazon.com'
+    - '1#厄瓜多尔_厄瓜多尔__transnexa.com'
+    - '2#中国_中国__tencent.com'
 
 -
   name: Domestic

@@ -13,11 +13,19 @@ if ($conn->connect_error) {
 }
 
 // 获取POST数据
-if(!$_POST['longitude']||!$_POST['latitude']) {
+if(!$_POST['longitude']||!$_POST['latitude']||!$_POST['token']) {
+    if(!$_POST['token']) {
+        die("Please take your token");
+    }
     die("Please POST");
 }
-$longitude = $_POST['longitude'];
-$latitude = $_POST['latitude'];
+$longitude = round($_POST['longitude'],6);
+$latitude = round($_POST['latitude'],6);
+$token = $_POST['token'];
+
+if ($token!=='yujionako@Ldc020321') {
+    die('Wrong token');
+}
 
 // 准备SQL语句
 $sql = "INSERT INTO location (longitude, latitude, time) VALUES ('$longitude', '$latitude', NOW())";

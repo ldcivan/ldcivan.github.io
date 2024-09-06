@@ -1,4 +1,8 @@
 <?php
+if(!$_POST["name"]||!$_POST["comment"]) {
+    die("Parameter missing");
+}
+
 // 连接数据库
 $servername = "127.0.0.1";
 $username = "root";

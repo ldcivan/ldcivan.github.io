@@ -34,9 +34,12 @@
               return false;
             }
         </script>
-        <script>
-            
-        </script>
+        <style>
+            .important {
+                color: red;
+                font-weight: bold;
+            }
+        </style>
 		<script>
         	var _hmt = _hmt || [];
         	(function() {
@@ -141,14 +144,13 @@
     		        <div class="mdui-panel-item-body mdui-typo" style="height:auto!important;">
 					    <div class="mdui-panel-item-title" style="width: 100%;"><h3><b>我的身份？</b></h3></div>
                         首先，感谢您以任何方式来到了这个页面~这意味着我们之间已经有过互动了~<br>
-                        因为不方便说话，所以在这里做一下自我介绍，我是钰中，目前正在扮演来自原神的角色<a href="https://mzh.moegirl.org.cn/%E7%BB%AE%E8%89%AF%E8%89%AF" target="_blank">绮良良</a>（是一只可爱的猫又~） <!--<a href="https://mzh.moegirl.org.cn/%E8%AF%BA%E8%89%BE%E5%B0%94(%E5%8E%9F%E7%A5%9E)#" target="_blank">诺艾尔</a>（是一位可靠的女仆~）--><br>
+                        因为不方便说话，所以在这里做一下自我介绍，我是钰中，目前正在扮演<div id="diff1"></div><br>
                         您可能注意到钰中的cosplay似乎与常规不太一样：这其实是cosplay的一个分支，这一表演形式的分支名为Kigurumi，扮演者则被称为Kigger；但是，要专门介绍Kigurumi可就得讲太久了，您感兴趣可以在<a href="https://mzh.moegirl.org.cn/Kigurumi" target="_blank">萌娘百科</a>查看关于Kigurumi的更多资料<br>
                         另外，我还在页面最下方准备了一些<a href="#QA">常见问题的回答</a>，希望能解答您的疑惑~<br>
-                        那么接下来，钰中希望您在萤火虫继续玩的开心；但在之前，<b>钰中希望您能将我们之间拍的照片/视频（如果有）分享给我！</b><br>
+                        那么接下来，钰中希望您在CICF继续玩的开心；但在之前，<b>钰中希望您能将我们之间拍的照片/视频（如果有）分享给我！</b><br>
 					    <div class="mdui-panel-item-title" style="width: 100%;"><h3><b>怎样把照片分享给我？</b></h3></div>
                         您可以选择：<br>
                         <li>在<a href="#form">下面的表单</a>上传文件（最方便，但仅可上传图片）</li>
-                        <!--<li>使用iOS的隔空投送（仅限Apple设备）<b>（用这种方式请直接打开手机在我头前晃不然我看不到）</b></li>-->
                         <li>发邮件到<a href="mailto:ldcivan@foxmail.com" target="_blank">ldcivan@foxmail.com</a>（最推荐，且可附带视频）</li>
                         <li>扫描下方二维码，添加我的微信后再发送（不推荐，因为添加好友需要时间且微信文件压缩极其严重）</li>
                         请放心，我会妥善处理有关您的媒体内容，您的图像、声音信息在您不声明的情况下默认不会被发布到任何公开平台上<br>
@@ -182,9 +184,9 @@
                         <div class="mdui-typo">
                           <blockquote>
                             <footer>与Kigger互动有什么要注意的吗？</footer>
-                            <p>不要随便接触kigger的任何部位。头壳与C服自然不必多说，而Kigger的皮肤本质是布料，随便乱摸可能会脏污或损坏皮肤。<br>
-                            不要推搡拉扯Kigger，请用告诉我你想要调整的站位或动作。头壳内部视野狭窄，对平衡把控非常不利，通过拉扯调整站位或动作可能让Kigger人仰马翻。<br>
-                            若这里没有能解答你疑问的Q&A，提问时请尽量使答案可以用点头或摇头回答。因为Kigurumi的“完全扮演”的性质，Kigger并不愿意出声。<br>
+                            <p class="important">不要在未经过允许的情况下随便接触kigger的任何部位。头壳与C服自然不必多说，而Kigger的皮肤本质是布料，随便乱摸可能会脏污或损坏皮肤。<br>
+                            不要推搡拉扯Kigger，请用动作告诉我你想要调整的站位或动作。头壳内部视野狭窄，对平衡把控非常不利，通过拉扯调整站位或动作可能让Kigger人仰马翻。<br>
+                            若下面没有能解答你疑问的Q&A，提问时请尽量使答案可以用点头或摇头回答。因为Kigurumi的“完全扮演”的性质，Kigger并不愿意出声。<br>
                             请遵守其他基本的社交礼仪。</p>
                           </blockquote>
                           <blockquote>
@@ -201,12 +203,11 @@
                           </blockquote>
                           <blockquote>
                             <footer>你的性别是？</footer>
-                            <p>我的性别是绮良良~</p>
-                            <!--<p>我的性别是诺艾尔~</p>-->
+                            <p id="diff2"></p>
                           </blockquote>
                           <blockquote>
                             <footer>这一套装备是哪一家的？贵吗？</footer>
-                            <p>头壳是NFD家的，价格3400元；皮肤是麦薇家的，价格850；C服是三分妄想家的，价格791元；脚套是牛牛兽厂家的，属于是随便找了个兽装脚套，价格208元：总价是5249元。<!--C服+鞋分别来自娜多和梦梦鞋店，价格476+145元：总价是4871元。--></p>
+                            <p id="diff3"></p>
                           </blockquote>
                           <blockquote>
                             <footer>你是坐什么交通工具来的？</footer>
@@ -242,5 +243,38 @@
          
         //alert(isInclude("passcheck.php"));
         //if(!isInclude("passcheck.php")) window.open('/passport/passgive.php', '_self');
+	</script>
+	<script>
+        // JSON data storing content for divs
+        const jsonData = {
+            "kirara": {  //绮良良
+                "diff1": `来自原神的角色<a href="https://mzh.moegirl.org.cn/%E7%BB%AE%E8%89%AF%E8%89%AF" target="_blank">绮良良</a>（是一只可爱的猫又~）`,
+                "diff2": `我的性别是绮良良~`,
+                "diff3": `头壳是NFD家的，价格3400元；皮肤是麦薇家的，价格850；C服是三分妄想家的，价格791元；脚套是牛牛兽厂家的，属于是随便找了个兽装脚套，价格208元：总价是5249元。`,
+            },
+            "noelle": {  //诺艾尔
+                "diff1": `来自原神的角色<a href="https://mzh.moegirl.org.cn/%E8%AF%BA%E8%89%BE%E5%B0%94(%E5%8E%9F%E7%A5%9E)#" target="_blank">诺艾尔</a>（是一位可靠的女仆~）`,
+                "diff2": `我的性别是诺艾尔~`,
+                "diff3": `头壳是NFD家的，价格3200元；皮肤是麦薇家的，价格850；C服+鞋分别来自娜多和梦梦鞋店，价格476+145元：总价是4871元。`,
+            },
+            "no.21": {  //21号
+                "diff1": `来自战双帕弥什的角色<a href="https://mzh.moegirl.org.cn/%E6%88%98%E5%8F%8C%E5%B8%95%E5%BC%A5%E4%BB%80:21%E5%8F%B7%C2%B7XXI" target="_blank">21号·XXI</a>（是一个疯批美人（bushi）~）`,
+                "diff2": `我的性别是XXI哦~`,
+                "diff3": `头壳是摸鱼工坊家的，价格7600元；皮肤是麦薇家的，价格850；雷三七的C服和尾巴来自面包家，价格880元：暗三七的C服来自漫骨，价格470元；总价是9330（雷三七）/8920（暗三七）元。`,
+            },
+        };
+
+        function characterDifference(character) {
+            // Loop through each key in the JSON data
+            for (const key in jsonData[character]) {
+                // Check if the key exists as an element ID in the document
+                if (document.getElementById(key)) {
+                    // Replace the content of the corresponding div
+                    document.getElementById(key).innerHTML = jsonData[character][key];
+                }
+            }
+        }
+        
+        characterDifference("kirara");
 	</script>
 </html>

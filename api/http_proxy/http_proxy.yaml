@@ -1,5 +1,5 @@
 #---------------------------------------------------#
-## 更新：2024-09-06 19:58:38
+## 更新：2024-09-22 17:17:18
 #---------------------------------------------------#
 
 # HTTP 代理端口
@@ -32,15 +32,7 @@ secret: ''
 
 
 proxies:
-  - {"name": "0#阿根廷_阿根廷__", "type": "http", "server": "164.163.42.19", "port":10000, "skip-cert-verify": true}
-  - {"name": "1#中国_中国__联通", "type": "http", "server": "116.169.54.254", "port":8080, "skip-cert-verify": true}
-  - {"name": "2#印度_马哈拉施特拉邦__", "type": "http", "server": "45.119.133.218", "port":3128, "skip-cert-verify": true}
-  - {"name": "3#厄瓜多尔_厄瓜多尔__transnexa.com", "type": "http", "server": "177.234.241.24", "port":999, "skip-cert-verify": true}
-  - {"name": "4#中国_浙江_杭州_阿里云/电信/联通/移动/铁通/教育网", "type": "http", "server": "101.37.22.207", "port":3128, "skip-cert-verify": true}
-  - {"name": "5#厄瓜多尔_厄瓜多尔__transnexa.com", "type": "http", "server": "177.234.241.27", "port":999, "skip-cert-verify": true}
-  - {"name": "6#中国_云南_昆明_联通", "type": "http", "server": "14.204.150.68", "port":8080, "skip-cert-verify": true}
-  - {"name": "7#中国_中国__tencent.com", "type": "http", "server": "175.178.179.214", "port":10008, "skip-cert-verify": true}
-  - {"name": "8#中国_江西_南昌_电信", "type": "http", "server": "117.40.32.134", "port":8080, "skip-cert-verify": true}
+  - {"name": "0#中国_福建_福州_电信", "type": "http", "server": "203.104.34.144", "port":3128, "skip-cert-verify": true}
 
 
 proxy-groups:
@@ -48,15 +40,7 @@ proxy-groups:
   name: Proxy
   type: select
   proxies:
-    - '0#阿根廷_阿根廷__'
-    - '1#中国_中国__联通'
-    - '2#印度_马哈拉施特拉邦__'
-    - '3#厄瓜多尔_厄瓜多尔__transnexa.com'
-    - '4#中国_浙江_杭州_阿里云/电信/联通/移动/铁通/教育网'
-    - '5#厄瓜多尔_厄瓜多尔__transnexa.com'
-    - '6#中国_云南_昆明_联通'
-    - '7#中国_中国__tencent.com'
-    - '8#中国_江西_南昌_电信'
+    - '0#中国_福建_福州_电信'
 
 -
   name: Domestic

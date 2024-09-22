@@ -100,7 +100,7 @@ def get_json(session: Any) -> Optional[list]:
 
 @retry(tries=3)
 def get_ip(session: Any, dlsite_url: str) -> Optional[str]:
-    url = f'https://sites.ipaddress.com/{dlsite_url}'
+    url = f'https://proxy.pro-ivan.cn/Ldc123456/https/sites.ipaddress.com/{dlsite_url}'
     headers = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'
                       ' AppleWebKit/537.36 (KHTML, like Gecko) Chrome/1'

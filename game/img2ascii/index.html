@@ -1,139 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image Processing</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to ASCII Art</title>
+    <style>
+        body {
+            font-family: monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        
+        #ascii-art {
+            font-family: 'Courier New', Courier, monospace; /* 使用等宽字体 */
+            white-space: pre;
+            font-size: 8px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            font-weight: bold;
+            pointer-events: none;
+        }
+        
+        #ascii-art span {
+            display: inline-block;
+            width: 1ch; /* 每个字符占据1个字符宽度 */
+            text-align: center; /* 可选：使字符居中 */
+        }
+    </style>
 </head>
 <body>
-<h1>Image Processing</h1>
-<input type="file" id="fileInput">
-<canvas id="canvas" style="display: none;"></canvas>
-<label for="threshold">点阵亮度：</label>
-<input id="threshold" value=200>
-<div id="output"></div>
+    <h1>Image to ASCII Art</h1>
+    <input type="file" id="image-input" accept="image/*">
+    <label for="threshold">Threshold:</label>
+    <input type="range" id="threshold" min="0" max="255" value="160">
+    <span id="threshold-value">160</span>
+    <label for="scale">Scale (%):</label>
+    <input type="range" id="scale" min="10" max="100" value="100">
+    <span id="scale-value">100</span>
+    <label for="contrast">Contrast:</label>
+    <input type="range" id="contrast" min="0" max="200" value="100">
+    <span id="contrast-value">0</span>
+    <label for="brightness">Brightness:</label>
+    <input type="range" id="brightness" min="0" max="200" value="100">
+    <span id="brightness-value">0</span>
+    <button id="save">Save</button>
+    <canvas id="canvas" style="display: none;"></canvas>
+    <pre id="ascii-art"></pre>
 
-<script>
-// Function to enhance image contrast and customize image scaling
-function transfer(imageData, contrast, scale) {
-    var data = imageData.data;
-    var width = imageData.width;
-    var height = imageData.height;
-    var factor = (259 * (contrast + 255)) / (255 * (259 - contrast));
+    <script>
+document.getElementById('image-input').addEventListener('change', handleImageUpload);
+document.getElementById('threshold').addEventListener('input', updateThreshold);
+document.getElementById('scale').addEventListener('input', updateScale);
+document.getElementById('contrast').addEventListener('input', updateContrast);
+document.getElementById('brightness').addEventListener('input', updateBrightness);
 
-    for (let i = 0; i < data.length; i += 4) {
-        data[i] = factor * (data[i] - 128) + 128; // Red channel
-        data[i + 1] = factor * (data[i + 1] - 128) + 128; // Green channel
-        data[i + 2] = factor * (data[i + 2] - 128) + 128; // Blue channel
-    }
+const asciiChars = "⠀⠁⠂⠃⠄⠅⠆⠇⡀⡁⡂⡃⡄⡅⡆⡇⠈⠉⠊⠋⠌⠍⠎⠏⡈⡉⡊⡋⡌⡍⡎⡏⠐⠑⠒⠓⠔⠕⠖⠗⡐⡑⡒⡓⡔⡕⡖⡗⠘⠙⠚⠛⠜⠝⠞⠟⡘⡙⡚⡛⡜⡝⡞⡟⠠⠡⠢⠣⠤⠥⠦⠧⡠⡡⡢⡣⡤⡥⡦⡧⠨⠩⠪⠫⠬⠭⠮⠯⡨⡩⡪⡫⡬⡭⡮⡯⠰⠱⠲⠳⠴⠵⠶⠷⡰⡱⡲⡳⡴⡵⡶⡷⠸⠹⠺⠻⠼⠽⠾⠿⡸⡹⡺⡻⡼⡽⡾⡿⢀⢁⢂⢃⢄⢅⢆⢇⣀⣁⣂⣃⣄⣅⣆⣇⢈⢉⢊⢋⢌⢍⢎⢏⣈⣉⣊⣋⣌⣍⣎⣏⢐⢑⢒⢓⢔⢕⢖⢗⣐⣑⣒⣓⣔⣕⣖⣗⢘⢙⢚⢛⢜⢝⢞⢟⣘⣙⣚⣛⣜⣝⣞⣟⢠⢡⢢⢣⢤⢥⢦⢧⣠⣡⣢⣣⣤⣥⣦⣧⢨⢩⢪⢫⢬⢭⢮⢯⣨⣩⣪⣫⣬⣭⣮⣯⢰⢱⢲⢳⢴⢵⢶⢷⣰⣱⣲⣳⣴⣵⣶⣷⢸⢹⢺⢻⢼⢽⢾⢿⣸⣹⣺⣻⣼⣽⣾⣿";
 
-    // Rotate the image clockwise by 90 degrees
-    var rotatedData = new Uint8ClampedArray(data.length);
+let currentImage = null;
+let threshold = 160;
+let scale = 1;
+let contrast = 1; // 默认对比度系数
+let brightness = 1; // 默认亮度系数
+let asciiArt = '';
 
-    for (let i = 0; i < height; i++) {
-        for (let j = 0; j < width; j++) {
-            var sourceIndex = (i * width + j) * 4;
-            var targetIndex = ((width - j - 1) * height + i) * 4;
-            rotatedData[targetIndex] = data[sourceIndex];
-            rotatedData[targetIndex + 1] = data[sourceIndex + 1];
-            rotatedData[targetIndex + 2] = data[sourceIndex + 2];
-            rotatedData[targetIndex + 3] = data[sourceIndex + 3];
-        }
-    }
+function handleImageUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
 
-    // Create a new canvas for custom scaling
-    var newCanvas = document.createElement('canvas');
-    var newCtx = newCanvas.getContext('2d');
-    newCanvas.width = height * scale;
-    newCanvas.height = width * scale;
-    newCtx.putImageData(new ImageData(rotatedData, height, width), 0, 0);
-    newCtx.scale(scale, scale);
-
-    return newCtx.getImageData(0, 0, newCanvas.width, newCanvas.height);
-}
-
-// Usage example
-var contrast = 1; // Contrast enhancement factor
-var scale = 1; // Custom scaling factor
-
-// Use enhancedImageData for further processing or display
-
-function toAscii(x, y, imgArray) {
-    //console.log(x,y);
-    var draw = [
-        imgArray[2*y][4*x],
-        imgArray[2*y+1][4*x],
-        imgArray[2*y][4*x+1],
-        imgArray[2*y+1][4*x+1],
-        imgArray[2*y][4*x+2],
-        imgArray[2*y+1][4*x+2],
-        imgArray[2*y][4*x+3],
-        imgArray[2*y+1][4*x+3]
-    ];
-    var code = draw[0] + draw[2]*2 + draw[4]*4 + draw[6]*8 + draw[1]*16 + draw[3]*32 + draw[5]*64 + draw[7]*128;
-    var mangWen = "⠀⠁⠂⠃⠄⠅⠆⠇⡀⡁⡂⡃⡄⡅⡆⡇⠈⠉⠊⠋⠌⠍⠎⠏⡈⡉⡊⡋⡌⡍⡎⡏⠐⠑⠒⠓⠔⠕⠖⠗⡐⡑⡒⡓⡔⡕⡖⡗⠘⠙⠚⠛⠜⠝⠞⠟⡘⡙⡚⡛⡜⡝⡞⡟⠠⠡⠢⠣⠤⠥⠦⠧⡠⡡⡢⡣⡤⡥⡦⡧⠨⠩⠪⠫⠬⠭⠮⠯⡨⡩⡪⡫⡬⡭⡮⡯⠰⠱⠲⠳⠴⠵⠶⠷⡰⡱⡲⡳⡴⡵⡶⡷⠸⠹⠺⠻⠼⠽⠾⠿⡸⡹⡺⡻⡼⡽⡾⡿⢀⢁⢂⢃⢄⢅⢆⢇⣀⣁⣂⣃⣄⣅⣆⣇⢈⢉⢊⢋⢌⢍⢎⢏⣈⣉⣊⣋⣌⣍⣎⣏⢐⢑⢒⢓⢔⢕⢖⢗⣐⣑⣒⣓⣔⣕⣖⣗⢘⢙⢚⢛⢜⢝⢞⢟⣘⣙⣚⣛⣜⣝⣞⣟⢠⢡⢢⢣⢤⢥⢦⢧⣠⣡⣢⣣⣤⣥⣦⣧⢨⢩⢪⢫⢬⢭⢮⢯⣨⣩⣪⣫⣬⣭⣮⣯⢰⢱⢲⢳⢴⢵⢶⢷⣰⣱⣲⣳⣴⣵⣶⣷⢸⢹⢺⢻⢼⢽⢾⢿⣸⣹⣺⣻⣼⣽⣾⣿";
-    
-    //console.log(mangWen[code]);
-    return mangWen[code];
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    var fileInput = document.getElementById("fileInput");
-    var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext('2d');
-
-    fileInput.addEventListener('change', function() {
-        var file = fileInput.files[0];
-        var reader = new FileReader();
-
-        reader.onload = function(e) {
-            var img = new Image();
-            img.onload = function() {
-                canvas.width = img.width;
-                canvas.height = img.height;
-                ctx.drawImage(img, 0, 0);
-                
-                var threshold = document.getElementById('threshold').value; // Threshold value for binarization
-                var imageData = ctx.getImageData(0, 0, img.width, img.height);
-                // Assume you have imageData from your previous code
-                imageData = transfer(imageData, contrast, scale);
-                var imgArray = [];
-                for (let i = 0; i < imageData.height; i++) {
-                    imgArray[i] = [];
-                    for (let j = 0; j < imageData.width; j++) {
-                        imgArray[i][j] = imageData.data[i * imageData.width * 4 + j * 4]>threshold?1:0;
-                    }
-                }
-                console.log(imgArray);
-
-                var asciiArt = [];
-                for (let i = 0; i < Math.floor(imageData.height / 4); i++) {
-                    asciiArt[i] = [];
-                    for (let j = 0; j < Math.floor(imageData.width / 2); j++) {
-                        asciiArt[i][j] = toAscii(i, j, imgArray);
-                    }
-                }
-                
-                var asciiArtString
-                for (let i = 0; i < Math.floor(imageData.height / 4); i++) {
-                    let col = "";
-                    for (let j = 0; j < Math.floor(imageData.width / 2); j++) {
-                        asciiArt[i][j] = toAscii(i, j, imgArray);
-                        col += asciiArt[i][j];
-                    }
-                    console.log(col);
-                    asciiArtString += col+'<br>';
-                }
-                document.getElementById('output').innerHTML = asciiArtString;
-            };
-
-            img.src = e.target.result;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+            currentImage = img;
+            processImage(img);
         };
+        img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+}
 
-        reader.readAsDataURL(file);
-    });
-});
-</script>
+function updateThreshold(event) {
+    threshold = event.target.value;
+    document.getElementById('threshold-value').textContent = threshold;
+    if (currentImage) {
+        processImage(currentImage);
+    }
+}
+
+function updateScale(event) {
+    scale = event.target.value / 100;
+    document.getElementById('scale-value').textContent = event.target.value;
+    if (currentImage) {
+        processImage(currentImage);
+    }
+}
+
+function updateContrast(event) {
+    contrast = event.target.value / 100;
+    document.getElementById('contrast-value').textContent = event.target.value;
+    if (currentImage) {
+        processImage(currentImage);
+    }
+}
+
+function updateBrightness(event) {
+    brightness = event.target.value / 100;
+    document.getElementById('brightness-value').textContent = event.target.value;
+    if (currentImage) {
+        processImage(currentImage);
+    }
+}
+
+function processImage(img) {
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const size = Math.min(img.width, img.height);
+    const scaledSize = Math.floor(size * scale);
+    canvas.width = scaledSize;
+    canvas.height = scaledSize;
+
+    ctx.drawImage(img, 0, 0, size, size, 0, 0, scaledSize, scaledSize);
+
+    const imageData = ctx.getImageData(0, 0, scaledSize, scaledSize);
+    const data = imageData.data;
+
+    const middle = 128;
+
+    // 调整亮度和对比度
+    for (let i = 0; i < data.length; i += 4) {
+        // 亮度调整
+        data[i] *= brightness; // 红色通道
+        data[i + 1] *= brightness; // 绿色通道
+        data[i + 2] *= brightness; // 蓝色通道
+
+        // 对比度调整
+        data[i] = (data[i] - middle) * contrast + middle; // 红色通道
+        data[i + 1] = (data[i + 1] - middle) * contrast + middle; // 绿色通道
+        data[i + 2] = (data[i + 2] - middle) * contrast + middle; // 蓝色通道
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+
+    // 转换为二值图像
+    for (let i = 0; i < data.length; i += 4) {
+        const value = data[i] > threshold ? 255 : 0;
+        data[i] = data[i + 1] = data[i + 2] = value;
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+    generateASCIIArt(ctx, scaledSize, scaledSize);
+}
+
+function generateASCIIArt(ctx, width, height) {
+    const imgData = ctx.getImageData(0, 0, width, height);
+    const data = imgData.data;
+
+    asciiArt = '';
+    for (let y = 0; y < height; y += 4) {
+        let line = '';
+        for (let x = 0; x < width; x += 2) {
+            const pixels = [];
+            for (let dx = 0; dx < 2; dx++) {
+                for (let dy = 0; dy < 4; dy++) {
+                    const index = ((y + dy) * width + (x + dx)) * 4;
+                    const value = data[index] === 255 ? 0 : 1;
+                    pixels.push(value);
+                }
+            }
+            const code = pixels.reduce((acc, val, idx) => acc + val * Math.pow(2, idx), 0);
+            if(code!==0)
+                line += asciiChars[code];
+            else
+                line += "<span></span>";
+        }
+        asciiArt += line + '\n';
+    }
+
+    document.getElementById('ascii-art').innerHTML = asciiArt;
+}
+
+    </script>
+    <script>
+        document.getElementById('save').addEventListener('click', function() {
+            // 使用Clipboard API将文本保存到剪切板
+            navigator.clipboard.writeText(asciiArt.replace(/<span><\/span>/g, " ")).then(function() {
+                alert('ASCII art saved to clipboard!');
+            }).catch(function(err) {
+                console.error('Failed to save text to clipboard: ', err);
+            });
+        });
+    </script>
 </body>
 </html>
-

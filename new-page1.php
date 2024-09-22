@@ -2547,6 +2547,34 @@ if (!isset($_SESSION['visited'])) {
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep128-6.png">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep128-6.png!w200" src="/Ivanbg.png" alt="creep">
                             </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep130.png">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep130.png!w200" src="/Ivanbg.png" alt="creep">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep131-1.png">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep131-1.png!w200" src="/Ivanbg.png" alt="creep">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep131-2.png">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep131-2.png!w200" src="/Ivanbg.png" alt="creep">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep131-3.png">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep131-3.png!w200" src="/Ivanbg.png" alt="creep">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep129-1.png">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep129-1.png!w200" src="/Ivanbg.png" alt="creep">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep129-2.png">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep129-2.png!w200" src="/Ivanbg.png" alt="creep">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep129-3.png">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep129-3.png!w200" src="/Ivanbg.png" alt="creep">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep129-4.png">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep129-4.png!w200" src="/Ivanbg.png" alt="creep">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/creep/creep129-5.png">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/creep/creep129-5.png!w200" src="/Ivanbg.png" alt="creep">
+                            </div>
 						</div>
 						<div id="btn3" class="mdui-panel-item-actions">
 							<button class="mdui-btn mdui-ripple" onclick="setTimeout(function(){document.getElementById('btn3').scrollIntoView({ block: 'end', behavior: 'smooth' });},400)" mdui-panel-item-close>收起</button>
@@ -4091,6 +4119,13 @@ if (!isset($_SESSION['visited'])) {
 							<div class="showImg" src="//us.pro-ivan.com/imgbed/agm/agm132-3.jpg">
 								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm132-3.jpg!w200" src="/Ivanbg.png" alt="agm">
 							</div>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/agm/agm133.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm133.jpg!w200" src="/Ivanbg.png" alt="agm">
+							</div>
+							<br>
+							<div class="showImg" src="//us.pro-ivan.com/imgbed/agm/agm134.jpg">
+								<img class="lazy" data-src="//us.pro-ivan.com/imgbed/agm/agm134.jpg!w200" src="/Ivanbg.png" alt="agm">
+							</div>
 						</div>
 						<div id="btn5" class="mdui-panel-item-actions">
 							<button class="mdui-btn mdui-ripple" onclick="setTimeout(function(){document.getElementById('btn5').scrollIntoView({ block: 'end', behavior: 'smooth' });},400)" mdui-panel-item-close>收起</button>
@@ -5320,6 +5355,9 @@ if (!isset($_SESSION['visited'])) {
                             </div>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/daimon/daimon249.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/daimon/daimon249.jpeg!w200" src="/Ivanbg.png" alt="daimon">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/daimon/daimon250.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/daimon/daimon250.jpeg!w200" src="/Ivanbg.png" alt="daimon">
                             </div>
 						</div>
 						<div id="btn6" class="mdui-panel-item-actions">
@@ -7909,6 +7947,272 @@ if (!isset($_SESSION['visited'])) {
                             </div>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro240-7.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro240-7.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro241-1.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro241-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro241-2.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro241-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro243-1.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro243-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro242-1.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro242-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro242-2.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro242-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro243-2.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro243-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro243-3.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro243-3.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro243-4.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro243-4.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-1.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-2.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-3.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-3.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-4.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-4.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-5.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-5.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-6.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-6.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-7.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-7.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-8.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-8.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-9.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-9.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-10.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-10.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-11.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-11.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-12.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-12.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-13.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-13.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-14.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-14.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-15.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-15.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-16.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-16.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-17.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-17.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-18.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-18.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-19.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-19.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-20.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-20.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-21.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-21.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-22.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-22.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-23.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-23.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-24.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-24.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-25.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-25.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-26.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-26.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-27.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-27.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro244-28.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro244-28.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro245.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro245.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro247.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro247.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro246-1.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro246-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro246-2.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro246-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro246-3.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro246-3.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro246-4.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro246-4.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro248-1.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro248-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro248-2.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro248-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro248-3.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro248-3.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro252-1.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro252-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro252-2.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro252-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro249-1.jpg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro249-1.jpg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro249-2.jpg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro249-2.jpg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro249-3.jpg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro249-3.jpg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro249-4.jpg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro249-4.jpg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro249-5.jpg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro249-5.jpg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro250-1.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro250-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro250-2.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro250-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro250-3.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro250-3.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro250-4.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro250-4.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro250-5.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro250-5.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro250-6.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro250-6.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro250-7.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro250-7.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro250-8.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro250-8.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro250-9.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro250-9.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro250-10.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro250-10.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro250-11.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro250-11.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro250-12.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro250-12.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro250-13.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro250-13.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro250-14.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro250-14.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro250-15.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro250-15.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro251.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro251.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro253-1.jpg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro253-1.jpg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro253-2.jpg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro253-2.jpg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro253-3.jpg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro253-3.jpg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro253-4.jpg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro253-4.jpg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro254-1.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro254-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro254-2.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro254-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro254-3.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro254-3.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro254-4.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro254-4.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro256-1.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro256-1.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro256-2.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro256-2.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro256-3.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro256-3.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro256-4.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro256-4.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro256-5.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro256-5.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro256-6.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro256-6.jpeg!w200" src="/Ivanbg.png" alt="maguro">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/maguro/maguro255.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/maguro/maguro255.jpeg!w200" src="/Ivanbg.png" alt="maguro">
                             </div>
 						</div>
 						<div id="btn7" class="mdui-panel-item-actions">
@@ -12174,6 +12478,10 @@ if (!isset($_SESSION['visited'])) {
                             </div>
                             <div class="showImg" src="//us.pro-ivan.com/imgbed/daimon_ex/daimon_ex134.jpeg">
                                 <img class="lazy" data-src="//us.pro-ivan.com/imgbed/daimon_ex/daimon_ex134.jpeg!w200" src="/Ivanbg.png" alt="daimon_ex">
+                            </div>
+                            <br>
+                            <div class="showImg" src="//us.pro-ivan.com/imgbed/daimon_ex/daimon_ex135.jpeg">
+                                <img class="lazy" data-src="//us.pro-ivan.com/imgbed/daimon_ex/daimon_ex135.jpeg!w200" src="/Ivanbg.png" alt="daimon_ex">
                             </div>
 						</div>
 						<div id="btn9" class="mdui-panel-item-actions">

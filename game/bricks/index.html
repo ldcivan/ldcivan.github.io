@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹珠游戏</title>
+    <style>
+        body { margin: 0; overflow: hidden; font-family: Arial, sans-serif; }
+        canvas { background: #000; display: block; }
+        #info { position: absolute; top: 10px; left: 10px; color: white; }
+    </style>
+</head>
+<body>
+    <div id="info">剩余弹珠数: <span id="ballCount">3</span></div>
+    <canvas id="gameCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const PADDLE_WIDTH = 100;
+        const PADDLE_HEIGHT = 20;
+        const PADDLE_PADDING = 30;
+        const BALL_RADIUS = 8;
+        const BRICK_SIZE = 20;
+        const BRICK_PADDING = 1;
+        const BRICK_ROW_COUNT = 30;
+        const BRICK_COLUMN_COUNT = 100;
+        const BRICK_OFFSET_TOP = 30;
+        const BRICK_OFFSET_LEFT = 30;
+
+        let paddleX = (canvas.width - PADDLE_WIDTH) / 2;
+        let rightPressed = false;
+        let leftPressed = false;
+        let balls = [{ x: canvas.width / 2, y: canvas.height - 30, dx: 2, dy: -2 }];
+        let bricks = [];
+        let ballCount = 10;
+        
+        function getRandomBrickType() {
+            const weights = [
+                { type: 0, weight: 0.14 }, // 20%概率为空
+                { type: 1, weight: 0.3 }, // 30%概率为类型1
+                { type: 2, weight: 0.15 }, // 20%概率为类型2
+                { type: 3, weight: 0.01 }, // 20%概率为类型3
+                { type: 4, weight: 0.4 }  // 10%概率为类型4
+            ];
+        
+            const totalWeight = weights.reduce((sum, item) => sum + item.weight, 0);
+            let random = Math.random() * totalWeight;
+        
+            for (let i = 0; i < weights.length; i++) {
+                if (random < weights[i].weight) {
+                    return weights[i].type;
+                }
+                random -= weights[i].weight;
+            }
+        }
+
+        // 初始化砖块
+        function initBricks() {
+            for(let c = 0; c < BRICK_COLUMN_COUNT; c++) {
+                bricks[c] = [];
+                for(let r = 0; r < BRICK_ROW_COUNT; r++) {
+                    const brickType = getRandomBrickType(); // 随机生成砖块类型，20%概率为空
+                    bricks[c][r] = { x: 0, y: 0, status: brickType };
+                }
+            }
+        }
+
+        initBricks();
+
+        document.addEventListener("keydown", keyDownHandler, false);
+        document.addEventListener("keyup", keyUpHandler, false);
+        document.addEventListener("mousemove", mouseMoveHandler, false);
+
+        function keyDownHandler(e) {
+            if(e.key === "Right" || e.key === "ArrowRight" || e.key === "d") {
+                rightPressed = true;
+            }
+            else if(e.key === "Left" || e.key === "ArrowLeft" || e.key === "a") {
+                leftPressed = true;
+            }
+        }
+
+        function keyUpHandler(e) {
+            if(e.key === "Right" || e.key === "ArrowRight" || e.key === "d") {
+                rightPressed = false;
+            }
+            else if(e.key === "Left" || e.key === "ArrowLeft" || e.key === "a") {
+                leftPressed = false;
+            }
+        }
+
+        function mouseMoveHandler(e) {
+            const relativeX = e.clientX - canvas.offsetLeft;
+            if(relativeX > 0 && relativeX < canvas.width) {
+                paddleX = relativeX - PADDLE_WIDTH / 2;
+            }
+        }
+        
+        function normalizeSpeed(ball) {
+            let currentSpeed = Math.sqrt(ball.dx * ball.dx + ball.dy * ball.dy);
+            ball.dx = (ball.dx / currentSpeed) * ball.speed;
+            ball.dy = (ball.dy / currentSpeed) * ball.speed;
+        }
+
+        function drawPaddle() {
+            ctx.beginPath();
+            ctx.rect(paddleX, canvas.height - PADDLE_HEIGHT - PADDLE_PADDING, PADDLE_WIDTH, PADDLE_HEIGHT);
+            ctx.fillStyle = "#0095DD";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function drawBall(ball) {
+            ctx.beginPath();
+            ctx.arc(ball.x, ball.y, BALL_RADIUS, 0, Math.PI * 2);
+            ctx.fillStyle = "#0095DD";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function drawBricks() {
+            for(let c = 0; c < BRICK_COLUMN_COUNT; c++) {
+                for(let r = 0; r < BRICK_ROW_COUNT; r++) {
+                    if(bricks[c][r].status > 0) {
+                        const brickX = (c * (BRICK_SIZE + BRICK_PADDING)) + BRICK_OFFSET_LEFT;
+                        const brickY = (r * (BRICK_SIZE + BRICK_PADDING)) + BRICK_OFFSET_TOP;
+                        bricks[c][r].x = brickX;
+                        bricks[c][r].y = brickY;
+                        ctx.beginPath();
+                        ctx.rect(brickX, brickY, BRICK_SIZE, BRICK_SIZE);
+                        ctx.fillStyle = getBrickColor(bricks[c][r].status);
+                        ctx.fill();
+                        ctx.closePath();
+                    }
+                }
+            }
+        }
+
+        function getBrickColor(status) {
+            switch(status) {
+                case 1: return "#0095DD"; // 一次碰撞即可消除
+                case 2: return "#00DD95"; // 多次碰撞方可消除
+                case 3: return "#DD9500"; // 一次碰撞后消除并掉落道具
+                case 4: return "#DD0000"; // 不可消除
+                default: return "#0095DD";
+            }
+        }
+
+        function collisionDetection() {
+            for(let c = 0; c < BRICK_COLUMN_COUNT; c++) {
+                for(let r = 0; r < BRICK_ROW_COUNT; r++) {
+                    const b = bricks[c][r];
+                    if(b.status > 0) {
+                        balls.forEach(ball => {
+                            if(ball.x + BALL_RADIUS >= b.x + BRICK_PADDING/2 && ball.x - BALL_RADIUS < b.x + BRICK_SIZE - BRICK_PADDING/2 && ball.y + BALL_RADIUS >= b.y + BRICK_PADDING/2 && ball.y - BALL_RADIUS < b.y + BRICK_SIZE - BRICK_PADDING/2) {
+                                if (b.status !== 4) {
+                                    ball.dy = -ball.dy;
+                                    if (b.status === 1 || b.status === 3) {
+                                        if (b.status === 3) {
+                                            dropPowerUp(b.x + BRICK_SIZE / 2, b.y + BRICK_SIZE / 2);
+                                        }
+                                        b.status = 0;
+                                    } else {
+                                        b.status--;
+                                    }
+                                } else {
+                                    // 红色方块反弹逻辑
+                                    if (ball.x >= b.x - BRICK_PADDING/2 && ball.x < b.x + BRICK_SIZE + BRICK_PADDING/2) {
+                                        ball.dy = -ball.dy;
+                                    } else if (ball.y >= b.y - BRICK_PADDING/2 && ball.y < b.y + BRICK_SIZE + BRICK_PADDING/2) {
+                                        ball.dx = -ball.dx;
+                                    }
+                                }
+                                normalizeSpeed(ball); // 确保速度大小不变
+                            }
+                        });
+                    }
+                }
+            }
+        }
+
+        function dropPowerUp(x, y) {
+            function getRandomPowerUpType() {
+                const powerUpWeights = [
+                    { type: 0, weight: 0.1 }, // 40%概率为弹珠分裂
+                    { type: 1, weight: 0.6 }, // 40%概率为发射三个新弹珠
+                    { type: 2, weight: 0.3 }  // 20%概率为发射穿透弹珠
+                ];
+            
+                const totalWeight = powerUpWeights.reduce((sum, item) => sum + item.weight, 0);
+                let random = Math.random() * totalWeight;
+            
+                for (let i = 0; i < powerUpWeights.length; i++) {
+                    if (random < powerUpWeights[i].weight) {
+                        return powerUpWeights[i].type;
+                    }
+                    random -= powerUpWeights[i].weight;
+                }
+            }
+            
+            const powerUpType = getRandomPowerUpType();
+            // 处理不同类型的道具效果
+            switch(powerUpType) {
+                case 0: // 弹珠分裂
+                    splitBalls();
+                    break;
+                case 1: // 发射三个新弹珠
+                    shootNewBalls();
+                    break;
+                case 2: // 发射穿透弹珠
+                    shootPiercingBall();
+                    break;
+            }
+        }
+
+        function splitBalls() {
+            const newBalls = [];
+            balls.forEach(ball => {
+                newBalls.push({ x: ball.x, y: ball.y, dx: ball.dx, dy: ball.dy });
+                newBalls.push({ x: ball.x, y: ball.y, dx: ball.dx * Math.cos(Math.PI / 3) - ball.dy * Math.sin(Math.PI / 3), dy: ball.dx * Math.sin(Math.PI / 3) + ball.dy * Math.cos(Math.PI / 3) });
+                newBalls.push({ x: ball.x, y: ball.y, dx: ball.dx * Math.cos(-Math.PI / 3) - ball.dy * Math.sin(-Math.PI / 3), dy: ball.dx * Math.sin(-Math.PI / 3) + ball.dy * Math.cos(-Math.PI / 3) });
+            });
+            balls = newBalls;
+        }
+
+        function shootNewBalls() {
+            balls.push({ x: paddleX + PADDLE_WIDTH / 2, y: canvas.height - PADDLE_HEIGHT - PADDLE_PADDING, dx: 2, dy: -2 });
+            balls.push({ x: paddleX + PADDLE_WIDTH / 2, y: canvas.height - PADDLE_HEIGHT - PADDLE_PADDING, dx: 2 * Math.cos(Math.PI / 3) - 2 * Math.sin(Math.PI / 3), dy: 2 * Math.sin(Math.PI / 3) + 2 * Math.cos(Math.PI / 3) });
+            balls.push({ x: paddleX + PADDLE_WIDTH / 2, y: canvas.height - PADDLE_HEIGHT - PADDLE_PADDING, dx: 2 * Math.cos(-Math.PI / 3) - 2 * Math.sin(-Math.PI / 3), dy: 2 * Math.sin(-Math.PI / 3) + 2 * Math.cos(-Math.PI / 3) });
+        }
+
+        function normalizeSpeed(ball) {
+            const speed = Math.sqrt(ball.dx * ball.dx + ball.dy * ball.dy);
+            const newSpeed = 2; // 设定一个固定的速度
+            ball.dx = (ball.dx / speed) * newSpeed;
+            ball.dy = (ball.dy / speed) * newSpeed;
+        }
+
+        function shootPiercingBall() {
+            const piercingBall = { x: paddleX + PADDLE_WIDTH / 2, y: canvas.height - PADDLE_HEIGHT - PADDLE_PADDING, dx: 0, dy: -2, piercing: true, time: 8000 };
+            balls.push(piercingBall);
+            setTimeout(() => {
+                const index = balls.indexOf(piercingBall);
+                if (index > -1) {
+                    balls.splice(index, 1);
+                }
+            }, 8000);
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBricks();
+            drawPaddle();
+            balls.forEach(drawBall);
+            collisionDetection();
+
+            balls.forEach(ball => {
+                if(ball.x + ball.dx > canvas.width - BALL_RADIUS || ball.x + ball.dx < BALL_RADIUS) {
+                    ball.dx = -ball.dx;
+                    normalizeSpeed(ball); // 确保速度大小不变
+                }
+                if(ball.y + ball.dy < BALL_RADIUS) {
+                    ball.dy = -ball.dy;
+                    normalizeSpeed(ball); // 确保速度大小不变
+                } else if(ball.y + ball.dy > canvas.height - BALL_RADIUS - PADDLE_HEIGHT - PADDLE_PADDING) {
+                    if(ball.x > paddleX && ball.x < paddleX + PADDLE_WIDTH) {
+                        ball.dy = -ball.dy;
+                        ball.dx += (ball.x - (paddleX + PADDLE_WIDTH / 2)) * 0.1; // 根据碰撞点调整方向
+                        normalizeSpeed(ball); // 确保速度大小不变
+                    } else {
+                        balls.splice(balls.indexOf(ball), 1);
+                        if (balls.length === 0) {
+                            if (ballCount > 0) {
+                                balls.push({ x: paddleX + PADDLE_WIDTH / 2, y: canvas.height - BALL_RADIUS - PADDLE_HEIGHT - PADDLE_PADDING, dx: 2, dy: -2 });
+                                ballCount--;
+                                document.getElementById('ballCount').innerText = ballCount;
+                            } else {
+                                alert("游戏结束！");
+                                document.location.reload();
+                            }
+                        }
+                    }
+                }
+
+                ball.x += ball.dx;
+                ball.y += ball.dy;
+            });
+
+            if(rightPressed && paddleX < canvas.width - PADDLE_WIDTH) {
+                paddleX += 7;
+            }
+            else if(leftPressed && paddleX > 0) {
+                paddleX -= 7;
+            }
+
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+    </script>
+</body>
+</html>

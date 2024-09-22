@@ -10,19 +10,18 @@
 
 <pre>
 # Steam520 Host Start
-23.33.180.80                  store.steampowered.com
-61.170.98.100                 media.st.dl.eccdnx.com
-23.4.32.216                   steamcommunity.com
+23.210.240.66                 store.steampowered.com
+23.210.138.105                steamcommunity.com
 172.64.145.151                avatars.cloudflare.steamstatic.com
 172.64.145.151                community.cloudflare.steamstatic.com
 23.46.30.143                  steamuserimages-a.akamaihd.net
 172.64.145.151                cdn.cloudflare.steamstatic.com
-104.96.220.130                cdn.steampowered.com
-23.12.146.164                 cdn.store.steampowered.com
-23.39.46.48                   cdn.steamcommunity.com
-23.12.146.141                 media.steampowered.com
+23.201.34.168                 cdn.steampowered.com
+23.54.127.38                  cdn.store.steampowered.com
+23.222.12.16                  cdn.steamcommunity.com
+23.53.35.11                   media.steampowered.com
 
-# Update time: 2024-08-07T12:48:10+08:00
+# Update time: 2024-09-22T09:09:36+08:00
 # Update url: https://pro-ivan.com/api/steam520/hosts
 # Star author: https://github.com/521xueweihan/GitHub520
 # This is a back-up from Pro-ivan.com
@@ -31,7 +30,7 @@
 
 </pre>
 
-<br>该内容会自动定时更新， 数据更新时间：2024-08-07T12:48:10+08:00<br>
+<br>该内容会自动定时更新， 数据更新时间：2024-09-22T09:09:36+08:00<br>
 
 <h5>1.1.2 修改 hosts 文件</h5>
 

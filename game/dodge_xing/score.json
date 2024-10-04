@@ -1118,5 +1118,33 @@
         "density": 25,
         "ifpc": true,
         "token": "66e3e6cb0596a"
+    },
+    {
+        "name": "\u560e\u560e",
+        "score": "5.906",
+        "density": 25,
+        "ifpc": false,
+        "token": "66faba9b6706e"
+    },
+    {
+        "name": "r\u2006t",
+        "score": "2.468",
+        "density": 25,
+        "ifpc": false,
+        "token": "66fabada5d636"
+    },
+    {
+        "name": "\u53d1\u6325",
+        "score": "3.040",
+        "density": 25,
+        "ifpc": false,
+        "token": "66fabaf642208"
+    },
+    {
+        "name": "\u665a\u996d",
+        "score": "5.350",
+        "density": 25,
+        "ifpc": false,
+        "token": "66fabb12a0973"
     }
 ]

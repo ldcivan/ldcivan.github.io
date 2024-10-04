@@ -1,9 +1,11 @@
+<h2>若您是从漫展扫码访问本页的，<a href="/new-contact/">请到这里来</a></h2>
+<hr>
 本站由PC作为服务器，佐以同步运行的动态监视软件，旨在保存并分享 <a href="https://space.bilibili.com/2100679" target="_blank">醒爷</a> 与 <a href="https://space.bilibili.com/438790493" target="_blank">苦怕佬</a> 等画师在b站的被ban的图片。请不要对其进行压力测试！
 <br>
 服务器采用基础服务器/云储存并行策略；云储存有极小概率失效，届时请等待10-15分钟，一般可自行恢复。
 <br>
 <hr>
-如果您访问确实出现问题(如:部分组件无法正常加载，页面出现排版错误，图片/页面长时间无响应)，为了我们能尽快改进并对您的问题做出解答，请前往<a href="/comment.html">GitHub留言页</a>或者<a href="https://space.bilibili.com/11022578">Bilibili</a>向我们反馈错误。
+如果您访问确实出现问题(如:部分组件无法正常加载，页面出现排版错误，图片/页面长时间无响应)，为了我们能尽快改进并对您的问题做出解答，请前往<a href="https://github.com/ldcivan/ldcivan.github.io" target="_blank">GitHub留言页</a>或者<a href="https://space.bilibili.com/11022578" target="_blank">Bilibili</a>向我们反馈错误。
 <br>
 <b style="color: red">
 获取更多信息，或想使用管理员密码帮助我们开发网站，请加入Q群：304103272
@@ -27,6 +29,8 @@
 > 增加图片资源的缩略图、懒加载，增加图库、图床的图片查看/预览
 <br>
 > 优化了图库的图片查看功能，增加了来自Cloudflare的图片资源线路及对应的自动线路选择器
+<br>
+> 大幅优化了图库目录加载速度
 
 <hr>
 Tip：当加载过慢时，您可以切换线路:

@@ -41,6 +41,7 @@ if (is_array($img['tmp_name'])) {
             
             // 生成新的文件名
             $newFileName = time() . '_' . $platform . '_' . $author . '_' . $key . '.' . $fileExtension;
+            $newFileName= preg_replace('/[\/:*?"<>|]/', '_', $newFileName);
             $destination = $uploadDir . $newFileName;
             
             // 验证并压缩图片

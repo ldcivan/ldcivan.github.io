@@ -598,12 +598,14 @@ if (!isset($_SESSION['visited'])) {
     
               // 停留 1000ms 后加载图片
               const timeoutId = setTimeout(() => {
+                img.onload = function() {
+                    img.classList.remove('lazy');
+                    img.classList.add('shown');
+                    observer.unobserve(img);
+                    img.style.paddingTop = '0';
+                    img.style.paddingBottom = '0';
+                };
                 img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                img.classList.add('shown');
-                observer.unobserve(img);
-                img.style.paddingTop = '0';
-                img.style.paddingBottom = '0';
                 //console.log('load')
               }, 1000);
     

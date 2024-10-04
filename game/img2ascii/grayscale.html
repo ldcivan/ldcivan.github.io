@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to ASCII Art</title>
+    <style>
+        body {
+            font-family: monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        
+        #ascii-art {
+            font-family: 'Courier New', Courier, monospace; /* 使用等宽字体 */
+            white-space: pre;
+            font-size: 8px;
+            line-height: 0.95;
+            letter-spacing: -1px;
+            font-weight: bold;
+            pointer-events: none;
+        }
+        
+        #ascii-art span {
+            display: inline-block;
+            width: 1ch; /* 每个字符占据1个字符宽度 */
+            text-align: center; /* 可选：使字符居中 */
+        }
+    </style>
+</head>
+<body>
+    <h1>Image to ASCII Art</h1>
+    <a href="index.html" target="_blank">二值化/With binarization</a>
+    <input type="file" id="image-input" accept="image/*">
+    <label for="type">Type:</label>
+    <input type="range" id="type" min="0" max="1" value="0">
+    <span id="type-value">0</span>
+    <label for="scale">Scale (%):</label>
+    <input type="range" id="scale" min="10" max="100" value="100">
+    <span id="scale-value">100</span>
+    <label for="contrast">Contrast:</label>
+    <input type="range" id="contrast" min="0" max="200" value="100">
+    <span id="contrast-value">100</span>
+    <label for="brightness">Brightness:</label>
+    <input type="range" id="brightness" min="0" max="200" value="100">
+    <span id="brightness-value">100</span>
+    <button id="save">Save</button>
+    <canvas id="canvas" style="display: none;"></canvas>
+    <pre id="ascii-art"></pre>
+
+    <script>
+document.getElementById('image-input').addEventListener('change', handleImageUpload);
+document.getElementById('type').addEventListener('input', updateType);
+document.getElementById('scale').addEventListener('input', updateScale);
+document.getElementById('contrast').addEventListener('input', updateContrast);
+document.getElementById('brightness').addEventListener('input', updateBrightness);
+
+let anti_asciiChars = ' .`^",:;Il!i~+_-?][}{1)(|\\/*tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$';
+// 将字符串转换为字符数组，然后按ASCII值进行排序
+let sortedChars = anti_asciiChars.split('').sort((a, b) => b.charCodeAt(0) - a.charCodeAt(0));
+// 将排序后的字符数组连接成一个新的字符串
+let normal_asciiChars = sortedChars.join('');
+const asciiChars = [normal_asciiChars, anti_asciiChars];
+
+let asciiCharsType = 0;
+let currentImage = null;
+let scale = 1;
+let contrast = 1; // 默认对比度系数
+let brightness = 1; // 默认亮度系数
+let asciiArt = '';
+
+function handleImageUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+            currentImage = img;
+            processImage(img);
+        };
+        img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+}
+
+function updateType(event) {
+    asciiCharsType = event.target.value;
+    document.getElementById('type-value').textContent = event.target.value;
+    if (currentImage) {
+        processImage(currentImage);
+    }
+}
+
+function updateScale(event) {
+    scale = event.target.value / 100;
+    document.getElementById('scale-value').textContent = event.target.value;
+    if (currentImage) {
+        processImage(currentImage);
+    }
+}
+
+function updateContrast(event) {
+    contrast = event.target.value / 100;
+    document.getElementById('contrast-value').textContent = event.target.value;
+    if (currentImage) {
+        processImage(currentImage);
+    }
+}
+
+function updateBrightness(event) {
+    brightness = event.target.value / 100;
+    document.getElementById('brightness-value').textContent = event.target.value;
+    if (currentImage) {
+        processImage(currentImage);
+    }
+}
+
+function processImage(img) {
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const size = [img.width, img.height];
+    const scaledSize = [Math.floor(size[0] * scale), Math.floor(size[1] * scale)];
+    canvas.width = scaledSize[0];
+    canvas.height = scaledSize[1];
+
+    ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0,  scaledSize[0], scaledSize[1]);
+
+    const imageData = ctx.getImageData(0, 0, scaledSize[0], scaledSize[1]);
+    const data = imageData.data;
+
+    const middle = 128;
+
+    // 调整亮度和对比度
+    for (let i = 0; i < data.length; i += 4) {
+        // 亮度调整
+        data[i] *= brightness; // 红色通道
+        data[i + 1] *= brightness; // 绿色通道
+        data[i + 2] *= brightness; // 蓝色通道
+
+        // 对比度调整
+        data[i] = (data[i] - middle) * contrast + middle; // 红色通道
+        data[i + 1] = (data[i + 1] - middle) * contrast + middle; // 绿色通道
+        data[i + 2] = (data[i + 2] - middle) * contrast + middle; // 蓝色通道
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+
+    generateASCIIArt(ctx, scaledSize[0], scaledSize[1]);
+}
+
+function generateASCIIArt(ctx, width, height) {
+    const imgData = ctx.getImageData(0, 0, width, height);
+    const data = imgData.data;
+
+    const aspectRatio = 0.5; // 调整纵横比
+    const adjustedHeight = Math.floor(height * aspectRatio);
+
+    // 计算图像中的最浅和最深灰度值
+    let minGray = 255;
+    let maxGray = 0;
+    for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+        const gray = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+        if (gray < minGray) minGray = gray;
+        if (gray > maxGray) maxGray = gray;
+    }
+
+    asciiArt = '';
+    for (let y = 0; y < adjustedHeight; y++) {
+        let line = '';
+        for (let x = 0; x < width; x++) {
+            const index = (Math.floor(y / aspectRatio) * width + x) * 4;
+            const r = data[index];
+            const g = data[index + 1];
+            const b = data[index + 2];
+            const gray = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+            
+            // 动态映射灰度值到ASCII字符集
+            const normalizedGray = (gray - minGray) / (maxGray - minGray);
+            const charIndex = Math.floor(normalizedGray * (asciiChars[asciiCharsType].length - 1));
+            line += asciiChars[asciiCharsType][charIndex];
+        }
+        asciiArt += line + '\n';
+    }
+
+    document.getElementById('ascii-art').textContent = asciiArt;
+}
+
+    </script>
+    <script>
+        document.getElementById('save').addEventListener('click', function() {
+            // 使用Clipboard API将文本保存到剪切板
+            navigator.clipboard.writeText(asciiArt).then(function() {
+                alert('ASCII art saved to clipboard!');
+            }).catch(function(err) {
+                console.error('Failed to save text to clipboard: ', err);
+            });
+        });
+    </script>
+</body>
+</html>

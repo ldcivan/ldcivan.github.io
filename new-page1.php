@@ -25,6 +25,9 @@ function compressIfNeeded($sourceFile, $compressedFile) {
         $content = file_get_contents($sourceFile);
         $compressedContent = gzcompress($content);
         file_put_contents($compressedFile, $compressedContent);
+        echo "<script>let update = true;</script>";
+    } else {
+        echo "<script>let update = false;</script>";
     }
 }
 
@@ -329,7 +332,7 @@ try {
 				<b>· 对于第一次打开或在清除网页缓存后打开本网页的用户，可能出现图片访问403的情况，这是为了防止CDN流量被滥用，届时请耐心等待2-3分钟以等待服务恢复</b>
 			</p>
 			<p>
-			    · 本页面上次更新于 <span id='LastUpdate'><?php $filename = basename(__FILE__);$last_modified = date("Y-n-d H:i:s", filemtime($filename));echo $last_modified; ?></span>
+			    · 本页面上次更新于 <span id='LastUpdate'><?php $filename = 'img_content_compressed.gz';$last_modified = date("Y-n-d H:i:s", filemtime($filename));echo $last_modified; ?></span>
 			</p>
 			<div id="img_content" class="mdui-panel" mdui-panel>
                 
@@ -355,7 +358,10 @@ try {
     </script>
     <script>
         function loadCompressedContent() {
-            fetch('img_content_compressed.gz')
+            let header = update ? `{"Cache-Control": "no-cache"}`:`{}`;
+            fetch('img_content_compressed.gz', {
+                    headers: JSON.parse(header)
+                })
                 .then(response => response.arrayBuffer())
                 .then(buffer => {
                     const compressedContent = new Uint8Array(buffer);

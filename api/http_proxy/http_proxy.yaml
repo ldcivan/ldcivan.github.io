@@ -1,5 +1,5 @@
 #---------------------------------------------------#
-## 更新：2024-10-04 14:58:51
+## 更新：2024-10-13 21:08:59
 #---------------------------------------------------#
 
 # HTTP 代理端口
@@ -32,8 +32,7 @@ secret: ''
 
 
 proxies:
-  - {"name": "0#中国_山东_菏泽_电信", "type": "http", "server": "182.44.114.80", "port":8888, "skip-cert-verify": true}
-  - {"name": "1#中国_浙江_杭州_阿里云/电信/联通/移动/铁通/教育网", "type": "http", "server": "120.27.150.152", "port":3128, "skip-cert-verify": true}
+  - {"name": "0#美国_美国__amazon.com", "type": "http", "server": "16.171.74.5", "port":8888, "skip-cert-verify": true}
 
 
 proxy-groups:
@@ -41,8 +40,7 @@ proxy-groups:
   name: Proxy
   type: select
   proxies:
-    - '0#中国_山东_菏泽_电信'
-    - '1#中国_浙江_杭州_阿里云/电信/联通/移动/铁通/教育网'
+    - '0#美国_美国__amazon.com'
 
 -
   name: Domestic

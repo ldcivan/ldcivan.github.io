@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Visualization</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            display: inline-block;
+            margin: 10px auto;
+        }
+        .controls {
+            text-align: center;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <label for="arraySize">Array Size:</label>
+        <input type="number" id="arraySize" value="50" min="10" max="200">
+        <label for="Interval">Sort Interval:</label>
+        <input type="number" id="Interval" value="20" min="0" max="200">
+        <label for="Equalstep">Equalstep:</label>
+        <input type="checkbox" id="Equalstep" checked>
+        <button onclick="startSorting()">Start Sorting</button>
+        <button onclick="pauseSorting()">Pause Sorting</button>
+        <button onclick="resetArray()">Reset Array</button>
+        <button onclick="initializeArray()">New Array</button>
+    </div>
+    <canvas id="bubbleSortCanvas" width="500" height="200"></canvas>
+    <canvas id="selectionSortCanvas" width="500" height="200"></canvas>
+    <canvas id="insertionSortCanvas" width="500" height="200"></canvas>
+    <canvas id="mergeSortCanvas" width="500" height="200"></canvas>
+    <canvas id="quickSortCanvas" width="500" height="200"></canvas>
+    <canvas id="heapSortCanvas" width="500" height="200"></canvas>
+    <canvas id="shellSortCanvas" width="500" height="200"></canvas>
+    <canvas id="countingSortCanvas" width="500" height="200"></canvas>
+    <canvas id="bucketSortCanvas" width="500" height="200"></canvas>
+    <canvas id="radixSortCanvas" width="500" height="200"></canvas>
+    
+    <script>
+        const canvasElements = {
+            bubbleSort: document.getElementById('bubbleSortCanvas').getContext('2d'),
+            selectionSort: document.getElementById('selectionSortCanvas').getContext('2d'),
+            insertionSort: document.getElementById('insertionSortCanvas').getContext('2d'),
+            mergeSort: document.getElementById('mergeSortCanvas').getContext('2d'),
+            quickSort: document.getElementById('quickSortCanvas').getContext('2d'),
+            heapSort: document.getElementById('heapSortCanvas').getContext('2d'),
+            shellSort: document.getElementById('shellSortCanvas').getContext('2d'),
+            countingSort: document.getElementById('countingSortCanvas').getContext('2d'),
+            bucketSort: document.getElementById('bucketSortCanvas').getContext('2d'),
+            radixSort: document.getElementById('radixSortCanvas').getContext('2d'),
+        };
+
+        let array = [];
+        let originalArray = [];
+        let barWidth;
+        let interval = 20;
+        let sorting = false;
+        let rank = 1;
+        const minBarWidth = 2; // 最小宽度为 2px
+
+        function drawArray(ctx, arr, highlightIndices = [], label = '', complete = false) {
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+            ctx.fillStyle = 'black';
+            ctx.font = '16px Arial';
+            ctx.fillText(label, 10, 20);
+            arr.forEach((value, index) => {
+                ctx.fillStyle = complete ? 'green' : (highlightIndices.includes(index) ? 'red' : 'blue');
+                ctx.fillRect(index * barWidth, ctx.canvas.height - value, (highlightIndices.includes(index) ? Math.max(barWidth, minBarWidth) : barWidth), value);
+            });
+        }
+
+        async function sortAndMeasureTime(sortFunction, arr, ctx, label) {
+            const startTime = performance.now();
+            await sortFunction(arr, ctx);
+            const endTime = performance.now();
+            const timeTaken = (endTime - startTime).toFixed(2);
+            drawArray(ctx, arr, [], label, true);
+            ctx.fillStyle = 'black';
+            ctx.fillText(`Time: ${timeTaken} ms`, 10, 40);
+            ctx.fillText(`Rank: No.${rank}`, 10, 60);
+            rank++;
+        }
+
+        async function bubbleSort(arr, ctx) {
+            let len = arr.length;
+            for (let i = 0; i < len; i++) {
+                for (let j = 0; j < len - i - 1; j++) {
+                    if (!sorting) return;
+                    drawArray(ctx, arr, [j, j + 1]);
+                    await new Promise(resolve => setTimeout(resolve, interval));
+                    if (arr[j] > arr[j + 1]) {
+                        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+                    }
+                }
+            }
+        }
+
+        async function selectionSort(arr, ctx) {
+            let len = arr.length;
+            for (let i = 0; i < len; i++) {
+                let minIndex = i;
+                for (let j = i + 1; j < len; j++) {
+                    if (!sorting) return;
+                    drawArray(ctx, arr, [minIndex, j]);
+                    await new Promise(resolve => setTimeout(resolve, interval));
+                    if (arr[j] < arr[minIndex]) {
+                        minIndex = j;
+                    }
+                }
+                if (minIndex !== i) {
+                    [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+                }
+            }
+        }
+
+        async function insertionSort(arr, ctx) {
+            let len = arr.length;
+            for (let i = 1; i < len; i++) {
+                let key = arr[i];
+                let j = i - 1;
+                while (j >= 0 && arr[j] > key) {
+                    if (!sorting) return;
+                    arr[j + 1] = arr[j];
+                    drawArray(ctx, arr, [j, j + 1]);
+                    await new Promise(resolve => setTimeout(resolve, interval));
+                    j--;
+                }
+                arr[j + 1] = key;
+            }
+        }
+
+        async function mergeSort(arr, ctx, start = 0, end = arr.length) {
+            if (end - start < 2) return;
+            const mid = Math.floor((start + end) / 2);
+            await mergeSort(arr, ctx, start, mid);
+            await mergeSort(arr, ctx, mid, end);
+            await merge(arr, ctx, start, mid, end);
+        }
+        
+        async function merge(arr, ctx, start, mid, end) {
+            let left = arr.slice(start, mid);
+            let right = arr.slice(mid, end);
+            let i = 0, j = 0, k = start;
+        
+            while (i < left.length && j < right.length) {
+                if (!sorting) return;
+                if (left[i] <= right[j]) {
+                    arr[k] = left[i++];
+                } else {
+                    arr[k] = right[j++];
+                }
+                drawArray(ctx, arr, [k]); // 高亮当前合并位置
+                k++;
+                await new Promise(resolve => setTimeout(resolve, interval));
+            }
+        
+            while (i < left.length) {
+                arr[k] = left[i++];
+                drawArray(ctx, arr, [k]); // 高亮当前合并位置
+                k++;
+                await new Promise(resolve => setTimeout(resolve, interval));
+            }
+        
+            while (j < right.length) {
+                arr[k] = right[j++];
+                drawArray(ctx, arr, [k]); // 高亮当前合并位置
+                k++;
+                await new Promise(resolve => setTimeout(resolve, interval));
+            }
+        }
+
+        async function quickSort(arr, ctx, low = 0, high = arr.length - 1) {
+            if (low < high) {
+                let pi = await partition(arr, ctx, low, high);
+                await quickSort(arr, ctx, low, pi - 1);
+                await quickSort(arr, ctx, pi + 1, high);
+            }
+        }
+
+        async function partition(arr, ctx, low, high) {
+            let pivot = arr[high];
+            let i = low - 1;
+            for (let j = low; j < high; j++) {
+                if (!sorting) return;
+                if (arr[j] < pivot) {
+                    i++;
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                }
+                drawArray(ctx, arr, [i, j, high]);
+                await new Promise(resolve => setTimeout(resolve, interval));
+            }
+            [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
+            drawArray(ctx, arr);
+            return i + 1;
+        }
+
+        async function heapSort(arr, ctx) {
+            let len = arr.length;
+            for (let i = Math.floor(len / 2) - 1; i >= 0; i--) {
+                await heapify(arr, ctx, len, i);
+            }
+            for (let i = len - 1; i > 0; i--) {
+                if (!sorting) return;
+                [arr[0], arr[i]] = [arr[i], arr[0]];
+                drawArray(ctx, arr, [0, i]); // 高亮交换的元素
+                await new Promise(resolve => setTimeout(resolve, interval));
+                await heapify(arr, ctx, i, 0);
+            }
+        }
+        
+        async function heapify(arr, ctx, n, i) {
+            let largest = i;
+            let left = 2 * i + 1;
+            let right = 2 * i + 2;
+        
+            if (left < n && arr[left] > arr[largest]) largest = left;
+            if (right < n && arr[right] > arr[largest]) largest = right;
+            
+            if (largest !== i) {
+                [arr[i], arr[largest]] = [arr[largest], arr[i]];
+                drawArray(ctx, arr, [i, largest]); // 高亮交换的元素
+                await new Promise(resolve => setTimeout(resolve, interval));
+                await heapify(arr, ctx, n, largest);
+            }
+        }
+
+        async function shellSort(arr, ctx) {
+            let len = arr.length;
+            for (let gap = Math.floor(len / 2); gap > 0; gap = Math.floor(gap / 2)) {
+                for (let i = gap; i < len; i++) {
+                    let temp = arr[i];
+                    let j;
+                    for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
+                        if (!sorting) return;
+                        arr[j] = arr[j - gap];
+                        drawArray(ctx, arr, [j, j - gap]);
+                        await new Promise(resolve => setTimeout(resolve, interval));
+                    }
+                    arr[j] = temp;
+                }
+            }
+        }
+
+        async function countingSort(arr, ctx) {
+            let len = arr.length;
+            if (len === 0) return;
+        
+            let factor = 1;
+            if (len > 200) {
+                factor = Math.pow(10, Math.ceil(Math.log10(1 / Math.min(...arr.map(x => x % 1).filter(x => x > 0) || [1]))));
+            }
+        
+            let scaledArr = arr.map(x => Math.round(x * factor));
+ 
+            var i;
+            var min = scaledArr[0];
+            var max = scaledArr[0];
+     
+            for (i = 1; i < scaledArr.length; i++) {
+                if (scaledArr[i] < min) {
+                    min= scaledArr[i];                //输入数据的最小值
+                } else if (scaledArr[i] > max) {
+                    max = scaledArr[i];                //输入数据的最大值
+                }
+                drawArray(ctx, arr, [i]); // 高亮合并回主数组的过程
+                await new Promise(resolve => setTimeout(resolve, interval));
+            }
+            let range = max - min + 1;
+        
+            if (range <= 0) return;
+        
+            let count = Array(range).fill(0);
+            let output = Array(len).fill(0);
+        
+            for (let i = 0; i < len; i++) {
+                if (!sorting) return;
+                count[scaledArr[i] - min]++;
+                drawArray(ctx, arr, [i]); // 高亮当前处理的元素
+                await new Promise(resolve => setTimeout(resolve, interval));
+            }
+            for (let i = 1; i < range; i++) {
+                count[i] += count[i - 1];
+            }
+            for (let i = len - 1; i >= 0; i--) {
+                if (!sorting) return;
+                output[count[scaledArr[i] - min] - 1] = arr[i];
+                count[scaledArr[i] - min]--;
+                drawArray(ctx, output, [count[scaledArr[i] - min]]); // 高亮当前放置的位置
+                await new Promise(resolve => setTimeout(resolve, interval));
+            }
+            for (let i = 0; i < len; i++) {
+                arr[i] = output[i];
+            }
+        }
+
+
+        
+        async function bucketSort(arr, ctx) {
+        if (arr.length === 0) {
+            return arr;
+        }
+ 
+        var i;
+        var minValue = arr[0];
+        var maxValue = arr[0];
+ 
+        for (i = 1; i < arr.length; i++) {
+            if (arr[i] < minValue) {
+                minValue = arr[i];                //输入数据的最小值
+            } else if (arr[i] > maxValue) {
+                maxValue = arr[i];                //输入数据的最大值
+            }
+            drawArray(ctx, arr, [i]); // 高亮合并回主数组的过程
+            await new Promise(resolve => setTimeout(resolve, interval));
+        }
+ 
+        //桶的初始化
+        bucketSize = await calculateBucketSize(arr,minValue,maxValue,i+1);
+ 
+        //桶的数量
+        var bucketCount = Math.floor((maxValue - minValue) / bucketSize) + 1;
+        //new一个数组长度为桶的数量的数组，说白了就是构造n个桶
+        var buckets = new Array(bucketCount);
+        //让每一个桶成为一个单独的有序数组，目的是用来装填需要排序的数组子元素
+        for (i = 0; i < buckets.length; i++) {
+            buckets[i] = [];
+        }
+ 
+        //利用映射函数将数据分配到各个桶中
+ 
+        for (i = 0; i < arr.length; i++) {
+            buckets[Math.floor((arr[i] - minValue) / bucketSize)].push(arr[i]);
+            drawArray(ctx, arr, [i]); // 高亮合并回主数组的过程
+            await new Promise(resolve => setTimeout(resolve, interval));
+        }
+ 
+        arr.length = 0;
+        for (i = 0; i < buckets.length; i++) {
+            await mergeSort(buckets[i], ctx);                      //对每个桶进行排序，这里使用了插入排序
+            for (var j = 0; j < buckets[i].length; j++) {
+                arr.push(buckets[i][j]);
+                await new Promise(resolve => setTimeout(resolve, interval));
+            }
+ 
+        }
+      
+        return arr;
+    }
+        
+        async function calculateBucketSize(array,minValue,maxValue,idealNumberOfBuckets) {
+            const rangeOfNumbers = maxValue - minValue;
+            const totalNumberOfBuckets = Math.floor(idealNumberOfBuckets * Math.sqrt(rangeOfNumbers / idealNumberOfBuckets));
+            const bucketSize = Math.ceil(idealNumberOfBuckets / totalNumberOfBuckets);
+            return bucketSize;
+        }
+
+        async function radixSort(arr, ctx) {
+            if (arr.length === 0) return;
+        
+            let factor = 1;
+            if (arr.length > 200) {
+                factor = Math.pow(10, Math.ceil(Math.log10(1 / Math.min(...arr.map(x => x % 1).filter(x => x > 0) || [1]))));
+            }
+            
+            var i;
+            var min = arr[0]*factor;
+            var max = arr[0]*factor;
+     
+            for (i = 1; i < arr.length; i++) {
+                if (arr[i]*factor < min) {
+                    min= arr[i]*factor;                //输入数据的最小值
+                } else if (arr[i]*factor > max) {
+                    max = arr[i]*factor;                //输入数据的最大值
+                }
+                drawArray(ctx, arr, [i]); // 高亮合并回主数组的过程
+                await new Promise(resolve => setTimeout(resolve, interval));
+            }
+            
+            let exp = 1;
+            while (Math.floor(max / exp) > 0) {
+                if (!sorting) return;
+                await countingSortForRadix(arr, ctx, exp, factor, i);
+                exp *= 10;
+            }
+        }
+        
+        async function countingSortForRadix(arr, ctx, exp, factor,len) {
+            let output = Array(len).fill(0);
+            let count = Array(10).fill(0);
+        
+            for (let i = 0; i < len; i++) {
+                if (!sorting) return;
+                let scaledValue = Math.floor((arr[i] * factor) / exp) % 10;
+                count[scaledValue]++;
+                drawArray(ctx, arr, [i]); // 高亮当前处理的元素
+                await new Promise(resolve => setTimeout(resolve, interval));
+            }
+        
+            for (let i = 1; i < 10; i++) {
+                count[i] += count[i - 1];
+            }
+        
+            for (let i = len - 1; i >= 0; i--) {
+                if (!sorting) return;
+                let scaledValue = Math.floor((arr[i] * factor) / exp) % 10;
+                output[count[scaledValue] - 1] = arr[i];
+                count[scaledValue]--;
+                drawArray(ctx, output, [count[scaledValue]]); // 高亮当前放置的位置
+                await new Promise(resolve => setTimeout(resolve, interval));
+            }
+        
+            for (let i = 0; i < len; i++) {
+                arr[i] = output[i];
+            }
+        }
+
+        function startSorting() {
+            if (sorting) return;
+            sorting = true;
+
+            const bubbleSortArray = [...array];
+            const selectionSortArray = [...array];
+            const insertionSortArray = [...array];
+            const mergeSortArray = [...array];
+            const quickSortArray = [...array];
+            const heapSortArray = [...array];
+            const shellSortArray = [...array];
+            const countingSortArray = [...array];
+            const bucketSortArray = [...array];
+            const radixSortArray = [...array];
+
+            sortAndMeasureTime(bubbleSort, bubbleSortArray, canvasElements.bubbleSort, 'Bubble Sort');
+            sortAndMeasureTime(selectionSort, selectionSortArray, canvasElements.selectionSort, 'Selection Sort');
+            sortAndMeasureTime(insertionSort, insertionSortArray, canvasElements.insertionSort, 'Insertion Sort');
+            sortAndMeasureTime(mergeSort, mergeSortArray, canvasElements.mergeSort, 'Merge Sort');
+            sortAndMeasureTime(quickSort, quickSortArray, canvasElements.quickSort, 'Quick Sort');
+            sortAndMeasureTime(heapSort, heapSortArray, canvasElements.heapSort, 'Heap Sort');
+            sortAndMeasureTime(shellSort, shellSortArray, canvasElements.shellSort, 'Shell Sort');
+            sortAndMeasureTime(countingSort, countingSortArray, canvasElements.countingSort, 'Counting Sort');
+            sortAndMeasureTime(bucketSort, bucketSortArray, canvasElements.bucketSort, 'Bucket Sort with Merge Sort');
+            sortAndMeasureTime(radixSort, radixSortArray, canvasElements.radixSort, 'Radix Sort');
+        }
+
+        function pauseSorting() {
+            sorting = false;
+        }
+
+        function resetArray() {
+            sorting = false;
+            rank = 1;
+            array = originalArray;
+            drawAllArrays();
+        }
+
+        function initializeArray() {
+            sorting = false;
+            rank = 1;
+            const arraySize = parseInt(document.getElementById('arraySize').value);
+            const equalstep = document.getElementById('Equalstep').checked;
+            if(equalstep) {
+                array = Array.from({ length: arraySize }, (_, i) => (i + 1) * (200 / arraySize));
+            } else {
+                array = Array.from({ length: arraySize }, () => Math.floor(Math.random() * 200));
+            }
+            originalArray = array;
+            shuffleArray(array);
+            barWidth = canvasElements.bubbleSort.canvas.width / array.length;
+            drawAllArrays();
+        }
+
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+        }
+
+        function drawAllArrays() {
+            for (let ctx in canvasElements) {
+                const label = ctx.replace('Sort', ' Sort');
+                drawArray(canvasElements[ctx], array, [], label);
+            }
+        }
+        
+        document.getElementById('Interval').onchange = function() {
+            interval = parseInt(document.getElementById('Interval').value);
+        }
+
+        // Initialize with default values
+        initializeArray();
+    </script>
+</body>
+</html>

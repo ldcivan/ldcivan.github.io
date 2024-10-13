@@ -10,7 +10,7 @@
 
 <pre>
 # DLsite520 Host Start
-104.18.2.173                  www.dlsite.com
+104.18.3.173                  www.dlsite.com
 104.18.32.137                 cdn-apac.onetrust.com
 104.18.24.157                 img.dlsite.jp
 3.167.69.49                   media.dlsite.com
@@ -18,7 +18,7 @@
 99.84.160.123                 download.dlsite.com
 18.67.65.80                   media.ci-en.jp
 
-# Update time: 2024-10-04T06:58:49+08:00
+# Update time: 2024-10-13T13:01:18+08:00
 # Update url: https://pro-ivan.com/api/dlsite520/hosts
 # Star author: https://github.com/521xueweihan/GitHub520
 # This is a back-up from Pro-ivan.com
@@ -27,7 +27,7 @@
 
 </pre>
 
-<br>该内容会自动定时更新， 数据更新时间：2024-10-04T06:58:49+08:00<br>
+<br>该内容会自动定时更新， 数据更新时间：2024-10-13T13:01:18+08:00<br>
 
 <h5>1.1.2 修改 hosts 文件</h5>
 

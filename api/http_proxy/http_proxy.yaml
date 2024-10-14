@@ -1,5 +1,5 @@
 #---------------------------------------------------#
-## 更新：2024-10-13 21:08:59
+## 更新：2024-10-14 21:29:33
 #---------------------------------------------------#
 
 # HTTP 代理端口
@@ -32,7 +32,7 @@ secret: ''
 
 
 proxies:
-  - {"name": "0#美国_美国__amazon.com", "type": "http", "server": "16.171.74.5", "port":8888, "skip-cert-verify": true}
+  - {"name": "0#中国_北京_北京_鹏博士", "type": "http", "server": "180.88.111.187", "port":3128, "skip-cert-verify": true}
 
 
 proxy-groups:
@@ -40,7 +40,7 @@ proxy-groups:
   name: Proxy
   type: select
   proxies:
-    - '0#美国_美国__amazon.com'
+    - '0#中国_北京_北京_鹏博士'
 
 -
   name: Domestic

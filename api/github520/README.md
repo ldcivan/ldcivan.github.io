@@ -19,7 +19,7 @@
 185.199.109.133               avatars2.githubusercontent.com
 185.199.109.133               avatars3.githubusercontent.com
 185.199.109.133               avatars4.githubusercontent.com
-185.199.108.133               avatars5.githubusercontent.com
+185.199.109.133               avatars5.githubusercontent.com
 185.199.109.133               camo.githubusercontent.com
 140.82.112.22                 central.github.com
 185.199.109.133               cloud.githubusercontent.com
@@ -36,7 +36,7 @@
 192.0.66.2                    github.blog
 140.82.114.4                  github.com
 140.82.112.17                 github.community
-185.199.108.154               github.githubassets.com
+185.199.111.154               github.githubassets.com
 151.101.129.194               github.global.ssl.fastly.net
 185.199.110.153               github.io
 185.199.109.133               github.map.fastly.net
@@ -49,7 +49,7 @@
 185.199.109.133               user-images.githubusercontent.com
 4.249.131.160                 copilot-proxy.githubusercontent.com
 
-# Update time: 2024-10-13T13:08:08+08:00
+# Update time: 2024-10-14T13:18:04+08:00
 # Update url: https://pro-ivan.com/api/github520/hosts
 # Star author: https://github.com/521xueweihan/GitHub520
 # This is a back-up from Pro-ivan.com
@@ -58,7 +58,7 @@
 
 </pre>
 
-<br>该内容会自动定时更新， 数据更新时间：2024-10-13T13:08:08+08:00<br>
+<br>该内容会自动定时更新， 数据更新时间：2024-10-14T13:18:04+08:00<br>
 
 <h5>1.1.2 修改 hosts 文件</h5>
 

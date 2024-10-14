@@ -156,44 +156,7 @@ try {
               }
               return false;
             }
-            window.onload=function(){
-                document.getElementById('loading_a').className="mdui-dialog";
-                
-                // 获取所有带有 "showImg" 类名的图片元素
-                var images = document.querySelectorAll('.showImg');
-            
-                // 弹出图片的容器和关闭按钮
-                var overlay = document.getElementById('overlay');
-                var closeBtn = document.getElementById('closeBtn');
-            
-                // 点击图片时弹出图片
-                images.forEach(function(image) {
-                  image.addEventListener('click', function() {
-                    var src = image.getAttribute('src');
-                    document.getElementById('popupImg').setAttribute('src', src);
-                    overlay.style.display = 'flex';
-                  });
-                });
-            
-                // 点击关闭按钮时关闭弹出图片
-                closeBtn.addEventListener('click', function() {
-                  overlay.style.display = 'none';
-                });
-            
-                // 监听窗口大小变化，适配横屏或竖屏
-                window.addEventListener('resize', function() {
-                  var popupImg = document.getElementById('popupImg');
-                  if (window.innerWidth > window.innerHeight) {
-                    // 横屏
-                    popupImg.style.maxWidth = '90%';
-                    popupImg.style.maxHeight = '90%';
-                  } else {
-                    // 竖屏
-                    popupImg.style.maxWidth = '90%';
-                    popupImg.style.maxHeight = '90%';
-                  }
-                });
-            }
+
         </script>
 		<script>
         	var _hmt = _hmt || [];
@@ -357,18 +320,18 @@ try {
             //loadModel();
     </script>
     <script>
-        function loadCompressedContent() {
+        async function loadCompressedContent() {
             let header = update ? `{"Cache-Control": "no-cache"}`:`{}`;
             fetch('img_content_compressed.gz', {
                     headers: JSON.parse(header)
                 })
-                .then(response => response.arrayBuffer())
-                .then(buffer => {
+                .then(async (response) => await response.arrayBuffer())
+                .then(async (buffer) => {
                     const compressedContent = new Uint8Array(buffer);
-                    const decompressedContent = pako.inflate(compressedContent, { to: 'string' });
+                    const decompressedContent = await pako.inflate(compressedContent, { to: 'string' });
                     document.getElementById('img_content').innerHTML = decompressedContent;
-                    
-                    
+                })
+                .then(async () => {
                     // 获取所有带有 "lazy" 类名的图片元素
                     const lazyImages = document.querySelectorAll('.lazy');
                 
@@ -420,9 +383,12 @@ try {
                     lazyImages.forEach(image => {
                       observer.observe(image);
                     });
+                })
+                    // 给每个缩略图添加点击事件
+                .then(async () => {
                     
                     
-                    var thumbnails = document.getElementsByClassName('showImg');
+                    var thumbnails = document.querySelectorAll('.showImg');
                     var currentIndex = 0;
                 
                     function switchImage(direction) {
@@ -459,16 +425,52 @@ try {
                     document.getElementById('nextBtn').addEventListener('click', function() {
                         switchImage('next');
                     });
-                
-                    // 给每个缩略图添加点击事件
-                    setTimeout(function() {
+                    
+                    console.log(thumbnails.length);
                     for (var i = 0; i < thumbnails.length; i++) {
                         thumbnails[i].addEventListener('click', function() {
                             var index = Array.prototype.indexOf.call(thumbnails, this);
                             openPopup(index);
                         });
                     }
-                    },1000);
+                })
+                .then(async() => {
+                    document.getElementById('loading_a').className="mdui-dialog";
+                    
+                    // 获取所有带有 "showImg" 类名的图片元素
+                    var images = document.querySelectorAll('.showImg');
+                
+                    // 弹出图片的容器和关闭按钮
+                    var overlay = document.getElementById('overlay');
+                    var closeBtn = document.getElementById('closeBtn');
+                
+                    // 点击图片时弹出图片
+                    images.forEach(function(image) {
+                      image.addEventListener('click', function() {
+                        var src = image.getAttribute('src');
+                        document.getElementById('popupImg').setAttribute('src', src);
+                        overlay.style.display = 'flex';
+                      });
+                    });
+                
+                    // 点击关闭按钮时关闭弹出图片
+                    closeBtn.addEventListener('click', function() {
+                      overlay.style.display = 'none';
+                    });
+                
+                    // 监听窗口大小变化，适配横屏或竖屏
+                    window.addEventListener('resize', function() {
+                      var popupImg = document.getElementById('popupImg');
+                      if (window.innerWidth > window.innerHeight) {
+                        // 横屏
+                        popupImg.style.maxWidth = '90%';
+                        popupImg.style.maxHeight = '90%';
+                      } else {
+                        // 竖屏
+                        popupImg.style.maxWidth = '90%';
+                        popupImg.style.maxHeight = '90%';
+                      }
+                    });
                 })
                 .catch(error => console.error('Error loading compressed content:', error));
         }

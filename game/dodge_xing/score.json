@@ -1146,5 +1146,12 @@
         "density": 25,
         "ifpc": false,
         "token": "66fabb12a0973"
+    },
+    {
+        "name": "suancha",
+        "score": "4.114",
+        "density": 55,
+        "ifpc": true,
+        "token": "670e10f9c7b0d"
     }
 ]

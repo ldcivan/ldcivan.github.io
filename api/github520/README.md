@@ -14,7 +14,7 @@
 140.82.112.5                  api.github.com
 185.199.110.153               assets-cdn.github.com
 185.199.109.133               avatars.githubusercontent.com
-185.199.109.133               avatars0.githubusercontent.com
+185.199.108.133               avatars0.githubusercontent.com
 185.199.109.133               avatars1.githubusercontent.com
 185.199.109.133               avatars2.githubusercontent.com
 185.199.109.133               avatars3.githubusercontent.com
@@ -28,8 +28,8 @@
 185.199.109.133               desktop.githubusercontent.com
 185.199.109.133               favicons.githubusercontent.com
 140.82.114.3                  gist.github.com
-52.216.29.68                  github-cloud.s3.amazonaws.com
-3.5.25.200                    github-com.s3.amazonaws.com
+52.216.208.49                 github-cloud.s3.amazonaws.com
+52.216.36.129                 github-com.s3.amazonaws.com
 52.216.59.201                 github-production-release-asset-2e65be.s3.amazonaws.com
 16.182.109.65                 github-production-repository-file-5c1aeb.s3.amazonaws.com
 3.5.7.101                     github-production-user-asset-6210df.s3.amazonaws.com
@@ -49,7 +49,7 @@
 185.199.109.133               user-images.githubusercontent.com
 4.249.131.160                 copilot-proxy.githubusercontent.com
 
-# Update time: 2024-10-14T13:18:04+08:00
+# Update time: 2024-10-15T06:54:43+08:00
 # Update url: https://pro-ivan.com/api/github520/hosts
 # Star author: https://github.com/521xueweihan/GitHub520
 # This is a back-up from Pro-ivan.com
@@ -58,7 +58,7 @@
 
 </pre>
 
-<br>该内容会自动定时更新， 数据更新时间：2024-10-14T13:18:04+08:00<br>
+<br>该内容会自动定时更新， 数据更新时间：2024-10-15T06:54:43+08:00<br>
 
 <h5>1.1.2 修改 hosts 文件</h5>
 

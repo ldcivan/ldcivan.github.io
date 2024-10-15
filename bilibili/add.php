@@ -17,19 +17,20 @@
 
     $limit = 60;  // 间隔阈值
     $currentTime = time();  // 当前时间戳
+    echo '<div id="result_box" class="mdui-table-fluid mdui-table th"><div class="mdui-panel-item-body mdui-text-color-black-text" style="height:auto!important;margin-top:23px;"><div class="mdui-panel-item-header" style="pointer-events:none;"><div class="mdui-panel-item-title" style="width:100%;"><b style="color:black;font-size:1.0rem;">增加观测：'.$_POST['new_uid'].'</b></div></div><div class="mdui-typo" style="margin-bottom:15px;"><blockquote>';
     
     if (isset($_SESSION['lastAccessTime'])) {
         $lastAccessTime = $_SESSION['lastAccessTime'];
     
         if ($currentTime - $lastAccessTime < $limit) {
             // 访问频率超过限制，执行相应的操作，比如拒绝访问或提示用户稍后再试
-            exit('<script>alert("访问频率过高，请等待2分钟后再试！");window.open("'.$_SERVER['HTTP_REFERER'].'", "_self");</script>');
+            exit('<i class="mdui-icon material-icons">warning</i> 访问频率过高，请等待2分钟后再试！');
         }
     }
     
     
     require '/www/wwwroot/pro-ivan.cn/comment/email.class.php';
-    if(empty($_POST['new_uid'])) exit('<script>alert("空值，请输入合法uid");window.open("/bilibili", "_self");</script>');
+    if(empty($_POST['new_uid'])) exit('空值，请输入合法uid');
     if(!empty($_POST['new_uid'])){
         if(intval($_POST['new_uid']) == 0){
             $key = str_replace('uid:','',$_POST['new_uid']);
@@ -39,7 +40,7 @@
                 $key = str_replace('https://','',$_POST['new_uid']);
                 $key = str_replace('http://','',$key);
                 preg_match('/\/(\d+)/',$key,$key_trans);
-                if(intval($key_trans[1]) == 0) exit ("<script>alert('你可能输入的不是合法的uid或up主页链接')</script><meta http-equiv='refresh' content='0;url=./'>");
+                if(intval($key_trans[1]) == 0) exit ('<i class="mdui-icon material-icons">warning</i> 你可能输入的不是合法的uid或up主页链接');
                 else $new_uid = intval($key_trans[1]);
             }
         }
@@ -69,8 +70,8 @@
         }
         //echo(check_url($url));
         $check_result = check_url($url);
-        if($check_result['code'] !== 0) exit('<script>alert("无法拉取该uid对应页面！请检查uid或稍后再试……(code:'.$check_result['code'].')");window.open("/bilibili", "_self");</script>');
-        if($check_result['data']['card']['fans'] < 500) exit('<script>alert("过低的粉丝量'.$check_result['data']['card']['fans'].'，请尽量观测粉丝数500以上的up主！");window.open("/bilibili", "_self");</script>');
+        if($check_result['code'] !== 0) exit('<i class="mdui-icon material-icons">error</i> 无法拉取该uid对应页面！请检查uid或稍后再试……(code:'.$check_result['code'].')');
+        if($check_result['data']['card']['fans'] < 500) exit('<i class="mdui-icon material-icons">warning</i> 过低的粉丝量'.$check_result['data']['card']['fans'].'，请尽量观测粉丝数500以上的up主！');
 
         $json_string = file_get_contents("/www/wwwroot/pro-ivan.cn/bfanscount/.config");// 从文件中读取数据到PHP变量
         $data = json_decode($json_string,true);// 把JSON字符串转成PHP数组
@@ -108,10 +109,11 @@
             sendmailto($mailto,$subject,$body);
             
             $_SESSION['lastAccessTime'] = $currentTime;  // 更新最后访问时间
-            echo('<script>alert("验证成功，已经写入uid '.$new_uid.'(昵称：'.$check_result['data']['card']['name'].')，将在下一次观测中使用");window.open("/bilibili", "_self");</script>');
+            exit('<i class="mdui-icon material-icons">done</i> 验证成功，已经写入uid '.$new_uid.'(昵称：'.$check_result['data']['card']['name'].')，将在下一次观测中使用');
         }
         else {
-            exit('<script>alert("uid已在观测列表！");window.open("/bilibili/?uid='.$new_uid.'", "_self");</script>');
+            exit ('<meta http-equiv="refresh" content="0;url=/bilibili/?uid='.$new_uid.'&alert=uid已在观测列表，现在加载中">');
         }
     }
+    echo '</blockquote></div></div></div>';
 ?>

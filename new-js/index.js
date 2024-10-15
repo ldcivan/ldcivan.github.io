@@ -83,6 +83,8 @@ function getLoadTime(url) {
         const startTime = performance.now();
         const xhr = new XMLHttpRequest();
         xhr.open('GET', url, true);
+        xhr.setRequestHeader('Cache-Control', 'no-cache');
+        xhr.setRequestHeader('Pragma', 'no-cache');
         xhr.onload = function() {
             const endTime = performance.now();
             const loadTime = endTime - startTime;
@@ -96,8 +98,8 @@ function getLoadTime(url) {
 }
 
 Promise.all([
-    getLoadTime('https://us.pro-ivan.cn/favicon.ico?' + Math.floor(Math.random() * 1000000).toString().padStart(6, '0')),
-    getLoadTime('https://us.pro-ivan.com/favicon.ico?' + Math.floor(Math.random() * 1000000).toString().padStart(6, '0'))
+    getLoadTime('https://us.pro-ivan.cn/favicon.ico'),
+    getLoadTime('https://us.pro-ivan.com/favicon.ico')
 ])
     .then(([site1, site2]) => {
         const site1Score = calculateScore(site1.loadTime, site1.responseTime);
@@ -330,8 +332,104 @@ if(document.getElementById("footer")!=null){
     if (!document.querySelector('nofootertitle')) {
         footer_content += '<HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%" color=#C0C0C0 SIZE=3><div class="mdui-container-fluid"><h3 id="留言板">留言板</h3>';
     }
-    footer_content += '<div class="mdui-table-fluid mdui-table th" style="width:100%;"><br><form action="/comment/comment.php" method="post"><table class="mdui-table"><tbody><tr><th><label class="mdui-textfield-label">昵称</label><input type="text" class="mdui-textfield-input" name="name" placeholder="请输入昵称(小于25字)" required="required" maxlength="25" style="width:98%;"><br><label class="mdui-textfield-label">评论</label><input type="text" class="mdui-textfield-input" name="comment" placeholder="要讲文明哟~(小于200字)" required="required" maxlength="200" style="width:98%;"><br><label class="mdui-textfield-label">电邮</label><input type="text" class="mdui-textfield-input" name="contact" placeholder="或者其他联系方式（选填）" maxlength="200" style="width:98%;"><br><center><input class="mdui-btn mdui-ripple mdui-btn-raised mdui-btn-dense mdui-color-theme" type="submit" id ="submitButton" value="发送" onclick=""></center></th></tr></tbody></table></form><br><embed src="/sql_comment/" width="90%"/></div></div><br><div style="margin-bottom:15px;"><font size="2" color=#C0C0C0>Designed by <a href="https://github.com/Tvogmbh/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color="#C0C0C0" target="_blank">Tvogmbh</font></a> · ©2022-2024 Pro-Ivan Studio</font><br><a href="https://stats.uptimerobot.com/Oo6ykFNrDn" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>站点在线状态</font></a><font size="2" color=#C0C0C0> · </font><a href="/test_server/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>服务器状态</font></a><br><font size="2" color=#C0C0C0>友情链接 · </font><a href="https://acg.umoes.top/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>Yoo！萌</font></a><font size="2" color=#C0C0C0> · </font><a href="https://sweetily.club/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>Sweetily的粉丝站</font></a><font size="2" color=#C0C0C0> · </font><a href="https://momomitsuki.com/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>美月もも的粉丝站</font></a><font size="2" color=#C0C0C0> · </font><a href="https://objection.yvfox.com" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color=#C0C0C0>坎尤的一斤鸭梨</font></a><br><a href="//beian.miit.gov.cn" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" target="_blank"><font size="2" color=#C0C0C0>京ICP备2022003448号-1/2</font></a><font size="2" color=#C0C0C0> · </font><a target="_blank" href="//www.beian.gov.cn/portal/registerSystemInfo?recordcode=11011402012324" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="/beian.png" style="float:left;"/><font size="2" color=#C0C0C0>京公网安备 11011402012324号</font></a><font size="2" color=#C0C0C0> · </font><a href="https://icp.gov.moe/?keyword=20241113" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" target="_blank"><font size="2" color=#C0C0C0>萌ICP备20241113号</font></a></div>';
+    footer_content += `
+    <div class="mdui-table-fluid mdui-table th" style="width:100%;">
+        <form id="comment_form">
+            <table class="mdui-table">
+                <tbody>
+                    <tr>
+                        <th>
+                            <label class="mdui-textfield-label">昵称</label>
+                            <input type="text" class="mdui-textfield-input" name="name" placeholder="请输入昵称(小于25字)" required="required" maxlength="25" style="width:98%;">
+                            <br>
+                            <label class="mdui-textfield-label">评论</label>
+                            <input type="text" class="mdui-textfield-input" name="comment" placeholder="要讲文明哟~(小于200字)" required="required" maxlength="200" style="width:98%;">
+                            <br>
+                            <label class="mdui-textfield-label">电邮</label>
+                            <input type="text" class="mdui-textfield-input" name="contact" placeholder="或者其他联系方式（选填）" maxlength="200" style="width:98%;">
+                            <br>
+                            <center>
+                                <input class="mdui-btn mdui-ripple mdui-btn-raised mdui-btn-dense mdui-color-theme" type="submit" id="submitButton" value="发送" onclick="">
+                            </center>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
+        <div id="comment_result"></div>
+        <script>
+            document.getElementById('comment_form').addEventListener('submit', function(event) {
+                event.preventDefault(); // 阻止表单的默认提交行为
+    
+                // 获取表单数据
+                const formData = new FormData(this);
+    
+                // 使用Fetch API发送AJAX请求
+                fetch('/comment/comment.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(html => {
+                    // 将返回的HTML插入到页面的特定位置
+                    document.getElementById('comment_result').innerHTML = html;
+                })
+                .then(() => {
+                    //清空表单
+                    var form = document.getElementById('comment_form');
+                    if (form) {
+                        var inputs = form.getElementsByTagName('input');
+                        for (var i = 0; i < inputs.length; i++) {
+                            if (inputs[i].type === 'text') {
+                                inputs[i].value = '';
+                            }
+                        }
+                    }
+                    //刷新embed
+                    var embedElement = document.getElementById('comment_embed');
+                    if (embedElement) {
+                        var currentSrc = embedElement.src;
+                        embedElement.src = currentSrc; // 重新设置相同的src以刷新内容
+                    } else {
+                        console.error('Embed element not found.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        </script>
+        
+        <br>
+        <embed id="comment_embed" src="/sql_comment/" width="90%"/>
+    </div>
+    <br>
+    <div style="margin-bottom:15px;">
+        <font size="2" color="#C0C0C0">Designed by <a href="https://github.com/Tvogmbh/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color="#C0C0C0" target="_blank">Tvogmbh</font></a> · ©2022-2024 Pro-Ivan Studio</font>
+        <br>
+        <a href="https://stats.uptimerobot.com/Oo6ykFNrDn" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color="#C0C0C0">站点在线状态</font></a>
+        <font size="2" color="#C0C0C0"> · </font>
+        <a href="/test_server/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color="#C0C0C0">服务器状态</font></a>
+        <br>
+        <font size="2" color="#C0C0C0">友情链接 · </font>
+        <a href="https://acg.umoes.top/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color="#C0C0C0">Yoo！萌</font></a>
+        <font size="2" color="#C0C0C0"> · </font>
+        <a href="https://sweetily.club/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color="#C0C0C0">Sweetily的粉丝站</font></a>
+        <font size="2" color="#C0C0C0"> · </font>
+        <a href="https://momomitsuki.com/" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color="#C0C0C0">美月もも的粉丝站</font></a>
+        <font size="2" color="#C0C0C0"> · </font>
+        <a href="https://objection.yvfox.com" target="_blank" style="display:inline-block;text-decoration: none;"><font size="2" color="#C0C0C0">坎尤的一斤鸭梨</font></a>
+        <br>
+        <a href="//beian.miit.gov.cn" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" target="_blank"><font size="2" color="#C0C0C0">京ICP备2022003448号-1/2</font></a>
+        <font size="2" color="#C0C0C0"> · </font>
+        <a target="_blank" href="//www.beian.gov.cn/portal/registerSystemInfo?recordcode=11011402012324" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="/beian.png" style="float:left;"/><font size="2" color="#C0C0C0">京公网安备 11011402012324号</font></a>
+        <font size="2" color="#C0C0C0"> · </font>
+        <a href="https://icp.gov.moe/?keyword=20241113" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" target="_blank"><font size="2" color="#C0C0C0">萌ICP备20241113号</font></a>
+    </div>
+    `;
     document.getElementById('footer').innerHTML = footer_content;
+    var scriptElement = document.createElement('script');
+    scriptElement.text = document.getElementById('footer').querySelector('script').innerHTML;
+    document.getElementById('footer').appendChild(scriptElement);
 }
 //页面标题防止溢出
 setTimeout(function() {

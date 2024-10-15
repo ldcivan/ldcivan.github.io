@@ -1,5 +1,5 @@
 #---------------------------------------------------#
-## 更新：2024-10-14 21:29:33
+## 更新：2024-10-15 14:59:57
 #---------------------------------------------------#
 
 # HTTP 代理端口
@@ -32,7 +32,10 @@ secret: ''
 
 
 proxies:
-  - {"name": "0#中国_北京_北京_鹏博士", "type": "http", "server": "180.88.111.187", "port":3128, "skip-cert-verify": true}
+  - {"name": "0#中国_香港__colocationamerica.com", "type": "http", "server": "184.174.33.250", "port":3128, "skip-cert-verify": true}
+  - {"name": "1#中国_浙江_杭州_阿里云/电信/联通/移动/铁通/教育网", "type": "http", "server": "120.55.183.157", "port":3129, "skip-cert-verify": true}
+  - {"name": "2#中国_四川_成都_移动", "type": "http", "server": "117.176.129.7", "port":3128, "skip-cert-verify": true}
+  - {"name": "3#美国_弗吉尼亚州_斯特灵_阿里云", "type": "http", "server": "47.90.205.231", "port":33333, "skip-cert-verify": true}
 
 
 proxy-groups:
@@ -40,7 +43,10 @@ proxy-groups:
   name: Proxy
   type: select
   proxies:
-    - '0#中国_北京_北京_鹏博士'
+    - '0#中国_香港__colocationamerica.com'
+    - '1#中国_浙江_杭州_阿里云/电信/联通/移动/铁通/教育网'
+    - '2#中国_四川_成都_移动'
+    - '3#美国_弗吉尼亚州_斯特灵_阿里云'
 
 -
   name: Domestic

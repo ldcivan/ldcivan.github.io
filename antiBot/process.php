@@ -6,10 +6,9 @@ $_SESSION['timeout'] = time() + $expireTime;
 // 检查验证码是否正确
 if (isset($_POST['captcha']) && $_POST['captcha'] === $_SESSION['captcha']) {
     $_SESSION['visited'] = true;
-    echo '验证码正确！将返回你<a href='.$_SESSION['comeFrom'].'>之前所在的页面</a>，或者你也可以点击这边回到<a href="/">主页</a>';
+    echo '<div style="color:green;"><i class="mdui-icon material-icons">check</i> 验证码正确！将自动返回你<a href='.$_SESSION['comeFrom'].'>之前所在的页面</a>，或者你也可以点击这边回到<a href="/">主页</a></div>';
     exit ('<meta http-equiv="refresh" content="1;url='.$_SESSION['comeFrom'].'">');
 } else {
-    echo '验证码错误或者验证码过期！点击这边回到<a href="./">验证界面</a><br>若反复显示此内容，则请在验证码页面手动刷新一下';
-    exit ('<meta http-equiv="refresh" content="2;url=/antiBot">');
+    exit ('<div style="color:red;"><i class="mdui-icon material-icons">error</i>验证码错误或者验证码过期！请手动刷新验证码后重试！</div>');
 }
 ?>

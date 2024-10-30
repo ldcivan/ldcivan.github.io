@@ -283,7 +283,7 @@
                               <div class="mdui-textfield-helper">昵称可以是模糊搜索嗷~</div>
                               <input id="search" class="mdui-btn mdui-color-theme mdui-text-color-white-text" type="submit" name="sub" value=" 查 找 " style="display:none;" />
                           </form>
-                          <button class="mdui-btn mdui-color-theme mdui-text-color-white-text" onclick="document.getElementById('search').click();" style="margin-right:24px;float:right;"> 查 找 </button>
+                          <button id="search_btn" class="mdui-btn mdui-color-theme mdui-text-color-white-text" onclick="document.getElementById('search').click();" style="margin-right:24px;float:right;"> 查 找 </button>
                           <button class="mdui-btn mdui-color-theme mdui-text-color-white-text" onclick="navigator.clipboard.readText().then(function(text) {document.getElementById('key').value = text;});" style="margin-right:24px;float:right;"> 粘 贴 </button><br>
     		        </div>
 		            </div>
@@ -292,6 +292,8 @@
                 <script>
                     document.getElementById('search_form').addEventListener('submit', function(event) {
                         event.preventDefault(); // 阻止表单的默认提交行为
+                        document.getElementById('search_btn').disabled = true;
+                        document.getElementById('search_btn').innerHTML = '查询中';
             
                         // 获取表单数据
                         const formData = new FormData(this);
@@ -305,6 +307,17 @@
                         .then(html => {
                             // 将返回的HTML插入到页面的特定位置
                             document.getElementById('search_result').innerHTML = html;
+                            var form = document.getElementById('search_form');
+                            if (form) {
+                                var inputs = form.getElementsByTagName('input');
+                                for (var i = 0; i < inputs.length; i++) {
+                                    if (inputs[i].type === 'text') {
+                                        inputs[i].value = '';
+                                    }
+                                }
+                            }
+                            document.getElementById('search_btn').disabled = false;
+                            document.getElementById('search_btn').innerHTML = ' 查 找 ';
                         })
                         .catch(error => console.error('Error:', error));
                     });
@@ -325,7 +338,7 @@
                               <div class="mdui-textfield-helper">暂不支持按昵称添加嗷~</div>
                               <input id="add" class="mdui-btn mdui-color-theme mdui-text-color-white-text" type="submit" name="sub" value=" 添 加 " style="display:none;" />
                             </form>
-                            <button class="mdui-btn mdui-color-theme mdui-text-color-white-text" onclick="document.getElementById('add').click()" style="margin-right:24px;float:right;"> 添 加 </button>
+                            <button id="add_btn" class="mdui-btn mdui-color-theme mdui-text-color-white-text" onclick="document.getElementById('add').click()" style="margin-right:24px;float:right;"> 添 加 </button>
                           <button class="mdui-btn mdui-color-theme mdui-text-color-white-text" onclick="navigator.clipboard.readText().then(function(text) {document.getElementById('new_uid').value = text;});" style="margin-right:24px;float:right;"> 粘 贴 </button><br>
                         </div>
                     </div>
@@ -334,6 +347,8 @@
                 <script>
                     document.getElementById('add_form').addEventListener('submit', function(event) {
                         event.preventDefault(); // 阻止表单的默认提交行为
+                        document.getElementById('add_btn').disabled = true;
+                        document.getElementById('add_btn').innerHTML = '提交中';
             
                         // 获取表单数据
                         const formData = new FormData(this);
@@ -347,6 +362,17 @@
                         .then(html => {
                             // 将返回的HTML插入到页面的特定位置
                             document.getElementById('add_result').innerHTML = html;
+                            var form = document.getElementById('add_form');
+                            if (form) {
+                                var inputs = form.getElementsByTagName('input');
+                                for (var i = 0; i < inputs.length; i++) {
+                                    if (inputs[i].type === 'text') {
+                                        inputs[i].value = '';
+                                    }
+                                }
+                            }
+                            document.getElementById('add_btn').disabled = false;
+                            document.getElementById('add_btn').innerHTML = ' 添 加 ';
                         })
                         .catch(error => console.error('Error:', error));
                     });

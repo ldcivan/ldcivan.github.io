@@ -2,14 +2,19 @@
 <html>
    <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Pro-Ivan 通行证分发</title>
-  <style>
-#divcss{margin:20 auto;width:50%;height:40px;}   
-#footer {
-            height: 90px;
+    <title>Pro-Ivan 通行证分发</title>
+	<link rel="stylesheet" href="/mdui/css/mdui.css" />
+	<link rel="stylesheet" href="/new-js/index.css">
+	<script src="/mdui/js/mdui.min.js"></script>
+    <style>
+        #divcss{margin:20 auto;width:50%;height:40px;}   
+        #footer {
+            height: 45px;
             line-height: 40px;
             position: fixed;
             bottom: 0;
+            left: 0;
+            right: 0;
             width: 100%;
             text-align: center;
             background: #373d41;
@@ -18,19 +23,19 @@
             font-size: 16px;
             letter-spacing: 1px;
         }
-a {text-decoration: none}
-  </style>
-		<script>
-        	var _hmt = _hmt || [];
-        	(function() {
-         	 var hm = document.createElement("script");
-         	 hm.src = "https://hm.baidu.com/hm.js?90415f833f988b0bccfb250d70f115f6";
-         	 var s = document.getElementsByTagName("script")[0]; 
-         	 s.parentNode.insertBefore(hm, s);
-        	})();
-    	</script>
+        a {text-decoration: none}
+    </style>
+	<script>
+    	var _hmt = _hmt || [];
+    	(function() {
+     	 var hm = document.createElement("script");
+     	 hm.src = "https://hm.baidu.com/hm.js?90415f833f988b0bccfb250d70f115f6";
+     	 var s = document.getElementsByTagName("script")[0]; 
+     	 s.parentNode.insertBefore(hm, s);
+    	})();
+	</script>
 </head>
-<body>
+<body class="mdui-theme-primary-light-blue mdui-container-fluid" style="max-width: 1200px;">
 <?php
 //所有需要输出二次密码打开的页面，只需要将本php文件进行包含即可
 $url = $_SERVER["HTTP_REFERER"];
@@ -52,10 +57,11 @@ if(isset($_POST['password']) && $_POST['password'] == 'yujionako'){
 if(!isset($_SESSION['recheck'])){
     setcookie("log", "1", time( )+86400*30, "/", $_SERVER['HTTP_HOST']);
     exit('<div id="divcss"><center>
-        <img src="/Ivan.svg" width=30%><br><br>
-        <form method="post">
-            管理员密码：<br><input type="password" name="password" />
-            <input type="submit" value="确定" /><br>维护中，仅持有管理员密码者可进入管理<br>输入管理密码仍然会到此界面，请清除cookie
+        <img src="/Ivan.svg" width="250px"><br><br>
+        <form class="mdui-textfield" style="width:300px;" method="post">
+            <input class="mdui-textfield-input" placeholder="管理员密码" style="text-align:center;" type="password" name="password" />
+            <br>
+            <input class="mdui-btn mdui-color-theme mdui-text-color-white-text" type="submit" value="确定" /><br>维护中，仅持有管理员密码者可进入管理<br>输入管理密码仍然会到此界面，请清除cookie
         </form>
     </center></div>
     ');

@@ -33,7 +33,7 @@ function compressIfNeeded($sourceFile, $compressedFile) {
 
 // 调用函数进行检查和压缩
 try {
-    compressIfNeeded('img_content.html', 'img_content_compressed.gz');
+    compressIfNeeded('data/img_content.html', 'data/img_content_compressed.gz');
 } catch (Exception $e) {
     echo 'Error: ',  $e->getMessage(), "\n";
 }
@@ -50,10 +50,10 @@ try {
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<script type="text/javascript" src="/passport/passcheck.php"></script>
 		<link rel="shortcut icon" href="/favicon.ico">
-		<link rel="stylesheet" href="./mdui/css/mdui.css" />
-		<link rel="stylesheet" href="./new-js/index.css">
-    	<script src="./mdui/js/mdui.min.js"></script>
-    	<script src="./new-js/index.js"></script>
+		<link rel="stylesheet" href="/mdui/css/mdui.css" />
+		<link rel="stylesheet" href="/new-js/index.css">
+    	<script src="/mdui/js/mdui.min.js"></script>
+    	<script src="/new-js/index.js"></script>
 		<style>
             .bottom { position: fixed; bottom: -700px; right: -800px; align:center;pointer-events: auto;z-index:2000;}
             .lazy { margin-top: 120px; margin-bottom: 120px; width: 100%; }
@@ -295,7 +295,7 @@ try {
 				<b>· 对于第一次打开或在清除网页缓存后打开本网页的用户，可能出现图片访问403的情况，这是为了防止CDN流量被滥用，届时请耐心等待2-3分钟以等待服务恢复</b>
 			</p>
 			<p>
-			    · 本页面上次更新于 <span id='LastUpdate'><?php $filename = 'img_content_compressed.gz';$last_modified = date("Y-n-d H:i:s", filemtime($filename));echo $last_modified; ?></span>
+			    · 本页面上次更新于 <span id='LastUpdate'><?php $filename = 'data/img_content_compressed.gz';$last_modified = date("Y-n-d H:i:s", filemtime($filename));echo $last_modified; ?></span>
 			</p>
 			<div id="img_content" class="mdui-panel" mdui-panel>
                 
@@ -322,7 +322,7 @@ try {
     <script>
         async function loadCompressedContent() {
             let header = update ? `{"Cache-Control": "no-cache"}`:`{}`;
-            fetch('img_content_compressed.gz', {
+            fetch('/data/img_content_compressed.gz', {
                     headers: JSON.parse(header)
                 })
                 .then(async (response) => await response.arrayBuffer())

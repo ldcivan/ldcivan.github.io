@@ -538,6 +538,23 @@ if (!isset($_SESSION['visited'])) {
                             </div>
                         </div>
                         <!--111-->
+                        <div id="card-one" class="mdui-hoverable">
+                            <div class="mdui-card">
+                                <div class="mdui-card-media">
+                                    <img class="lazy" data-src="http://us.pro-ivan.com/imgbed/manga/reed_animarcat/00.png!w750" src="/Ivanbg.png"/>
+                                    <div class="mdui-card-media-covered">
+                                        <div class="mdui-card-primary">
+                                            <div class="mdui-card-primary-title">~極秘ファイル：寄生時間~<div id="r18-box" class="r18-box"><span id="level-text" class="level-text">R-18</span></div></div>
+                                            <div class="mdui-card-primary-subtitle">今沢</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mdui-card-actions">
+                                    <button class="mdui-btn mdui-ripple mdui-float-right" onclick="window.open('/mangahtml/manga22.php', '_blank');">阅读</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--111-->
                     </div>
                 </div>
             </div>
